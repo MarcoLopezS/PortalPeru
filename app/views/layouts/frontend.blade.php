@@ -101,8 +101,9 @@
 
 			<div class="row">
 
-				<!--CONTENT-->
-				<?php require_once("index-d1.php"); ?>
+				<!-- CONTENT -->
+				@yield('contenido_frontend')
+				<!-- END CONTENT -->
 				
 			</div>
 			
