@@ -83,6 +83,28 @@
                             </a>
                         </li>
 
+                        <li {{ (Request::is('administrador/columnist') || Request::is('administrador/columnist/*') ? 'class="active"' : '') }}>
+                            <a href="#">
+                                <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
+                                <span class="title">Columnistas</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li {{ (Request::is('administrador/columnist') ? 'class="active"' : '') }}>
+                                    <a href="{{ route('administrador.columnist.index') }}">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Todas los columnistas
+                                    </a>
+                                </li>
+                                <li {{ (Request::is('administrador/columnist/create') ? 'class="active"' : '') }}>
+                                    <a href="{{ route('administrador.columnist.create') }}">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Nuevo columnista
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li {{ (Request::is('administrador/posts') || Request::is('administrador/posts/*') || Request::is('administrador/categories') || Request::is('administrador/categories/*') || Request::is('administrador/tags') || Request::is('administrador/tags/*') ? 'class="active"' : '') }}>
                             <a href="#">
                                 <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
