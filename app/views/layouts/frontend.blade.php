@@ -3,13 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
+	<title>Portal Perú</title>
 
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat:400,700">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    {{ HTML::style('fonts/font-awesome-4.0.3/css/font-awesome.min.css') }}
+    {{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:400,600,700') }}
+    {{ HTML::style('http://fonts.googleapis.com/css?family=Montserrat:400,700') }}
+    {{ HTML::style('css/bootstrap.css') }}
+    {{ HTML::style('css/style.css') }}
+
+    @yield('script_header')
 	
 </head>
 <body>
@@ -17,7 +19,7 @@
 	<!--HEADER-->
     <header>
         <div class="container">
-            <a href="/" class="logo"><img src="imagenes/logo.png" alt="logo"></a>
+            <a href="/" class="logo"><img src="/imagenes/logo.png" alt="logo"></a>
 
             <!--MENU-->
             <nav class="clearfix">
@@ -61,18 +63,18 @@
 
             <ul class="menu col-md-10 list-inline">
                 <li><a href="/"><i class="fa fa-home"></i></a></li>
-                <li><a href="seccion/noticia">Noticia</a></li>
-                <li><a href="seccion/informe">Informe</a></li>
-                <li><a href="seccion/entrevista">Entrevista</a></li>
-                <li><a href="columnistas">Columnista</a></li>
-                <li><a href="seccion/portal-tv">Portal TV</a></li>
-                <li><a href="seccion/mira-peru">Mira el Perú</a></li>
+                <li><a href="/seccion/noticia">Noticia</a></li>
+                <li><a href="/seccion/informe">Informe</a></li>
+                <li><a href="/seccion/entrevista">Entrevista</a></li>
+                <li><a href="/columnistas">Columnista</a></li>
+                <li><a href="/seccion/portal-tv">Portal TV</a></li>
+                <li><a href="/seccion/mira-el-peru">Mira el Perú</a></li>
                 <li class="menu-rcid dropdown-submenu">
                     <a href="javascript:;">Reportero Ciudadano</a>
                     <ul class="dropdown-menu">
-                        <li><a href="reportero-ciudadano/noticias">Noticias</a></li>
-                        <li><a target="_blank" href="reportero-ciudadano/">Registrarse</a></li>
-                        <li><a target="_blank" href="reportero-ciudadano/login.php">Iniciar sesión</a></li>
+                        <li><a href="/reportero-ciudadano/noticias">Noticias</a></li>
+                        <li><a target="_blank" href="/reportero-ciudadano/">Registrarse</a></li>
+                        <li><a target="_blank" href="/reportero-ciudadano/login.php">Iniciar sesión</a></li>
                     </ul>
                 </li>
             </ul>
@@ -96,25 +98,15 @@
         </nav>
 		<!--END MENU-->
 		
-		<!--MAIN SECTION-->
-		<div class="main">
 
-			<div class="row">
+		@yield('contenido_frontend')
 
-				<!-- CONTENT -->
-				@yield('contenido_frontend')
-				<!-- END CONTENT -->
-				
-			</div>
-			
-		</div>
-		<!--END MAIN SECTION-->
 
 		<!--FOOTER-->
         <footer>
             <div class="row">
                 <div class="about col-md-3 col-sm-6">
-                    <img src="imagenes/logo-footer.png" alt="logo" width="180">
+                    <img src="/imagenes/logo-footer.png" alt="logo" width="180">
                     <h5>Sobre Portal Perú</h5>
                     <p>
                         Portal Perú busca democratizar la información bajo el principio universal que toda persona tiene derecho, no solo a recibir información y opinión sino también a difundirla por cualquier medio de expresión.
@@ -136,7 +128,7 @@
                     <h5>Categorias</h5>
                     <ul>
                         <li><a href=""></a></li>
-                        <li><a href="columnistas">Columnistas</a></li>
+                        <li><a href="/columnistas">Columnistas</a></li>
                         <li><a href=""></a></li>
                     </ul>
                 </div>
@@ -248,18 +240,17 @@
 	</div>
 	<!--END CONTAINER-->
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="js/jquery.stellar.js"></script>
-<script src="js/smoothscroll.js"></script>
-<script src="js/flickrush.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/jquery.bxslider.js"></script>
-<script src="js/jquery.countdown.js"></script>
-<script src="js/fluidvids.js"></script>
-<script src="js/retina-1.1.0.min.js"></script>
-<script src="js/jquery.resizestop.min.js"></script>
-
-<script type="text/javascript" src="js/main.js"></script>
+{{ HTML::script('http://code.jquery.com/jquery-1.10.2.min.js') }}
+{{ HTML::script('js/jquery.stellar.js') }}
+{{ HTML::script('js/smoothscroll.js') }}
+{{ HTML::script('js/flickrush.min.js') }}
+{{ HTML::script('js/bootstrap.js') }}
+{{ HTML::script('js/jquery.bxslider.js') }}
+{{ HTML::script('js/jquery.countdown.js') }}
+{{ HTML::script('js/fluidvids.js') }}
+{{ HTML::script('js/retina-1.1.0.min.js') }}
+{{ HTML::script('js/jquery.resizestop.min.js') }}
+{{ HTML::script('js/main.js') }}
 
 </body>
 </html>
