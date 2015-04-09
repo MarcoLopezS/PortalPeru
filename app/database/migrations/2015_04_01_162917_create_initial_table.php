@@ -120,6 +120,7 @@ class CreateInitialTable extends Migration {
             $table->string('video');
             $table->text('audio');
             $table->string('tags');
+            $table->string('redaccion');
 
             $table->boolean('publicar')->default(false);
             $table->integer('contador')->unsigned();
