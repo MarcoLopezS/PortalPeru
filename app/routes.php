@@ -7,15 +7,16 @@ Route::pattern('gallery', '[0-9]+');
 
 /* FRONTEND */
 
-Route::get('/', ['as' => 'home', 'uses' => 'FrontendController@home']);
-
+Route::get('/', ['as' => 'home', 'uses' => 'FrontendController@construccion']);
+Route::get('nota/{id}-{url}', ['as' => 'home.noticia', 'uses' => 'FrontendController@noticia']);
+Route::get('seccion/{url}', ['as' => 'home.noticia.categoria', 'uses' => 'FrontendController@noticiaCategoria']);
+Route::get('buscar/b={texto}', ['as' => 'home.buscar', 'uses' => 'FrontendController@buscar']);
+Route::get('columnistas', ['as' => 'home.columnistas.list', 'uses' => 'FrontendController@columnistasList']);
+Route::get('columnistas/{id}-{url}', ['as' => 'home.columnistas.person', 'uses' => 'FrontendController@columnistasPerson']);
+Route::get('columnistas/{id}-{url}/{idColumn}-{urlColumn}', ['as' => 'home.columnistas.column', 'uses' => 'FrontendController@columnistasColumn']);
 
 /* IMAGENES */
-Route::get('/upload/{folder}/{width}x{height}/{image}', function($folder, $width, $height, $image)
-{
-    $file = base_path() . '/public/upload/' . $folder . '/' .$image;
-    App::make('phpthumb')->create('resize', array($file, $width, $height, 'adaptive'))->show();
-});
+Route::get('/upload/{folder}/{width}x{height}/{image}', ['as' => 'image.adaptiveResize', 'uses' => 'ImageController@adaptiveResize']);
 
 /* ADMINISTRADOR */
 
@@ -33,6 +34,22 @@ Route::group(['before' => 'auth'], function () {
 
     //PAGINAS
     Route::resource('administrador/pages', 'AdminPagesController');
+
+    //COLUMNISTAS
+    Route::resource('administrador/columnist', 'AdminColumnistsController');
+    Route::post('administrador/columnist/{id}/edit/img', ['as' => 'administrador.columnist.imagen', 'uses' => 'AdminColumnistsController@imagen']);
+    Route::post('administrador/columnist/{id}/edit/imgPort', ['as' => 'administrador.columnist.imagenPortada', 'uses' => 'AdminColumnistsController@imagenPortada']);
+
+    //COLUMNAS
+    //Route::resource('administrador/columns', 'AdminColumnsController');
+    Route::get('administrador/columns/{id}', ['as' => 'administrador.columns.list', 'uses' => 'AdminColumnsController@lists']);
+    Route::get('administrador/columns/{id}/create', ['as' => 'administrador.columns.create', 'uses' => 'AdminColumnsController@create']);
+    Route::post('administrador/columns/{id}/create', ['as' => 'administrador.columns.store', 'uses' => 'AdminColumnsController@store']);
+    Route::get('administrador/columns/{id}/show/{idColumn}', ['as' => 'administrador.columns.show', 'uses' => 'AdminColumnsController@show']);
+    Route::get('administrador/columns/{id}/edit/{idColumn}', ['as' => 'administrador.columns.edit', 'uses' => 'AdminColumnsController@edit']);
+    Route::post('administrador/columns/{id}/edit/{idColumn}', ['as' => 'administrador.columns.update', 'uses' => 'AdminColumnsController@update']);
+    Route::get('administrador/columns/{id}/destroy/{idColumn}', ['as' => 'administrador.columns.destroy', 'uses' => 'AdminColumnsController@destroy']);
+    Route::get('administrador/columns/{id}/photos/{idColumn}', ['as' => 'administrador.columns.photoslist', 'uses' => 'AdminColumnsController@photosList' ]);
 
     //POST
     Route::resource('administrador/posts', 'AdminPostsController');
