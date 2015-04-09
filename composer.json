@@ -4,8 +4,7 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.2.*",
-        "mews/phpthumb": "dev-master"
+		"laravel/framework": "4.2.*"
 	},
     "require-dev": {
         "fzaninotto/faker": "1.5.*@dev"
@@ -19,7 +18,8 @@
 			"app/controllers",
 			"app/database/migrations",
 			"app/database/seeds",
-			"app/tests/TestCase.php"
+			"app/tests/TestCase.php",
+            "app/libs"
 		]
 	},
 	"scripts": {
