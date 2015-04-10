@@ -145,7 +145,8 @@ class AdminCategoriesController extends \BaseController {
      */
     public function destroy($id)
     {
-        $this->categoryRepo->delete($id);
+        $category = Category::find($id);
+        $category->delete();
         return Redirect::route('administrador.categories.index');
     }
 
