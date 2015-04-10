@@ -3,7 +3,23 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Portal Perú</title>
+	<title>
+	    @section('html_title')
+	    {{ configWeb()->titulo }}
+	    @show
+	</title>
+
+    <meta name="keywords" content="{{ configWeb()->keywords }}"/>
+	<meta name="description" content="{{ configWeb()->descripcion }}"/>
+	<meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index, follow">
+
+    <meta property="og:title" content="{{ configWeb()->titulo." | ".configWeb()->keywords }}">
+    <meta property="og:description" content="{{ configWeb()->descripcion }}">
+    <meta property="og:url" content="{{ configWeb()->dominio }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ configWeb()->dominio."/imagenes/logo.png" }}">
+    <meta property="og:site_name" content="{{ configWeb()->titulo }}">
 
     {{ HTML::style('fonts/font-awesome-4.0.3/css/font-awesome.min.css') }}
     {{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:400,600,700') }}
@@ -28,7 +44,7 @@
                     <li class="/"><a href="">Inicio</a></li>
                     <li><a href="#">Publicidad</a></li>
                     <li><a href="#">Contacto</a></li>
-                    <li><a href="nosotros">Nosotros</a></li>
+                    <li><a href="#">Nosotros</a></li>
                 </ul>
             </nav>
             <!--END MENU-->
@@ -63,12 +79,10 @@
 
             <ul class="menu col-md-10 list-inline">
                 <li><a href="/"><i class="fa fa-home"></i></a></li>
-                <li><a href="/seccion/noticia">Noticia</a></li>
-                <li><a href="/seccion/informe">Informe</a></li>
+                <li><a href="/seccion/hechos">Hechos</a></li>
                 <li><a href="/seccion/entrevista">Entrevista</a></li>
-                <li><a href="/columnistas">Columnista</a></li>
-                <li><a href="/seccion/portal-tv">Portal TV</a></li>
                 <li><a href="/seccion/mira-el-peru">Mira el Perú</a></li>
+                <li><a href="/seccion/bicentenario">Bicentenario</a></li>
                 <li class="menu-rcid dropdown-submenu">
                     <a href="javascript:;">Reportero Ciudadano</a>
                     <ul class="dropdown-menu">
@@ -105,7 +119,7 @@
 		<!--FOOTER-->
         <footer>
             <div class="row">
-                <div class="about col-md-3 col-sm-6">
+                <div class="about col-md-9 col-sm-6">
                     <img src="/imagenes/logo-footer.png" alt="logo" width="180">
                     <h5>Sobre Portal Perú</h5>
                     <p>
@@ -133,105 +147,10 @@
                     </ul>
                 </div>
 
-                <div class="events col-md-3 col-sm-6">
-                    <h5>Eventos</h5>
-                    <div class="event">
-                        <div class="col">
-                            <h1><a href="">21</a></h1>
-                            <p>nov</p>
-                        </div>
-                        <div class="info">
-                            <h2><a href="">jkdfvndj jn jdvjknkjf</a></h2>
-                            <p>mdflknvjvndkjvn  jn jn dj jdnf j n d k dkn dkjn dj fdjh dj .</p>
-                        </div>
-                    </div>
-                    <div class="event">
-                        <div class="col">
-                            <h1><a href="">17</a></h1>
-                            <p>nov</p>
-                        </div>
-                        <div class="info">
-                            <h2><a href="">nfdjn jdnjd f</a></h2>
-                            <p>dfnvjkdfnv jdfnvjfnjd nvfjvndj kvndfjn jnjkfdn vjkj.</p>
-                        </div>
-                    </div>
-                    <div class="event">
-                        <div class="col">
-                            <h1><a href="">25</a></h1>
-                            <p>nov</p>
-                        </div>
-                        <div class="info">
-                            <h2><a href="">dfijvn jnvid</a></h2>
-                            <p>Tnfdjnvvj vjdnvkjdfbj fdkbkjdf fjvndjkvn .</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6">
-                    <h5>Calendario</h5>
-                    <div class="calendar">
-                        <div class="header clearfix">
-                            <h1>Marzo 2014</h1>
-                            <div class="calendar-nav">
-                                <a href="#" class="prev"><i class="fa fa-angle-left"></i></a>
-                                <a href="#" class="next"><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="calendar-body">
-                            <table>
-                                <tr>
-                                    <td><a href="" class="prev-month">30</a></td>
-                                    <td><a href="" class="prev-month">31</a></td>
-                                    <td><a href="">1</a></td>
-                                    <td><a href="">2</a></td>
-                                    <td><a href="">3</a></td>
-                                    <td><a href="">4</a></td>
-                                    <td><a href="">5</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">6</a></td>
-                                    <td><a href="">7</a></td>
-                                    <td><a href="">8</a></td>
-                                    <td><a href="">9</a></td>
-                                    <td><a href="">10</a></td>
-                                    <td><a href="">11</a></td>
-                                    <td><a href="">12</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">13</a></td>
-                                    <td><a href="">14</a></td>
-                                    <td><a href="">15</a></td>
-                                    <td><a href="">16</a></td>
-                                    <td><a href="">17</a></td>
-                                    <td><a href="">18</a></td>
-                                    <td><a href="">19</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">20</a></td>
-                                    <td><a href="">21</a></td>
-                                    <td><a href="">22</a></td>
-                                    <td><a href="">23</a></td>
-                                    <td><a href="">24</a></td>
-                                    <td><a href="">25</a></td>
-                                    <td><a href="">26</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="">27</a></td>
-                                    <td><a href="">28</a></td>
-                                    <td><a href="">29</a></td>
-                                    <td><a href="">30</a></td>
-                                    <td><a href="" class="next-month">1</a></td>
-                                    <td><a href="" class="next-month">2</a></td>
-                                    <td><a href="" class="next-month">3</a></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="rights clearfix">
-                <p>© 2014 Todos los derechos reservados.</p>
+                <p>© 2015 Todos los derechos reservados.</p>
                 <p>Designed by <a href="http://www.grupo7peru.com">Grupo 7 Perú</a>.</p>
             </div>
         </footer>
@@ -251,6 +170,16 @@
 {{ HTML::script('js/retina-1.1.0.min.js') }}
 {{ HTML::script('js/jquery.resizestop.min.js') }}
 {{ HTML::script('js/main.js') }}
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-20229980-30', 'auto');
+  ga('send', 'pageview');
+</script>
 
 </body>
 </html>
