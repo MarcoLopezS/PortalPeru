@@ -2,7 +2,7 @@
 
 class Post extends BaseEntity{
 
-    protected $fillable = ['titulo','slug_url','descripcion','contenido','imagen','imagen_carpeta','publicar','category_id','post_order_id','published_at'];
+    protected $fillable = ['titulo','slug_url','descripcion','contenido','imagen','imagen_carpeta','redaccion','publicar','category_id','post_order_id','published_at'];
 
     public function user()
     {
