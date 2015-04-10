@@ -53,11 +53,13 @@ Route::group(['before' => 'auth'], function () {
 
     //POST
     Route::resource('administrador/posts', 'AdminPostsController');
+    Route::get('view/{id}-{url}', ['as' => 'home.noticia.preview', 'uses' => 'FrontendController@noticiaPreview']);
 
     //GALERIA DE FOTOS DE POST
     Route::get('administrador/posts/photos/{post}', ['as' => 'administrador.post.photoslist', 'uses' => 'AdminPostsController@photosList' ]);
     Route::get('administrador/posts/photos/{post}/upload', ['as' => 'administrador.post.photosupload', 'uses' => 'AdminPostsController@photosUpload' ]);
     Route::post('administrador/posts/photos/{post}/upload', ['as' => 'administrador.post.photosuploadsave', 'uses' => 'AdminPostsController@photosUploadSave' ]);
+    Route::delete('administrador/posts/photos/{post}/delete/{id}', ['as' => 'administrador.post.photosuploadDelete', 'uses' => 'AdminPostsController@photosUploadDelete' ]);
 
     //CATEGORIAS DE POST
     Route::resource('administrador/categories', 'AdminCategoriesController');
