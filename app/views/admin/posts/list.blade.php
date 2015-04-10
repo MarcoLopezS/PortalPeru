@@ -82,9 +82,11 @@ Advanced Data Tables
                                             <i class="fa fa-caret-down"></i>
                                         </a>
                                         <ul>
-                                            <li><a href="{{ route('administrador.posts.show', $item->id) }}">Ver</a></li>
+                                            <li><a href="{{ route('home.noticia.preview', [$item->id, $item->slug_url]) }}" target="_blank">Ver</a></li>
                                             <li><a href="{{ route('administrador.posts.edit', $item->id) }}">Editar</a></li>
-                                            <li><a href="{{ route('administrador.posts.destroy', $item->id) }}">Eliminar</a></li>
+                                            {{ Form::open(['route' => ['administrador.posts.destroy', $item->id], 'method' => 'delete', 'class' => 'FormDeleteRow']) }}
+                                            <li><button type="submit">Eliminar</button></li>
+                                            {{ Form::close() }}
                                             <li><a href="{{ route('administrador.post.photoslist', $item->id) }}">Galería de Fotos</a></li>
                                         </ul>
                                     </div>
