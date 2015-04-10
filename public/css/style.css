@@ -1575,7 +1575,7 @@ article.row .text{
 }
 
 .list-page article.row .text{
-	/*float:left;*/
+	float:left;
 }
 
 article.row .btn{
