@@ -18,7 +18,7 @@ class CreateInitialTable extends Migration {
 
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('type', ['admin', 'reportero']);
+            $table->enum('type', ['admin', 'editor', 'reportero']);
 
             $table->rememberToken();
 
@@ -149,7 +149,7 @@ class CreateInitialTable extends Migration {
             $table->integer('orden');
 
             $table->integer('post_id')->unsigned()->nullable();
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
 
             $table->boolean('publicar')->default(false);
 
