@@ -39,8 +39,17 @@ Advanced Data Tables
                                         @foreach($photos as $item)
 
                                         <div class="col-lg-2 col-md-3 col-xs-6 col-sm-3 gallery-border">
-                                            <a class="fancybox-effects-a" href="/upload/{{ $item->imagen_carpeta."".$item->imagen }}" title="Click aside to exit popup">
-                                                <img height="100" width="100" src="/upload/{{ $item->imagen_carpeta }}100x100/{{ $item->imagen }}" class="gallery-style" alt="Image"></a>
+                                                <img height="100" width="100" src="/upload/{{ $item->imagen_carpeta }}100x100/{{ $item->imagen }}" class="gallery-style" alt="Image">
+
+                                            <div class="slider-options">
+                                                <a class="fancybox-effects-a" href="/upload/{{ $item->imagen_carpeta."".$item->imagen }}" title="Ver imagen">
+                                                    <span class="glyphicon glyphicon-zoom-in"></span>
+                                                </a>
+
+                                                {{ Form::open(['route' => ['administrador.post.photosuploadDelete', $posts->id, $item->id], 'method' => 'delete', 'class' => 'FormDeletePhotos']) }}
+                                                    <button type="submit"><span class="glyphicon glyphicon-remove"></span></button>
+                                                {{ Form::close() }}
+                                            </div>
                                         </div>
 
                                         @endforeach
