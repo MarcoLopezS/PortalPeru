@@ -11,6 +11,8 @@
 |
 */
 
+use PortalPeru\Entities\Configuration;
+
 ClassLoader::addDirectories(array(
 
 	app_path().'/commands',
@@ -49,6 +51,7 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
+    //return Response::view('frontend.404');
 });
 
 /*
@@ -80,6 +83,28 @@ App::down(function()
 
 require app_path().'/filters.php';
 
+
+/* FUNCIONES PARA VERIFICAR ACCESO DE USUARIO */
+function is_admin()
+{
+    return Auth::check() && Auth::user()->type == 'admin';
+}
+
+function is_editor()
+{
+    return Auth::check() && Auth::user()->type == 'editor';
+}
+
+function is_reportero()
+{
+    return Auth::check() && Auth::user()->type == 'reportero';
+}
+
+function configWeb()
+{
+    $baseUrl = Configuration::find(1);
+    return $baseUrl;
+}
 
 //MOVER ARCHIVO
 function FileMove($file, $path)
