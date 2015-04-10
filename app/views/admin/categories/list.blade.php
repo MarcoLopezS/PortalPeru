@@ -57,7 +57,9 @@ Advanced Data Tables
                                         <ul>
                                             <li><a href="{{ route('administrador.categories.show', $item->id) }}">Ver</a></li>
                                             <li><a href="{{ route('administrador.categories.edit', $item->id) }}">Editar</a></li>
-                                            <li><a href="{{ route('administrador.categories.destroy', $item->id) }}">Eliminar</a></li>
+                                            {{ Form::open(['route' => ['administrador.categories.destroy', $item->id], 'method' => 'delete', 'class' => 'FormDeleteRow']) }}
+                                            <li><button type="submit">Eliminar</button></li>
+                                            {{ Form::close() }}
                                         </ul>
                                     </div>
                                 </td>
