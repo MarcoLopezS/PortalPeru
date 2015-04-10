@@ -4,7 +4,7 @@
 
 <!--MAIN SECTION-->
 <div class="main-404 clearfix">
-    <img src="img/404.jpg" alt="404">
+    <img src="/img/404.jpg" alt="404">
     <div class="info-404">
         <h1>
             <span>404.</span>

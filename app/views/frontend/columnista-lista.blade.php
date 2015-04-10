@@ -4,6 +4,7 @@
 <!--MAIN SECTION-->
 <div class="main">
     <div class="row">
+
         <!--CONTENT-->
         <div class="col-md-9 col-md-12 list-page clearfix">
             <h2>Columnistas</h2>
@@ -28,9 +29,8 @@
         </div>
         <!--END CONTENT-->
 
-        <!--SIDEBAR-->
+        @include('frontend.sidebar')
 
-        <!--END SIDEBAR-->
     </div>
 
 </div>

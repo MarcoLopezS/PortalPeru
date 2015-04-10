@@ -1,27 +1,19 @@
 @extends('layouts.frontend')
 
-@section('html_title')
-{{ $noticia->titulo }} | @parent
-@stop
-
-{{--*/
-$noticiaUrl = configWeb()->dominio."/nota/".$noticia->id."-".$noticia->slug_url;
-$noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/".$noticia->imagen;
-/*--}}
-
 @section('script_header')
 <!-- Open Graph -->
 <meta property="og:type" content='article' >
-<meta property="og:site_name" content='{{ configWeb()->titulo }}' >
+<meta property="og:site_name" content='Portal Perú' >
 <meta property="og:title" content='{{ $noticia->titulo  }}'>
 <meta property="og:description" content='{{ $noticia->descripcion }}'>
-<meta property="og:url" content='{{ $noticiaUrl }}' >
-<meta property="og:image" content='{{ $noticiaImg }}' >
+<meta property="og:url" content='' >
+<meta property="og:image" content='' >
 <meta property="fb:admins" content='1434798696787255'>
 <!-- fin Open Graph -->
 @stop
 
 @section('contenido_frontend')
+		
 <!--MAIN SECTION-->
 <div class="main post-page">
 
@@ -35,7 +27,7 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                     <h1>{{ $noticia->titulo }}</h1>
                     <div class="text">{{ $noticia->descripcion }}</div>
                     <div class="data">
-                        <p class="details">{{ $noticia->category->titulo }} | {{ date_format(new DateTime($noticia->published_at), 'd/m/Y H:m')  }}
+                        <p class="details">{{ $noticia->category->titulo }} | {{ $noticia->published_at }}
                         <span class="redaccion">Autor: {{ $noticia->redaccion }}</span></p>
                     </div>
                 </div>
@@ -62,7 +54,7 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                 @elseif(count($noticiaFotos) == 0)
                     @if($noticia->imagen <> "")
                     <div class="info imagen">
-                        <img src="{{ $noticiaImg }}" alt="post-image">
+                        <img src="/upload/{{ $noticia->imagen_carpeta."870x500/".$noticia->imagen }}" alt="post-image">
                     </div>
                     @endif
                 @endif
@@ -112,7 +104,7 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                   fjs.parentNode.insertBefore(js, fjs);
                 }(document, 'script', 'facebook-jssdk'));</script>
 
-                <div class="fb-comments" data-href="{{ $noticiaUrl }}" data-width="840" data-numposts="5" data-colorscheme="light"></div>
+                <div class="fb-comments" data-href="/nota/{{ $noticia->id."-".$noticia->slug_url }}" data-width="840" data-numposts="5" data-colorscheme="light"></div>
             </div>
             <!-- FIN COMENTARIOS -->
 

@@ -3,6 +3,7 @@
 @section('contenido_frontend')
 <!--MAIN SECTION-->
 <div class="main">
+
     <div class="row">
 
         <!--CONTENT-->
@@ -19,12 +20,14 @@
                             {{ $columnista->descripcion }}
                         </p>
                     </div>
+                    {{--
                     <ul class="social list-inline">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                         <li><a href="#"><i class="fa  fa-tumblr"></i></a></li>
                     </ul>
+                    --}}
                 </article>
                 <!--POSTS-->
                 <div class="posts col-md-8 col-sm-8">
@@ -41,7 +44,7 @@
                             <p class="text">
                                 {{ $item->descripcion }}
                             </p>
-                            <a href="" class="btn btn-default">Leer más...</a>
+                            <a href="{{ configWeb()->dominio }}/columnistas/{{ $columnista->id."-".$columnista->slug_url."/".$item->id."-".$item->slug_url }}" class="btn btn-default">Leer más...</a>
 
                         </div>
                     </article>
@@ -57,11 +60,9 @@
         </div>
         <!--END CONTENT-->
 
-        <!--SIDEBAR-->
+        @include('frontend.sidebar')
 
-        <!--END SIDEBAR-->
-
-        </div>
+    </div>
 
 </div>
 <!--END MAIN SECTION-->

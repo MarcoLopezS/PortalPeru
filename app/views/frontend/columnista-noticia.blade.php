@@ -4,6 +4,7 @@
 
 <!--MAIN SECTION-->
 <div class="main post-page">
+
     <div class="row">
 
         <!--CONTENT-->
@@ -52,9 +53,7 @@
         </div>
         <!--END CONTENT-->
 
-        <!--SIDEBAR-->
-
-        <!--END SIDEBAR-->
+        @include('frontend.sidebar')
 
     </div>
 
