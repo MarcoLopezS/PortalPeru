@@ -31,8 +31,8 @@
 
 <body class="skin-josh">
     <header class="header">
-        <a href="{{ URL::to('administrador/index') }}" class="logo">
-            <img src="{{ asset('admin/img/logo.png') }}" alt="logo">
+        <a href="{{ URL::to('administrador') }}" class="logo">
+            <img src="{{ asset('imagenes/logo-blanco.png') }}" alt="logo" width="70%">
         </a>
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
@@ -183,34 +183,14 @@
                             </ul>
                         </li>
 
-                        <li {{ (Request::is('administrador/menu') || Request::is('administrador/menu/*') || Request::is('administrador/slider') || Request::is('administrador/slider/*') ? 'class="active"' : '') }}>
-                            <a href="#">
-                                <i class="livicon" data-name="brush" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
-                                <span class="title">Apariencia</span>
-                                <span class="fa arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li {{ (Request::is('administrador/menu') || Request::is('administrador/menu/*') ? 'class="active"' : '') }}>
-                                    <a href="{{ route('administrador.menu.index') }}">
-                                        <i class="fa fa-angle-double-right"></i>
-                                        Menú
-                                    </a>
-                                </li>
-                                <li {{ (Request::is('administrador/slider') || Request::is('administrador/slider/*') ? 'class="active"' : '') }}>
-                                    <a href="{{ route('administrador.slider.index') }}">
-                                        <i class="fa fa-angle-double-right"></i>
-                                        Sliders
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
+                        @if(is_admin())
                         <li {{ (Request::is('administrador/config/*') ? 'class="active"' : '') }}>
                             <a href="{{ route('administrador.config.edit',1) }}">
                                 <i class="livicon" data-name="home" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
                                 <span class="title">Configuración</span>
                             </a>
                         </li>
+                        @endif
 
                         <li {{ ( Request::is('administrador/users') || Request::is('administrador/users/*') || Request::is('administrador/profile') || Request::is('administrador/profile/*') ? 'class="active"' : '') }}>
                             <a href="#">
@@ -219,6 +199,7 @@
                                 <span class="fa arrow"></span>
                             </a>
                             <ul class="sub-menu">
+                                @if(is_admin())
                                 <li {{ (Request::is('administrador/users') ? 'class="active"' : '') }}>
                                     <a href="{{ route('administrador.users.index') }}">
                                         <i class="fa fa-angle-double-right"></i>
@@ -231,6 +212,7 @@
                                         Nuevo usuario
                                     </a>
                                 </li>
+                                @endif
                                 <li {{ (Request::is('administrador/profile') ? 'class="active"' : '') }}>
                                     <a href="{{ route('administrador.users.profile') }}">
                                         <i class="fa fa-angle-double-right"></i>
