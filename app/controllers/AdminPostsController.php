@@ -94,6 +94,7 @@ class AdminPostsController extends \BaseController {
             $video = Input::get('video');
             $categoria = Input::get('categoria');
             $orden = Input::get('orden');
+            $autor = Input::get('redaccion');
 
             //TAGS
             $tags=Input::get('tags');
@@ -110,6 +111,7 @@ class AdminPostsController extends \BaseController {
             $post->category_id = $categoria;
             $post->post_order_id = $orden;
             $post->tags = '0,'.$union_tags.',0';
+            $post->redaccion = $autor;
             $post->imagen = $file;
             $post->imagen_carpeta = $ruta_fecha;
             $post->user_id = Auth::user()->id;
@@ -173,7 +175,7 @@ class AdminPostsController extends \BaseController {
     {
         $post = $this->postRepo->findOrFail($id);
 
-        $data = Input::only(['titulo','descripcion','contenido','published_at','publicar']);
+        $data = Input::only(['titulo','descripcion','contenido','redaccion','published_at','publicar']);
 
         $validator = Validator::make($data, $this->rules);
 
@@ -183,6 +185,7 @@ class AdminPostsController extends \BaseController {
             $titulo = Input::get('titulo');
             $video = Input::get('video');
             $categoria = Input::get('categoria');
+            $autor = Input::get('redaccion');
 
             //CONVERTIR TITULO A URL
             $slug_url = \Str::slug($titulo);
@@ -211,6 +214,7 @@ class AdminPostsController extends \BaseController {
             $post->video = $video;
             $post->category_id = $categoria;
             $post->tags = '0,'.$union_tags.',0';
+            $post->redaccion = $autor;
             $post->slug_url = $slug_url;
             $post->user_id = Auth::user()->id;
             $this->postRepo->update($post,$data);
@@ -233,7 +237,9 @@ class AdminPostsController extends \BaseController {
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        return Redirect::route('administrador.posts.index');
     }
 
     public function photosList($post)
@@ -265,6 +271,13 @@ class AdminPostsController extends \BaseController {
         $photo->post_id = $post;
         $photo->user_id = \Auth::user()->id;
         $photo->save();
+    }
+
+    public function photosUploadDelete($post, $id)
+    {
+        $photo = PostPhoto::find($id);
+        $photo->delete();
+        return Redirect::route('administrador.post.photoslist', $post);
     }
 
 
