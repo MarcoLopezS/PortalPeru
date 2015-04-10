@@ -26,8 +26,6 @@ class ColumnsTableSeeder extends Seeder {
                 'imagen_carpeta' => 'abril2015/',
                 'publicar' => '1',
                 'columnist_id' => $faker->randomElement($array = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15']),
-                'category_id' => $faker->randomElement($array = [1,2,3,4,5]),
-                'post_order_id' => $faker->randomElement($array = [1,2,3,4,5,6,7,8]),
                 'published_at' => $fecha." ".$hora
             ]);
         }
