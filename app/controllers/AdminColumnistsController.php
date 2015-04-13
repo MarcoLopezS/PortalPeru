@@ -70,7 +70,7 @@ class AdminColumnistsController extends \BaseController {
             //CREAR CARPETA CON FECHA Y MOVER IMAGEN
             CrearCarpeta();
             $ruta = "upload/columnista/";
-            $archivo = Input::file('foto');
+            $archivo = Input::file('imagen');
             $file = FileMove($archivo,$ruta);
 
             $archivo_portada = Input::file('imagen_portada');
