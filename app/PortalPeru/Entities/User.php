@@ -25,22 +25,32 @@ class User extends BaseEntity implements UserInterface, RemindableInterface
 
     public function category()
     {
-        return $this->hasMany('Category');
+        return $this->hasMany('PortalPeru\Entities\Category');
     }
 
     public function post()
     {
-        return $this->hasMany('Post');
+        return $this->hasMany('PortalPeru\Entities\Post');
+    }
+
+    public function postPublicar()
+    {
+        return $this->hasMany('PortalPeru\Entities\Post')->wherePublicar(1)->count();
     }
 
     public function page()
     {
-        return $this->hasMany('Page');
+        return $this->hasMany('PortalPeru\Entities\Page');
     }
 
     public function tag()
     {
-        return $this->hasMany('Tag');
+        return $this->hasMany('PortalPeru\Entities\Tag');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne('PortalPeru\Entities\UserProfile', 'user_id', 'id');
     }
 
     protected $hidden = array('password');
@@ -140,4 +150,20 @@ class User extends BaseEntity implements UserInterface, RemindableInterface
 
         return false;
     }
+
+    function isAdmin()
+    {
+        return $this->type == 'admin';
+    }
+
+    function isEditor()
+    {
+        return $this->type == 'editor';
+    }
+
+    function isReportero()
+    {
+        return $this->type == 'reportero';
+    }
+
 }

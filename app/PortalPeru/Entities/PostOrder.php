@@ -6,7 +6,7 @@ class PostOrder extends BaseEntity{
 
     public function user()
     {
-        return $this->belongsTo('User', 'user_id');
+        return $this->belongsTo('PortalPeru\Entities\User', 'user_id');
     }
 
     public function post()

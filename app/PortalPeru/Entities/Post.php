@@ -6,7 +6,7 @@ class Post extends BaseEntity{
 
     public function user()
     {
-        $this->belongsTo('User', 'user_id');
+        $this->belongsTo('PortalPeru\Entities\User', 'user_id');
     }
 
     public function category()

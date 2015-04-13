@@ -1,7 +1,7 @@
 <?php namespace PortalPeru\Entities;
 
 class PostPhoto extends BaseEntity {
-    protected $fillable = [];
+    protected $fillable = ['titulo'];
 
     public function post()
     {
