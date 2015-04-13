@@ -28,7 +28,7 @@ class AdminUsersController extends \BaseController {
 	 */
 	public function index()
 	{
-        $users = $this->userRepo->search(Input::all(), BaseRepo::PAGINATE, 'first_name', 'asc');
+        $users = $this->userRepo->search(Input::all(), BaseRepo::PAGINATE, 'Id', 'asc');
 
         Return View::make('admin.users.list', compact('users'));
 	}
