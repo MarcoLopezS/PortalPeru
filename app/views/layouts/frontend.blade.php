@@ -86,9 +86,13 @@
                 <li class="menu-rcid dropdown-submenu">
                     <a href="javascript:;">Reportero Ciudadano</a>
                     <ul class="dropdown-menu">
-                        <li><a href="/reportero-ciudadano/noticias">Noticias</a></li>
-                        <li><a target="_blank" href="/reportero-ciudadano/">Registrarse</a></li>
-                        <li><a target="_blank" href="/reportero-ciudadano/login.php">Iniciar sesión</a></li>
+                        <li><a href="/seccion/reportero-ciudadano">Noticias</a></li>
+                        @if(Auth::check())
+                        <li><a target="_blank" href="/reportero-ciudadano/admin">Subir noticias</a></li>
+                        @else
+                        <li><a target="_blank" href="/reportero-ciudadano/registro">Registrarse</a></li>
+                        <li><a target="_blank" href="/reportero-ciudadano/login">Iniciar sesión</a></li>
+                        @endif
                     </ul>
                 </li>
             </ul>
@@ -141,9 +145,11 @@
                 <div class="categories col-md-3 col-sm-6">
                     <h5>Categorias</h5>
                     <ul>
-                        <li><a href=""></a></li>
+                        <li><a href="/seccion/hechos">Hechos</a></li>
+                        <li><a href="/seccion/entrevista">Entrevista</a></li>
+                        <li><a href="/seccion/mira-el-peru">Mira el Perú</a></li>
+                        <li><a href="/seccion/bicentenario">Bicentenario</a></li>
                         <li><a href="/columnistas">Columnistas</a></li>
-                        <li><a href=""></a></li>
                     </ul>
                 </div>
 
