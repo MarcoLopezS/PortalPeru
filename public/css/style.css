@@ -3567,3 +3567,16 @@ CLASES
 .mrbt0{
 	margin-bottom: 0;
 }
+
+.post-page .post-slider .slides article.big img{
+    margin-bottom: 0 !important;
+}
+
+.post-page .post-slider .text{
+    margin: 15px 70px !important;
+    color: #fff !important;
+}
+
+.post-interno{
+    margin-bottom: 20px !important;
+}
