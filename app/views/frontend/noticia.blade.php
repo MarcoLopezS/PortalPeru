@@ -22,6 +22,7 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
 @stop
 
 @section('contenido_frontend')
+
 <!--MAIN SECTION-->
 <div class="main post-page">
 
@@ -46,7 +47,7 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                     <iframe width="100%" height="500px" src="//www.youtube.com/embed/{{ $noticia->video }}?rel=0" frameborder="0" allowfullscreen></iframe>
                 </div>
                 @elseif(count($noticiaFotos) > 0)
-                <div class="row">
+                <div class="row post-interno">
                     <div class="post-slider col-md-12 col-sm-12">
                         <div class="controls">
                             <p class="prev"><i class="fa fa-angle-left"></i></p>
@@ -54,7 +55,14 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                         </div>
                         <div class="slides">
                             @foreach($noticiaFotos as $item)
-                            <img src="/upload/{{ $item->imagen_carpeta."870x500/".$item->imagen }}" alt="post-image" >
+                            <article class="big clearfix">
+                                <img src="/upload/{{ $item->imagen_carpeta."870x500/".$item->imagen }}" alt="post-image" >
+                                @if($item->titulo <> "")
+                                <div class="info">
+                                    <p class="text">{{ $item->titulo }}</p>
+                                </div>
+                                @endif
+                            </article>
                             @endforeach
                         </div>
                     </div>

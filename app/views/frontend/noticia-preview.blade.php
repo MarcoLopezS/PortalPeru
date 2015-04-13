@@ -27,7 +27,7 @@
                     <h1>{{ $noticia->titulo }}</h1>
                     <div class="text">{{ $noticia->descripcion }}</div>
                     <div class="data">
-                        <p class="details">{{ $noticia->category->titulo }} | {{ $noticia->published_at }}
+                        <p class="details">{{ $noticia->category->titulo }} | {{ date_format(new DateTime($noticia->published_at), 'd/m/Y H:m')  }}
                         <span class="redaccion">Autor: {{ $noticia->redaccion }}</span></p>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     <iframe width="100%" height="500px" src="//www.youtube.com/embed/{{ $noticia->video }}?rel=0" frameborder="0" allowfullscreen></iframe>
                 </div>
                 @elseif(count($noticiaFotos) > 0)
-                <div class="row">
+                <div class="row post-interno">
                     <div class="post-slider col-md-12 col-sm-12">
                         <div class="controls">
                             <p class="prev"><i class="fa fa-angle-left"></i></p>
@@ -46,7 +46,14 @@
                         </div>
                         <div class="slides">
                             @foreach($noticiaFotos as $item)
-                            <img src="/upload/{{ $item->imagen_carpeta."870x500/".$item->imagen }}" alt="post-image" >
+                            <article class="big clearfix">
+                                <img src="/upload/{{ $item->imagen_carpeta."870x500/".$item->imagen }}" alt="post-image" >
+                                @if($item->titulo <> "")
+                                <div class="info">
+                                    <p class="text">{{ $item->titulo }}</p>
+                                </div>
+                                @endif
+                            </article>
                             @endforeach
                         </div>
                     </div>
