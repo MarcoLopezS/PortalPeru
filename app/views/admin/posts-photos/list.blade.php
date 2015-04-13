@@ -46,6 +46,10 @@ Advanced Data Tables
                                                     <span class="glyphicon glyphicon-zoom-in"></span>
                                                 </a>
 
+                                                <a href="{{ route('administrador.post.photosEdit', [$posts->id, $item->id]) }}" title="Editar imagen">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                </a>
+
                                                 {{ Form::open(['route' => ['administrador.post.photosuploadDelete', $posts->id, $item->id], 'method' => 'delete', 'class' => 'FormDeletePhotos']) }}
                                                     <button type="submit"><span class="glyphicon glyphicon-remove"></span></button>
                                                 {{ Form::close() }}
