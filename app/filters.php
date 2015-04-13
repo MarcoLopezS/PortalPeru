@@ -44,6 +44,14 @@ Route::filter('auth.basic', function()
     return Auth::basic();
 });
 
+Route::filter('roles', function($ruta,$peticion,$roles,$redirect)
+{
+    $roles = explode("-", $roles);
+    if(!in_array(Auth::user()->type, $roles))
+        return Redirect::to($redirect);
+});
+
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter
