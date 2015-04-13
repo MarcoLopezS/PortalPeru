@@ -15,7 +15,15 @@ class AuthController extends \BaseController {
 
 		if(Auth::attempt($credentials, $data['remember']))
 		{
-			return Redirect::route('administrador.index');
+            if(Auth::user()->type == 'admin' OR Auth::user()->type == 'editor')
+            {
+                return Redirect::route('administrador.index');
+            }
+            elseif(Auth::user()->type == 'reportero')
+            {
+                return Redirect::route('reportero-ciudadano.posts.index');
+            }
+
 		}
 
 		return Redirect::back()->with('login_error', 1);
@@ -23,8 +31,8 @@ class AuthController extends \BaseController {
 
 	public function logout()
 	{
-		Auth::logout();
-		return Redirect::route('administrador.login.show');
+        Auth::logout();
+        return Redirect::route('administrador.login.show');
 	}
 
 }
