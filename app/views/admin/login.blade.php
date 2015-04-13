@@ -40,7 +40,7 @@
 
                               <div class="checkbox">
                                     <label>
-                                    	{{ Form::checkbox('remember-me', 'Remember Me', null) }}
+                                    	{{ Form::checkbox('remember', 'Remember Me', null) }}
                                     	Recordarme
                                     </label>
                               </div>
