@@ -216,7 +216,6 @@ class AdminPostsController extends \BaseController {
             $post->tags = '0,'.$union_tags.',0';
             $post->redaccion = $autor;
             $post->slug_url = $slug_url;
-            $post->user_id = Auth::user()->id;
             $this->postRepo->update($post,$data);
 
             //REDIRECCIONAR A PAGINA PARA VER DATOS
@@ -271,6 +270,55 @@ class AdminPostsController extends \BaseController {
         $photo->post_id = $post;
         $photo->user_id = \Auth::user()->id;
         $photo->save();
+    }
+
+    public function photosEdit($post, $id)
+    {
+        $posts = $this->postRepo->findOrFail($post);
+        $photo = PostPhoto::whereId($id)->first();
+
+        return View::make('admin.posts-photos.edit', compact('posts', 'photo'));
+    }
+
+    public function photosUpdate($post, $id)
+    {
+        $postPhoto = $this->postPhotoRepo->findOrFail($id);
+
+        $data = Input::only(['titulo','imagen']);
+
+        $ruleImg = [
+            'imagen' => 'mimes:jpg,jpeg,png'
+        ];
+
+        $validator = Validator::make($data, $ruleImg);
+
+        if($validator->passes())
+        {
+            //VERIFICAR SI SUBIO IMAGEN
+            if(Input::hasFile('imagen')){
+                CrearCarpeta();
+                $ruta = "upload/".FechaCarpeta();
+                $archivo = Input::file('imagen');
+                $file = FileMove($archivo,$ruta);
+                $imagen = $file;
+                $imagen_carpeta = FechaCarpeta();
+            }else{
+                $imagen = Input::get('imagen_actual');
+                $imagen_carpeta = Input::get('imagen_actual_carpeta');
+            }
+
+            //GUARDAR DATOS
+            $postPhoto->imagen = $imagen;
+            $postPhoto->imagen_carpeta = $imagen_carpeta;
+            $this->postPhotoRepo->update($postPhoto,$data);
+
+            //REDIRECCIONAR A PAGINA PARA VER DATOS
+            return Redirect::route('administrador.post.photoslist', $post);
+        }
+        else
+        {
+            return Redirect::back()->withInput()->withErrors($validator->messages());
+        }
     }
 
     public function photosUploadDelete($post, $id)
