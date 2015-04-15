@@ -11,7 +11,7 @@ class AuthController extends \BaseController {
 	{
 		$data = Input::only('email', 'password', 'remember');
 
-		$credentials = ['email'=>$data['email'], 'password'=>$data['password']];
+		$credentials = ['email'=>$data['email'], 'password'=>$data['password'], 'activacion' => 1];
 
 		if(Auth::attempt($credentials, $data['remember']))
 		{
@@ -23,10 +23,12 @@ class AuthController extends \BaseController {
             {
                 return Redirect::route('reportero-ciudadano.posts.index');
             }
+		}else{
+            $login_error = 'El email y/o contraseña no coinciden, o puede que su cuenta todavia no haya sido activada.';
 
-		}
+            return Redirect::route('reportero.login')->with('login_error', $login_error);
+        }
 
-		return Redirect::back()->with('login_error', 1);
 	}
 
 	public function logout()
