@@ -76,7 +76,7 @@ class ReporteroPostsController extends \BaseController {
             $video = Input::get('video');
 
             //CONVERTIR TITULO A URL$union_tags
-            $slug_url = \Str::slug($titulo);
+            $slug_url = SlugUrl($titulo);
 
             //GUARDAR DATOS
             $post = new Post($data);
