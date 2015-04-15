@@ -69,7 +69,7 @@ class AdminPagesController extends \BaseController {
             $titulo = Input::get('titulo');
 
             //CONVERTIR TITULO A URL
-            $slug_url = \Str::slug($titulo);
+            $slug_url = SlugUrl($titulo);
 
             //GUARDAR DATOS
             $page = new Page($data);
@@ -135,7 +135,7 @@ class AdminPagesController extends \BaseController {
             $titulo = Input::get('titulo');
 
             //CONVERTIR TITULO A URL
-            $slug_url = \Str::slug($titulo);
+            $slug_url = SlugUrl($titulo);
 
             //VERIFICAR SI SUBIO IMAGEN
             if(Input::hasFile('imagen')){

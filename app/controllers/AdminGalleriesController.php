@@ -73,7 +73,7 @@ class AdminGalleriesController extends \BaseController {
             $titulo = Input::get('titulo');
 
             //CONVERTIR TITULO A URL$union_tags
-            $slug_url = \Str::slug($titulo);
+            $slug_url = SlugUrl($titulo);
 
             //GUARDAR DATOS
             $gallery = new Gallery($data);
@@ -141,7 +141,7 @@ class AdminGalleriesController extends \BaseController {
             $titulo = Input::get('titulo');
 
             //CONVERTIR TITULO A URL
-            $slug_url = \Str::slug($titulo);
+            $slug_url = SlugUrl($titulo);
 
             //VERIFICAR SI SUBIO IMAGEN
             if(Input::hasFile('imagen')){

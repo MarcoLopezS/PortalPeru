@@ -82,7 +82,7 @@ class AdminColumnistsController extends \BaseController {
             $titulo = $nombre." ".$apellidos;
 
             //CONVERTIR TITULO A URL$union_tags
-            $slug_url = \Str::slug($titulo);
+            $slug_url = SlugUrl($titulo);
 
             //GUARDAR DATOS
             $post = new Columnist($data);
@@ -158,7 +158,7 @@ class AdminColumnistsController extends \BaseController {
             $titulo = $nombre." ".$apellidos;
 
             //CONVERTIR TITULO A URL
-            $slug_url = \Str::slug($titulo);
+            $slug_url = SlugUrl($titulo);
 
             //GUARDAR DATOS
             $post->dia_lunes = Input::get('dia_lunes');

@@ -66,24 +66,30 @@ class AdminColumnsController extends \BaseController {
 
         if($validator->passes())
         {
-            //CREAR CARPETA CON FECHA Y MOVER IMAGEN
-            CrearCarpeta();
-            $ruta = "upload/".FechaCarpeta();
-            $ruta_fecha = FechaCarpeta();
-            $archivo = Input::file('imagen');
-            $file = FileMove($archivo,$ruta);
+            //VERIFICAR SI SUBIO IMAGEN
+            if(Input::hasFile('imagen')){
+                CrearCarpeta();
+                $ruta = "upload/".FechaCarpeta();
+                $archivo = Input::file('imagen');
+                $file = FileMove($archivo,$ruta);
+                $imagen = $file;
+                $imagen_carpeta = FechaCarpeta();
+            }else{
+                $imagen = "";
+                $imagen_carpeta = "";
+            }
 
             //VARIABLES
             $titulo = Input::get('titulo');
 
             //CONVERTIR TITULO A URL
-            $slug_url = \Str::slug($titulo);
+            $slug_url = SlugUrl($titulo);
 
             //GUARDAR DATOS
             $post = new Column($data);
             $post->slug_url = $slug_url;
-            $post->imagen = $file;
-            $post->imagen_carpeta = $ruta_fecha;
+            $post->imagen = $imagen;
+            $post->imagen_carpeta = $imagen_carpeta;
             $post->columnist_id = $id;
             $post->user_id = Auth::user()->id;
             $this->columnRepo->create($post, $data);
@@ -148,7 +154,7 @@ class AdminColumnsController extends \BaseController {
             $titulo = Input::get('titulo');
 
             //CONVERTIR TITULO A URL
-            $slug_url = \Str::slug($titulo);
+            $slug_url = SlugUrl($titulo);
 
             //VERIFICAR SI SUBIO IMAGEN
             if(Input::hasFile('imagen')){
@@ -159,8 +165,13 @@ class AdminColumnsController extends \BaseController {
                 $imagen = $file;
                 $imagen_carpeta = FechaCarpeta();
             }else{
-                $imagen = Input::get('imagen_actual');
-                $imagen_carpeta = Input::get('imagen_actual_carpeta');
+                if(Input::get('imagen_actual')==""){
+                    $imagen = "";
+                    $imagen_carpeta = "";
+                }else{
+                    $imagen = Input::get('imagen_actual');
+                    $imagen_carpeta = Input::get('imagen_actual_carpeta');
+                }
             }
 
             //GUARDAR DATOS
@@ -171,7 +182,7 @@ class AdminColumnsController extends \BaseController {
             $this->columnRepo->update($post,$data);
 
             //REDIRECCIONAR A PAGINA PARA VER DATOS
-            return Redirect::route('administrador.columns.list', [$id, $idColumn]);
+            return Redirect::route('administrador.columns.list', $id);
         }
         else
         {

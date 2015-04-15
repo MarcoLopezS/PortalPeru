@@ -102,7 +102,7 @@ class AdminPostsController extends \BaseController {
             elseif($tags<>""){ $union_tags=implode(",", $tags);}
 
             //CONVERTIR TITULO A URL$union_tags
-            $slug_url = \Str::slug($titulo);
+            $slug_url = SlugUrl($titulo);
 
             //GUARDAR DATOS
             $post = new Post($data);
@@ -155,13 +155,14 @@ class AdminPostsController extends \BaseController {
     {
         $post = $this->postRepo->findOrFail($id);
         $category = $this->categoryRepo->all()->lists('titulo', 'id');
+        $order = $this->postOrderRepo->all()->lists('titulo', 'id');
 
         $tags = $this->tagRepo->all();
         $tags_select = $post->tags;
         $tags_select = explode(",", $tags_select);
         $tags_select = $this->tagRepo->findOrFail($tags_select);
 
-        return View::make('admin.posts.edit', compact('post', 'category', 'tags', 'tags_select'));
+        return View::make('admin.posts.edit', compact('post', 'category', 'order', 'tags', 'tags_select'));
     }
 
 
@@ -185,10 +186,11 @@ class AdminPostsController extends \BaseController {
             $titulo = Input::get('titulo');
             $video = Input::get('video');
             $categoria = Input::get('categoria');
+            $orden = Input::get('orden');
             $autor = Input::get('redaccion');
 
             //CONVERTIR TITULO A URL
-            $slug_url = \Str::slug($titulo);
+            $slug_url = SlugUrl($titulo);
 
             //VERIFICAR SI SUBIO IMAGEN
             if(Input::hasFile('imagen')){
@@ -213,6 +215,7 @@ class AdminPostsController extends \BaseController {
             $post->imagen_carpeta = $imagen_carpeta;
             $post->video = $video;
             $post->category_id = $categoria;
+            $post->post_order_id = $orden;
             $post->tags = '0,'.$union_tags.',0';
             $post->redaccion = $autor;
             $post->slug_url = $slug_url;
@@ -244,8 +247,27 @@ class AdminPostsController extends \BaseController {
     public function photosList($post)
     {
         $posts = $this->postRepo->findOrFail($post);
-        $photos = $this->postPhotoRepo->where('post_id', $post)->get();
+        $photos = $this->postPhotoRepo->where('post_id', $post)->orderBy('orden','asc')->get();
         return View::make('admin.posts-photos.list', compact('posts', 'photos'));
+    }
+
+    public function photosOrder($post)
+    {
+        if(Request::ajax())
+        {
+            $sortedval = $_POST['listPhoto'];
+            try{
+                foreach ($sortedval as $key => $sort){
+                    $sortPhoto = PostPhoto::find($sort);
+                    $sortPhoto->orden = $key;
+                    $sortPhoto->save();
+                }
+            }
+            catch (Exception $e)
+            {
+                return 'false';
+            }
+        }
     }
 
     public function photosUpload($post)
@@ -326,6 +348,13 @@ class AdminPostsController extends \BaseController {
         $photo = PostPhoto::find($id);
         $photo->delete();
         return Redirect::route('administrador.post.photoslist', $post);
+    }
+
+    public function reporteroList()
+    {
+        $posts = Post::whereCategoryId(6)->wherePublicar(0)->orderBy('created_at', 'asc')->paginate();
+
+        return View::make('admin.reportero.list', compact('posts'));
     }
 
 

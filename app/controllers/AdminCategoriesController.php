@@ -24,7 +24,6 @@ class AdminCategoriesController extends \BaseController {
     public function index()
     {
         $categories = $this->categoryRepo->orderBy('titulo', 'asc');
-        //$categories = $this->categoryRepo->orderBy('titulo', 'asc')->paginate(10);
         return View::make('admin.categories.list', compact('categories'));
     }
 
@@ -57,7 +56,7 @@ class AdminCategoriesController extends \BaseController {
             $titulo = Input::get('titulo');
 
             //CONVERTIR TITULO A URL
-            $slug_url = \Str::slug($titulo);
+            $slug_url = SlugUrl($titulo);
 
             $category = new Category($data);
             $category->slug_url = $slug_url;
@@ -120,7 +119,7 @@ class AdminCategoriesController extends \BaseController {
             $titulo = Input::get('titulo');
 
             //CONVERTIR TITULO A URL
-            $slug_url = \Str::slug($titulo);
+            $slug_url = SlugUrl($titulo);
 
             //GUARDAR DATOS
             $category->slug_url = $slug_url;

@@ -57,7 +57,7 @@ class AdminTagsController extends \BaseController {
             $titulo = Input::get('titulo');
 
             //CONVERTIR TITULO A URL
-            $slug_url = \Str::slug($titulo);
+            $slug_url = SlugUrl($titulo);
 
             //GUARDAR DATOS
             $tag = new Tag($data);
@@ -121,7 +121,7 @@ class AdminTagsController extends \BaseController {
             $titulo = Input::get('titulo');
 
             //CONVERTIR TITULO A URL
-            $slug_url = \Str::slug($titulo);
+            $slug_url = SlugUrl($titulo);
 
             //GUARDAR DATOS
             $tag->slug_url = $slug_url;
