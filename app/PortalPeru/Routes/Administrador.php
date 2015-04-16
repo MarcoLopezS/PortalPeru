@@ -13,6 +13,8 @@ Route::group(['before' => 'guest'], function () {
     Route::get('reportero-ciudadano/registro', ['as' => 'reportero.register', 'uses' => 'ReporteroController@register']);
     Route::post('reportero-ciudadano/registro', ['as' => 'reportero.register.create', 'uses' => 'ReporteroController@registerCreate']);
     Route::get('reportero-ciudadano/login', ['as' => 'reportero.login', 'uses' => 'ReporteroController@loginView']);
+    Route::get('reportero-ciudadano/verify', ['as' => 'reportero.verifyView', 'uses' => 'ReporteroController@verifyView']);
+    Route::get('reportero-ciudadano/verify/{codigo}', ['as' => 'reportero.verify', 'uses' => 'ReporteroController@verify']);
 
 });
 
@@ -27,6 +29,8 @@ Route::group(['before' => ['auth']], function () {
 
         //COLUMNISTAS
         Route::resource('administrador/columnist', 'AdminColumnistsController');
+        Route::get('administrador/columnist-order', ['as' => 'administrador.columnist.order', 'uses' => 'AdminColumnistsController@order']);
+        Route::post('administrador/columnist-order/order', ['as' => 'administrador.columnist.orderForm', 'uses' => 'AdminColumnistsController@orderForm' ]);
         Route::post('administrador/columnist/{id}/edit/img', ['as' => 'administrador.columnist.imagen', 'uses' => 'AdminColumnistsController@imagen']);
         Route::post('administrador/columnist/{id}/edit/imgPort', ['as' => 'administrador.columnist.imagenPortada', 'uses' => 'AdminColumnistsController@imagenPortada']);
 
@@ -36,7 +40,7 @@ Route::group(['before' => ['auth']], function () {
         Route::post('administrador/columns/{id}/create', ['as' => 'administrador.columns.store', 'uses' => 'AdminColumnsController@store']);
         Route::get('administrador/columns/{id}/show/{idColumn}', ['as' => 'administrador.columns.show', 'uses' => 'AdminColumnsController@show']);
         Route::get('administrador/columns/{id}/edit/{idColumn}', ['as' => 'administrador.columns.edit', 'uses' => 'AdminColumnsController@edit']);
-        Route::post('administrador/columns/{id}/edit/{idColumn}', ['as' => 'administrador.columns.update', 'uses' => 'AdminColumnsController@update']);
+        Route::put('administrador/columns/{id}/edit/{idColumn}', ['as' => 'administrador.columns.update', 'uses' => 'AdminColumnsController@update']);
         Route::get('administrador/columns/{id}/destroy/{idColumn}', ['as' => 'administrador.columns.destroy', 'uses' => 'AdminColumnsController@destroy']);
         Route::get('administrador/columns/{id}/photos/{idColumn}', ['as' => 'administrador.columns.photoslist', 'uses' => 'AdminColumnsController@photosList' ]);
 
@@ -44,8 +48,12 @@ Route::group(['before' => ['auth']], function () {
         Route::resource('administrador/posts', 'AdminPostsController');
         Route::get('view/{id}-{url}', ['as' => 'home.noticia.preview', 'uses' => 'FrontendController@noticiaPreview']);
 
+        //REPORTERO CIUDADANO
+        Route::get('administrador/reportero', ['as' => 'administrador.reportero.list', 'uses' => 'AdminPostsController@reporteroList']);
+
         //GALERIA DE FOTOS DE POST
         Route::get('administrador/posts/photos/{post}', ['as' => 'administrador.post.photoslist', 'uses' => 'AdminPostsController@photosList' ]);
+        Route::post('administrador/posts/photos/{post}/order', ['as' => 'administrador.post.photosOrder', 'uses' => 'AdminPostsController@photosOrder' ]);
         Route::get('administrador/posts/photos/{post}/upload', ['as' => 'administrador.post.photosupload', 'uses' => 'AdminPostsController@photosUpload' ]);
         Route::post('administrador/posts/photos/{post}/upload', ['as' => 'administrador.post.photosuploadsave', 'uses' => 'AdminPostsController@photosUploadSave' ]);
         Route::delete('administrador/posts/photos/{post}/delete/{id}', ['as' => 'administrador.post.photosuploadDelete', 'uses' => 'AdminPostsController@photosUploadDelete' ]);

@@ -1,8 +1,10 @@
 <?php
 
 /* FRONTEND */
-
-Route::get('/', ['as' => 'home', 'uses' => 'FrontendController@construccion']);
+Route::get('/', ['as' => 'home', 'uses' => 'FrontendController@home']);
+Route::get('nosotros', ['as' => 'home.nosotros', 'uses' => 'FrontendController@nosotros']);
+Route::get('contacto', ['as' => 'home.contacto', 'uses' => 'FrontendController@contacto']);
+Route::get('publicidad', ['as' => 'home.publicidad', 'uses' => 'FrontendController@publicidad']);
 Route::get('nota/{id}-{url}', ['as' => 'home.noticia', 'uses' => 'FrontendController@noticia']);
 Route::get('seccion/{url}', ['as' => 'home.noticia.categoria', 'uses' => 'FrontendController@noticiaCategoria']);
 Route::get('buscar/b={texto}', ['as' => 'home.buscar', 'uses' => 'FrontendController@buscar']);
