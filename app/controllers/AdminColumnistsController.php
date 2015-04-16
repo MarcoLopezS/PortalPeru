@@ -38,7 +38,7 @@ class AdminColumnistsController extends \BaseController {
 	 */
     public function index()
     {
-        $posts = $this->columnistRepo->search(Input::all(), BaseRepo::PAGINATE, 'nombre', 'asc');
+        $posts = $this->columnistRepo->search(Input::all(), BaseRepo::PAGINATE, 'orden', 'asc');
         return View::make('admin.columnist.list', compact('posts'));
     }
 
@@ -260,6 +260,31 @@ class AdminColumnistsController extends \BaseController {
     public function destroy($id)
     {
         //
+    }
+
+    public function order()
+    {
+        $photos = Columnist::orderBy('orden', 'asc')->get();
+        return View::make('admin.columnist.order', compact('photos'));
+    }
+
+    public function orderForm()
+    {
+        if(Request::ajax())
+        {
+            $sortedval = $_POST['listPhoto'];
+            try{
+                foreach ($sortedval as $key => $sort){
+                    $sortPhoto = Columnist::find($sort);
+                    $sortPhoto->orden = $key;
+                    $sortPhoto->save();
+                }
+            }
+            catch (Exception $e)
+            {
+                return 'false';
+            }
+        }
     }
 
     public function photosList($post)
