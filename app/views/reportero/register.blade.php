@@ -9,7 +9,7 @@ Registro | @parent
 <div class="smart-forms smart-container wrap-2">
 
     <div class="form-header header-red">
-        <h4><img src="/imagenes/logo.png" alt="logo"></h4>
+        <img src="/imagenes/logo.png" alt="logo">
     </div><!-- end .form-header section -->
 
     {{ Form::open(['route' => 'reportero.register.create', 'method' => 'post', 'files' => 'true']) }}
