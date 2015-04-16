@@ -2,11 +2,11 @@
 
 class Post extends BaseEntity{
 
-    protected $fillable = ['titulo','slug_url','descripcion','contenido','imagen','imagen_carpeta','redaccion','publicar','category_id','post_order_id','published_at'];
+    protected $fillable = ['titulo','slug_url','descripcion','contenido','imagen','imagen_carpeta','redaccion','publicar','category_id','post_order_id','published_at','user_id'];
 
     public function user()
     {
-        $this->belongsTo('PortalPeru\Entities\User', 'user_id');
+        return $this->belongsTo('PortalPeru\Entities\User', 'user_id');
     }
 
     public function category()

@@ -6,7 +6,7 @@ class UserProfile extends BaseEntity {
 
     public function user()
     {
-        $this->belongsTo('PortalPeru\Entities\User', 'user_id');
+        return $this->belongsTo('PortalPeru\Entities\User', 'user_id');
     }
 
 } 

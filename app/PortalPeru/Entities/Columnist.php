@@ -16,7 +16,7 @@ class Columnist extends BaseEntity{
 
     public function columnHome()
     {
-        return $this->hasMany('PortalPeru\Entities\Column')->wherePublicar(1)->orderBy('published_at', 'desc')->paginate(1);
+        return $this->hasMany('PortalPeru\Entities\Column')->wherePublicar(1)->where('published_at', '<=', fechaActual())->orderBy('published_at', 'desc')->paginate(1);
     }
 
 } 
