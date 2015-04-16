@@ -224,11 +224,7 @@ background: #EF6F6C;
 
 background: #F89A14;
 }
-.alert-success {
-color: #fff;
-background-color: #ade9da;
-border-color: #ade9da;
-}
+
 .alert-success .alert-link {
 color: #fff;
 }
@@ -591,15 +587,25 @@ border-color:#31B0D5;
 }
 
 .slider-options a{
-    margin-top: 20%;
+    margin-top: 12%;
     display: inline-block;
-    margin-left: 15%;
+    margin-left: 16%;
     color: #000;
+}
+
+.photos-move{
+    cursor: move;
+}
+
+#listPhotos{
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .FormDeletePhotos{
     display: inline-block;
-    margin-left: 30%;
+    margin-left: 11%;
 }
 
 .FormDeletePhotos button{
@@ -624,4 +630,8 @@ border-color:#31B0D5;
 .FormDeleteRow button:hover{
     background-color: #3c6ab9;
     color: white;
+}
+
+.mgBt10{
+    margin-bottom: 10px !important;
 }

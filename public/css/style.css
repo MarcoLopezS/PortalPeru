@@ -757,7 +757,7 @@ article.col:last-child{
 
 .aside-social li{
 	border-left:1px solid #ddd;
-	width:25%;
+	width:33.33%;
 	text-align: center;
 	padding-top: 8px;
 	transition: background 0.3s;
@@ -2005,7 +2005,7 @@ form [class*="col-md-"]{
 }
 
 .post-page article.post.fullwidth .info{
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 
 .post-page article.post.fullwidth .info.imagen{
@@ -2016,12 +2016,12 @@ form [class*="col-md-"]{
 	border-bottom: 1px dashed #ddd;
 	border-top: 1px dashed #ddd;
 	padding:10px 0;
-	overflow:hidden;
+	/*overflow:hidden;*/
 	margin-bottom: 10px;
 }
 
 .post-page article.post .details{
-	float:left;
+	/*float:left;*/
 	margin:0;
 	padding-top: 5px;
 	width: 100%;
@@ -3579,4 +3579,30 @@ CLASES
 
 .post-interno{
     margin-bottom: 20px !important;
+}
+
+.pdL0.pdR0{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.mrL15.mrR15{
+    margin-left: 15px;
+    margin-right: 15px;
+    width: auto !important;
+}
+
+.width100{
+    width: 100%;
+}
+
+/* FACEBOOK */
+.fb_iframe_widget_lift{
+    z-index: 200 !important;
+}
+
+.mgBorder50{
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
 }

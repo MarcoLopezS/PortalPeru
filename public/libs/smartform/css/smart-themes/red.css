@@ -1,10 +1,9 @@
 
 /* @form header 
 ----------------------------------- */
-.smart-forms .header-red {	
-	background-color:#ee4f3d;
-	border-top:1px solid #f17163;  
+.smart-forms .header-red {
 	border-bottom:5px solid #e42914;
+    text-align: center;
 }
 
 .smart-forms .header-lite{ border-top-color:#F1978D; }
