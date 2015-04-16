@@ -45,10 +45,6 @@ Galeria de Fotos de noticia
                                                 <a class="fancybox-effects-a" href="/upload/{{ $item->imagen_carpeta."".$item->imagen }}" title="Ver imagen">
                                                     <span class="glyphicon glyphicon-zoom-in"></span>
                                                 </a>
-
-                                                {{ Form::open(['route' => ['reportero-ciudadano.post.photosuploadDelete', $posts->id, $item->id], 'method' => 'delete', 'class' => 'FormDeletePhotos']) }}
-                                                    <button type="submit"><span class="glyphicon glyphicon-remove"></span></button>
-                                                {{ Form::close() }}
                                             </div>
                                         </div>
 
