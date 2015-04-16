@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Dashboard
+Administrador
 @parent
 @stop
 

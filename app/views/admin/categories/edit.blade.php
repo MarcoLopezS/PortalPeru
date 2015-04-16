@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Editar registro
+Editar categoría
 @parent
 @stop
 
@@ -17,7 +17,7 @@ Editar registro
 @section('content_admin')
 <section class="content-header">
     <!--section starts-->
-    <h1>Editar registro</h1>
+    <h1>Editar categoría</h1>
 </section>
 <!--section ends-->
 <section class="content">

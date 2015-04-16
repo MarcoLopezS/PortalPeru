@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Agregar nuevo registro
+Agregar nuevo columnista
 @parent
 @stop
 
@@ -25,9 +25,7 @@ Agregar nuevo registro
 @section('content_admin')
 <section class="content-header">
     <!--section starts-->
-    <h1>
-        Agregar nuevo registro
-    </h1>
+    <h1>Agregar nuevo columnista</h1>
 </section>
 <!--section ends-->
 <section class="content">

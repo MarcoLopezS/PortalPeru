@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Advanced Data Tables
+Categorías
 @parent
 @stop
 
@@ -24,7 +24,7 @@ Advanced Data Tables
     <h1>Categorías</h1>
     <a href="{{ route('administrador.categories.create') }}" class="btn btn-md btn-default">
         <span class="glyphicon glyphicon-plus"></span>
-        Agregar nuevo registro
+        Agregar nueva categoría
     </a>
 </section>
 <!--section ends-->
@@ -37,7 +37,6 @@ Advanced Data Tables
                     <table class="table table-striped table-responsive">
                         <thead>
                             <tr>
-
                                 <th>Titulo</th>
                                 <th>Publicar</th>
                                 <th>Acciones</th>

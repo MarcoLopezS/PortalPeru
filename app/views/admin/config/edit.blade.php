@@ -2,30 +2,15 @@
 
 {{-- Page title --}}
 @section('title')
-Editar registro
+Configuración
 @parent
 @stop
-
-{{-- page level styles --}}
-@section('header_styles')
-<!-- daterange picker -->
-<link href="{{ asset('admin/vendors/daterangepicker/css/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css" />
-
-{{-- SELECT  --}}
-{{ HTML::style('admin/vendors/select2/select2.css') }}
-{{ HTML::style('admin/vendors/select2/select2-bootstrap.css') }}
-
-<!--clock face css-->
-<link href="{{ asset('admin/vendors/iCheck/skins/all.css') }}" rel="stylesheet" />
-<link href="{{ asset('admin/css/pages/formelements.css') }}" rel="stylesheet" />
-@stop
-
 
 {{-- Page content --}}
 @section('content_admin')
 <section class="content-header">
 	<!--section starts-->
-	<h1>Editar registro</h1>
+	<h1>Configuración</h1>
 </section>
 <!--section ends-->
 <section class="content">
@@ -71,24 +56,6 @@ Editar registro
                             </div>
                         </div>
 
-                        <div class="form-group @if($errors->has('imagen')) has-error @endif">
-                            {{ Form::label('imagen_actual', 'Icono actual', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                <a class="fancybox" href="/upload/{{ $config->icon }}" title="{{ $config ->titulo }}">
-                                    <img src="/upload/{{ $config->icon }}" alt="" width="100"/>
-                                </a>
-                                {{ Form::hidden('imagen_actual', $config->icon) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group @if($errors->has('imagen')) has-error @endif">
-                            {{ Form::label('imagen', 'Icono', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                {{ Form::file('imagen') }}
-                                {{ $errors->first('imagen', '<span class="help-block">:message</span>') }}
-                            </div>
-                        </div>
-
                         <!-- Form actions -->
                         <div class="form-group">
                             <div class="col-md-12 text-right">
@@ -106,39 +73,4 @@ Editar registro
 	</div>
 	<!--main content ends-->
 </section>
-@stop
-
-{{-- page level scripts --}}
-@section('footer_scripts')
-{{-- SELECT --}}
-{{ HTML::script('admin/vendors/select2/select2.js') }}
-<script>
-    var placeholder = "Select a State";
-
-    $('.select2, .select2-multiple').select2({
-        placeholder: placeholder
-    });
-
-    $('.select2-allow-clear').select2({
-        allowClear: true,
-        placeholder: placeholder
-    });
-
-    var select2OpenEventName = "select2-open";
-
-    $(':checkbox').on("click", function() {
-        $(this).parent().nextAll('select').select2("enable", this.checked);
-    });
-
-    $(".select2, .select2-multiple, .select2-allow-clear, .select2-remote").on(select2OpenEventName, function() {
-        if ($(this).parents('[class*="has-"]').length) {
-            var classNames = $(this).parents('[class*="has-"]')[0].className.split(/\s+/);
-            for (var i = 0; i < classNames.length; ++i) {
-                if (classNames[i].match("has-")) {
-                    $('#select2-drop').addClass(classNames[i]);
-                }
-            }
-        }
-    });
-</script>
 @stop

@@ -12,14 +12,6 @@ Editar registro
 {{ HTML::style('admin/css/pages/form_layouts.css') }}
 {{ HTML::style('admin/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}
 {{ HTML::style('admin/vendors/gallery/basic/source/jquery.fancybox.css?v=2.1.5') }}
-
-{{-- DATETIME PICKER --}}
-{{ HTML::style('admin/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}
-
-{{-- TAGS --}}
-{{ HTML::style('admin/vendors/tags/bower_components/bootstrap/assets/css/docs.css') }}
-{{ HTML::style('admin/vendors/tags/dist/bootstrap-tagsinput.css') }}
-{{ HTML::style('admin/vendors/tags/assets/app.css') }}
 @stop
 
 
@@ -94,21 +86,6 @@ Editar registro
 @section('footer_scripts')
 {{ HTML::script('admin/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}
 
-{{-- CKEDITOR --}}}
-{{ HTML::script('admin/vendors/ckeditor/ckeditor.js') }}
-{{ HTML::script('admin/vendors/ckeditor/adapters/jquery.js') }}
-{{ HTML::script('admin/js/pages/editor.js') }}
-
-{{-- DATETIME PICKER --}}
-{{ HTML::script('admin/vendors/datetimepicker/js/bootstrap-datetimepicker.js') }}
-<script>
-$(".form_datetime4").datetimepicker({
-	  format: "dd MM yyyy - hh:ii",
-	  linkField: "mirror_field",
-	  linkFormat: "yyyy-mm-dd hh:ii:00"
-});
-</script>
-
 {{-- FANCYBOX --}}
 {{ HTML::script('admin/vendors/gallery/basic/source/jquery.fancybox.pack.js?v=2.1.5') }}
 {{ HTML::script('admin/vendors/gallery/basic/lib/jquery.mousewheel.pack.js?v=3.1.3') }}
@@ -125,12 +102,5 @@ $(document).ready(function() {
         }
     });
 });
-</script>
-
-{{-- TAGS --}}
-{{ HTML::script('admin/js/forms/jquery.tagsinput.min.js') }}
-{{ HTML::script('admin/js/forms/jquery.select2.min.js') }}
-<script>
-$(".selectMultiple").select2();
 </script>
 @stop

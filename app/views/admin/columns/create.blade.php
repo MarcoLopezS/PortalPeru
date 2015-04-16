@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Agregar nuevo registro
+Agregar nueva columna
 @parent
 @stop
 
@@ -12,12 +12,7 @@ Agregar nuevo registro
 {{ HTML::style('admin/css/pages/form_layouts.css') }}
 
 {{-- DATETIME PICKER --}}
-{{ HTML::style('admin/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}
-
-{{-- TAGS --}}
-{{ HTML::style('admin/vendors/tags/bower_components/bootstrap/assets/css/docs.css') }}
-{{ HTML::style('admin/vendors/tags/dist/bootstrap-tagsinput.css') }}
-{{ HTML::style('admin/vendors/tags/assets/app.css') }}
+{{ HTML::style('admin/libs/datetimepicker/jquery.datetimepicker.css') }}
 @stop
 
 
@@ -25,9 +20,7 @@ Agregar nuevo registro
 @section('content_admin')
 <section class="content-header">
     <!--section starts-->
-    <h1>
-        Agregar nuevo registro
-    </h1>
+    <h1>Agregar nueva columna</h1>
 </section>
 <!--section ends-->
 <section class="content">
@@ -82,12 +75,8 @@ Agregar nuevo registro
 
                         <div class="form-group @if($errors->has('published_at')) has-error @endif">
                             {{ Form::label('published_at', 'Fecha de publicación', ['class' => 'col-md-3 control-label']) }}
-
-                            <div class="col-md-5 input-group date form_datetime4" data-date-format="dd MM yyyy - HH:ii p">
-                                {{ Form::text(null, null, ['class' => 'form-control col-md-6', 'readonly']) }}
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                                {{ Form::hidden('published_at', null, ['id' => 'mirror_field', 'class' => 'form-control', 'readonly']) }}
+                            <div class="col-md-4">
+                                {{ Form::text('published_at', null, ['class' => 'form-control col-md-6', 'id' => 'datetimepicker']) }}
                                 {{ $errors->first('published_at', '<span class="help-block">:message</span>') }}
                             </div>
                         </div>
@@ -133,20 +122,29 @@ Agregar nuevo registro
 {{ HTML::script('admin/vendors/ckeditor/adapters/jquery.js') }}
 {{ HTML::script('admin/js/pages/editor.js') }}
 
-{{-- DATETIME PICKER --}}
-{{ HTML::script('admin/vendors/datetimepicker/js/bootstrap-datetimepicker.js') }}
-<script>
-$(".form_datetime4").datetimepicker({
-      format: "dd MM yyyy - hh:ii",
-      linkField: "mirror_field",
-      linkFormat: "yyyy-mm-dd hh:ii:00"
-});
-</script>
+{{-- CKEDITOR --}}}
+{{ HTML::script('admin/vendors/ckeditor/ckeditor.js') }}
+{{ HTML::script('admin/vendors/ckeditor/adapters/jquery.js') }}
+{{ HTML::script('admin/js/pages/editor.js') }}
 
-{{-- TAGS --}}
-{{ HTML::script('admin/js/forms/jquery.tagsinput.min.js') }}
-{{ HTML::script('admin/js/forms/jquery.select2.min.js') }}
+{{-- DATETIME PICKER --}}
+{{ HTML::script('admin/libs/datetimepicker/jquery.datetimepicker.js') }}
 <script>
-$(".selectMultiple").select2();
+$(document).ready(function() {
+    $('#datetimepicker').datetimepicker({
+        lang: 'es',
+        i18n:{
+            de:{
+                months:[
+                    'Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'
+                ],
+                dayOfWeek:[
+                    "Do", "Lu", "Ma", "Mi","Ju", "Vi", "Sa"
+                ]
+            }
+        },
+        format:'Y-m-d H:i:s'
+    });
+});
 </script>
 @stop

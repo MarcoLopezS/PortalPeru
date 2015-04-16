@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Drop Zone
+Subir foto
 @parent
 @stop
 

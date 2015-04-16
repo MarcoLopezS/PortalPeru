@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Ver registro
+Ver columna
 @parent
 @stop
 
@@ -17,9 +17,7 @@ Ver registro
 @section('content_admin')
 <section class="content-header">
     <!--section starts-->
-    <h1>
-        Ver registro
-    </h1>
+    <h1>Ver columna</h1>
 </section>
 <!--section ends-->
 <section class="content">

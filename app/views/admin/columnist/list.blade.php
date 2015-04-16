@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Advanced Data Tables
+Columnistas
 @parent
 @stop
 
@@ -24,7 +24,12 @@ Advanced Data Tables
     <h1>Columnistas</h1>
     <a href="{{ route('administrador.columnist.create') }}" class="btn btn-md btn-default">
         <span class="glyphicon glyphicon-plus"></span>
-        Agregar nuevo registro
+        Agregar nuevo columnista
+    </a>
+
+    <a href="{{ route('administrador.columnist.order') }}" class="btn btn-md btn-default">
+        <span class="glyphicon glyphicon-move"></span>
+        Ordenar
     </a>
 </section>
 <!--section ends-->
@@ -59,6 +64,7 @@ Advanced Data Tables
                             <tr>
 
                                 <th>Columnista</th>
+                                <th>Dias</th>
                                 <th>Publicar</th>
                                 <th>Acciones</th>
                             </tr>
@@ -67,6 +73,15 @@ Advanced Data Tables
                             @foreach($posts as $item)
                             <tr>
                                 <td>{{ $item->nombre." ".$item->apellidos }}</td>
+                                <td>
+                                    {{ $item->dia_lunes ? 'Lunes - ' : '' }}
+                                    {{ $item->dia_martes ? 'Martes - ' : '' }}
+                                    {{ $item->dia_miercoles ? 'Miercoles - ' : '' }}
+                                    {{ $item->dia_jueves ? 'Jueves - ' : '' }}
+                                    {{ $item->dia_viernes ? 'Viernes - ' : '' }}
+                                    {{ $item->dia_sabado ? 'Sabado - ' : '' }}
+                                    {{ $item->dia_domingo ? 'Domingo' : '' }}
+                                </td>
                                 <td>{{ $item->publicar ? 'Publicado' : 'No publicado' }}</td>
                                 <td>
                                     <div class="button-dropdown" data-buttons="dropdown">

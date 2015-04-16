@@ -58,10 +58,10 @@ Usuarios
                     </thead>
                     <tbody>
                     @foreach ($users as $user)
-                    	<tr>
-                    		<td>{{{ $user->first_name }}}</td>
-            				<td>{{{ $user->last_name }}}</td>
-            				<td>{{{ $user->email }}}</td>
+                        <tr>
+                    		<td>{{ $user->profile->nombre }}</td>
+            				<td>{{ $user->profile->apellidos }}</td>
+            				<td>{{ $user->email }}</td>
             				<td>
                                 <div class="button-dropdown" data-buttons="dropdown">
                                     <a href="#" class="button button-rounded">

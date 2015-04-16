@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Advanced Data Tables
+Columnas de {{ $columnista->nombre." ".$columnista->apellidos }}
 @parent
 @stop
 
@@ -24,7 +24,7 @@ Advanced Data Tables
     <h1>Columnas de: {{ $columnista->nombre." ".$columnista->apellidos }}</h1>
     <a href="{{ route('administrador.columns.create', [$columnista->id]) }}" class="btn btn-md btn-default">
         <span class="glyphicon glyphicon-plus"></span>
-        Agregar nuevo registro
+        Agregar nueva columna
     </a>
 </section>
 <!--section ends-->
@@ -79,7 +79,6 @@ Advanced Data Tables
                                             <li><a href="{{ route('administrador.columns.show', [$columnista->id, $item->id]) }}">Ver</a></li>
                                             <li><a href="{{ route('administrador.columns.edit', [$columnista->id, $item->id]) }}">Editar</a></li>
                                             <li><a href="{{ route('administrador.columns.destroy', [$columnista->id, $item->id]) }}">Eliminar</a></li>
-                                            <li><a href="{{ route('administrador.columns.photoslist', [$columnista->id, $item->id]) }}">Galería de Fotos</a></li>
                                         </ul>
                                     </div>
                                 </td>
