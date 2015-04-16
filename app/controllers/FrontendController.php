@@ -25,32 +25,75 @@ class FrontendController extends BaseController{
         $post_6 = Post::where('post_order_id', 6)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
         $post_7 = Post::where('post_order_id', 7)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
         $post_8 = Post::where('post_order_id', 8)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
+        $post_9 = Post::where('post_order_id', 9)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
 
         //COLUNISTAS DEL DIA
-        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->wherePublicar(1)->get(); }
+        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
-        return View::make('frontend.home-1', compact('post_1', 'post_2', 'post_3', 'post_4', 'post_5', 'post_6', 'post_7', 'post_8', 'columnistasDia'));
+        return View::make('frontend.home-3', compact('post_1', 'post_2', 'post_3', 'post_4', 'post_5', 'post_6', 'post_7', 'post_8', 'post_9', 'columnistasDia'));
+    }
+
+    public function nosotros()
+    {
+        //COLUNISTAS DEL DIA
+        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+
+        return View::make('frontend.nosotros', compact('columnistasDia'));
+    }
+
+    public function contacto()
+    {
+        //COLUNISTAS DEL DIA
+        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+
+        return View::make('frontend.contacto', compact('columnistasDia'));
+    }
+
+    public function publicidad()
+    {
+        //COLUNISTAS DEL DIA
+        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+
+        return View::make('frontend.publicidad', compact('columnistasDia'));
     }
 
     public function noticia($id)
     {
         //COLUNISTAS DEL DIA
-        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->wherePublicar(1)->get(); }
+        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
         $noticia = Post::findOrFail($id);
-        $noticiaFotos = PostPhoto::where('post_id', $id)->get();
+        $noticiaFotos = PostPhoto::where('post_id', $id)->orderBy('orden', 'asc')->get();
 
         return View::make('frontend.noticia', compact('noticia', 'noticiaFotos', 'columnistasDia'));
     }
@@ -58,16 +101,16 @@ class FrontendController extends BaseController{
     public function noticiaPreview($id)
     {
         //COLUNISTAS DEL DIA
-        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->wherePublicar(1)->get(); }
+        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
         $noticia = Post::findOrFail($id);
-        $noticiaFotos = PostPhoto::where('post_id', $id)->get();
+        $noticiaFotos = PostPhoto::where('post_id', $id)->orderBy('orden', 'asc')->get();
 
         return View::make('frontend.noticia-preview', compact('noticia', 'noticiaFotos', 'columnistasDia'));
     }
@@ -75,13 +118,13 @@ class FrontendController extends BaseController{
     public function noticiaCategoria($url)
     {
         //COLUNISTAS DEL DIA
-        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->wherePublicar(1)->get(); }
+        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
         $categoria = Category::whereSlugUrl($url)->first();
         $noticias = Post::where('category_id', $categoria->id)->where('publicar', 1)->orderBy('published_at','desc')->paginate(7);
@@ -92,13 +135,13 @@ class FrontendController extends BaseController{
     public function buscar($url, $texto)
     {
         //COLUNISTAS DEL DIA
-        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->wherePublicar(1)->get(); }
+        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
         $buscar = $texto;
 
@@ -108,13 +151,13 @@ class FrontendController extends BaseController{
     public function columnistasList()
     {
         //COLUNISTAS DEL DIA
-        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->wherePublicar(1)->get(); }
+        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
         $columnistas = Columnist::where('publicar', 1)->paginate(7);
 
@@ -124,13 +167,13 @@ class FrontendController extends BaseController{
     public function columnistasPerson($id, $url)
     {
         //COLUNISTAS DEL DIA
-        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->wherePublicar(1)->get(); }
+        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
         $columnista = Columnist::whereId($id)->whereSlugUrl($url)->first();
         $columnas = Column::whereColumnistId($id)->orderBy('published_at', 'desc')->paginate(7);
@@ -141,13 +184,13 @@ class FrontendController extends BaseController{
     public function columnistasColumn($id, $url, $idColumn, $urlColumn)
     {
         //COLUNISTAS DEL DIA
-        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->wherePublicar(1)->get(); }
-        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->wherePublicar(1)->get(); }
+        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
         $columnista = Columnist::whereId($id)->whereSlugUrl($url)->first();
         $columna = Column::whereColumnistId($id)->whereId($idColumn)->whereSlugUrl($urlColumn)->first();
