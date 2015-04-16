@@ -1,16 +1,9 @@
 @extends('layouts.frontend')
 
-@section('script_header')
-<!-- Open Graph -->
-<meta property="og:type" content='article' >
-<meta property="og:site_name" content='Portal Perú' >
-<meta property="og:title" content='{{ $noticia->titulo  }}'>
-<meta property="og:description" content='{{ $noticia->descripcion }}'>
-<meta property="og:url" content='' >
-<meta property="og:image" content='' >
-<meta property="fb:admins" content='1434798696787255'>
-<!-- fin Open Graph -->
-@stop
+{{--*/
+$noticiaUrl = configWeb()->dominio."/nota/".$noticia->id."-".$noticia->slug_url;
+$noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/".$noticia->imagen;
+/*--}}
 
 @section('contenido_frontend')
 		
@@ -81,22 +74,60 @@
             <!--END POST-->
 
             @if($noticia->category->slug_url == "reportero-ciudadano")
+            {{--*/
+            $reporteroNombreCompleto = $noticia->user->profile->nombre." ".$noticia->user->profile->apellidos;
+            $reporteroUrlImg = "/upload/reportero/130x130/".$noticia->user->profile->imagen;
+            $reporteroDescripcion = $noticia->user->profile->descripcion;
+
+            //REDES SOCIALES
+            $reporteroFacebook = $noticia->user->profile->social_facebook;
+            $reporteroTwitter = $noticia->user->profile->social_twitter;
+            $reporteroGoogle = $noticia->user->profile->social_google;
+            $reporteroYoutube = $noticia->user->profile->social_youtube;
+            $reporteroPinterest = $noticia->user->profile->social_pinterest;
+            $reporteroInstagram = $noticia->user->profile->social_instagram;
+            $reporteroLinkedin = $noticia->user->profile->social_linkedin;
+            $reporteroTumblr = $noticia->user->profile->social_tumblr;
+            /*--}}
             <h3>Sobre el Autor</h3>
             <article class="row mid member">
-                <img src="img/author.jpg" alt="author">
+                @if($noticia->user->profile->imagen<>"")
+                <img class="imgBorder50" src="{{ $reporteroUrlImg }}" alt="{{ $reporteroNombreCompleto }}">
+                @else
+                <img class="imgBorder50" src="/imagenes/rciud/usuario.jpg" width="130" alt="Reportero Ciudadano"/>
+                @endif
                 <div class="info">
-                    <h1><a href="author.html">@{{ }}</a></h1>
-                    <p class="text">@{{  }}</p>
+                    <h1><a href="#">{{ $reporteroNombreCompleto }}</a></h1>
+                    <p class="text">{{{ $reporteroDescripcion }}}</p>
                     <ul class="social list-inline">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa  fa-tumblr"></i></a></li>
+                        @if($reporteroFacebook<>"")
+                        <li><a href="https://facebook.com/{{ $reporteroFacebook }}"><i class="fa fa-facebook"></i></a></li>
+                        @endif
+                        @if($reporteroTwitter<>"")
+                        <li><a href="https://twitter.com/{{ $reporteroTwitter }}"><i class="fa fa-twitter"></i></a></li>
+                        @endif
+                        @if($reporteroGoogle<>"")
+                        <li><a href="https://plus.google.com/{{ $reporteroGoogle }}"><i class="fa fa-google-plus"></i></a></li>
+                        @endif
+                        @if($reporteroYoutube<>"")
+                        <li><a href="https://youtube.com/{{ $reporteroYoutube }}"><i class="fa fa-youtube"></i></a></li>
+                        @endif
+                        @if($reporteroYoutube<>"")
+                        <li><a href="https://pinterest.com/{{ $reporteroPinterest }}"><i class="fa fa-pinterest"></i></a></li>
+                        @endif
+                        @if($reporteroPinterest<>"")
+                        <li><a href="https://instagram.com/{{ $reporteroInstagram }}"><i class="fa fa-instagram"></i></a></li>
+                        @endif
+                        @if($reporteroLinkedin<>"")
+                        <li><a href="https://linkedin.com/{{ $reporteroLinkedin }}"><i class="fa fa-linkedin"></i></a></li>
+                        @endif
+                        @if($reporteroTumblr<>"")
+                        <li><a href="https://tumblr.com/{{ $reporteroTumblr }}"><i class="fa fa-tumblr"></i></a></li>
+                        @endif
                     </ul>
                 </div>
             </article>
             @endif
-
 
             <!-- COMENTARIOS -->
             <div class="row">
@@ -111,7 +142,7 @@
                   fjs.parentNode.insertBefore(js, fjs);
                 }(document, 'script', 'facebook-jssdk'));</script>
 
-                <div class="fb-comments" data-href="/nota/{{ $noticia->id."-".$noticia->slug_url }}" data-width="840" data-numposts="5" data-colorscheme="light"></div>
+                <div class="fb-comments" data-href="{{ $noticiaUrl }}" data-width="840" data-numposts="5" data-colorscheme="light"></div>
             </div>
             <!-- FIN COMENTARIOS -->
 

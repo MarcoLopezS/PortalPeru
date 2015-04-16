@@ -14,13 +14,6 @@
 	<meta name="robots" content="index,follow">
     <meta name="googlebot" content="index, follow">
 
-    <meta property="og:title" content="{{ configWeb()->titulo." | ".configWeb()->keywords }}">
-    <meta property="og:description" content="{{ configWeb()->descripcion }}">
-    <meta property="og:url" content="{{ configWeb()->dominio }}">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="{{ configWeb()->dominio."/imagenes/logo.png" }}">
-    <meta property="og:site_name" content="{{ configWeb()->titulo }}">
-
     {{ HTML::style('fonts/font-awesome-4.0.3/css/font-awesome.min.css') }}
     {{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:400,600,700') }}
     {{ HTML::style('http://fonts.googleapis.com/css?family=Montserrat:400,700') }}
@@ -41,10 +34,10 @@
             <nav class="clearfix">
                 <a href="" id="header-menu-button"><i class="fa fa-bars"></i></a>
                 <ul class="list-inline">
-                    <li class="/"><a href="">Inicio</a></li>
-                    <li><a href="#">Publicidad</a></li>
-                    <li><a href="#">Contacto</a></li>
-                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/publicidad">Publicidad</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
+                    <li><a href="/nosotros">Nosotros</a></li>
                 </ul>
             </nav>
             <!--END MENU-->
@@ -81,7 +74,7 @@
                 <li><a href="/"><i class="fa fa-home"></i></a></li>
                 <li><a href="/seccion/hechos">Hechos</a></li>
                 <li><a href="/seccion/entrevista">Entrevista</a></li>
-                <li><a href="/seccion/mira-el-peru">Mira el Perú</a></li>
+                <li><a href="https://www.flickr.com/photos/portalperu/" target="_blank">Mira el Perú</a></li>
                 <li><a href="/seccion/bicentenario">Bicentenario</a></li>
                 <li class="menu-rcid dropdown-submenu">
                     <a href="javascript:;">Reportero Ciudadano</a>
@@ -97,6 +90,7 @@
                 </li>
             </ul>
 
+            {{--
             <div class="buscador form-search col-md-2">
                 <script>
                     (function() {
@@ -112,6 +106,7 @@
                 </script>
                 <gcse:searchbox-only></gcse:searchbox-only>
             </div>
+            --}}
 
         </nav>
 		<!--END MENU-->
@@ -127,18 +122,16 @@
                     <img src="/imagenes/logo-footer.png" alt="logo" width="180">
                     <h5>Sobre Portal Perú</h5>
                     <p>
-                        Portal Perú busca democratizar la información bajo el principio universal que toda persona tiene derecho, no solo a recibir información y opinión sino también a difundirla por cualquier medio de expresión.
+                        Portal Perú no se solidariza ni comparte necesariamente con las informaciones, opiniones y denuncias vertidas en las notas publicadas en este site. El autor es el único responsable del contenido de la información, opinión o denuncia.
+                    </p>
+
+                    <p>
+                        Portal Perú tiene Registro de la Propiedad Industrial. Resolución N° 021065-2014/DSD-INDECOPI. Certificado N° 0008491
                     </p>
 
                     <ul class="social list-inline">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                        <li><a href="#"><i class="fa fa-flickr"></i></a></li>
-                        <li><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
-                        <li><a href="#"><i class="fa  fa-tumblr"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                        <li><a target="_blank" href="https://www.facebook.com/portalperu.pe"><i class="fa fa-facebook"></i></a></li>
+                        <li><a target="_blank" href="https://plus.google.com/100548756504983774264"><i class="fa fa-google-plus"></i></a></li>
                     </ul>
                 </div>
 
@@ -147,8 +140,9 @@
                     <ul>
                         <li><a href="/seccion/hechos">Hechos</a></li>
                         <li><a href="/seccion/entrevista">Entrevista</a></li>
-                        <li><a href="/seccion/mira-el-peru">Mira el Perú</a></li>
+                        <li><a href="https://www.flickr.com/photos/portalperu/" target="_blank">Mira el Perú</a></li>
                         <li><a href="/seccion/bicentenario">Bicentenario</a></li>
+                        <li><a href="/seccion/reportero-ciudadano">Reportero Ciudadano</a></li>
                         <li><a href="/columnistas">Columnistas</a></li>
                     </ul>
                 </div>
@@ -157,7 +151,7 @@
 
             <div class="rights clearfix">
                 <p>© 2015 Todos los derechos reservados.</p>
-                <p>Designed by <a href="http://www.grupo7peru.com">Grupo 7 Perú</a>.</p>
+                <p>Designed by <a href="http://www.g7consultores.com" target="_blank">G7 Consultores</a>.</p>
             </div>
         </footer>
 		<!--END FOOTER-->
@@ -177,6 +171,9 @@
 {{ HTML::script('js/jquery.resizestop.min.js') }}
 {{ HTML::script('js/main.js') }}
 
+
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -185,6 +182,7 @@
 
   ga('create', 'UA-20229980-30', 'auto');
   ga('send', 'pageview');
+
 </script>
 
 </body>

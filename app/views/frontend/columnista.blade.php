@@ -39,9 +39,9 @@
                         <div class="info">
                             <h1><a href="/columnistas/{{ $columnista->id."-".$columnista->slug_url."/".$item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
 
-                            <p class="details">{{ date_format(new DateTime($item->published_at), 'd/m/Y')  }}</p>
+                            <p class="details width100">{{ date_format(new DateTime($item->published_at), 'd/m/Y')  }}</p>
 
-                            <p class="text">
+                            <p class="text width100">
                                 {{ $item->descripcion }}
                             </p>
                             <a href="{{ configWeb()->dominio }}/columnistas/{{ $columnista->id."-".$columnista->slug_url."/".$item->id."-".$item->slug_url }}" class="btn btn-default">Leer más...</a>

@@ -19,7 +19,7 @@
                 <div class="info">
                     <h1><a href="/nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
                     <p class="details">{{ date_format(new DateTime($item->published_at), 'd/m/Y H:m')  }}</p>
-                    <p class="text">
+                    <p class="text width100">
                         {{ $item->descripcion }}
                     </p>
                 </div>

@@ -76,6 +76,7 @@
                     <div class="clearfix"></div>
                     <!-- BEGIN SIDEBAR MENU -->
                     <ul id="menu" class="page-sidebar-menu">
+
                         <li {{ (Request::is('administrador') ? 'class="active"' : '') }}>
                             <a href="{{ route('administrador.index') }}">
                                 <i class="livicon" data-name="home" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
@@ -105,23 +106,23 @@
                             </ul>
                         </li>
 
-                        <li {{ (Request::is('administrador/posts') || Request::is('administrador/posts/*') || Request::is('administrador/categories') || Request::is('administrador/categories/*') || Request::is('administrador/tags') || Request::is('administrador/tags/*') ? 'class="active"' : '') }}>
+                        <li {{ (Request::is('administrador/posts') || Request::is('administrador/posts/*') || Request::is('administrador/categories') || Request::is('administrador/categories/*') || Request::is('administrador/tags') || Request::is('administrador/tags/*') || Request::is('administrador/reportero') ? 'class="active"' : '') }}>
                             <a href="#">
                                 <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
-                                <span class="title">Entradas</span>
+                                <span class="title">Noticias</span>
                                 <span class="fa arrow"></span>
                             </a>
                             <ul class="sub-menu">
                                 <li {{ (Request::is('administrador/posts') ? 'class="active"' : '') }}>
                                     <a href="{{ route('administrador.posts.index') }}">
                                         <i class="fa fa-angle-double-right"></i>
-                                        Todas las entradas
+                                        Todas las noticias
                                     </a>
                                 </li>
                                 <li {{ (Request::is('administrador/posts/create') ? 'class="active"' : '') }}>
                                     <a href="{{ route('administrador.posts.create') }}">
                                         <i class="fa fa-angle-double-right"></i>
-                                        Nueva entrada
+                                        Nueva noticia
                                     </a>
                                 </li>
                                 <li {{ (Request::is('administrador/categories') || Request::is('administrador/categories/*') ? 'class="active"' : '') }}>
@@ -134,6 +135,12 @@
                                     <a href="{{ route('administrador.tags.index') }}">
                                         <i class="fa fa-angle-double-right"></i>
                                         Etiquetas
+                                    </a>
+                                </li>
+                                <li {{ (Request::is('administrador/reportero') ? 'class="active"' : '') }}>
+                                    <a href="{{ route('administrador.reportero.list') }}">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Reportero ciudadano <span class="badge badge-danger">{{ reporteroCountNoPuplic() }}</span>
                                     </a>
                                 </li>
                             </ul>

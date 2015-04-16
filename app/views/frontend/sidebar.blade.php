@@ -1,6 +1,21 @@
 <!-- SIDEBAR -->
 <aside class="col-md-3 col-sm-12">
 
+    <ul class="aside-social list-inline visible-md visible-lg">
+        <li>
+            <a target="_blank" href="https://www.facebook.com/portalperu.pe"><i class="fa fa-facebook"></i></a>
+            <span>{{ get_likes("portalperu.pe") }}</span>
+        </li>
+        <li>
+            <a target="_blank" href="https://twitter.com/portal_peru"><i class="fa fa-twitter"></i></a>
+            <span>{{ get_tweets("https://twitter.com/portal_peru") }}</span>
+        </li>
+        <li>
+            <a target="_blank" href="https://plus.google.com/+PortalperuPe1"><i class="fa fa-google-plus"></i></a>
+            <span>{{ get_plusones("https://plus.google.com/+PortalperuPe1") }}</span>
+        </li>
+    </ul>
+
     <!-- COLUMNISTAS -->
     <div class="most-discussed col-md-12 col-sm-6 columnistas">
         <h4>Columnistas</h4>
@@ -46,6 +61,7 @@
     <!-- FIN GALERIA DE FOTOS -->
 
     <!-- SUSCRIPCION -->
+    {{--
     <div class="newsletter visible-md visible-lg">
         <h3>Mantente al dia</h3>
         <p>Suscribe y recive por mail lo ultimo en informacion y participa de nuestros sorteos</p>
@@ -54,6 +70,7 @@
             <input type="submit" value="suscribete" class="btn btn-default btn-block">
         </form>
     </div>
+    --}}
     <!-- FIN SUSCRIPCION -->
 
 </aside>

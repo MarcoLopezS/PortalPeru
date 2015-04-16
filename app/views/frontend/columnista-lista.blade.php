@@ -14,7 +14,7 @@
                 <img src="/upload/columnista/200x150/{{ $item->foto }}" alt="post">
                 <div class="info">
                     <h1><a href="{{ route('home.columnistas.person', [$item->id, $item->slug_url]) }}">{{ $item->nombre." ".$item->apellidos }}</a></h1>
-                    <p class="text">
+                    <p class="text width100">
                         {{ $item->descripcion }}
                     </p>
                     <a href="/columnistas/{{ $item->id."-".$item->slug_url }}" class="btn btn-default">Ver columnas</a>

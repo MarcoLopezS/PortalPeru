@@ -33,10 +33,6 @@
 	</div><!-- end .smart-wrap section -->
 
 	{{ HTML::script('libs/smartform/js/jquery-1.9.1.min.js') }}
-    {{ HTML::script('libs/smartform/js/jquery.form.min.js') }}
-    {{ HTML::script('libs/smartform/js/jquery.validate.js') }}
-    {{ HTML::script('libs/smartform/js/additional-methods.js') }}
-    {{ HTML::script('libs/smartform/js/smart-form.js') }}
 
 </body>
 </html>
