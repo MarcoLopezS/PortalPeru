@@ -241,6 +241,18 @@ class AdminPostsController extends \BaseController {
     {
         $post = Post::find($id);
         $post->delete();
+
+        $message = 'El registro se eliminó satisfactoriamente.';
+
+        if(Request::ajax())
+        {
+            return Response::json([
+                'message' => $message
+            ]);
+        }
+
+        //\Session::flash('message', $message);
+
         return Redirect::route('administrador.posts.index');
     }
 
