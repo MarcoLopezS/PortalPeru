@@ -14,12 +14,6 @@
 	<meta name="robots" content="index,follow">
     <meta name="googlebot" content="index, follow">
 
-    {{ HTML::style('fonts/font-awesome-4.0.3/css/font-awesome.min.css') }}
-    {{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:400,600,700') }}
-    {{ HTML::style('http://fonts.googleapis.com/css?family=Montserrat:400,700') }}
-    {{ HTML::style('css/bootstrap.css') }}
-    {{ HTML::style('css/style.css') }}
-
     @yield('script_header')
 	
 </head>
@@ -28,7 +22,7 @@
 	<!--HEADER-->
     <header>
         <div class="container">
-            <a href="/" class="logo"><img src="/imagenes/logo.png" alt="logo"></a>
+            <a href="/" class="logo"><img class="width100" src="/imagenes/logo.png" alt="Portal Perú"></a>
 
             <!--MENU-->
             <nav class="clearfix">
@@ -159,21 +153,35 @@
 	</div>
 	<!--END CONTAINER-->
 
-{{ HTML::script('http://code.jquery.com/jquery-1.10.2.min.js') }}
-{{ HTML::script('js/jquery.stellar.js') }}
-{{ HTML::script('js/smoothscroll.js') }}
+{{-- GOOGLE FONTS --}}
+{{ HTML::style('//fonts.googleapis.com/css?family=Open+Sans:400,600,700') }}
+{{ HTML::style('//fonts.googleapis.com/css?family=Montserrat:400,700') }}
+
+{{-- FONT AWESOME - BOOTSTRAP --}}
+{{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css') }}
+{{ HTML::style('//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css') }}
+
+{{-- ESTILOS --}}
+{{ HTML::style('css/style.css') }}
+{{ HTML::style('css/responsive.css') }}
+
+{{-- JQUERY - BOOTSTRAP --}}
+{{ HTML::script('//code.jquery.com/jquery-1.10.2.min.js') }}
+{{ HTML::script('//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js') }}
+
+{{-- FLICKR --}}
 {{ HTML::script('js/flickrush.min.js') }}
-{{ HTML::script('js/bootstrap.js') }}
+
+{{-- SLIDER --}}
 {{ HTML::script('js/jquery.bxslider.js') }}
-{{ HTML::script('js/jquery.countdown.js') }}
-{{ HTML::script('js/fluidvids.js') }}
-{{ HTML::script('js/retina-1.1.0.min.js') }}
+
+{{-- RESIZETOP --}}
 {{ HTML::script('js/jquery.resizestop.min.js') }}
+
+{{-- JS --}}
 {{ HTML::script('js/main.js') }}
 
-
-
-
+{{-- GOOGLE ANALYTICS --}}
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
