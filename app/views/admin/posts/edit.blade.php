@@ -132,13 +132,7 @@ Editar registro
                         <div class="form-group @if($errors->has('tags')) has-error @endif">
                             {{ Form::label('tags', 'Etiquetas', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">
-                                <select name="tags[]" class="form-control selectMultiple" multiple>
-                                    @foreach($tags as $item1)
-                                        @foreach($tags_select as $item2 )
-                                            <option value="{{ $item1->id }}" @if($item1 == $item2) selected @endif>{{ $item1->titulo }}</option>
-                                        @endforeach
-                                    @endforeach
-                                </select>
+                                {{ Form::select('tags[]', $tags, $tags_select, ['class' => 'form-control selectMultiple', 'multiple']) }}
                                 {{ $errors->first('tags', '<span class="help-block">:message</span>') }}
                             </div>
                         </div>
