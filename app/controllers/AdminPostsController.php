@@ -157,10 +157,9 @@ class AdminPostsController extends \BaseController {
         $category = $this->categoryRepo->all()->lists('titulo', 'id');
         $order = $this->postOrderRepo->all()->lists('titulo', 'id');
 
-        $tags = $this->tagRepo->all();
+        $tags = $this->tagRepo->all()->lists('titulo', 'id');
         $tags_select = $post->tags;
         $tags_select = explode(",", $tags_select);
-        $tags_select = $this->tagRepo->findOrFail($tags_select);
 
         return View::make('admin.posts.edit', compact('post', 'category', 'order', 'tags', 'tags_select'));
     }
