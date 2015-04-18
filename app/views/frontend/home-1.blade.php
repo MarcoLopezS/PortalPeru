@@ -25,7 +25,7 @@
 
                         @foreach($post_1 as $item)
                         <article class="big clearfix">
-                            <img src="upload/{{ $item->imagen_carpeta."870x500/".$item->imagen }}" alt="">
+                            <img src="upload/{{ $item->imagen_carpeta."870x500/".$item->imagen }}" alt="{{ $item->titulo }}">
                             <div class="info">
                                 <p class="tags">
                                     <a href="seccion/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
@@ -66,7 +66,7 @@
                 @foreach($post_2 as $item)
                 <article class="col-md-4 col-sm-4 mid">
                     <div class="img">
-                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="">
+                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="{{ $item->titulo }}">
                     </div>
                     <div class="info">
                         <p class="tags">
@@ -84,7 +84,7 @@
                 @foreach($post_3 as $item)
                 <article class="col-md-4 col-sm-4 mid">
                     <div class="img">
-                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="">
+                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="{{ $item->titulo }}">
                     </div>
                     <div class="info">
                         <p class="tags">
@@ -107,7 +107,7 @@
                 @foreach($post_4 as $item)
                 <article class="col-md-8 col-sm-8 big">
                     <div class="img">
-                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="">
+                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="{{ $item->titulo }}">
                     </div>
                     <div class="info2">
                         <p class="tags">
@@ -121,7 +121,7 @@
                 @foreach($post_5 as $item)
                 <article class="col-md-4 col-sm-4 mid">
                     <div class="img">
-                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="">
+                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="{{ $item->titulo }}">
                     </div>
                     <div class="info">
                         <p class="tags">
@@ -143,7 +143,7 @@
                 @foreach($post_6 as $item)
                 <article class="col-md-4 col-sm-4 mid">
                     <div class="img">
-                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="">
+                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="{{ $item->titulo }}">
                     </div>
                     <div class="info">
                         <p class="tags">
@@ -159,7 +159,7 @@
                 @foreach($post_7 as $item)
                 <article class="col-md-4 col-sm-4 mid">
                     <div class="img">
-                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="">
+                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="{{ $item->titulo }}">
                     </div>
                     <div class="info">
                         <p class="tags">
@@ -175,7 +175,7 @@
                 @foreach($post_8 as $item)
                 <article class="col-md-4 col-sm-4 mid">
                     <div class="img">
-                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="">
+                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="{{ $item->titulo }}">
                     </div>
                     <div class="info">
                         <p class="tags">

@@ -35,18 +35,15 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                 <div class="info">
                     <h1>{{ $noticia->titulo }}</h1>
                     <div class="text">{{ $noticia->descripcion }}</div>
-                    <div class="data">
-                        <p class="details">
-                            {{ $noticia->category->titulo }} | {{ date_format(new DateTime($noticia->published_at), 'd/m/Y H:m')  }}
-                            <span class="redaccion col-sm-12">Autor: {{ $noticia->redaccion }}</span>
-                        </p>
+                    <div class="col-xs-12 data">
+                        <span class="col-sm-6 col-xs-12 details textAlignLeft">{{ $noticia->category->titulo }} | {{ date_format(new DateTime($noticia->published_at), 'd/m/Y H:m')  }}</span>
+                        <span class="col-sm-6 col-xs-12 details textAlignRight">Autor: {{ $noticia->redaccion }}</span>
                     </div>
-                    <div class="data">
+                    <div class="col-xs-12 data">
                         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-552dd2a835af55f3" async="async"></script>
                         <div class="addthis_native_toolbox"></div>
                     </div>
                 </div>
-
 
                 @if($noticia->video <> "")
                 <div class="video">
@@ -62,7 +59,7 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                         <div class="slides">
                             @foreach($noticiaFotos as $item)
                             <article class="big clearfix">
-                                <img src="/upload/{{ $item->imagen_carpeta."870x500/".$item->imagen }}" alt="post-image" >
+                                <img src="/upload/{{ $item->imagen_carpeta."870x500/".$item->imagen }}" alt="{{ $noticia->titulo }}" >
                                 @if($item->titulo <> "")
                                 <div class="info">
                                     <p class="text">{{ $item->titulo }}</p>
@@ -76,7 +73,7 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                 @elseif(count($noticiaFotos) == 0)
                     @if($noticia->imagen <> "")
                     <div class="info imagen">
-                        <img src="{{ $noticiaImg }}" alt="post-image">
+                        <img src="{{ $noticiaImg }}" alt="{{ $noticia->titulo }}">
                     </div>
                     @endif
                 @endif
@@ -151,7 +148,7 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
             @endif
 
             <!-- COMENTARIOS -->
-            <div class="row">
+            <div class="row visible-lg">
                 <h3>Comentarios</h3>
 
                 <div id="fb-root"></div>
@@ -163,7 +160,7 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                   fjs.parentNode.insertBefore(js, fjs);
                 }(document, 'script', 'facebook-jssdk'));</script>
 
-                <div class="fb-comments" data-href="{{ $noticiaUrl }}" data-width="840" data-numposts="5" data-colorscheme="light"></div>
+                <div class="fb-comments" data-href="{{ $noticiaUrl }}" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
             </div>
             <!-- FIN COMENTARIOS -->
 

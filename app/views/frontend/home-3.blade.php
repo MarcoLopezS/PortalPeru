@@ -24,7 +24,7 @@
                     <div class="slides">
                         @foreach($post_1 as $item)
                         <article class="big clearfix">
-                            <img src="upload/{{ $item->imagen_carpeta."600x470/".$item->imagen }}" alt="">
+                            <img class="width100" src="upload/{{ $item->imagen_carpeta."540x425/".$item->imagen }}" alt="{{ $item->titulo }}">
                             <div class="info">
                                 <p class="tags">
                                     <a href="seccion/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
@@ -41,16 +41,16 @@
 
                 <!-- NOTICIA CENTRAL -->
                 @foreach($post_2 as $item)
-                <article class="col-lg-4 col-md-4 col-sm-12 mid">
+                <article class="col-lg-4 col-md-4 col-sm-12 mid marginTop20">
                     <div class="img">
-                        <img src="upload/{{ $item->imagen_carpeta."570x350/".$item->imagen }}" alt="">
+                        <img class="width100" src="upload/{{ $item->imagen_carpeta."280x190/".$item->imagen }}" alt="{{ $item->titulo }}">
                     </div>
                     <div class="info">
                         <p class="tags">
                             <a href="seccion/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
                         </p>
                         <h1><a href="nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
-                        <p class="details">{{{ $item->updated_at->diffForHumans() }}}</p>
+                        <p class="details hidden-sm hidden-xs">{{{ $item->updated_at->diffForHumans() }}}</p>
                         <p class="text">{{ $item->descripcion }}</p>
                     </div>
                 </article>
@@ -83,14 +83,14 @@
                 @foreach($post_3 as $item)
                 <article class="col-md-4 col-sm-4 mid">
                     <div class="img">
-                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="">
+                        <img class="width100" src="upload/{{ $item->imagen_carpeta."280x190/".$item->imagen }}" alt="{{ $item->titulo }}">
                     </div>
                     <div class="info">
                         <p class="tags">
                             <a href="seccion/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
                         </p>
                         <h1><a href="nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
-                        <p class="details">{{{ $item->updated_at->diffForHumans() }}}</p>
+                        <p class="details hidden-sm hidden-xs">{{{ $item->updated_at->diffForHumans() }}}</p>
                         <p class="text">{{ $item->descripcion }}</p>
                     </div>
                 </article>
@@ -101,14 +101,14 @@
                 @foreach($post_4 as $item)
                 <article class="col-md-4 col-sm-4 mid">
                     <div class="img">
-                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="">
+                        <img class="width100" src="upload/{{ $item->imagen_carpeta."280x190/".$item->imagen }}" alt="{{ $item->titulo }}">
                     </div>
                     <div class="info">
                         <p class="tags">
                             <a href="seccion/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
                         </p>
                         <h1><a href="nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
-                        <p class="details">{{{ $item->updated_at->diffForHumans() }}}</p>
+                        <p class="details hidden-sm hidden-xs">{{{ $item->updated_at->diffForHumans() }}}</p>
                         <p class="text">{{ $item->descripcion }}</p>
                     </div>
                 </article>
@@ -124,14 +124,14 @@
                 @foreach($post_5 as $item)
                 <article class="col-md-4 col-sm-4 mid">
                     <div class="img">
-                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="">
+                        <img class="width100" src="upload/{{ $item->imagen_carpeta."280x190/".$item->imagen }}" alt="{{ $item->titulo }}">
                     </div>
                     <div class="info">
                         <p class="tags">
                             <a href="seccion/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
                         </p>
                         <h1><a href="nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
-                        <p class="details">{{{ $item->updated_at->diffForHumans() }}}</p>
+                        <p class="details hidden-sm hidden-xs">{{{ $item->updated_at->diffForHumans() }}}</p>
                         <p class="text">{{ $item->descripcion }}</p>
                     </div>
                 </article>
@@ -141,17 +141,15 @@
                 <article class="col-md-8 col-sm-8 big">
                     <div class="img">
                         <a href="/nota/{{ $item->id."-".$item->slug_url }}">
-                            <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="">
+                            <img class="width100" src="upload/{{ $item->imagen_carpeta."540x360/".$item->imagen }}" alt="{{ $item->titulo }}">
                         </a>
                     </div>
-                    {{--
                     <div class="info2">
                         <p class="tags">
                             <a href="/seccion/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
                         </p>
                         <h1><a href="/nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
                     </div>
-                    --}}
                 </article>
                 @endforeach
 
@@ -164,14 +162,14 @@
                 @foreach($post_7 as $item)
                 <article class="col-md-4 col-sm-4 mid">
                     <div class="img">
-                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="">
+                        <img class="width100" src="upload/{{ $item->imagen_carpeta."280x190/".$item->imagen }}" alt="{{ $item->titulo }}">
                     </div>
                     <div class="info">
                         <p class="tags">
                             <a href="seccion/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
                         </p>
                         <h1><a href="nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
-                        <p class="details">{{{ $item->updated_at->diffForHumans() }}}</p>
+                        <p class="details hidden-sm hidden-xs">{{{ $item->updated_at->diffForHumans() }}}</p>
                         <p class="text">{{ $item->descripcion }}</p>
                     </div>
                 </article>
@@ -180,14 +178,14 @@
                 @foreach($post_8 as $item)
                 <article class="col-md-4 col-sm-4 mid">
                     <div class="img">
-                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="">
+                        <img class="width100" src="upload/{{ $item->imagen_carpeta."280x190/".$item->imagen }}" alt="{{ $item->titulo }}">
                     </div>
                     <div class="info">
                         <p class="tags">
                             <a href="seccion/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
                         </p>
                         <h1><a href="nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
-                        <p class="details">{{{ $item->updated_at->diffForHumans() }}}</p>
+                        <p class="details hidden-sm hidden-xs">{{{ $item->updated_at->diffForHumans() }}}</p>
                         <p class="text">{{ $item->descripcion }}</p>
                     </div>
                 </article>
@@ -196,14 +194,14 @@
                 @foreach($post_9 as $item)
                 <article class="col-md-4 col-sm-4 mid">
                     <div class="img">
-                        <img src="upload/{{ $item->imagen_carpeta."570x460/".$item->imagen }}" alt="">
+                        <img class="width100" src="upload/{{ $item->imagen_carpeta."280x190/".$item->imagen }}" alt="{{ $item->titulo }}">
                     </div>
                     <div class="info">
                         <p class="tags">
                             <a href="seccion/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
                         </p>
                         <h1><a href="nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
-                        <p class="details">{{{ $item->updated_at->diffForHumans() }}}</p>
+                        <p class="details hidden-sm hidden-xs">{{{ $item->updated_at->diffForHumans() }}}</p>
                         <p class="text">{{ $item->descripcion }}</p>
                     </div>
                 </article>

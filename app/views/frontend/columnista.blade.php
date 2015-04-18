@@ -12,7 +12,7 @@
             <div class="row">
                 <article class="col-md-4 col-sm-4 mid member">
                     <div class="img">
-                        <img src="/upload/columnista/{{ $columnista->imagen_portada }}" alt="post2">
+                        <img src="/upload/columnista/{{ $columnista->imagen_portada }}" alt="{{ $columnista->nombre." ".$columnista->apellidos }}">
                     </div>
                     <div class="info">
                         <h1>{{ $columnista->nombre." ".$columnista->apellidos }}</h1>

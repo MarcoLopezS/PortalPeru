@@ -9,12 +9,10 @@
         <div class="col-md-9 col-md-12 list-page clearfix">
             <h2>{{ $categoria->titulo }}</h2>
 
-
-
             @foreach($noticias as $item)
             <article class="row mid categoria-nota">
                 @if($item->imagen <> "")
-                <img src="/upload/{{ $item->imagen_carpeta."200x150/".$item->imagen }}" alt="post">
+                <img src="/upload/{{ $item->imagen_carpeta."200x150/".$item->imagen }}" alt="{{ $item->titulo }}">
                 @endif
                 <div class="info">
                     <h1><a href="/nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>

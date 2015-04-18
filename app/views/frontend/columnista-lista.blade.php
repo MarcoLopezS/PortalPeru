@@ -11,7 +11,7 @@
 
             @foreach($columnistas as $item)
             <article class="row mid">
-                <img src="/upload/columnista/200x150/{{ $item->foto }}" alt="post">
+                <img src="/upload/columnista/200x150/{{ $item->foto }}" alt="{{ $item->nombre." ".$item->apellidos }}">
                 <div class="info">
                     <h1><a href="{{ route('home.columnistas.person', [$item->id, $item->slug_url]) }}">{{ $item->nombre." ".$item->apellidos }}</a></h1>
                     <p class="text width100">

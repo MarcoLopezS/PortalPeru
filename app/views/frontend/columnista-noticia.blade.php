@@ -31,7 +31,10 @@ $noticiaImg = configWeb()->dominio."/upload/columnista/200x200/".$columnista->fo
         <!--CONTENT-->
         <div class="col-md-9 col-sm-12 clearfix author">
 
-            <h2>Columnista: <a href="/columnistas/{{ $columnista->id."-".$columnista->slug_url }}"><span>{{ $columnista->nombre." ".$columnista->apellidos }}</span></a></h2>
+            <h2>
+                Columnista: <a href="/columnistas/{{ $columnista->id."-".$columnista->slug_url }}">
+                <span>{{ $columnista->nombre." ".$columnista->apellidos }}</span></a>
+            </h2>
 
             <!--POST-->
             <article class="post mid fullwidth">
@@ -49,7 +52,7 @@ $noticiaImg = configWeb()->dominio."/upload/columnista/200x200/".$columnista->fo
 
                 @if($columna->imagen <> "")
                 <div class="info imagen">
-                    <img src="/upload/{{ $columna->imagen_carpeta."840x500/".$columna->imagen }}" alt="post-image">
+                    <img src="/upload/{{ $columna->imagen_carpeta."840x500/".$columna->imagen }}" alt="{{ $columna->titulo }}">
                 </div>
                 @endif
 
@@ -67,7 +70,7 @@ $noticiaImg = configWeb()->dominio."/upload/columnista/200x200/".$columnista->fo
             <!--END POST-->
 
             <!-- COMENTARIOS -->
-            <div class="row">
+            <div class="row visible-lg">
                 <h3>Comentarios</h3>
 
                 <div id="fb-root"></div>

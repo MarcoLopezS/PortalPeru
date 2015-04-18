@@ -4,15 +4,12 @@
     <ul class="aside-social list-inline visible-md visible-lg">
         <li>
             <a target="_blank" href="https://www.facebook.com/portalperu.pe"><i class="fa fa-facebook"></i></a>
-            <span>{{ get_likes("portalperu.pe") }}</span>
         </li>
         <li>
             <a target="_blank" href="https://twitter.com/portal_peru"><i class="fa fa-twitter"></i></a>
-            <span>{{ get_tweets("https://twitter.com/portal_peru") }}</span>
         </li>
         <li>
             <a target="_blank" href="https://plus.google.com/+PortalperuPe1"><i class="fa fa-google-plus"></i></a>
-            <span>{{ get_plusones("https://plus.google.com/+PortalperuPe1") }}</span>
         </li>
     </ul>
 
@@ -22,7 +19,7 @@
 
         @foreach($columnistasDia as $item)
         <article class="small clearfix">
-            <img src="/upload/columnista/80x80/{{ $item->foto }}" alt="post">
+            <img src="/upload/columnista/80x80/{{ $item->foto }}" alt="{{ $item->nombre." ".$item->apellidos }}">
             <div class="info">
                 <h1><a href="/columnistas/{{ $item->id."-".$item->slug_url }}">{{ $item->nombre." ".$item->apellidos }}</a></h1>
                 @foreach($item->columnHome() as $columna)
@@ -52,10 +49,8 @@
     </div>
     <!-- PUBLICIDAD -->
 
-    <div class="hidden-xs hidden-sm hidden-md hidden-lg"></div>
-
     <!-- GALERIA DE FOTOS -->
-    <div class="flickr col-md-12 col-sm-6">
+    <div class="flickr col-md-12 col-sm-6 hidden-sm hidden-xs">
         <h4>Galería de Imágenes</h4>
     </div>
     <!-- FIN GALERIA DE FOTOS -->
