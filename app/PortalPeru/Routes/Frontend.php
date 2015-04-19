@@ -7,6 +7,7 @@ Route::get('contacto', ['as' => 'home.contacto', 'uses' => 'FrontendController@c
 Route::get('publicidad', ['as' => 'home.publicidad', 'uses' => 'FrontendController@publicidad']);
 Route::get('nota/{id}-{url}', ['as' => 'home.noticia', 'uses' => 'FrontendController@noticia']);
 Route::get('seccion/{url}', ['as' => 'home.noticia.categoria', 'uses' => 'FrontendController@noticiaCategoria']);
+Route::get('tag/{id}-{url}', ['as' => 'home.noticia.tags', 'uses' => 'FrontendController@noticiaTags']);
 Route::get('buscar/b={texto}', ['as' => 'home.buscar', 'uses' => 'FrontendController@buscar']);
 Route::get('columnistas', ['as' => 'home.columnistas.list', 'uses' => 'FrontendController@columnistasList']);
 Route::get('columnistas/{id}-{url}', ['as' => 'home.columnistas.person', 'uses' => 'FrontendController@columnistasPerson']);
