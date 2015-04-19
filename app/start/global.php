@@ -13,6 +13,7 @@
 
 use PortalPeru\Entities\Configuration;
 use PortalPeru\Entities\Post;
+use PortalPeru\Entities\Tag;
 
 ClassLoader::addDirectories(array(
 
@@ -111,6 +112,12 @@ function reporteroCountNoPuplic()
 {
     $count = Post::whereCategoryId(6)->wherePublicar(0)->count();
     return $count;
+}
+
+function tagsNoticia($id)
+{
+    $tags = Tag::find($id);
+    return $tags;
 }
 
 //COUNTS SOCIAL
