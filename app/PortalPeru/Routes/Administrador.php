@@ -12,6 +12,8 @@ Route::group(['before' => 'guest'], function () {
     //REPORTERO CIUDADANO
     Route::get('reportero-ciudadano/registro', ['as' => 'reportero.register', 'uses' => 'ReporteroController@register']);
     Route::post('reportero-ciudadano/registro', ['as' => 'reportero.register.create', 'uses' => 'ReporteroController@registerCreate']);
+    Route::get('reportero-ciudadano/correo-activar-cuenta', ['as' => 'reportero.correoActivarCuenta', 'uses' => 'ReporteroController@correoActivarCuenta']);
+    Route::post('reportero-ciudadano/correo-activar-cuenta', ['as' => 'reportero.correoActivarCuenta.form', 'uses' => 'ReporteroController@correoActivarCuentaForm']);
     Route::get('reportero-ciudadano/login', ['as' => 'reportero.login', 'uses' => 'ReporteroController@loginView']);
     Route::get('reportero-ciudadano/verify', ['as' => 'reportero.verifyView', 'uses' => 'ReporteroController@verifyView']);
     Route::get('reportero-ciudadano/verify/{codigo}', ['as' => 'reportero.verify', 'uses' => 'ReporteroController@verify']);

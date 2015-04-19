@@ -1,4 +1,3 @@
-
 /*	
 --------------------------------------------------
 @Start smart forms
@@ -1944,4 +1943,12 @@ html, body{
 .errorMessageList{
     padding: 1% 0;
     line-height: 150%;
+}
+
+.textAlignCenter{
+	text-align: center;
+}
+
+.floatRight{
+	float: right;
 }
