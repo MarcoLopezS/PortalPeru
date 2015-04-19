@@ -138,13 +138,13 @@ class ReporteroController extends BaseController {
         $userVerify = UserProfile::whereActivacionCodigo($codigo)->first();
         $user = User::whereId($userVerify->user_id)->first();
 
-        if($userVerify->activacion == 0)
+        if($user->activacion == 0)
         {
             $user->activacion = 1;
             $user->save();
             $message = 'verify-active';
         }
-        elseif($userVerify->activacion == 1)
+        elseif($user->activacion == 1)
         {
             $message = 'verify-noactive';
         }
