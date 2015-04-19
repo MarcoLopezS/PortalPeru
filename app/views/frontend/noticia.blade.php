@@ -85,6 +85,17 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                                 {{ $noticia->contenido }}
                             </div>
                         </div>
+
+                        @if($noticiaTags<>"")
+                        <div class="info tags">
+                            <ul>
+                                @foreach($noticiaTags as $item)
+                                {{--*/ $tag = tagsNoticia($item); /*--}}
+                                    <li><a href="{{ route('home.noticia.tags', [$tag->id, $tag->slug_url]) }}">{{ $tag->titulo }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                     </div>
                 </div>
 
