@@ -18,7 +18,7 @@
     {{ HTML::style('admin/css/bootstrap.min.css') }}
 
     <!-- font Awesome -->
-    {{ HTML::style('admin/vendors/font-awesome-4.2.0/css/font-awesome.min.css') }}
+    {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css') }}
     {{ HTML::style('admin/css/styles/black.css') }}
     {{ HTML::style('admin/css/panel.css') }}
     {{ HTML::style('admin/css/metisMenu.css') }}
@@ -246,15 +246,15 @@
         <i class="livicon" data-name="plane-up" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i>
     </a>
     <!-- global js -->
-    <script src="{{ asset('admin/js/jquery-1.11.1.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin/vendors/form_builder1/js/jquery.ui.min.js') }}"></script>
-
-    <script src="{{ asset('admin/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}"></script>
+    <script src="{{ asset('//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') }}"></script>
+    
     <!--livicons-->
     <script src="{{ asset('admin/vendors/livicons/minified/raphael-min.js') }}"></script>
     <script src="{{ asset('admin/vendors/livicons/minified/livicons-1.4.min.js') }}"></script>
-    <script src="{{ asset('admin/js/josh.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin/js/metisMenu.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('admin/js/josh.js') }}"></script>
+    <script src="{{ asset('admin/js/metisMenu.js') }}"></script>
     <script src="{{ asset('admin/vendors/holder-master/holder.js') }}"></script>
     <!-- end of global js -->
     <!-- begin page level js -->

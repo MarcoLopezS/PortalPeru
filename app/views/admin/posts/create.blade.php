@@ -13,11 +13,6 @@ Agregar nuevo registro
 
 {{-- DATETIME PICKER --}}
 {{ HTML::style('admin/libs/datetimepicker/jquery.datetimepicker.css') }}
-
-{{-- TAGS --}}
-{{ HTML::style('admin/vendors/tags/bower_components/bootstrap/assets/css/docs.css') }}
-{{ HTML::style('admin/vendors/tags/dist/bootstrap-tagsinput.css') }}
-{{ HTML::style('admin/vendors/tags/assets/app.css') }}
 @stop
 
 

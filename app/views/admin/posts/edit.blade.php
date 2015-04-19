@@ -10,16 +10,10 @@ Editar registro
 @section('header_styles')
 {{ HTML::style('admin/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}
 {{ HTML::style('admin/css/pages/form_layouts.css') }}
-{{ HTML::style('admin/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}
 {{ HTML::style('admin/vendors/gallery/basic/source/jquery.fancybox.css?v=2.1.5') }}
 
 {{-- DATETIME PICKER --}}
 {{ HTML::style('admin/libs/datetimepicker/jquery.datetimepicker.css') }}
-
-{{-- TAGS --}}
-{{ HTML::style('admin/vendors/tags/bower_components/bootstrap/assets/css/docs.css') }}
-{{ HTML::style('admin/vendors/tags/dist/bootstrap-tagsinput.css') }}
-{{ HTML::style('admin/vendors/tags/assets/app.css') }}
 @stop
 
 
