@@ -18,19 +18,19 @@
                     </label>
                 </div><!-- end section -->
 
-        	</div>
+                @if(Session::has('error'))
+                    <div class="alert notification alert-error spacer-b10">
+                        <i class="fa fa-check"></i> El email no está registrado.
+                    </div>
+                @endif
 
-        	@if(Session::has('error'))
-                <div class="alert notification alert-error spacer-b10">
-                    <i class="fa fa-check"></i> El email no está registrado.
-                </div>
-            @endif
+                @if(Session::has('status'))
+                    <div class="alert notification alert-success spacer-b10">
+                        <i class="fa fa-check"></i> Se ha enviado un mensaje al correo que has indicado.
+                    </div>
+                @endif
 
-            @if(Session::has('status'))
-                <div class="alert notification alert-success spacer-b10">
-                    <i class="fa fa-check"></i> Se ha enviado un mensaje al correo que has indicado.
-                </div>
-            @endif
+        	</div>        	
 
         	<div class="form-footer">
                 <button type="submit" class="button btn-red">Recuperar contraseña</button>
