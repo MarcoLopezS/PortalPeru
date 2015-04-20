@@ -128,6 +128,63 @@ class ReporteroController extends BaseController {
         }
     }
 
+    public function correoPassword()
+    {
+        return View::make('reportero.sendemail-password');
+    }
+
+    public function correoPasswordForm()
+    {
+        $rules = [
+            'email' => 'required|email'
+        ];
+
+        $data = Input::only('email');
+
+        $validatorUser = Validator::make($data, $rules);
+
+        if($validatorUser->passes())
+        {
+            $user = User::whereEmail(Input::get('email'))->first();
+
+            if(!$user)
+            {
+                return Redirect::back()->with('login_error', "El email no está registrado.")->withInput();
+            }
+            else
+            {
+                $passwordNew = CodigoAleatorio(8,true, true, false);
+
+                $userProfile = UserProfile::whereUserId($user->id)->first();
+                $user = User::find($user->id);
+                $user->password = $passwordNew;
+                $user->save();
+
+                $datosCorreo = [
+                    'usuario' => $userProfile->nombre." ".$userProfile->apellidos
+                ];
+
+                $fromEmail = 'no-reply@portalperu.pe';
+                $fromNombre = 'Portal Perú';
+
+                Mail::queue('emails.reportero-password', $datosCorreo, function($message) use ($fromNombre, $fromEmail){
+                    $message->to(Input::get('email'), Input::get('nombre'));
+                    $message->from($fromEmail, $fromNombre);
+                    $message->subject('Portal Perú - Recuperar contraseña');
+                });
+
+                $message = 'verify';
+
+                //REDIRECCIONAR A PAGINA PARA VER DATOS
+                return View::make('reportero.verify', compact('message'));
+            }            
+        }
+        else
+        {
+            return Redirect::back()->with('errors', $validatorUser->messages())->withInput();
+        }
+    }
+
     public function verifyView()
     {
         return View::make('reportero.verify');
