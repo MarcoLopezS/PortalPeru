@@ -14,6 +14,8 @@ Route::group(['before' => 'guest'], function () {
     Route::post('reportero-ciudadano/registro', ['as' => 'reportero.register.create', 'uses' => 'ReporteroController@registerCreate']);
     Route::get('reportero-ciudadano/correo-activar-cuenta', ['as' => 'reportero.correoActivarCuenta', 'uses' => 'ReporteroController@correoActivarCuenta']);
     Route::post('reportero-ciudadano/correo-activar-cuenta', ['as' => 'reportero.correoActivarCuenta.form', 'uses' => 'ReporteroController@correoActivarCuentaForm']);
+    Route::get('reportero-ciudadano/recuperar-clave', ['as' => 'reportero.correoPassword', 'uses' => 'RemindersController@getRemind']);
+    Route::post('reportero-ciudadano/recuperar-clave', ['as' => 'reportero.correoPassword.form', 'uses' => 'RemindersController@postRemind']);
     Route::get('password/reset/{token}', ['as' => 'password.getReset', 'uses' => 'RemindersController@getReset']);
     Route::post('password/reset/{token}', ['as' => 'password.postReset', 'uses' => 'RemindersController@postReset']);
     Route::get('reportero-ciudadano/login', ['as' => 'reportero.login', 'uses' => 'ReporteroController@loginView']);
