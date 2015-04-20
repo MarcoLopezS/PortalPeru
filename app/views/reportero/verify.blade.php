@@ -25,7 +25,7 @@
 
         <div class="section">
             <a class="button btn-red" href="{{ route('reportero.login') }}">Iniciar sesion</a>
-            <a class="button btn-red floatRight" href="#">Recuperar contraseña</a>
+            <a class="button btn-red floatRight" href="{{ route('reportero.correoPassword') }}">Recuperar contraseña</a>
         </div>
 
 

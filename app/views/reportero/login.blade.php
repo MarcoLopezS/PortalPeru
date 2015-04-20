@@ -12,8 +12,6 @@
 
             <div class="form-body theme-red">
 
-
-
                 <div class="section">
                     <label for="email" class="field prepend-icon">
                         {{ Form::email('email', null, ['class' => 'gui-input', 'placeholder' => 'Correo electronico']) }}
@@ -45,6 +43,7 @@
             </div><!-- end .form-body section -->
             <div class="form-footer">
                 <button type="submit" class="button btn-red">Iniciar sesión</button>
+                <a class="button btn-red floatRight" href="{{ route('reportero.correoPassword') }}">Recuperar contraseña</a>
             </div><!-- end .form-footer section -->
 
         {{ Form::close() }}
