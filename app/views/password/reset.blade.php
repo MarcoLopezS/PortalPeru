@@ -8,10 +8,10 @@
             <img src="/imagenes/logo.png" alt="logo">
         </div><!-- end .form-header section -->
 
-        {{ Form::open(['route' => 'administrador.login', 'method' => 'post']) }}
-
+        <form action="{{ action('RemindersController@postReset') }}" method="POST">
+            <input type="hidden" name="token" value="{{ $token }}">
             <div class="form-body theme-red">
-
+                
                 <div class="section">
                     <label for="email" class="field prepend-icon">
                         {{ Form::email('email', null, ['class' => 'gui-input', 'placeholder' => 'Correo electronico']) }}
@@ -27,26 +27,25 @@
                 </div><!-- end section -->
 
                 <div class="section">
-                    <label class="switch block">
-                        <input type="checkbox" name="remember" id="remember" checked>
-                        <label for="remember" data-on="SI" data-off="NO"></label>
-                        <span>Recordarme</span>
+                    <label for="password_confirmation" class="field prepend-icon">
+                        {{ Form::password('password_confirmation', ['class' => 'gui-input', 'placeholder' => 'Repetir conteaseña']) }}
+                        <label for="password_confirmation" class="field-icon"><i class="fa fa-lock"></i></label>
                     </label>
                 </div><!-- end section -->
 
-                @if(Session::has('login_error'))
+                @if(Session::has('error'))
                     <div class="alert notification alert-error spacer-b10">
-                        <i class="fa fa-check"></i> El email y/o contraseña no coinciden.
+                        <i class="fa fa-check"></i> El email ingresado no es correcto.
                     </div>
                 @endif
 
-            </div><!-- end .form-body section -->
+            </div>
+
             <div class="form-footer">
-                <button type="submit" class="button btn-red">Iniciar sesión</button>
-                <a class="button btn-red floatRight" href="{{ route('reportero.correoPassword') }}">Recuperar contraseña</a>
+                <button type="submit" class="button btn-red">Cambiar contraseña</button>
             </div><!-- end .form-footer section -->
 
-        {{ Form::close() }}
+        </form>
 
     </div><!-- end .smart-forms section -->
 

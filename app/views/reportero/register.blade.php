@@ -131,7 +131,8 @@ Registro | @parent
 
         </div><!-- end .form-body section -->
         <div class="form-footer">
-            <button type="submit" class="button btn-red">Registrarme   </button>
+            <button type="submit" class="button btn-red">Registrarme</button>
+            <a class="button btn-red floatRight" href="{{ route('reportero.login') }}">Iniciar sesión</a>
         </div><!-- end .form-footer section -->
 
     {{ Form::close() }}
