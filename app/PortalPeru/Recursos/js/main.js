@@ -1,6 +1,12 @@
 $( document ).ready(function() {
 
-	var popularSlider;
+	var publicidadNoticia = function() {
+
+		var publicidad = '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8629542769595128" data-ad-slot="1421908493" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';
+
+		$(".texto-nota p:first").after(publicidad);
+
+	};
    
 	var countBackgroundSpeed = function() {
 		var url = $('body').css('background-image').replace('url(', '').replace(')', '').replace("'", '').replace('"', '');
@@ -102,6 +108,7 @@ $( document ).ready(function() {
 		if(width>767){
 	  		countBackgroundSpeed();
 	  	};
+	  	publicidadNoticia();
 	  	flickrLoad();
 	  	initSliders();	  
 	});
