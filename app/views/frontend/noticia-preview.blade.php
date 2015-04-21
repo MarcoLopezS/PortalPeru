@@ -1,12 +1,28 @@
 @extends('layouts.frontend')
 
+@section('html_title')
+{{ $noticia->titulo }} | @parent
+@stop
+
 {{--*/
 $noticiaUrl = configWeb()->dominio."/nota/".$noticia->id."-".$noticia->slug_url;
 $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/".$noticia->imagen;
 /*--}}
 
+@section('script_header')
+<!-- Open Graph -->
+<meta property="og:title" content='{{ $noticia->titulo  }}'>
+<meta property="og:type" content='article' >
+<meta property="og:url" content='{{ $noticiaUrl }}' >
+<meta property="og:image" content='{{ $noticiaImg }}' >
+<meta property="og:site_name" content='{{ configWeb()->titulo }}' >
+<meta property="fb:admins" content='1434798696787255'>
+<meta property="og:description" content='{{ $noticia->descripcion }}'>
+<!-- fin Open Graph -->
+@stop
+
 @section('contenido_frontend')
-		
+
 <!--MAIN SECTION-->
 <div class="main post-page">
 
@@ -19,12 +35,15 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                 <div class="info">
                     <h1>{{ $noticia->titulo }}</h1>
                     <div class="text">{{ $noticia->descripcion }}</div>
-                    <div class="data">
-                        <p class="details">{{ $noticia->category->titulo }} | {{ date_format(new DateTime($noticia->published_at), 'd/m/Y H:m')  }}
-                        <span class="redaccion">Autor: {{ $noticia->redaccion }}</span></p>
+                    <div class="col-xs-12 data">
+                        <span class="col-sm-6 col-xs-12 details textAlignLeft">{{ $noticia->category->titulo }} | {{ date_format(new DateTime($noticia->published_at), 'd/m/Y H:m')  }}</span>
+                        <span class="col-sm-6 col-xs-12 details textAlignRight">Autor: {{ $noticia->redaccion }}</span>
+                    </div>
+                    <div class="col-xs-12 data">
+                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-552dd2a835af55f3" async="async"></script>
+                        <div class="addthis_native_toolbox"></div>
                     </div>
                 </div>
-
 
                 @if($noticia->video <> "")
                 <div class="video">
@@ -40,7 +59,7 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                         <div class="slides">
                             @foreach($noticiaFotos as $item)
                             <article class="big clearfix">
-                                <img src="/upload/{{ $item->imagen_carpeta."870x500/".$item->imagen }}" alt="post-image" >
+                                <img src="/upload/{{ $item->imagen_carpeta."870x500/".$item->imagen }}" alt="{{ $noticia->titulo }}" >
                                 @if($item->titulo <> "")
                                 <div class="info">
                                     <p class="text">{{ $item->titulo }}</p>
@@ -54,19 +73,41 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                 @elseif(count($noticiaFotos) == 0)
                     @if($noticia->imagen <> "")
                     <div class="info imagen">
-                        <img src="/upload/{{ $noticia->imagen_carpeta."870x500/".$noticia->imagen }}" alt="post-image">
+                        <img src="{{ $noticiaImg }}" alt="{{ $noticia->titulo }}">
                     </div>
                     @endif
                 @endif
 
-
                 <div class="row">
                     <div class="info col-md-12 col-sm-12">
                         <div class="info">
-                            <div class="text">
+                            <div class="text texto-nota">
                                 {{ $noticia->contenido }}
+                                <style type="text/css">
+                                    .adslot_nota_horizontal { width: 320px; height: 100px; } 
+                                    @media (min-width:500px) { .adslot_nota_horizontal { width: 468px; height: 60px; } } 
+                                    @media (min-width:800px) { .adslot_nota_horizontal { width: 728px; height: 90px; } }
+                                </style>
+                                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <ins class="adsbygoogle adslot_nota_horizontal" 
+                                style="display:block" 
+                                data-ad-client="ca-pub-8629542769595128" 
+                                data-ad-slot="1421908493" 
+                                data-ad-format="auto"></ins>
+                                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                             </div>
                         </div>
+
+                        @if($noticiaTags<>"")
+                        <div class="info tags">
+                            <ul>
+                                @foreach($noticiaTags as $item)
+                                {{--*/ $tag = tagsNoticia($item); /*--}}
+                                    <li><a href="{{ route('home.noticia.tags', [$tag->id, $tag->slug_url]) }}">{{ $tag->titulo }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                     </div>
                 </div>
 
@@ -94,7 +135,7 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                 @if($noticia->user->profile->imagen<>"")
                 <img class="imgBorder50" src="{{ $reporteroUrlImg }}" alt="{{ $reporteroNombreCompleto }}">
                 @else
-                <img class="imgBorder50" src="/imagenes/rciud/usuario.jpg" width="130" alt="Reportero Ciudadano"/>
+                <img src="/imagenes/rciud/usuario.jpg" width="130" alt="Reportero Ciudadano"/>
                 @endif
                 <div class="info">
                     <h1><a href="#">{{ $reporteroNombreCompleto }}</a></h1>
@@ -130,7 +171,7 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
             @endif
 
             <!-- COMENTARIOS -->
-            <div class="row">
+            <div class="row visible-lg">
                 <h3>Comentarios</h3>
 
                 <div id="fb-root"></div>
@@ -142,7 +183,7 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                   fjs.parentNode.insertBefore(js, fjs);
                 }(document, 'script', 'facebook-jssdk'));</script>
 
-                <div class="fb-comments" data-href="{{ $noticiaUrl }}" data-width="840" data-numposts="5" data-colorscheme="light"></div>
+                <div class="fb-comments" data-href="{{ $noticiaUrl }}" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
             </div>
             <!-- FIN COMENTARIOS -->
 

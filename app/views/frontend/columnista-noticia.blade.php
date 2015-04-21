@@ -61,6 +61,19 @@ $noticiaImg = configWeb()->dominio."/upload/columnista/200x200/".$columnista->fo
                         <div class="info">
                             <div class="text texto-nota">
                                 {{ $columna->contenido }}
+
+                                <style type="text/css">
+                                    .adslot_nota_horizontal { width: 320px; height: 100px; } 
+                                    @media (min-width:500px) { .adslot_nota_horizontal { width: 468px; height: 60px; } } 
+                                    @media (min-width:800px) { .adslot_nota_horizontal { width: 728px; height: 90px; } }
+                                </style>
+                                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <ins class="adsbygoogle adslot_nota_horizontal" 
+                                style="display:block" 
+                                data-ad-client="ca-pub-8629542769595128" 
+                                data-ad-slot="1421908493" 
+                                data-ad-format="auto"></ins>
+                                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                             </div>
                         </div>
                     </div>
