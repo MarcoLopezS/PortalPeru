@@ -2,20 +2,20 @@
 <aside class="col-md-3 col-sm-12">
 
     <ul class="aside-social list-inline visible-md visible-lg">
-        <li>
+        <li class="social-fb">
             <a target="_blank" href="https://www.facebook.com/portalperu.pe"><i class="fa fa-facebook"></i></a>
         </li>
-        <li>
+        <li class="social-tw">
             <a target="_blank" href="https://twitter.com/portal_peru"><i class="fa fa-twitter"></i></a>
         </li>
-        <li>
+        <li class="social-gp">
             <a target="_blank" href="https://plus.google.com/+PortalperuPe1"><i class="fa fa-google-plus"></i></a>
         </li>
     </ul>
 
     <!-- COLUMNISTAS -->
     <div class="most-discussed col-md-12 col-sm-6 columnistas">
-        <h4>Columnistas</h4>
+        <h4><a href="/columnistas">Columnistas</a></h4>
 
         @foreach($columnistasDia as $item)
         <article class="small clearfix">
