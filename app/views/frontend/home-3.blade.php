@@ -66,9 +66,13 @@
                 <!-- PUBLICIDAD -->
                 <article class="col-md-4 col-sm-4 mid">
 
-                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <!-- PP - Responsive - Header -->
-                    <ins class="adsbygoogle"
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <style type="text/css">
+                        .adslot_home { width: 320px; height: 300px; }
+                        @media (min-width:500px) { .adslot_home { width: 468px; height: 300px; } }
+                        @media (min-width:800px) { .adslot_home { width: 255px; height: 255px; } }
+                    </style>
+                    <ins class="adsbygoogle adslot_home"
                          style="display:block"
                          data-ad-client="ca-pub-8629542769595128"
                          data-ad-slot="1421908493"
