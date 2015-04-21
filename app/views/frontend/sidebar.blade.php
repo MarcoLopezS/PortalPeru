@@ -38,11 +38,12 @@
     <!-- PUBLICIDAD -->
     <div class="banner visible-xs visible-md visible-lg">
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- PP - Responsive - 271x350 -->
+        <!-- PP - Responsive - Header -->
         <ins class="adsbygoogle"
-             style="display:inline-block;width:271px;height:350px"
-             data-ad-client="ca-pub-3674889010429322"
-             data-ad-slot="4554110744"></ins>
+             style="display:block"
+             data-ad-client="ca-pub-8629542769595128"
+             data-ad-slot="1421908493"
+             data-ad-format="auto"></ins>
         <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
         </script>

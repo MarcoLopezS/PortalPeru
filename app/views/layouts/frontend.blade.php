@@ -43,13 +43,14 @@
                     @media(min-width: 800px) { .pp-responsive { width: 728px; height: 90px; } }
                 </style>
                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- PP - Responsive -->
-                <ins class="adsbygoogle pp-responsive"
-                     style="display:inline-block"
-                     data-ad-client="ca-pub-3674889010429322"
-                     data-ad-slot="1879845946"></ins>
+                <!-- PP - Responsive - Header -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-8629542769595128"
+                     data-ad-slot="1421908493"
+                     data-ad-format="auto"></ins>
                 <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
+                (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
             </div>
         </div>

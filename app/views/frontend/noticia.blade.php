@@ -81,7 +81,7 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                 <div class="row">
                     <div class="info col-md-12 col-sm-12">
                         <div class="info">
-                            <div class="text">
+                            <div class="text texto-nota">
                                 {{ $noticia->contenido }}
                             </div>
                         </div>

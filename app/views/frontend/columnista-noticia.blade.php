@@ -59,7 +59,7 @@ $noticiaImg = configWeb()->dominio."/upload/columnista/200x200/".$columnista->fo
                 <div class="row">
                     <div class="info col-md-12 col-sm-12">
                         <div class="info">
-                            <div class="text">
+                            <div class="text texto-nota">
                                 {{ $columna->contenido }}
                             </div>
                         </div>
