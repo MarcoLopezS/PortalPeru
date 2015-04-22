@@ -28,6 +28,14 @@ Noticias
         <span class="glyphicon glyphicon-plus"></span>
         Agregar nuevo registro
     </a>
+
+    @if(is_admin())
+    <a href="{{ route('administrador.posts.deletes') }}" class="btn btn-md btn-default mgBt10">
+        <span class="glyphicon glyphicon-list"></span>
+        Ver noticias eliminadas
+    </a>
+    @endif
+    
     <div class="alert alert-dismissable"></div>
 </section>
 <!--section ends-->
@@ -77,7 +85,7 @@ Noticias
                                 <td>{{ $item->titulo }}</td>
                                 <td>{{ $item->category->titulo }}</td>
                                 <td>{{ $item->publicar ? 'Publicado' : 'No publicado' }}</td>
-                                <td>{{ date_format(new DateTime($item->published_at), 'd/m/Y H:m')  }}</td>
+                                <td>{{ date_format(new DateTime($item->published_at), 'd/m/Y H:i')  }}</td>
                                 <td>
                                     <div class="button-dropdown" data-buttons="dropdown">
                                         <a href="#" class="button button-rounded">
@@ -89,6 +97,7 @@ Noticias
                                             <li><a href="{{ route('administrador.posts.edit', $item->id) }}">Editar</a></li>
                                             <li><a href="#" class="btn-delete">Eliminar</a></li>
                                             <li><a href="{{ route('administrador.post.photoslist', $item->id) }}">Galería de Fotos</a></li>
+                                            <li><a href="{{ route('administrador.post.history', $item->id) }}">Historial</a></li>
                                         </ul>
                                     </div>
                                 </td>
