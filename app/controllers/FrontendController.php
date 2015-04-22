@@ -101,8 +101,7 @@ class FrontendController extends BaseController{
             $noticiaTags = explode(",", $noticiaTags[0]);
         }elseif($noticia->tags == "0,0,0" OR $noticia->tags == ""){
             $noticiaTags = "";
-        }
-        
+        }        
 
         return View::make('frontend.noticia', compact('noticia', 'noticiaFotos', 'noticiaTags', 'columnistasDia'));
     }
@@ -120,8 +119,15 @@ class FrontendController extends BaseController{
 
         $noticia = Post::findOrFail($id);
         $noticiaFotos = PostPhoto::where('post_id', $id)->orderBy('orden', 'asc')->get();
+        if($noticia->tags <> "0,0,0"){
+            $noticiaTags = explode("0,", $noticia->tags);
+            $noticiaTags = explode(",0", $noticiaTags[1]);
+            $noticiaTags = explode(",", $noticiaTags[0]);
+        }elseif($noticia->tags == "0,0,0" OR $noticia->tags == ""){
+            $noticiaTags = "";
+        }
 
-        return View::make('frontend.noticia-preview', compact('noticia', 'noticiaFotos', 'columnistasDia'));
+        return View::make('frontend.noticia-preview', compact('noticia', 'noticiaFotos', 'noticiaTags', 'columnistasDia'));
     }
 
     public function noticiaCategoria($url)
