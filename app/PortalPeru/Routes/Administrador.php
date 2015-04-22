@@ -54,6 +54,12 @@ Route::group(['before' => ['auth']], function () {
         Route::resource('administrador/posts', 'AdminPostsController');
         Route::get('view/{id}-{url}', ['as' => 'home.noticia.preview', 'uses' => 'FrontendController@noticiaPreview']);
 
+        //HISTORY
+        Route::get('administrador/posts/history/{id}', ['as' => 'administrador.post.history', 'uses' => 'AdminPostsController@history']);
+        Route::get('administrador/posts-deletes', ['as' => 'administrador.posts.deletes', 'uses' => 'AdminPostsController@listsDeletes']);
+        Route::delete('administrador/posts-deletes/destroy/{id}', ['as' => 'administrador.posts.destroyTotal', 'uses' => 'AdminPostsController@destroyTotal']);
+        Route::post('administrador/posts-deletes/restore/{id}', ['as' => 'administrador.posts.restore', 'uses' => 'AdminPostsController@restore']);
+
         //REPORTERO CIUDADANO
         Route::get('administrador/reportero', ['as' => 'administrador.reportero.list', 'uses' => 'AdminPostsController@reporteroList']);
 
