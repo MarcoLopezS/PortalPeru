@@ -37,17 +37,17 @@
             <!--END MENU-->
 
             <div class="sepheader">
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                 <style type="text/css">
                     .adslot_header_horizontal { width: 320px; height: 100px; margin: 0 auto; }
                     @media (min-width:500px) { .adslot_header_horizontal { width: 468px; height: 60px;  margin: 0 auto; } }
                     @media (min-width:800px) { .adslot_header_horizontal { width: 728px; height: 90px; margin: 0 auto; } }
                 </style>
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                 <ins class="adsbygoogle adslot_header_horizontal"
                      style="display:block"
-                     data-ad-client="ca-pub-8629542769595128"
-                     data-ad-slot="1421908493"
-                     data-ad-format="horizontal"></ins>
+                     data-ad-client="ca-pub-3674889010429322"
+                     data-ad-slot="1879845946"
+                     data-ad-format="auto"></ins>
                 <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
