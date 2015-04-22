@@ -2,6 +2,7 @@
 
 use PortalPeru\Entities\Post;
 use PortalPeru\Entities\PostPhoto;
+use PortalPeru\Entities\PostHistory;
 use PortalPeru\Repositories\BaseRepo;
 use PortalPeru\Repositories\CategoryRepo;
 use PortalPeru\Repositories\PostOrderRepo;
@@ -220,6 +221,12 @@ class AdminPostsController extends \BaseController {
             $post->slug_url = $slug_url;
             $this->postRepo->update($post,$data);
 
+            $history = new PostHistory;
+            $history->type = 'update';
+            $history->post_id = $id;
+            $history->user_id = Auth::user()->id;
+            $history->save();
+
             //REDIRECCIONAR A PAGINA PARA VER DATOS
             return Redirect::route('administrador.posts.index');
         }
@@ -238,8 +245,14 @@ class AdminPostsController extends \BaseController {
      */
     public function destroy($id)
     {
+        $history = new PostHistory;
+        $history->type = 'delete';
+        $history->post_id = $id;
+        $history->user_id = Auth::user()->id;
+        $history->save();
+
         $post = Post::find($id);
-        $post->delete();
+        $post->delete();       
 
         $message = 'El registro se eliminó satisfactoriamente.';
 
@@ -255,6 +268,89 @@ class AdminPostsController extends \BaseController {
         return Redirect::route('administrador.posts.index');
     }
 
+    /**
+     * Historial de cambios de Noticia
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function history($id)
+    {
+        $post = Post::findOrFail($id);
+        $posts = PostHistory::wherePostId($id)->paginate(15);
+
+        return View::make('admin.posts.history', compact('post','posts'));
+    }
+
+    /**
+     * Lista de noticias Eliminadas
+     *
+     * @return Response
+     */
+
+    public function listsDeletes()
+    {
+        $posts = $this->postRepo->searchDeletes(Input::all(), BaseRepo::PAGINATE, 'deleted_at', 'desc');
+        $category = $this->categoryRepo->lists('titulo', 'id');
+        return View::make('admin.posts.list-deletes', compact('posts', 'category'));
+    }
+
+    /**
+     * Eliminacion completa de Noticia
+     */
+    public function destroyTotal($id)
+    {
+        $post = Post::onlyTrashed()->find($id);
+        $post->forceDelete();
+
+        $message = 'El registro se eliminó satisfactoriamente.';
+
+        if(Request::ajax())
+        {
+            return Response::json([
+                'message' => $message
+            ]);
+        }
+
+        //\Session::flash('message', $message);
+
+        return Redirect::route('administrador.posts.deletes');
+    }
+
+    /**
+     * Restaurar noticia
+     */
+    public function restore($id)
+    {
+        $history = new PostHistory;
+        $history->type = 'restore';
+        $history->post_id = $id;
+        $history->user_id = Auth::user()->id;
+        $history->save();
+
+        $post = Post::onlyTrashed()->find($id);
+        $post->restore();
+
+        $message = 'El registro se restauró satisfactoriamente.';
+
+        if(Request::ajax())
+        {
+            return Response::json([
+                'message' => $message
+            ]);
+        }
+
+        //\Session::flash('message', $message);
+
+        return Redirect::route('administrador.posts.deletes');
+    }
+
+    /**
+     * Fotos de Post
+     *
+     * @param  int  $id
+     * @return Response
+     */
     public function photosList($post)
     {
         $posts = $this->postRepo->findOrFail($post);
@@ -268,6 +364,13 @@ class AdminPostsController extends \BaseController {
         {
             $sortedval = $_POST['listPhoto'];
             try{
+
+                $history = new PostHistory;
+                $history->type = 'update';
+                $history->post_id = $post;
+                $history->user_id = Auth::user()->id;
+                $history->save();
+
                 foreach ($sortedval as $key => $sort){
                     $sortPhoto = PostPhoto::find($sort);
                     $sortPhoto->orden = $key;
@@ -303,6 +406,12 @@ class AdminPostsController extends \BaseController {
         $photo->post_id = $post;
         $photo->user_id = \Auth::user()->id;
         $photo->save();
+
+        $history = new PostHistory;
+        $history->type = 'update';
+        $history->post_id = $post;
+        $history->user_id = Auth::user()->id;
+        $history->save();
     }
 
     public function photosEdit($post, $id)
@@ -345,6 +454,12 @@ class AdminPostsController extends \BaseController {
             $postPhoto->imagen_carpeta = $imagen_carpeta;
             $this->postPhotoRepo->update($postPhoto,$data);
 
+            $history = new PostHistory;
+            $history->type = 'update';
+            $history->post_id = $post;
+            $history->user_id = Auth::user()->id;
+            $history->save();
+
             //REDIRECCIONAR A PAGINA PARA VER DATOS
             return Redirect::route('administrador.post.photoslist', $post);
         }
@@ -356,11 +471,23 @@ class AdminPostsController extends \BaseController {
 
     public function photosUploadDelete($post, $id)
     {
+        $history = new PostHistory;
+        $history->type = 'update';
+        $history->post_id = $post;
+        $history->user_id = Auth::user()->id;
+        $history->save();
+        
         $photo = PostPhoto::find($id);
         $photo->delete();
         return Redirect::route('administrador.post.photoslist', $post);
     }
 
+    /**
+     * Lista de noticias de Reportero Ciudadano
+     *
+     * @param  int  $id
+     * @return Response
+     */
     public function reporteroList()
     {
         $posts = Post::whereCategoryId(6)->wherePublicar(0)->orderBy('created_at', 'asc')->paginate();
