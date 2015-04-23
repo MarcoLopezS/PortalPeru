@@ -25,12 +25,18 @@ Mi Perfil
         <div class="col-lg-12">
             <ul class="nav  nav-tabs ">
                 <li class="active">
-                    <a href="#tab1" data-toggle="tab"> <i class="livicon" data-name="user" data-size="16" data-c="#000" data-hc="#000" data-loop="true"></i>
+                    <a href="#perfil" data-toggle="tab"> <i class="livicon" data-name="user" data-size="16" data-c="#000" data-hc="#000" data-loop="true"></i>
                         Mi Perfil
                     </a>
                 </li>
                 <li>
-                    <a href="#tab2" data-toggle="tab">
+                    <a href="#datos" data-toggle="tab">
+                        <i class="livicon" data-name="notebook" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
+                        Datos personales
+                    </a>
+                </li>
+                <li>
+                    <a href="#password" data-toggle="tab">
                         <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
                         Cambiar contraseña
                     </a>
@@ -39,7 +45,7 @@ Mi Perfil
 
             <div  class="tab-content mar-top">
 
-                <div id="tab1" class="tab-pane fade active in">
+                <div id="perfil" class="tab-pane fade active in">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="panel">
@@ -55,16 +61,7 @@ Mi Perfil
                                     <div class="col-md-4">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
                                             <div class="fileinput-new thumbnail img-file">
-                                                <img data-src="holder.js/100%x100%" alt="..."></div>
-                                            <div class="fileinput-preview fileinput-exists thumbnail img-max"></div>
-                                            <div>
-                                                <span class="btn btn-default btn-file">
-                                                    <span class="fileinput-new text-center">
-                                                        @lang('users/title.select_image')
-                                                    </span>
-                                                    <span class="fileinput-exists">Change</span>
-                                                    <input type="file" name="..."></span>
-                                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                                <img data-src="holder.js/100%x100%" alt="...">
                                             </div>
                                         </div>
                                     </div>
@@ -77,11 +74,11 @@ Mi Perfil
     
                                                     <tr>
                                                         <td>Nombres</td>
-                                                        <td>{{ $user->first_name }}</td>
+                                                        <td>{{ $user->profile->nombre }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Apellidos</td>
-                                                        <td>{{ $user->last_name }}</td>
+                                                        <td>{{ $user->profile->apellidos }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Email</td>
@@ -90,7 +87,7 @@ Mi Perfil
                                                     <tr>
                                                         <td>Creado desde</td>
                                                         <td>{{{ $user->created_at->diffForHumans() }}}</td>
-                                                    </tr> 
+                                                    </tr>
                                                 </table>
                                             </div>
                                         </div>
@@ -102,7 +99,43 @@ Mi Perfil
                     </div>
                 </div>
 
-                <div id="tab2" class="tab-pane fade">
+                <div id="datos" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-12 pd-top">
+
+                            {{ Form::model($user->profile, ['method' => 'PUT', 'class' => 'form-horizontal form-bordered', 'files' => 'true']) }}
+
+                                <div class="form-group @if($errors->has('nombre')) has-error @endif">
+                                    {{ Form::label('nombre', 'Nombre', ['class' => 'col-md-3 control-label']) }}
+                                    <div class="col-md-9">
+                                        {{ Form::text('nombre', null, ['class' => 'form-control']) }}
+                                        {{ $errors->first('nombre', '<span class="help-block">:message</span>') }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group @if($errors->has('apellidos')) has-error @endif">
+                                    {{ Form::label('apellidos', 'Apellidos', ['class' => 'col-md-3 control-label']) }}
+                                    <div class="col-md-9">
+                                        {{ Form::text('apellidos', null, ['class' => 'form-control']) }}
+                                        {{ $errors->first('apellidos', '<span class="help-block">:message</span>') }}
+                                    </div>
+                                </div>
+
+                                <!-- Form actions -->
+                                <div class="form-group">
+                                    <div class="col-md-12 text-right">
+                                        {{ Form::submit('Guardar cambios', ['class' => 'btn btn-responsive btn-primary btn-md']) }}
+                                        <a href="{{ route('reportero-ciudadano.user.profile') }}" class="btn btn-responsive btn-default btn-md">Cancelar</a>
+                                    </div>
+                                </div>
+
+                            {{ Form::close() }}
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="password" class="tab-pane fade">
                     <div class="row">
                         <div class="col-md-12 pd-top">
 
@@ -151,6 +184,7 @@ Mi Perfil
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
