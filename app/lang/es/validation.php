@@ -119,6 +119,7 @@ return array(
     'last_name'		=> 'Apellidos',
     'email'			=> 'Email',
     'password' 		=> 'Contraseña',
-    'password_confirmation'	=> 'confirmar contraseña'
+    'password_confirmation'	=> 'Confirmar contraseña',
+    'type'			=> 'Rol'
 ),
 );
