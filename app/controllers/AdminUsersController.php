@@ -1,6 +1,7 @@
 <?php
 
 use PortalPeru\Entities\User;
+use PortalPeru\Entities\UserProfile;
 use PortalPeru\Repositories\BaseRepo;
 use PortalPeru\Repositories\UserRepo;
 
@@ -30,7 +31,7 @@ class AdminUsersController extends \BaseController {
 	{
         $users = $this->userRepo->search(Input::all(), BaseRepo::PAGINATE, 'Id', 'asc');
 
-        Return View::make('admin.users.list', compact('users'));
+        return View::make('admin.users.list', compact('users'));
 	}
 
     /**
@@ -40,7 +41,7 @@ class AdminUsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		Return View::make('admin.users.create');
+		return View::make('admin.users.create');
 	}
 
 
@@ -51,21 +52,44 @@ class AdminUsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		$data = Input::all();
+        $rulesUser = [
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+            'type' => 'required|in:admin,editor'
+        ];
 
-        $validator = Validator::make($data, $this->rules);
+        $rulesProfile = [
+            'nombre' => 'required',
+            'apellidos' => 'required'
+        ];
 
-        if($validator->passes())
+        $dataUser = Input::only('email','password','password_confirmation','type');
+        $dataProfile = Input::only('nombre','apellidos');
+
+        $validatorUser = Validator::make($dataUser, $rulesUser);
+        $validatorProfile = Validator::make($dataProfile, $rulesProfile);
+
+        if($validatorUser->passes() and $validatorProfile->passes())
         {
-            $user = new User($data);
+            $user = new User($dataUser);
+            $user->activacion = 1;
             $user->save();
+
+            $emailUser = User::whereEmail(Input::get('email'))->first();
+            $actCodigo = CodigoAleatorio(50,true, true, false);
+
+            $userProfile = new UserProfile($dataProfile);
+            $userProfile->user_id = $emailUser->id;
+            $userProfile->activacion_codigo = $actCodigo;
+            $userProfile->save();
 
             //REDIRECCIONAR A PAGINA PARA VER DATOS
             return Redirect::route('administrador.users.index');
         }
         else
         {
-            return Redirect::back()->withInput()->withErrors($validator->messages());
+            return Redirect::back()->with('errors', array_merge_recursive($validatorUser->messages()->toArray(), $validatorProfile->messages()->toArray()))->withInput();
         }
 	}
 
@@ -80,7 +104,7 @@ class AdminUsersController extends \BaseController {
 	{
         $user = $this->userRepo->findOrFail($id);
 
-        Return View::make('admin.users.show', compact('user'));
+        return View::make('admin.users.show', compact('user'));
 	}
 
 
@@ -94,7 +118,7 @@ class AdminUsersController extends \BaseController {
 	{
         $user = $this->userRepo->findOrFail($id);
 
-        Return View::make('admin.users.edit', compact('user'));
+        return View::make('admin.users.edit', compact('user'));
 	}
 
 
@@ -139,6 +163,17 @@ class AdminUsersController extends \BaseController {
 	}
 
     /**
+     * Listar Usuarios de Reportero Ciudadano
+     */
+    public function reporteroList()
+    {
+        $users = $this->userRepo->searchReportero(Input::all(), BaseRepo::PAGINATE, 'email', 'asc');
+
+        return View::make('admin.users.reportero', compact('users'));
+    }
+
+
+    /**
      * Funcion para mostar Perfil de usuario logeado
      */
 
@@ -146,7 +181,7 @@ class AdminUsersController extends \BaseController {
     {
         $user = Auth::user();
 
-        Return View::make('admin.users.profile', compact('user'));
+        return View::make('admin.users.profile', compact('user'));
 
     }
 
