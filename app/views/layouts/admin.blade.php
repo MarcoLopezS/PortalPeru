@@ -1,3 +1,6 @@
+{{--*/
+$usuarioNombre = Auth::user()->profile->nombre." ".Auth::user()->profile->apellidos;
+/*--}}
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +50,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <div class="riot">
                                 <div>
-                                    {{ Auth::user()->first_name." ".Auth::user()->last_name }}
+                                    {{ $usuarioNombre }}
                                     <span><i class="caret"></i></span>
                                 </div>
                             </div>
@@ -55,7 +58,7 @@
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header bg-light-blue">
-                                <p class="topprofiletext">{{ Auth::user()->first_name." ".Auth::user()->last_name }}</p>
+                                <p class="topprofiletext">{{ $usuarioNombre }}</p>
                             </li>
                             <!-- Menu Body -->
                             <li><a href="{{ route('administrador.users.profile') }}"><i class="livicon" data-name="user" data-s="18"></i>Mi perfil</a></li>
@@ -146,6 +149,7 @@
                             </ul>
                         </li>
 
+                        @if(is_admin())
                         <li {{ (Request::is('administrador/gallery') || Request::is('administrador/gallery/*') ? 'class="active"' : '') }}>
                             <a href="#">
                                 <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
@@ -167,7 +171,9 @@
                                 </li>
                             </ul>
                         </li>
+                        @endif
 
+                        @if(is_admin())
                         <li {{ (Request::is('administrador/pages') || Request::is('administrador/pages/*') ? 'class="active"' : '') }}>
                             <a href="{{ route('administrador.pages.index') }}">
                                 <i class="livicon" data-name="doc-portrait" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
@@ -189,6 +195,7 @@
                                 </li>
                             </ul>
                         </li>
+                        @endif
 
                         @if(is_admin())
                         <li {{ (Request::is('administrador/config/*') ? 'class="active"' : '') }}>
@@ -217,6 +224,12 @@
                                     <a href="{{ route('administrador.users.create') }}">
                                         <i class="fa fa-angle-double-right"></i>
                                         Nuevo usuario
+                                    </a>
+                                </li>
+                                <li {{ (Request::is('administrador/users/reportero/list') ? 'class="active"' : '') }}>
+                                    <a href="{{ route('administrador.users.reporteroList') }}">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Reportero Ciudadano
                                     </a>
                                 </li>
                                 @endif
