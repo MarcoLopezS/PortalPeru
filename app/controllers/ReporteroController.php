@@ -21,14 +21,11 @@ class ReporteroController extends BaseController {
         $rulesProfile = [
             'nombre' => 'required',
             'apellidos' => 'required',
-            'telefono' => 'required',
-            'documento_tipo' => 'required',
-            'documento_numero' => 'required',
             'direccion' => 'required',
         ];
 
         $dataUser = Input::only('email','password','password_confirmation');
-        $dataProfile = Input::only('nombre','apellidos','telefono','documento_tipo','documento_numero','direccion');
+        $dataProfile = Input::only('nombre','apellidos','direccion');
 
         $validatorUser = Validator::make($dataUser, $rulesUser);
         $validatorProfile = Validator::make($dataProfile, $rulesProfile);

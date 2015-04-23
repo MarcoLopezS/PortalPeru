@@ -128,14 +128,6 @@ Mi Perfil
                                                         <td>{{ $user->email }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Teléfono</td>
-                                                        <td>{{ $user->profile->telefono }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>{{ $user->profile->documento_tipo }}</td>
-                                                        <td>{{{ $user->profile->documento_numero }}}</td>
-                                                    </tr>
-                                                    <tr>
                                                         <td>Dirección</td>
                                                         <td>{{ $user->profile->direccion }}</td>
                                                     </tr>
@@ -216,14 +208,6 @@ Mi Perfil
                                             </strong>
                                         </span>
                                         {{ $errors->first('descripcion', '<span class="help-block">:message</span>') }}
-                                    </div>
-                                </div>
-
-                                <div class="form-group @if($errors->has('telefono')) has-error @endif">
-                                    {{ Form::label('telefono', 'Teléfono', ['class' => 'col-md-3 control-label']) }}
-                                    <div class="col-md-9">
-                                        {{ Form::text('telefono', null, ['class' => 'form-control']) }}
-                                        {{ $errors->first('telefono', '<span class="help-block">:message</span>') }}
                                     </div>
                                 </div>
 

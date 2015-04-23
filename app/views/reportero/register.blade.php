@@ -31,7 +31,6 @@ Registro | @parent
             </div>
             @endif
 
-
             <div class="frm-row">
 
                 <div class="section colm colm6">
@@ -50,47 +49,6 @@ Registro | @parent
 
             </div><!-- end frm-row section -->
 
-            <div class="frm-row">
-
-                <div class="section colm colm6">
-                    <label class="field prepend-icon">
-                        {{ Form::email('email', null, ['id' => 'email', 'class' => 'gui-input', 'placeholder' => 'Email']) }}
-                        <label class="field-icon"><i class="fa fa-envelope"></i></label>
-                    </label>
-                </div><!-- end section -->
-
-                <div class="section colm colm6">
-                    <label class="field prepend-icon">
-                        {{ Form::text('telefono', null, ['id' => 'telefono', 'class' => 'gui-input', 'placeholder' => 'Teléfono']) }}
-                        <label class="field-icon"><i class="fa fa-phone-square"></i></label>
-                    </label>
-                </div><!-- end section -->
-
-            </div><!-- end frm-row section -->
-
-            <div class="frm-row">
-
-                     <div class="section colm colm6">
-                        <label class="field select">
-                            <select id="documento_tipo" name="documento_tipo">
-                                <option value="">Selecciona Tipo de Documento...</option>
-                                <option value="dni">DNI</option>
-                                <option value="pasaporte">Pasaporte</option>
-                                <option value="extranjeria">Carnet de Extranjería</option>
-                            </select>
-                            <i class="arrow double"></i>
-                        </label>
-                    </div><!-- end section -->
-
-                    <div class="section colm colm6">
-                        <label class="field prepend-icon">
-                            {{ Form::text('documento_numero', null, ['id' => 'documento_numero', 'class' => 'gui-input', 'placeholder' => 'Número de Documento']) }}
-                            <label class="field-icon"><i class="fa fa-file-text-o"></i></label>
-                        </label>
-                    </div><!-- end section -->
-
-            </div><!-- end frm-row section -->
-
             <div class="section">
                 <label class="field prepend-icon">
                     {{ Form::text('direccion', null, ['id' => 'direccion', 'class' => 'gui-input', 'placeholder' => 'Dirección']) }}
@@ -99,8 +57,15 @@ Registro | @parent
             </div><!-- end section -->
 
             <div class="spacer-b40">
-                <div class="tagline"><span>Contraseña</span></div><!-- .tagline -->
+                <div class="tagline"><span>Email y contraseña</span></div><!-- .tagline -->
             </div>
+
+            <div class="section">
+                <label class="field prepend-icon">
+                    {{ Form::email('email', null, ['id' => 'email', 'class' => 'gui-input', 'placeholder' => 'Email']) }}
+                    <label class="field-icon"><i class="fa fa-envelope"></i></label>
+                </label>
+            </div><!-- end section -->
 
             <div class="frm-row">
 
