@@ -102,7 +102,9 @@ Route::group(['before' => ['auth']], function () {
 
         //USUARIO
         Route::resource('administrador/users', 'AdminUsersController');
+        Route::get('administrador/users/reportero/list', ['as' => 'administrador.users.reporteroList', 'uses' => 'AdminUsersController@reporteroList' ]);
         Route::get('administrador/profile', ['as' => 'administrador.users.profile', 'uses' => 'AdminUsersController@profile' ]);
+        Route::post('administrador/profile/data', ['as' => 'administrador.users.profileData', 'uses' => 'AdminUsersController@profileData' ]);
         Route::post('administrador/profile/password', ['as' => 'administrador.users.profilePassword', 'uses' => 'AdminUsersController@profileChangePassword' ]);
 
         //ADMIN
