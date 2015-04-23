@@ -69,10 +69,10 @@ $noticiaImg = configWeb()->dominio."/upload/columnista/200x200/".$columnista->fo
                                 </style>
                                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                                 <ins class="adsbygoogle adslot_nota_horizontal" 
-                                style="display:block" 
-                                data-ad-client="ca-pub-8629542769595128" 
-                                data-ad-slot="1421908493" 
-                                data-ad-format="auto"></ins>
+                                     style="display:block" 
+                                     data-ad-client="ca-pub-8629542769595128" 
+                                     data-ad-slot="3145660491" 
+                                     data-ad-format="auto"></ins>
                                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                             </div>
                         </div>
