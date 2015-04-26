@@ -218,6 +218,38 @@ class AdminUsersController extends \BaseController {
     }
 
     /**
+     * Funcion para cambiar datos de Perfil de usuario logeado
+     */
+    public function profileData()
+    {
+        $user = Auth::user();
+
+        $profile = UserProfile::whereUserId($user->id)->first();
+
+        $data = Input::all();
+
+        $rules = [
+            'nombre' => 'required',
+            'apellidos' => 'required'
+        ];
+
+        $validator = Validator::make($data, $rules);
+
+        if($validator->passes())
+        {
+            $profile->fill($data);
+            $profile->save();
+
+            //REDIRECCIONAR A PAGINA PARA VER DATOS
+            return Redirect::route('administrador.users.profile');
+        }
+        else
+        {
+            return Redirect::back()->withInput()->withErrors($validator->messages());
+        }
+    }
+
+    /**
      * Funcion para cambiar contraseña de Perfil de usuario logeado
      */
 

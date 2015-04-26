@@ -103,7 +103,7 @@ Mi Perfil
                     <div class="row">
                         <div class="col-md-12 pd-top">
 
-                            {{ Form::model($user->profile, ['method' => 'PUT', 'class' => 'form-horizontal form-bordered', 'files' => 'true']) }}
+                            {{ Form::model($user->profile, ['route' => 'administrador.users.profileData', 'method' => 'POST', 'class' => 'form-horizontal form-bordered', 'files' => 'true']) }}
 
                                 <div class="form-group @if($errors->has('nombre')) has-error @endif">
                                     {{ Form::label('nombre', 'Nombre', ['class' => 'col-md-3 control-label']) }}
