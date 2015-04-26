@@ -172,6 +172,38 @@ class AdminUsersController extends \BaseController {
         return View::make('admin.users.reportero', compact('users'));
     }
 
+    /**
+     * Ver datos de Reportero Ciudadano seleccionado
+     */
+    public function reporteroView($id)
+    {
+        $user = User::find($id);
+
+        $nombre = $user->profile->nombre." ".$user->profile->apellidos;
+        if($user->profile->imagen <> ""){
+            $imagen = "/upload/reportero/200x200/".$user->profile->imagen;
+        }else{
+            $imagen = "/imagenes/rciud/usuario.jpg";
+        }
+
+        //NOTICIAS
+        $notEnviadas = $user->post->count();
+        $notPublicas = $user->postPublicar();
+
+        if(Request::ajax())
+        {
+            return Response::json([
+                'nombre'    => $nombre,
+                'imagen'    => $imagen,
+                'email'     => $user->email,
+                'estado'    => $user->activacion ? 'Activado' : 'No activado',
+                'fregistro' => date_format(new DateTime($user->created_at), 'd/m/Y H:i'),
+                'notenviadas' => $notEnviadas,
+                'notpublicas' => $notPublicas,
+            ]);
+        }
+    }
+
 
     /**
      * Funcion para mostar Perfil de usuario logeado
