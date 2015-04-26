@@ -9,11 +9,16 @@ class UserRepo extends BaseRepo{
         return new User;
     }
 
-    public $filters = ['email'];
+    public $filters = ['email','activacion'];
 
     public function filterByEmail($q, $value)
     {
         $q->where('email', 'LIKE', "%$value%");
+    }
+
+    public function filterByActivacion($q, $value)
+    {
+        $q->where('activacion', $value);
     }
 
     //FILTRAR
