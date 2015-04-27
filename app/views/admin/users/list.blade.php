@@ -53,6 +53,7 @@ Usuarios
                             <th>Nombre</th>
                             <th>Apellidos</th>
                             <th>Email</th>
+                            <th>Rol</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -62,6 +63,7 @@ Usuarios
                     		<td>{{ $user->profile->nombre }}</td>
             				<td>{{ $user->profile->apellidos }}</td>
             				<td>{{ $user->email }}</td>
+                            <td>{{ trans('others.'.$user->type) }}</td>
             				<td>
                                 <div class="button-dropdown" data-buttons="dropdown">
                                     <a href="#" class="button button-rounded">
@@ -69,7 +71,6 @@ Usuarios
                                         <i class="fa fa-caret-down"></i>
                                     </a>
                                     <ul>
-                                        <li><a href="{{ route('administrador.users.show', $user->id) }}">Ver</a></li>
                                         <li><a href="{{ route('administrador.users.edit', $user->id) }}">Editar</a></li>
                                         <li><a href="{{ route('administrador.users.destroy', $user->id) }}">Eliminar</a></li>
                                     </ul>

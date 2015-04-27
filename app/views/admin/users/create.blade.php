@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Add User
+Nuevo usuario
 @parent
 @stop
 
@@ -18,6 +18,16 @@ Add User
 @section('content_admin')
 <section class="content-header">
     <h1>Agregar nuevo usuario</h1>
+
+    @if(Session::has('errors'))
+    <div class="alert alert-dismissable alert-danger">
+        <ul>
+        @foreach($errors as $item)
+           <li>{{ $item[0] }}</li>
+        @endforeach
+        </ul>
+    </div>
+    @endif
 </section>
 
 <section class="content">
@@ -32,43 +42,45 @@ Add User
 
                     {{ Form::open(['route' => 'administrador.users.store', 'method' => 'post', 'class' => 'form-horizontal form-bordered']) }}
 
-                        <div class="form-group @if($errors->has('first_name')) has-error @endif">
-                            {{ Form::label('first_name', 'Nombre *', ['class' => 'col-md-3 control-label']) }}
+                        <div class="form-group">
+                            {{ Form::label('nombre', 'Nombre *', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">
-                                {{ Form::text('first_name', null, ['class' => 'form-control required']) }}
-                                {{ $errors->first('first_name', '<span class="help-block">:message</span>') }}
+                                {{ Form::text('nombre', null, ['class' => 'form-control required']) }}
                             </div>
                         </div>
 
-                        <div class="form-group @if($errors->has('last_name')) has-error @endif">
-                            {{ Form::label('last_name', 'Apellidos *', ['class' => 'col-md-3 control-label']) }}
+                        <div class="form-group">
+                            {{ Form::label('apellidos', 'Apellidos *', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">
-                                {{ Form::text('last_name', null, ['class' => 'form-control required']) }}
-                                {{ $errors->first('last_name', '<span class="help-block">:message</span>') }}
+                                {{ Form::text('apellidos', null, ['class' => 'form-control required']) }}
                             </div>
                         </div>
 
-                        <div class="form-group @if($errors->has('email')) has-error @endif">
+                        <div class="form-group">
                             {{ Form::label('email', 'Email *', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">
                                 {{ Form::email('email', null, ['class' => 'form-control required']) }}
-                                {{ $errors->first('email', '<span class="help-block">:message</span>') }}
                             </div>
                         </div>
 
-                        <div class="form-group @if($errors->has('password')) has-error @endif">
+                        <div class="form-group">
                             {{ Form::label('password', 'Contraseña *', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">
                                 {{ Form::password('password', ['class' => 'form-control required']) }}
-                                {{ $errors->first('password', '<span class="help-block">:message</span>') }}
                             </div>
                         </div>
 
-                        <div class="form-group @if($errors->has('password_confirmation')) has-error @endif">
+                        <div class="form-group">
                             {{ Form::label('password_confirmation', 'Confirmar contraseña *', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">
                                 {{ Form::password('password_confirmation', ['class' => 'form-control required']) }}
-                                {{ $errors->first('password_confirmation', '<span class="help-block">:message</span>') }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ Form::label('type', 'Rol *', ['class' => 'col-md-3 control-label']) }}
+                            <div class="col-md-9">
+                                {{ Form::select('type', ['' => 'Seleccionar rol', 'admin' => 'Administrador', 'editor' => 'Editor'], '', ['class' => 'form-control required']) }}
                             </div>
                         </div>
 
@@ -89,12 +101,4 @@ Add User
     </div>
     <!--row end-->
 </section>
-@stop
-
-{{-- page level scripts --}}
-@section('footer_scripts')
-{{ HTML::script('admin/vendors/wizard/jquery-steps/js/jquery.validate.min.js') }}
-{{ HTML::script('admin/vendors/wizard/jquery-steps/js/wizard.js') }}
-{{ HTML::script('admin/vendors/wizard/jquery-steps/js/jquery.steps.js') }}
-{{ HTML::script('admin/vendors/wizard/jquery-steps/js/form_wizard.js') }}
 @stop

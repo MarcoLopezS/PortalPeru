@@ -12,12 +12,16 @@ Route::group(['before' => 'guest'], function () {
     //REPORTERO CIUDADANO
     Route::get('reportero-ciudadano/registro', ['as' => 'reportero.register', 'uses' => 'ReporteroController@register']);
     Route::post('reportero-ciudadano/registro', ['as' => 'reportero.register.create', 'uses' => 'ReporteroController@registerCreate']);
+    
     Route::get('reportero-ciudadano/correo-activar-cuenta', ['as' => 'reportero.correoActivarCuenta', 'uses' => 'ReporteroController@correoActivarCuenta']);
     Route::post('reportero-ciudadano/correo-activar-cuenta', ['as' => 'reportero.correoActivarCuenta.form', 'uses' => 'ReporteroController@correoActivarCuentaForm']);
+    
     Route::get('reportero-ciudadano/recuperar-clave', ['as' => 'reportero.correoPassword', 'uses' => 'RemindersController@getRemind']);
     Route::post('reportero-ciudadano/recuperar-clave', ['as' => 'reportero.correoPassword.form', 'uses' => 'RemindersController@postRemind']);
+
     Route::get('password/reset/{token}', ['as' => 'password.getReset', 'uses' => 'RemindersController@getReset']);
     Route::post('password/reset/{token}', ['as' => 'password.postReset', 'uses' => 'RemindersController@postReset']);
+    
     Route::get('reportero-ciudadano/login', ['as' => 'reportero.login', 'uses' => 'ReporteroController@loginView']);
     Route::get('reportero-ciudadano/verify', ['as' => 'reportero.verifyView', 'uses' => 'ReporteroController@verifyView']);
     Route::get('reportero-ciudadano/verify/{codigo}', ['as' => 'reportero.verify', 'uses' => 'ReporteroController@verify']);
@@ -103,7 +107,14 @@ Route::group(['before' => ['auth']], function () {
         //USUARIO
         Route::resource('administrador/users', 'AdminUsersController');
         Route::get('administrador/profile', ['as' => 'administrador.users.profile', 'uses' => 'AdminUsersController@profile' ]);
+        Route::post('administrador/profile/data', ['as' => 'administrador.users.profileData', 'uses' => 'AdminUsersController@profileData' ]);
         Route::post('administrador/profile/password', ['as' => 'administrador.users.profilePassword', 'uses' => 'AdminUsersController@profileChangePassword' ]);
+
+        Route::put('administrador/edit/{id}/data', ['as' => 'administrador.users.updateData', 'uses' => 'AdminUsersController@updateData' ]);
+        Route::post('administrador/edit/{id}/password', ['as' => 'administrador.users.updatePassword', 'uses' => 'AdminUsersController@updateChangePassword' ]);
+
+        Route::get('administrador/users/reportero/list', ['as' => 'administrador.users.reporteroList', 'uses' => 'AdminUsersController@reporteroList' ]);
+        Route::post('administrador/users/reportero/view/{id}', ['as' => 'administrador.users.reporteroView', 'uses' => 'AdminUsersController@reporteroView' ]);
 
         //ADMIN
         Route::get('administrador', ['as' => 'administrador.index', 'uses' => 'AdminController@show']);

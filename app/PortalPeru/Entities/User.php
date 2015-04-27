@@ -55,7 +55,7 @@ class User extends BaseEntity implements UserInterface, RemindableInterface
 
     protected $hidden = array('password');
 
-    protected $fillable = array('email', 'password');
+    protected $fillable = array('email', 'password', 'type');
 
     public function setPasswordAttribute($value)
     {
