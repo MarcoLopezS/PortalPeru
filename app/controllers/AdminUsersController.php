@@ -128,15 +128,20 @@ class AdminUsersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
-        $user = $this->userRepo->findOrFail($id);
+	public function updateData($id)
+    {
+        $user = UserProfile::whereUserId($id)->first();
 
-        $data = Input::all();
+        $data = Input::only('nombre','apellidos');
 
-        $validator = Validator::make($data, $this->rules);
+        $rules = [
+            'nombre' => 'required',
+            'apellidos' => 'required'
+        ];
 
-        if($user->isValid($data))
+        $validator = Validator::make($data, $rules);
+
+        if($validator->passes())
         {
             $user->fill($data);
             $user->save();
@@ -148,7 +153,37 @@ class AdminUsersController extends \BaseController {
         {
             return Redirect::back()->withInput()->withErrors($validator->messages());
         }
-	}
+    }
+
+    /**
+     * Funcion para cambiar contraseña de Perfil de usuario logeado
+     */
+    public function updateChangePassword()
+    {
+        $user = Auth::user();
+
+        $data = Input::all();
+
+        $rules = [
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required'
+        ];
+
+        $validator = Validator::make($data, $rules);
+
+        if($validator->passes())
+        {
+            $user->fill($data);
+            $user->save();
+
+            //REDIRECCIONAR A PAGINA PARA VER DATOS
+            return Redirect::route('administrador.users.index');
+        }
+        else
+        {
+            return Redirect::back()->withInput()->withErrors($validator->messages());
+        }
+    }
 
 
 	/**

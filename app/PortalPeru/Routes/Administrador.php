@@ -110,6 +110,9 @@ Route::group(['before' => ['auth']], function () {
         Route::post('administrador/profile/data', ['as' => 'administrador.users.profileData', 'uses' => 'AdminUsersController@profileData' ]);
         Route::post('administrador/profile/password', ['as' => 'administrador.users.profilePassword', 'uses' => 'AdminUsersController@profileChangePassword' ]);
 
+        Route::put('administrador/edit/{id}/data', ['as' => 'administrador.users.updateData', 'uses' => 'AdminUsersController@updateData' ]);
+        Route::post('administrador/edit/{id}/password', ['as' => 'administrador.users.updatePassword', 'uses' => 'AdminUsersController@updateChangePassword' ]);
+
         Route::get('administrador/users/reportero/list', ['as' => 'administrador.users.reporteroList', 'uses' => 'AdminUsersController@reporteroList' ]);
         Route::post('administrador/users/reportero/view/{id}', ['as' => 'administrador.users.reporteroView', 'uses' => 'AdminUsersController@reporteroView' ]);
 
