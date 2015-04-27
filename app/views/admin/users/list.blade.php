@@ -71,7 +71,6 @@ Usuarios
                                         <i class="fa fa-caret-down"></i>
                                     </a>
                                     <ul>
-                                        <li><a href="{{ route('administrador.users.show', $user->id) }}">Ver</a></li>
                                         <li><a href="{{ route('administrador.users.edit', $user->id) }}">Editar</a></li>
                                         <li><a href="{{ route('administrador.users.destroy', $user->id) }}">Eliminar</a></li>
                                     </ul>
