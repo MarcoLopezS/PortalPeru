@@ -146,7 +146,7 @@ class ReporteroUsersController extends \BaseController {
             $user->save();
 
             //REDIRECCIONAR A PAGINA PARA VER DATOS
-            return Redirect::route('administrador.users.profile');
+            return Redirect::route('reportero-ciudadano.user.profile');
         }
         else
         {
