@@ -68,6 +68,7 @@
                 <li><a href="/"><i class="fa fa-home"></i></a></li>
                 <li><a href="/seccion/hechos">Hechos</a></li>
                 <li><a href="/seccion/entrevista">Entrevista</a></li>
+                <li><a href="/seccion/tecnologia">Tecnología</a></li>
                 <li><a href="https://www.flickr.com/photos/portalperu/" target="_blank">Mira el Perú</a></li>
                 <li><a href="/seccion/bicentenario">Bicentenario</a></li>
                 <li class="menu-rcid dropdown-submenu">
