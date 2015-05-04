@@ -95,11 +95,11 @@ class FrontendController extends BaseController{
 
         $noticia = Post::findOrFail($id);
         $noticiaFotos = PostPhoto::where('post_id', $id)->orderBy('orden', 'asc')->get();
-        if($noticia->tags <> "0,0,0"){
-            $noticiaTags = explode("0,", $noticia->tags);
-            $noticiaTags = explode(",0", $noticiaTags[1]);
+        if($noticia->tags <> "-0,0,0-"){
+            $noticiaTags = explode("-0,", $noticia->tags);
+            $noticiaTags = explode(",0-", $noticiaTags[1]);
             $noticiaTags = explode(",", $noticiaTags[0]);
-        }elseif($noticia->tags == "0,0,0" OR $noticia->tags == ""){
+        }elseif($noticia->tags == "-0,0,0-" OR $noticia->tags == ""){
             $noticiaTags = "";
         }        
 
