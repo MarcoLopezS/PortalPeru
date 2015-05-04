@@ -111,7 +111,7 @@ class AdminPostsController extends \BaseController {
             $post->video = $video;
             $post->category_id = $categoria;
             $post->post_order_id = $orden;
-            $post->tags = '0,'.$union_tags.',0';
+            $post->tags = '-0,'.$union_tags.',0-';
             $post->redaccion = $autor;
             $post->imagen = $file;
             $post->imagen_carpeta = $ruta_fecha;
@@ -216,7 +216,7 @@ class AdminPostsController extends \BaseController {
             $post->video = $video;
             $post->category_id = $categoria;
             $post->post_order_id = $orden;
-            $post->tags = '0,'.$union_tags.',0';
+            $post->tags = '-0,'.$union_tags.',0-';
             $post->redaccion = $autor;
             $post->slug_url = $slug_url;
             $this->postRepo->update($post,$data);
