@@ -12,3 +12,4 @@ Route::get('buscar/b={texto}', ['as' => 'home.buscar', 'uses' => 'FrontendContro
 Route::get('columnistas', ['as' => 'home.columnistas.list', 'uses' => 'FrontendController@columnistasList']);
 Route::get('columnistas/{id}-{url}', ['as' => 'home.columnistas.person', 'uses' => 'FrontendController@columnistasPerson']);
 Route::get('columnistas/{id}-{url}/{idColumn}-{urlColumn}', ['as' => 'home.columnistas.column', 'uses' => 'FrontendController@columnistasColumn']);
+Route::get('lima-foto', ['as' => 'home.fotos.lima', 'uses' => 'FrontendController@fotosLima']);

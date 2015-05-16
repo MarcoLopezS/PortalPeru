@@ -10,8 +10,7 @@ class AdminGalleriesController extends \BaseController {
 
     protected $rules = [
         'titulo' => 'required',
-        'descripcion' => 'required|min:10|max:255',
-        'contenido' => 'required',
+        'descripcion' => 'min:10|max:255',
         'imagen' => 'mimes:jpeg,jpg,png',
         'publicar' => 'required|in:1,0'
     ];

@@ -4,6 +4,7 @@ use PortalPeru\Entities\Category;
 use PortalPeru\Entities\Column;
 use PortalPeru\Entities\Columnist;
 use PortalPeru\Entities\Configuration;
+use PortalPeru\Entities\Gallery;
 use PortalPeru\Entities\Post;
 use PortalPeru\Entities\PostPhoto;
 use PortalPeru\Entities\Tag;
@@ -28,6 +29,9 @@ class FrontendController extends BaseController{
         $post_8 = Post::where('post_order_id', 8)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
         $post_9 = Post::where('post_order_id', 9)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
 
+        //GALERIA DE FOTOS
+        $galeria = Gallery::where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
+
         //COLUNISTAS DEL DIA
         if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
         elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
@@ -37,7 +41,7 @@ class FrontendController extends BaseController{
         elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
         elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
-        return View::make('frontend.home-3', compact('post_1', 'post_2', 'post_3', 'post_4', 'post_5', 'post_6', 'post_7', 'post_8', 'post_9', 'columnistasDia'));
+        return View::make('frontend.home-3', compact('post_1', 'post_2', 'post_3', 'post_4', 'post_5', 'post_6', 'post_7', 'post_8', 'post_9', 'galeria', 'columnistasDia'));
     }
 
     public function nosotros()
@@ -228,6 +232,24 @@ class FrontendController extends BaseController{
         $columna = Column::whereColumnistId($id)->whereId($idColumn)->whereSlugUrl($urlColumn)->first();
 
         return View::make('frontend.columnista-noticia', compact('columnista','columna', 'columnistasDia'));
+    }
+
+    public function fotosLima()
+    {
+        $galeria = Gallery::where('publicar', 1)->orderBy('published_at','desc')->first();
+        
+        $galerias = Gallery::where('publicar', 1)->orderBy('published_at','desc')->paginate();
+
+        //COLUNISTAS DEL DIA
+        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
+
+        return View::make('frontend.galeria', compact('galeria', 'galerias', 'columnistasDia'));
     }
 
 }
