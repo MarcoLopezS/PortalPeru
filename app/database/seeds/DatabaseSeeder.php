@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder {
         $this->call('PostOrderTableSeeder');
         $this->call('PostCategoryTableSeeder');
         $this->call('PostTableSeeder');
+        $this->call('GalleryTableSeeder');
 	}
 
 }
