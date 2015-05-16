@@ -194,5 +194,7 @@
 
 </script>
 
+@yield('script_footer')
+
 </body>
 </html>

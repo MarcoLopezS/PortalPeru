@@ -140,18 +140,22 @@
                 </article>
                 @endforeach
 
-                @foreach($post_6 as $item)
+                @foreach($galeria as $item)
                 <article class="col-md-8 col-sm-8 big">
                     <div class="img">
-                        <a href="/nota/{{ $item->id."-".$item->slug_url }}">
-                            <img class="width100" src="upload/{{ $item->imagen_carpeta."540x360/".$item->imagen }}" alt="{{ $item->titulo }}">
+                        <a href="lima-foto">
+                            <img class="width100" src="upload/{{ $item->imagen_carpeta."540x400/".$item->imagen }}" alt="{{ $item->titulo }}">
                         </a>
+                        <div class="info2">
+                            <p>{{ $item->titulo }}</p>
+                            <p>Foto: {{ $item->descripcion }}</p>
+                        </div>
+                    </div>                    
+                    <div class="col-md-6 col-sm-9 col-xs-8 fotos-lima-opciones pull-left">
+                        <img src="imagenes/icon-fotos-lima.png" width="250" alt="">
                     </div>
-                    <div class="info2">
-                        <p class="tags">
-                            <a href="/seccion/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
-                        </p>
-                        <h1><a href="/nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
+                    <div class="col-md-6 col-sm-3 col-xs-4 fotos-lima-opciones">
+                        <a href="lima-foto" class="pull-right btn btn-default">Ver más</a>
                     </div>
                 </article>
                 @endforeach
@@ -161,6 +165,22 @@
 
             <!-- NOTICIA INFERIOR HORIZONTAL -->
             <div class="row">
+
+                @foreach($post_6 as $item)
+                <article class="col-md-4 col-sm-4 mid">
+                    <div class="img">
+                        <img class="width100" src="upload/{{ $item->imagen_carpeta."280x190/".$item->imagen }}" alt="{{ $item->titulo }}">
+                    </div>
+                    <div class="info">
+                        <p class="tags">
+                            <a href="seccion/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
+                        </p>
+                        <h1><a href="nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
+                        <p class="details hidden-sm hidden-xs">{{{ $item->updated_at->diffForHumans() }}}</p>
+                        <p class="text">{{ $item->descripcion }}</p>
+                    </div>
+                </article>
+                @endforeach
 
                 @foreach($post_7 as $item)
                 <article class="col-md-4 col-sm-4 mid">
@@ -179,22 +199,6 @@
                 @endforeach
 
                 @foreach($post_8 as $item)
-                <article class="col-md-4 col-sm-4 mid">
-                    <div class="img">
-                        <img class="width100" src="upload/{{ $item->imagen_carpeta."280x190/".$item->imagen }}" alt="{{ $item->titulo }}">
-                    </div>
-                    <div class="info">
-                        <p class="tags">
-                            <a href="seccion/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
-                        </p>
-                        <h1><a href="nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
-                        <p class="details hidden-sm hidden-xs">{{{ $item->updated_at->diffForHumans() }}}</p>
-                        <p class="text">{{ $item->descripcion }}</p>
-                    </div>
-                </article>
-                @endforeach
-
-                @foreach($post_9 as $item)
                 <article class="col-md-4 col-sm-4 mid">
                     <div class="img">
                         <img class="width100" src="upload/{{ $item->imagen_carpeta."280x190/".$item->imagen }}" alt="{{ $item->titulo }}">
