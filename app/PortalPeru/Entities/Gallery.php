@@ -2,6 +2,6 @@
 
 class Gallery extends BaseEntity{
 
-    protected $fillable = ['titulo','descripcion','contenido','imagen','published_at','publicar'];
+    protected $fillable = ['titulo','slug_url','descripcion','imagen','imagen_carpeta','published_at','publicar'];
 
 } 
