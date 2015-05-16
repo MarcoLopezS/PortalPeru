@@ -10,16 +10,11 @@ Editar registro
 @section('header_styles')
 {{ HTML::style('admin/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}
 {{ HTML::style('admin/css/pages/form_layouts.css') }}
-{{ HTML::style('admin/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}
+
 {{ HTML::style('admin/vendors/gallery/basic/source/jquery.fancybox.css?v=2.1.5') }}
 
 {{-- DATETIME PICKER --}}
-{{ HTML::style('admin/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}
-
-{{-- TAGS --}}
-{{ HTML::style('admin/vendors/tags/bower_components/bootstrap/assets/css/docs.css') }}
-{{ HTML::style('admin/vendors/tags/dist/bootstrap-tagsinput.css') }}
-{{ HTML::style('admin/vendors/tags/assets/app.css') }}
+{{ HTML::style('admin/libs/datetimepicker/jquery.datetimepicker.css') }}
 @stop
 
 
@@ -64,14 +59,6 @@ Editar registro
                             </div>
                         </div>
 
-                        <div class="form-group @if($errors->has('contenido')) has-error @endif">
-                            {{ Form::label('contenido', 'Contenido', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                {{ Form::textarea('contenido', null, ['id' => 'ckeditor_full', 'class' => 'form-control']) }}
-                                {{ $errors->first('contenido', '<span class="help-block">:message</span>') }}
-                            </div>
-                        </div>
-
                         <div class="form-group @if($errors->has('imagen')) has-error @endif">
                             {{ Form::label('imagen_actual', 'Imagen actual', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">
@@ -93,12 +80,8 @@ Editar registro
 
                         <div class="form-group @if($errors->has('published_at')) has-error @endif">
                             {{ Form::label('published_at', 'Fecha de publicación', ['class' => 'col-md-3 control-label']) }}
-
-                            <div class="col-md-5 input-group date form_datetime4" data-date-format="dd MM yyyy - HH:ii p">
-                                {{ Form::text(null, null, ['class' => 'form-control col-md-6', 'readonly']) }}
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                                {{ Form::hidden('published_at', null, ['id' => 'mirror_field', 'class' => 'form-control', 'readonly']) }}
+                            <div class="col-md-4">
+                                {{ Form::text('published_at', null, ['class' => 'form-control col-md-6', 'id' => 'datetimepicker']) }}
                                 {{ $errors->first('published_at', '<span class="help-block">:message</span>') }}
                             </div>
                         </div>
@@ -140,20 +123,24 @@ Editar registro
 
 {{-- page level scripts --}}
 @section('footer_scripts')
-{{ HTML::script('admin/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}
-
-{{-- CKEDITOR --}}}
-{{ HTML::script('admin/vendors/ckeditor/ckeditor.js') }}
-{{ HTML::script('admin/vendors/ckeditor/adapters/jquery.js') }}
-{{ HTML::script('admin/js/pages/editor.js') }}
-
 {{-- DATETIME PICKER --}}
-{{ HTML::script('admin/vendors/datetimepicker/js/bootstrap-datetimepicker.js') }}
+{{ HTML::script('admin/libs/datetimepicker/jquery.datetimepicker.js') }}
 <script>
-$(".form_datetime4").datetimepicker({
-	  format: "dd MM yyyy - hh:ii",
-	  linkField: "mirror_field",
-	  linkFormat: "yyyy-mm-dd hh:ii:00"
+$(document).ready(function() {
+    $('#datetimepicker').datetimepicker({
+        lang: 'es',
+        i18n:{
+            de:{
+                months:[
+                    'Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'
+                ],
+                dayOfWeek:[
+                    "Do", "Lu", "Ma", "Mi","Ju", "Vi", "Sa"
+                ]
+            }
+        },
+        format:'Y-m-d H:i:s'
+    });
 });
 </script>
 
@@ -173,12 +160,5 @@ $(document).ready(function() {
         }
     });
 });
-</script>
-
-{{-- TAGS --}}
-{{ HTML::script('admin/js/forms/jquery.tagsinput.min.js') }}
-{{ HTML::script('admin/js/forms/jquery.select2.min.js') }}
-<script>
-$(".selectMultiple").select2();
 </script>
 @stop
