@@ -1,7 +1,7 @@
 @import 'nib/vendor'
 @import 'nib/gradients'
 
-vendor-prefixes = o ms moz webkit nuevo official
+vendor-prefixes = o ms moz webkit official
 
 body
     height 100%
@@ -366,9 +366,13 @@ article.big .info2
     position absolute
     bottom 0
     left 0
-    text-align center
-    margin 0 15px
+    text-align left
     background-image url("../imagenes/fondo_trans.png")
+    width 100%
+    padding 5px 10px
+    
+article.big .info2 p
+    margin 0
 
 article.big .tags
     text-transform uppercase
@@ -384,7 +388,7 @@ article.big .tags
 article.big h1
     font-size 26px
     font-weight 400
-    margin 0 20px 15px
+    margin 5px 20px
     letter-spacing 0px
     color #fff
 
@@ -1497,6 +1501,8 @@ PAGINACION
 #paginacion
     padding 40px 0 0 0
     text-align center
+    width 100%
+    float left
 
 
 .categoria-nota
@@ -1728,3 +1734,22 @@ NOTICIA
 .info.tags ul li a:hover
     background #be1622
     color #fff
+    
+/*==========================
+FOTOS LIMA
+==========================*/
+.fotos-lima-opciones
+    position relative
+    margin-top 5px
+    padding 0
+
+.galeria-destacada
+    margin-bottom 30px
+    border-bottom 1px dashed #ddd
+    
+    .imagen        
+        img
+            border-radius 15px            
+    
+    h3
+        margin-bottom 10px
