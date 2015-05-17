@@ -40,16 +40,9 @@ Ver registro
                         </div>
 
                         <div class="form-group">
-                              {{ Form::label('descripcion', 'Descripción', ['class' => 'col-md-3 control-label']) }}
+                              {{ Form::label('descripcion', 'Foto', ['class' => 'col-md-3 control-label']) }}
                               <div class="col-md-9">
                                     {{{ $gallery->descripcion }}}
-                              </div>
-                        </div>
-
-                        <div class="form-group">
-                              {{ Form::label('contenido', 'Contenido', ['class' => 'col-md-3 control-label']) }}
-                              <div class="col-md-9">
-                                    {{ $gallery->contenido }}
                               </div>
                         </div>
 

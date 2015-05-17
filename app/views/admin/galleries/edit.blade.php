@@ -45,16 +45,9 @@ Editar registro
                         </div>
 
                         <div class="form-group @if($errors->has('descripcion')) has-error @endif">
-                            {{ Form::label('descripcion', 'Descripción', ['class' => 'col-md-3 control-label']) }}
+                            {{ Form::label('descripcion', 'Foto', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">
-                                {{ Form::textarea('descripcion', null, ['class' => 'form-control', 'rows' => '3',
-                                'onkeydown' => 'limitText(this.form.descripcion,this.form.countdown,220);',
-                                'onkeyup' => 'limitText(this.form.descripcion,this.form.countdown,220);']) }}
-                                <span class="help-block">Caracteres permitidos:
-                                    <strong>
-                                        <input name="countdown" type="text" style="border:none; background:none;" value="220" size="3" readonly id="countdown">
-                                    </strong>
-                                </span>
+                                {{ Form::text('descripcion', null, ['class' => 'form-control']) }}
                                 {{ $errors->first('descripcion', '<span class="help-block">:message</span>') }}
                             </div>
                         </div>
