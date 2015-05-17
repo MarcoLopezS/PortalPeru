@@ -1,45 +1,24 @@
 <?php
 
 use PortalPeru\Entities\User;
+use PortalPeru\Entities\UserProfile;
 
 class UserTableSeeder extends Seeder {
 
     public function run()
     {
         User::create([
+            'id'        => 1,
             'email'     => 'admin@portalperu.pe',
-            'password'  => 'adminperu$',
-            'type'      => 'admin'
+            'password'  => 'admin',
+            'type'      => 'admin',
+            'activacion' => 1
         ]);
 
-        User::create([
-            'email'     => 'jdelacruz@portalperu.pe',
-            'password'  => 'jdelacruz@peru',
-            'type'      => 'admin'
-        ]);
-
-        User::create([
-            'email'     => 'vtipe@portalperu.pe',
-            'password'  => 'vtipe@peru',
-            'type'      => 'editor'
-        ]);
-
-        User::create([
-            'email'     => 'jtipe@portalperu.pe',
-            'password'  => 'jtipe@peru',
-            'type'      => 'editor'
-        ]);
-
-        User::create([
-            'email'     => 'rguerrero@portalperu.pe',
-            'password'  => 'rguerrero@peru',
-            'type'      => 'editor'
-        ]);
-
-        User::create([
-            'email'     => 'jperez@portalperu.pe',
-            'password'  => 'jperez@peru',
-            'type'      => 'editor'
+        UserProfile::create([
+            'nombre'        => 'Marco',
+            'apellidos'     => 'Lopez',
+            'user_id'       => 1
         ]);
 
     }
