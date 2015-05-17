@@ -8,7 +8,7 @@ $(document).on("ready", function(){
 
 	/* MEDIDAS FOTO NOTICIAS */
 
-	var bigImg = "540x425/";
+	var bigImg = "540x450/";
 	var midImg = "280x290/";
 
 	
