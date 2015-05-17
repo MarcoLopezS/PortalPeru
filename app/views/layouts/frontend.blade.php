@@ -26,8 +26,8 @@
 
             <!--MENU-->
             <nav class="clearfix">
-                <a href="" id="header-menu-button"><i class="fa fa-bars"></i></a>
-                <ul class="list-inline">
+                <a href="#" id="header-menu-button"><i class="fa fa-bars"></i></a>
+                <ul class="header-menu list-inline">
                     <li><a href="/">Inicio</a></li>
                     <li><a href="/publicidad">Publicidad</a></li>
                     <li><a href="/contacto">Contacto</a></li>
@@ -69,7 +69,7 @@
                 <li><a href="/seccion/hechos">Hechos</a></li>
                 <li><a href="/seccion/entrevista">Entrevista</a></li>
                 <li><a href="/seccion/tecnologia">Tecnología</a></li>
-                <li><a href="https://www.flickr.com/photos/portalperu/" target="_blank">Mira el Perú</a></li>
+                <li><a href="mira-peru">Mira el Perú</a></li>
                 <li><a href="/seccion/bicentenario">Bicentenario</a></li>
                 <li class="menu-rcid dropdown-submenu">
                     <a href="javascript:;">Reportero Ciudadano</a>
@@ -135,7 +135,7 @@
                     <ul>
                         <li><a href="/seccion/hechos">Hechos</a></li>
                         <li><a href="/seccion/entrevista">Entrevista</a></li>
-                        <li><a href="https://www.flickr.com/photos/portalperu/" target="_blank">Mira el Perú</a></li>
+                        <li><a href="/mira-peru">Mira el Perú</a></li>
                         <li><a href="/seccion/bicentenario">Bicentenario</a></li>
                         <li><a href="/seccion/reportero-ciudadano">Reportero Ciudadano</a></li>
                         <li><a href="/columnistas">Columnistas</a></li>
