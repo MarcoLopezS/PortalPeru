@@ -150,12 +150,14 @@
                             <p>{{ $item->titulo }}</p>
                             <p>Foto: {{ $item->descripcion }}</p>
                         </div>
-                    </div>                    
-                    <div class="col-md-6 col-sm-9 col-xs-8 fotos-lima-opciones pull-left">
-                        <img src="imagenes/icon-fotos-lima.png" width="250" alt="">
                     </div>
-                    <div class="col-md-6 col-sm-3 col-xs-4 fotos-lima-opciones">
-                        <a href="lima-foto" class="pull-right btn btn-default">Ver más</a>
+                    <div class="galeria-datos col-xs-12">
+                        <div class="col-md-6 col-sm-9 col-xs-8 fotos-lima-opciones pull-left">
+                            <img src="imagenes/icon-fotos-lima.png" width="250" alt="">
+                        </div>
+                        <div class="col-md-6 col-sm-3 col-xs-4 fotos-lima-opciones">
+                            <a href="lima-foto" class="pull-right btn btn-default">Ver más</a>
+                        </div>
                     </div>
                 </article>
                 @endforeach
