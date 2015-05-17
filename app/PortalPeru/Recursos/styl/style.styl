@@ -1,7 +1,7 @@
 @import 'nib/vendor'
 @import 'nib/gradients'
 
-vendor-prefixes = o ms moz webkit nuevo official
+vendor-prefixes = o ms moz webkit official
 
 body
     height 100%
@@ -1718,13 +1718,81 @@ NOTICIA
 ==========================*/
 .info.tags
     margin-left 0
+    
+    ul
+        padding 0
+    
+        li
+            display inline-block
+            
+            a:hover
+                background #be1622
+                color #fff
 
-.info.tags ul
-    padding 0
 
-.info.tags ul li
-    display inline-block
+/*==========================
+MIRA EL PERU
+==========================*/
+#mira-peru
+    
+    .container
+        box-shadow none
+    
+    header
+        background-image url('/imagenes/fondo-mira-peru.jpg')
+        background-position center center
+        background-repeat no-repeat
+        background-size cover
+        height 565px
+        
+        .container
+            background none
 
-.info.tags ul li a:hover
-    background #be1622
-    color #fff
+        nav
+            background-color transparent
+            background-image url('/imagenes/fondo_trans.png')
+            border none
+            
+            .container
+                height 60px
+            
+                .logo
+                    position absolute
+                    background-color transparent
+                    left 0
+                    top 5px
+                    width initial
+                    
+                    img
+                        height 50px
+                        top 5px
+                        
+                ul
+                    padding-top 20px
+                    color #fff
+                    margin-right -30px
+                    
+                    li
+                        a:hover
+                            font-weight bold
+                            
+        .datos-foto
+            margin-top 425px
+            
+            .container
+                background-image url('/imagenes/fondo_trans.png')
+                height initial
+                padding-top 10px
+                padding-bottom 10px
+                
+                .datos
+                    text-align left
+                    
+                    p, h2
+                        color #fff
+                        margin 0
+                        
+                .logo-mira-peru
+                    
+                    img
+                        height 60px
