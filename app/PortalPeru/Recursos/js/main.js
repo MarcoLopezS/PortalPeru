@@ -120,7 +120,7 @@ $( document ).ready(function() {
 
     $("#header-menu-button").on('click', function(e) {  
         e.preventDefault();  
-        $('header nav>ul').slideToggle();  
+        $('ul.header-menu').slideToggle();
     });
 
 });
