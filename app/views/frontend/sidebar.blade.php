@@ -35,6 +35,29 @@
     </div>
     <!-- FIN COLUMNISTAS -->
 
+    <!-- MAS VISITADO -->
+    <div class="most-commented col-md-12 col-sm-6">
+        <h4>MÁS VISTO DE LA SEMANA</h4>
+
+        @foreach($masVisto as $item)
+        <article class="small clearfix">
+            <div class="counter">
+                <i class="fa fa-eye"></i>
+                <p>{{ $item->visitas }}</p>
+            </div>
+            <div class="info">
+                <h1>
+                    <a href="nota/{{ $item->post->id."-".$item->post->slug_url }}">
+                        {{ $item->post->titulo }}
+                    </a>
+                </h1>
+            </div>
+        </article>
+        @endforeach
+
+    </div>
+    <!-- FIN MAS VISITADO -->
+
     <!-- PUBLICIDAD -->
     <div class="banner visible-xs visible-md visible-lg">
         <style type="text/css">

@@ -43,7 +43,17 @@ class FrontendController extends BaseController{
         elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
         elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
-        return View::make('frontend.home-3', compact('post_1', 'post_2', 'post_3', 'post_4', 'post_5', 'post_6', 'post_7', 'post_8', 'post_9', 'galeria', 'columnistasDia'));
+        //NOTICIAS ENTRE FECHAS
+        $now = Carbon::now()->format('Y-m-d 23:59:59');
+        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
+                                ->whereBetween('created_at', [$subWeek, $now])
+                                ->orderBy('visitas', 'desc')
+                                ->groupBy('post_id')
+                                ->havingRaw('COUNT(*)')
+                                ->take(4)->get();
+
+        return View::make('frontend.home-3', compact('post_1', 'post_2', 'post_3', 'post_4', 'post_5', 'post_6', 'post_7', 'post_8', 'post_9', 'galeria', 'columnistasDia', 'masVisto'));
     }
 
     public function nosotros()
@@ -57,7 +67,17 @@ class FrontendController extends BaseController{
         elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
         elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
-        return View::make('frontend.nosotros', compact('columnistasDia'));
+        //NOTICIAS ENTRE FECHAS
+        $now = Carbon::now()->format('Y-m-d 23:59:59');
+        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
+                                ->whereBetween('created_at', [$subWeek, $now])
+                                ->orderBy('visitas', 'desc')
+                                ->groupBy('post_id')
+                                ->havingRaw('COUNT(*)')
+                                ->take(4)->get();
+
+        return View::make('frontend.nosotros', compact('columnistasDia', 'masVisto'));
     }
 
     public function contacto()
@@ -71,7 +91,17 @@ class FrontendController extends BaseController{
         elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
         elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
-        return View::make('frontend.contacto', compact('columnistasDia'));
+        //NOTICIAS ENTRE FECHAS
+        $now = Carbon::now()->format('Y-m-d 23:59:59');
+        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
+                                ->whereBetween('created_at', [$subWeek, $now])
+                                ->orderBy('visitas', 'desc')
+                                ->groupBy('post_id')
+                                ->havingRaw('COUNT(*)')
+                                ->take(4)->get();
+
+        return View::make('frontend.contacto', compact('columnistasDia', 'masVisto'));
     }
 
     public function publicidad()
@@ -85,7 +115,17 @@ class FrontendController extends BaseController{
         elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
         elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
-        return View::make('frontend.publicidad', compact('columnistasDia'));
+        //NOTICIAS ENTRE FECHAS
+        $now = Carbon::now()->format('Y-m-d 23:59:59');
+        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
+                                ->whereBetween('created_at', [$subWeek, $now])
+                                ->orderBy('visitas', 'desc')
+                                ->groupBy('post_id')
+                                ->havingRaw('COUNT(*)')
+                                ->take(4)->get();
+
+        return View::make('frontend.publicidad', compact('columnistasDia', 'masVisto'));
     }
 
     public function noticia($id)
@@ -119,10 +159,12 @@ class FrontendController extends BaseController{
         $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
                                 ->whereBetween('created_at', [$subWeek, $now])
+                                ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
-                                ->havingRaw('COUNT(*)')->get();
+                                ->havingRaw('COUNT(*)')
+                                ->take(4)->get();
 
-        return View::make('frontend.noticia', compact('noticia', 'noticiaFotos', 'noticiaTags', 'masVisto', 'columnistasDia'));
+        return View::make('frontend.noticia', compact('noticia', 'noticiaFotos', 'noticiaTags', 'columnistasDia', 'masVisto'));
     }
 
     public function noticiaPreview($id)
@@ -146,7 +188,17 @@ class FrontendController extends BaseController{
             $noticiaTags = "";
         }
 
-        return View::make('frontend.noticia-preview', compact('noticia', 'noticiaFotos', 'noticiaTags', 'columnistasDia'));
+        //NOTICIAS ENTRE FECHAS
+        $now = Carbon::now()->format('Y-m-d 23:59:59');
+        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
+                                ->whereBetween('created_at', [$subWeek, $now])
+                                ->orderBy('visitas', 'desc')
+                                ->groupBy('post_id')
+                                ->havingRaw('COUNT(*)')
+                                ->take(4)->get();
+
+        return View::make('frontend.noticia-preview', compact('noticia', 'noticiaFotos', 'noticiaTags', 'columnistasDia', 'masVisto'));
     }
 
     public function noticiaCategoria($url)
@@ -163,7 +215,17 @@ class FrontendController extends BaseController{
         $categoria = Category::whereSlugUrl($url)->first();
         $noticias = Post::where('category_id', $categoria->id)->where('publicar', 1)->orderBy('published_at','desc')->paginate(7);
 
-        return View::make('frontend.categoria', compact('categoria', 'noticias', 'columnistasDia'));
+        //NOTICIAS ENTRE FECHAS
+        $now = Carbon::now()->format('Y-m-d 23:59:59');
+        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
+                                ->whereBetween('created_at', [$subWeek, $now])
+                                ->orderBy('visitas', 'desc')
+                                ->groupBy('post_id')
+                                ->havingRaw('COUNT(*)')
+                                ->take(4)->get();
+
+        return View::make('frontend.categoria', compact('categoria', 'noticias', 'columnistasDia', 'masVisto'));
     }
 
     public function noticiaTags($id, $url)
@@ -180,7 +242,17 @@ class FrontendController extends BaseController{
         $categoria = Tag::whereId($id)->whereSlugUrl($url)->first();
         $noticias = Post::where('tags', 'LIKE', '%,'.$id.',%')->where('publicar', 1)->orderBy('published_at','desc')->paginate(7);
 
-        return View::make('frontend.categoria', compact('categoria', 'noticias', 'columnistasDia'));
+        //NOTICIAS ENTRE FECHAS
+        $now = Carbon::now()->format('Y-m-d 23:59:59');
+        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
+                                ->whereBetween('created_at', [$subWeek, $now])
+                                ->orderBy('visitas', 'desc')
+                                ->groupBy('post_id')
+                                ->havingRaw('COUNT(*)')
+                                ->take(4)->get();
+
+        return View::make('frontend.categoria', compact('categoria', 'noticias', 'columnistasDia', 'masVisto'));
     }
 
     public function buscar($url, $texto)
@@ -196,7 +268,17 @@ class FrontendController extends BaseController{
 
         $buscar = $texto;
 
-        return View::make('frontend.'.$url, compact('buscar', 'columnistasDia'));
+        //NOTICIAS ENTRE FECHAS
+        $now = Carbon::now()->format('Y-m-d 23:59:59');
+        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
+                                ->whereBetween('created_at', [$subWeek, $now])
+                                ->orderBy('visitas', 'desc')
+                                ->groupBy('post_id')
+                                ->havingRaw('COUNT(*)')
+                                ->take(4)->get();
+
+        return View::make('frontend.'.$url, compact('buscar', 'columnistasDia', 'masVisto'));
     }
 
     public function columnistasList()
@@ -212,7 +294,17 @@ class FrontendController extends BaseController{
 
         $columnistas = Columnist::where('publicar', 1)->paginate(7);
 
-        return View::make('frontend.columnista-lista', compact('columnistas', 'columnistasDia'));
+        //NOTICIAS ENTRE FECHAS
+        $now = Carbon::now()->format('Y-m-d 23:59:59');
+        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
+                                ->whereBetween('created_at', [$subWeek, $now])
+                                ->orderBy('visitas', 'desc')
+                                ->groupBy('post_id')
+                                ->havingRaw('COUNT(*)')
+                                ->take(4)->get();
+
+        return View::make('frontend.columnista-lista', compact('columnistas', 'columnistasDia', 'masVisto'));
     }
 
     public function columnistasPerson($id, $url)
@@ -228,8 +320,18 @@ class FrontendController extends BaseController{
 
         $columnista = Columnist::whereId($id)->whereSlugUrl($url)->first();
         $columnas = Column::whereColumnistId($id)->orderBy('published_at', 'desc')->paginate(7);
+
+        //NOTICIAS ENTRE FECHAS
+        $now = Carbon::now()->format('Y-m-d 23:59:59');
+        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
+                                ->whereBetween('created_at', [$subWeek, $now])
+                                ->orderBy('visitas', 'desc')
+                                ->groupBy('post_id')
+                                ->havingRaw('COUNT(*)')
+                                ->take(4)->get();
         
-        return View::make('frontend.columnista', compact('columnista','columnas', 'columnistasDia'));
+        return View::make('frontend.columnista', compact('columnista','columnas', 'columnistasDia', 'masVisto'));
     }
     
     public function columnistasColumn($id, $url, $idColumn, $urlColumn)
@@ -246,7 +348,17 @@ class FrontendController extends BaseController{
         $columnista = Columnist::whereId($id)->whereSlugUrl($url)->first();
         $columna = Column::whereColumnistId($id)->whereId($idColumn)->whereSlugUrl($urlColumn)->first();
 
-        return View::make('frontend.columnista-noticia', compact('columnista','columna', 'columnistasDia'));
+        //NOTICIAS ENTRE FECHAS
+        $now = Carbon::now()->format('Y-m-d 23:59:59');
+        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
+                                ->whereBetween('created_at', [$subWeek, $now])
+                                ->orderBy('visitas', 'desc')
+                                ->groupBy('post_id')
+                                ->havingRaw('COUNT(*)')
+                                ->take(4)->get();
+
+        return View::make('frontend.columnista-noticia', compact('columnista','columna', 'columnistasDia', 'masVisto'));
     }
 
     public function fotosLima()
@@ -264,7 +376,17 @@ class FrontendController extends BaseController{
         elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
         elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
-        return View::make('frontend.galeria', compact('galeria', 'galerias', 'columnistasDia'));
+        //NOTICIAS ENTRE FECHAS
+        $now = Carbon::now()->format('Y-m-d 23:59:59');
+        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
+                                ->whereBetween('created_at', [$subWeek, $now])
+                                ->orderBy('visitas', 'desc')
+                                ->groupBy('post_id')
+                                ->havingRaw('COUNT(*)')
+                                ->take(4)->get();
+
+        return View::make('frontend.galeria', compact('galeria', 'galerias', 'columnistasDia', 'masVisto'));
     }
 
 }
