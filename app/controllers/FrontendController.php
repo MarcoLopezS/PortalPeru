@@ -7,7 +7,9 @@ use PortalPeru\Entities\Configuration;
 use PortalPeru\Entities\Gallery;
 use PortalPeru\Entities\Post;
 use PortalPeru\Entities\PostPhoto;
+use PortalPeru\Entities\PostView;
 use PortalPeru\Entities\Tag;
+use Carbon\Carbon;
 
 class FrontendController extends BaseController{
 
@@ -105,9 +107,22 @@ class FrontendController extends BaseController{
             $noticiaTags = explode(",", $noticiaTags[0]);
         }elseif($noticia->tags == "-0,0,0-" OR $noticia->tags == ""){
             $noticiaTags = "";
-        }        
+        }
 
-        return View::make('frontend.noticia', compact('noticia', 'noticiaFotos', 'noticiaTags', 'columnistasDia'));
+        //GUARDAR VISITA
+        $view = new PostView();
+        $view->post_id = $id;
+        $view->save();
+
+        //NOTICIAS ENTRE FECHAS
+        $now = Carbon::now()->format('Y-m-d 23:59:59');
+        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
+                                ->whereBetween('created_at', [$subWeek, $now])
+                                ->groupBy('post_id')
+                                ->havingRaw('COUNT(*)')->get();
+
+        return View::make('frontend.noticia', compact('noticia', 'noticiaFotos', 'noticiaTags', 'masVisto', 'columnistasDia'));
     }
 
     public function noticiaPreview($id)

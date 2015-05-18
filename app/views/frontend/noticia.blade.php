@@ -116,6 +116,18 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
             </article>
             <!--END POST-->
 
+            <article>
+                
+                <ul>
+                @foreach($masVisto as $item)
+
+                    <li>{{ $item->Vista }}</li>
+
+                @endforeach
+                </ul>
+
+            </article>
+
             @if($noticia->category->slug_url == "reportero-ciudadano")
             {{--*/
             $reporteroNombreCompleto = $noticia->user->profile->nombre." ".$noticia->user->profile->apellidos;
