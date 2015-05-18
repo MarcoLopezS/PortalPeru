@@ -37,7 +37,7 @@
 
     <!-- MAS VISITADO -->
     <div class="most-commented col-md-12 col-sm-6">
-        <h4>MÁS VISTO DE LA SEMANA</h4>
+        <h4>LO MÁS VISTO</h4>
 
         @foreach($masVisto as $item)
         <article class="small clearfix">
