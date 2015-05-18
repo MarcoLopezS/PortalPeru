@@ -35,6 +35,11 @@ class Post extends BaseEntity{
         return $this->hasMany('PortalPeru\Entities\PostHistory');
     }
 
+    public function postView()
+    {
+        return $this->hasMany('PortalPeru\Entities\PostView');
+    }
+
     public function postUserDelete()
     {
         return $this->hasMany('PortalPeru\Entities\PostHistory')->whereType('delete')->orderBy('created_at', 'desc')->first();
