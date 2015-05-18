@@ -78,9 +78,10 @@
     <!-- PUBLICIDAD -->
 
     <!-- GALERIA DE FOTOS -->
+    {{--
     <div class="flickr col-md-12 col-sm-6 hidden-sm hidden-xs">
         <h4>Galería de Imágenes</h4>
-    </div>
+    </div>--}} 
     <!-- FIN GALERIA DE FOTOS -->
 
     <!-- SUSCRIPCION -->
