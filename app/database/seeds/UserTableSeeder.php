@@ -21,6 +21,20 @@ class UserTableSeeder extends Seeder {
             'user_id'       => 1
         ]);
 
+        User::create([
+            'id'        => 2,
+            'email'     => 'editor@portalperu.pe',
+            'password'  => 'editor',
+            'type'      => 'editor',
+            'activacion' => 1
+        ]);
+
+        UserProfile::create([
+            'nombre'        => 'Editor',
+            'apellidos'     => 'Lopez',
+            'user_id'       => 2
+        ]);
+
     }
 
 } 
