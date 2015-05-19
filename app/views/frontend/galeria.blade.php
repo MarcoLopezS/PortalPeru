@@ -15,7 +15,18 @@ Lima en una Foto | @parent
     <div class="row">
         <!--CONTENT-->
         <div class="col-md-9 col-md-12 clearfix">
-            <h2>Lima en una Foto</h2>
+            
+            <div class="fullwidth galeria-titulo">
+
+                <h2 class="pull-left">
+                    <img src="/imagenes/icon-fotos-lima.png" height="30" alt="">
+                </h2>
+
+                <p class="pull-right">
+                    Envía tus fotos a: fotografia@portalperu.pe
+                </p>
+
+            </div>
 
             <div class="fullwidth galeria-destacada">
                 <div class="info imagen">
