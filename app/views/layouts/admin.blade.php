@@ -149,11 +149,10 @@ $usuarioNombre = Auth::user()->profile->nombre." ".Auth::user()->profile->apelli
                             </ul>
                         </li>
 
-                        @if(is_admin())
                         <li {{ (Request::is('administrador/gallery') || Request::is('administrador/gallery/*') ? 'class="active"' : '') }}>
                             <a href="#">
                                 <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
-                                <span class="title">Galería de Fotos</span>
+                                <span class="title">Lima en una Foto</span>
                                 <span class="fa arrow"></span>
                             </a>
                             <ul class="sub-menu">
@@ -171,7 +170,6 @@ $usuarioNombre = Auth::user()->profile->nombre." ".Auth::user()->profile->apelli
                                 </li>
                             </ul>
                         </li>
-                        @endif
 
                         @if(is_admin())
                         <li {{ (Request::is('administrador/pages') || Request::is('administrador/pages/*') ? 'class="active"' : '') }}>
