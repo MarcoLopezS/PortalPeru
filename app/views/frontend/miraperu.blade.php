@@ -98,28 +98,37 @@
 
                         @endforeach
 
+                        <!-- PUBLICIDAD -->
+                        <article id="publicidad-central" class="col-lg-4 col-md-4 col-sm-12 mid">
+                            <style type="text/css">
+                                .adslot_home { width: 320px; height: 300px; }
+                                @media (min-width:500px) { .adslot_home { width: 468px; height: 300px; } }
+                                @media (min-width:800px) { .adslot_home { width: 255px; height: 255px; } }
+                            </style>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <ins class="adsbygoogle adslot_home"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-3674889010429322"
+                                 data-ad-slot="1879845946"
+                                 data-ad-format="auto"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </article>
+                        <!-- FIN PUBLICIDAD -->
+
                     </div>
                     <!-- FIN NOTICIA SUPERIOR -->
 
-                    <div class="mira-peru-centro-izq col-lg-4 col-md-4 col-sm-12">
-                        
-
-
+                    <!-- NOTICIA CENTRAL -->
+                    <div class="row" id="mira-peru-central">                        
                     </div>
+                    <!-- FIN NOTICIA CENTRAL -->
 
-                    <div class="mira-peru-centro-der col-lg-8 col-md-8 col-sm-12">
-
-                        <!-- NOTICIA CENTRAL -->
-                        <div class="row" id="mira-peru-central">                        
-                        </div>
-                        <!-- FIN NOTICIA CENTRAL -->
-
-                        <!-- NOTICIA INFERIOR -->
-                        <div class="row" id="mira-peru-inferior">
-                        </div>
-                        <!-- FIN NOTICIA INFERIOR -->
-
+                    <!-- NOTICIA INFERIOR -->
+                    <div class="row" id="mira-peru-inferior">
                     </div>
+                    <!-- FIN NOTICIA INFERIOR -->
 
                     <!-- NOTICIA INFERIOR HORIZONTAL -->
                     <div class="row" id="mira-peru-inferior-horizontal">
