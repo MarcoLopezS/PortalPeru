@@ -44,6 +44,11 @@ Route::group(['before' => ['auth']], function () {
         Route::post('administrador/columnist/{id}/edit/img', ['as' => 'administrador.columnist.imagen', 'uses' => 'AdminColumnistsController@imagen']);
         Route::post('administrador/columnist/{id}/edit/imgPort', ['as' => 'administrador.columnist.imagenPortada', 'uses' => 'AdminColumnistsController@imagenPortada']);
 
+        //DELETE
+        Route::get('administrador/columnist-deletes', ['as' => 'administrador.columnist.deletes', 'uses' => 'AdminColumnistsController@listsDeletes']);
+        Route::delete('administrador/columnist-deletes/destroy/{id}', ['as' => 'administrador.columnist.destroyTotal', 'uses' => 'AdminColumnistsController@destroyTotal']);
+        Route::post('administrador/columnist-deletes/restore/{id}', ['as' => 'administrador.columnist.restore', 'uses' => 'AdminColumnistsController@restore']);
+
         //COLUMNAS
         Route::get('administrador/columns/{id}', ['as' => 'administrador.columns.list', 'uses' => 'AdminColumnsController@lists']);
         Route::get('administrador/columns/{id}/create', ['as' => 'administrador.columns.create', 'uses' => 'AdminColumnsController@create']);
