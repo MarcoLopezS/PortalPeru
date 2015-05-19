@@ -292,7 +292,7 @@ class FrontendController extends BaseController{
         elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
         elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
-        $columnistas = Columnist::where('publicar', 1)->paginate(7);
+        $columnistas = Columnist::where('publicar', 1)->paginate(10);
 
         //NOTICIAS ENTRE FECHAS
         $now = Carbon::now()->format('Y-m-d 23:59:59');
