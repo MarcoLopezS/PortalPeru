@@ -259,9 +259,79 @@ class AdminColumnistsController extends \BaseController {
      */
     public function destroy($id)
     {
-        //
+        $post = Columnist::find($id);
+        $post->delete();       
+
+        $message = 'El registro se eliminó satisfactoriamente.';
+
+        if(Request::ajax())
+        {
+            return Response::json([
+                'message' => $message
+            ]);
+        }
     }
 
+    /**
+     * Lista de noticias Eliminadas
+     *
+     * @return Response
+     */
+
+    public function listsDeletes()
+    {
+        $posts = Columnist::onlyTrashed()->select()->orderBy('deleted_at', 'desc')->paginate();
+        return View::make('admin.columnist.list-deletes', compact('posts'));
+    }
+
+    /**
+     * Eliminacion completa de Noticia
+     */
+    public function destroyTotal($id)
+    {
+        $post = Columnist::onlyTrashed()->find($id);
+        $post->forceDelete();
+
+        $message = 'El registro se eliminó satisfactoriamente.';
+
+        if(Request::ajax())
+        {
+            return Response::json([
+                'message' => $message
+            ]);
+        }
+
+        //\Session::flash('message', $message);
+
+        return Redirect::route('administrador.columnist.deletes');
+    }
+
+    /**
+     * Restaurar noticia
+     */
+    public function restore($id)
+    {
+        $post = Columnist::onlyTrashed()->find($id);
+        $post->restore();
+
+        $message = 'El registro se restauró satisfactoriamente.';
+
+        if(Request::ajax())
+        {
+            return Response::json([
+                'message' => $message
+            ]);
+        }
+
+        //\Session::flash('message', $message);
+
+        return Redirect::route('administrador.columnist.deletes');
+    }
+
+
+    /**
+    * ORDEN DE COLUMNISTAS
+    */
     public function order()
     {
         $photos = Columnist::orderBy('orden', 'asc')->get();
@@ -287,6 +357,9 @@ class AdminColumnistsController extends \BaseController {
         }
     }
 
+    /**
+    * UPLOAD Y LISTA DE FOTOS
+    */
     public function photosList($post)
     {
         $posts = $this->columnistRepo->findOrFail($post);

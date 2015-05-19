@@ -53,7 +53,10 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
-    //return Response::view('frontend.404');
+
+    if (!Config::get('app.debug')) {
+        return Response::view('frontend.404');
+    }
 });
 
 /*

@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Columnistas
+Columnistas eliminados
 @parent
 @stop
 
@@ -23,26 +23,8 @@ Columnistas
 @section('content_admin')
 <section class="content-header">
     <!--section starts-->
-    <h1>Columnistas</h1>
-    <a href="{{ route('administrador.columnist.create') }}" class="btn btn-md btn-default mgBt10">
-        <span class="glyphicon glyphicon-plus"></span>
-        Agregar nuevo columnista
-    </a>
-
-    <a href="{{ route('administrador.columnist.order') }}" class="btn btn-md btn-default mgBt10">
-        <span class="glyphicon glyphicon-move"></span>
-        Ordenar
-    </a>
-
-    @if(is_admin())
-    <a href="{{ route('administrador.columnist.deletes') }}" class="btn btn-md btn-default mgBt10">
-        <span class="glyphicon glyphicon-list"></span>
-        Ver columnistas eliminados
-    </a>
-    @endif
-
+    <h1>Columnistas eliminadas</h1>
     <div class="alert alert-dismissable"></div>
-
 </section>
 <!--section ends-->
 <section class="content">
@@ -52,33 +34,15 @@ Columnistas
             <div class="panel panel-primary filterable">
                 <div class="panel-body">
 
-                    {{ Form::model(Input::all(), ['route' => 'administrador.columnist.index', 'method' => 'GET', 'class' => 'form-horizontal']) }}
-
-                        <div class="form-group">
-                            <div class="col-md-2">
-                                {{ Form::text('search', null, ['class' => 'form-control']) }}
-                            </div>
-                            <div class="col-md-2">
-                                {{ Form::select('publicar', ['' => 'Seleccionar estado', '0' => 'No publicado', '1' => 'Publicado'], null, ['class' => 'form-control']) }}
-                            </div>
-                            <div class="col-md-1">
-                                {{ Form::button('Buscar', ['type' => 'submit', 'class' => 'btn btn-primary']) }}
-                            </div>
-                            <div class="col-md-2">
-                                <a href="{{ route('administrador.columnist.index') }}" class="btn btn-danger">Borrar busqueda</a>
-                            </div>
-                        </div>
-
-                    {{ Form::close() }}
-
                     <table class="table table-striped table-responsive">
                         <thead>
                             <tr>
 
                                 <th>Columnista</th>
                                 <th>Dias</th>
-                                <th>Publicar</th>
+                                @if(is_admin())
                                 <th>Acciones</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -94,7 +58,7 @@ Columnistas
                                     {{ $item->dia_sabado ? 'Sabado - ' : '' }}
                                     {{ $item->dia_domingo ? 'Domingo' : '' }}
                                 </td>
-                                <td>{{ $item->publicar ? 'Publicado' : 'No publicado' }}</td>
+                                @if(is_admin())
                                 <td>
                                     <div class="button-dropdown" data-buttons="dropdown">
                                         <a href="#" class="button button-rounded">
@@ -102,13 +66,12 @@ Columnistas
                                             <i class="fa fa-caret-down"></i>
                                         </a>
                                         <ul>
-                                            <li><a href="{{ route('administrador.columnist.show', $item->id) }}">Ver</a></li>
-                                            <li><a href="{{ route('administrador.columnist.edit', $item->id) }}">Editar</a></li>
+                                            <li><a href="#" class="btn-restore">Restaurar</a></li>
                                             <li><a href="#" class="btn-delete">Eliminar</a></li>
-                                            <li><a href="{{ route('administrador.columns.list', $item->id) }}">Columnas</a></li>
                                         </ul>
                                     </div>
                                 </td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>
@@ -136,12 +99,21 @@ Columnistas
 </section>
 
 <div id="dialog-confirm" title="Eliminar registro">
-  <p>¿Desea eliminar el registro?</p>
+  <p>¿Desea eliminar el registro permanentemente?</p>
   <div class="title"></div>
 </div>
 
-{{ Form::open(['route' => ['administrador.columnist.destroy', ':REGISTER'], 'method' => 'DELETE', 'id' => 'FormDeleteRow']) }}
+<div id="dialog-confirm-restore" title="Restaurar la noticia">
+  <p>¿Desea restaurar el registro eliminado?</p>
+  <div class="title"></div>
+</div>
+
+{{ Form::open(['route' => ['administrador.columnist.destroyTotal', ':REGISTER'], 'method' => 'DELETE', 'id' => 'FormDeleteRow']) }}
 {{ Form::close() }}
+
+{{ Form::open(['route' => ['administrador.columnist.restore', ':REGISTER'], 'method' => 'POST', 'id' => 'FormRestoreRow']) }}
+{{ Form::close() }}
+
 @stop
 
 {{-- page level scripts --}}
@@ -151,8 +123,7 @@ Columnistas
 
 <script>
 $(document).on("ready", function(){
-    $('.alert').hide();
-    $("#dialog-confirm").hide();
+    $('.alert, #dialog-confirm, #dialog-confirm-restore').hide();
 
     $(".btn-delete").on("click", function(){
         var row = $(this).parents("tr");
@@ -164,7 +135,7 @@ $(document).on("ready", function(){
 
         $("#dialog-confirm .title").text(title);
 
-        $( "#dialog-confirm" ).dialog({
+        $("#dialog-confirm").dialog({
             resizable: true,
             height: 250,
             modal: false,
@@ -174,10 +145,42 @@ $(document).on("ready", function(){
 
                     $.post(url, data, function(result){
                         $(".alert").show().removeClass('alert-danger').addClass('alert-success').text(result.message);
-                    }).fail(function(result){
-                        var error = result.error;
-                        console.log(error);
+                    }).fail(function(){
                         $(".alert").show().removeClass('alert-success').addClass('alert-danger').text("Se produjo un error al eliminar el registro");
+                        row.show();
+                    });
+
+                    $(this).dialog("close");
+                },
+                Cancel: function() {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    });
+
+    $(".btn-restore").on("click", function(){
+        var row = $(this).parents("tr");
+        var id = row.data("id");
+        var title = row.data("title");
+        var form = $("#FormRestoreRow");
+        var url = form.attr("action").replace(':REGISTER', id);
+        var data = form.serialize();
+
+        $("#dialog-confirm-restore .title").text(title);
+
+        $("#dialog-confirm-restore").dialog({
+            resizable: true,
+            height: 250,
+            modal: false,
+            buttons: {
+                "Restaurar registro": function() {
+                    row.fadeOut();
+
+                    $.post(url, data, function(result){
+                        $(".alert").show().removeClass('alert-danger').addClass('alert-success').text(result.message);
+                    }).fail(function(){
+                        $(".alert").show().removeClass('alert-success').addClass('alert-danger').text("Se produjo un error al restaurar el registro");
                         row.show();
                     });
 
@@ -192,5 +195,4 @@ $(document).on("ready", function(){
 });
 
 </script>
-
 @stop
