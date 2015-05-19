@@ -15,6 +15,8 @@ Columnistas
 {{ HTML::style('admin/css/pages/tables.css') }}
 {{ HTML::style('admin/vendors/Buttons-master/css/buttons.css') }}
 <!--end of page level css-->
+
+{{ HTML::style('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css') }}
 @stop
 
 {{-- Page content --}}
@@ -22,15 +24,25 @@ Columnistas
 <section class="content-header">
     <!--section starts-->
     <h1>Columnistas</h1>
-    <a href="{{ route('administrador.columnist.create') }}" class="btn btn-md btn-default">
+    <a href="{{ route('administrador.columnist.create') }}" class="btn btn-md btn-default mgBt10">
         <span class="glyphicon glyphicon-plus"></span>
         Agregar nuevo columnista
     </a>
 
-    <a href="{{ route('administrador.columnist.order') }}" class="btn btn-md btn-default">
+    <a href="{{ route('administrador.columnist.order') }}" class="btn btn-md btn-default mgBt10">
         <span class="glyphicon glyphicon-move"></span>
         Ordenar
     </a>
+
+    @if(is_admin())
+    <a href="{{ route('administrador.columnist.deletes') }}" class="btn btn-md btn-default mgBt10">
+        <span class="glyphicon glyphicon-list"></span>
+        Ver columnistas eliminados
+    </a>
+    @endif
+
+    <div class="alert alert-dismissable"></div>
+
 </section>
 <!--section ends-->
 <section class="content">
@@ -71,7 +83,7 @@ Columnistas
                         </thead>
                         <tbody>
                             @foreach($posts as $item)
-                            <tr>
+                            <tr data-id="{{ $item->id }}" data-title="{{ $item->titulo }}">
                                 <td>{{ $item->nombre." ".$item->apellidos }}</td>
                                 <td>
                                     {{ $item->dia_lunes ? 'Lunes - ' : '' }}
@@ -92,7 +104,7 @@ Columnistas
                                         <ul>
                                             <li><a href="{{ route('administrador.columnist.show', $item->id) }}">Ver</a></li>
                                             <li><a href="{{ route('administrador.columnist.edit', $item->id) }}">Editar</a></li>
-                                            <li><a href="{{ route('administrador.columnist.destroy', $item->id) }}">Eliminar</a></li>
+                                            <li><a href="#" class="btn-delete">Eliminar</a></li>
                                             <li><a href="{{ route('administrador.columns.list', $item->id) }}">Columnas</a></li>
                                         </ul>
                                     </div>
@@ -121,50 +133,64 @@ Columnistas
         </div>
     </div>
 
-    <!--delete modal starts here-->
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title custom_align" id="Heading">
-                        Delete this entry
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-warning">
-                        <span class="glyphicon glyphicon-warning-sign"></span>
-                        Are you sure you want to delete this Record?
-                    </div>
-                </div>
-                <div class="modal-footer ">
-                    <button type="button" class="btn btn-warning">
-                        <span class="glyphicon glyphicon-ok-sign"></span>
-                        Yes
-                    </button>
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">
-                        <span class="glyphicon glyphicon-remove"></span>
-                        No
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.modal ends here -->
-
 </section>
+
+<div id="dialog-confirm" title="Eliminar registro">
+  <p>¿Desea eliminar el registro?</p>
+  <div class="title"></div>
+</div>
+
+{{ Form::open(['route' => ['administrador.columnist.destroy', ':REGISTER'], 'method' => 'DELETE', 'id' => 'FormDeleteRow']) }}
+{{ Form::close() }}
 @stop
 
 {{-- page level scripts --}}
 @section('footer_scripts')
 <!-- begining of page level js -->
-{{ HTML::script('admin/vendors/datatables/jquery.dataTables.min.js') }}
-{{ HTML::script('admin/vendors/datatables/dataTables.tableTools.min.js') }}
-{{ HTML::script('admin/vendors/datatables/dataTables.colReorder.min.js') }}
-{{ HTML::script('admin/vendors/datatables/dataTables.scroller.min.js') }}
-{{ HTML::script('admin/vendors/datatables/dataTables.bootstrap.js') }}
-{{ HTML::script('admin/js/pages/table-advanced.js') }}
-{{ HTML::script('admin/vendors/Buttons-master/js/vendor/scrollto.js') }}
-{{ HTML::script('admin/vendors/Buttons-master/js/main.js') }}
 {{ HTML::script('admin/vendors/Buttons-master/js/buttons.js') }}
+
+<script>
+$(document).on("ready", function(){
+    $('.alert').hide();
+    $("#dialog-confirm").hide();
+
+    $(".btn-delete").on("click", function(){
+        var row = $(this).parents("tr");
+        var id = row.data("id");
+        var title = row.data("title");
+        var form = $("#FormDeleteRow");
+        var url = form.attr("action").replace(':REGISTER', id);
+        var data = form.serialize();
+
+        $("#dialog-confirm .title").text(title);
+
+        $( "#dialog-confirm" ).dialog({
+            resizable: true,
+            height: 250,
+            modal: false,
+            buttons: {
+                "Borrar registro": function() {
+                    row.fadeOut();
+
+                    $.post(url, data, function(result){
+                        $(".alert").show().removeClass('alert-danger').addClass('alert-success').text(result.message);
+                    }).fail(function(result){
+                        var error = result.error;
+                        console.log(error);
+                        $(".alert").show().removeClass('alert-success').addClass('alert-danger').text("Se produjo un error al eliminar el registro");
+                        row.show();
+                    });
+
+                    $(this).dialog("close");
+                },
+                Cancel: function() {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    });
+});
+
+</script>
+
 @stop
