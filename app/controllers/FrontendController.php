@@ -233,7 +233,7 @@ class FrontendController extends BaseController{
     public function noticiaMiraPeru()
     {
         //NOTICIAS
-        $mira_peru = Post::where('category_id', 5)->where('publicar', 1)->orderBy('published_at','desc')->paginate(8);
+        $mira_peru = Post::where('category_id', 5)->where('publicar', 1)->orderBy('published_at','desc')->paginate(9);
 
         //COLUNISTAS DEL DIA
         if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
