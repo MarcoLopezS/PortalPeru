@@ -226,9 +226,9 @@ class FrontendController extends BaseController{
                                 ->take(4)->get();
 
         if($categoria->design == 1){
-            return View::make('frontend.categoria-portada', compact('categoria', 'noticias', 'columnistasDia'));
+            return View::make('frontend.categoria-portada', compact('categoria', 'noticias', 'columnistasDia', 'masVisto'));
         }else{
-            return View::make('frontend.categoria-normal', compact('categoria', 'noticias', 'columnistasDia'));
+            return View::make('frontend.categoria-normal', compact('categoria', 'noticias', 'columnistasDia', 'masVisto'));
         }        
 
     }
