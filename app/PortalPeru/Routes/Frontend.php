@@ -8,10 +8,8 @@ Route::get('nosotros', ['as' => 'home.nosotros', 'uses' => 'FrontendController@n
 Route::get('contacto', ['as' => 'home.contacto', 'uses' => 'FrontendController@contacto']);
 Route::get('publicidad', ['as' => 'home.publicidad', 'uses' => 'FrontendController@publicidad']);
 
-/* NOTICIAS */
-Route::get('nota/{id}-{url}', ['as' => 'home.noticia', 'uses' => 'FrontendController@noticia']);
-Route::get('{url}', ['as' => 'home.noticia.categoria', 'uses' => 'FrontendController@noticiaCategoria']);
-Route::get('tag/{id}-{url}', ['as' => 'home.noticia.tags', 'uses' => 'FrontendController@noticiaTags']);
+//LIMA EN UNA FOTO
+Route::get('lima-foto', ['as' => 'home.fotos.lima', 'uses' => 'FrontendController@fotosLima']);
 
 /* BUSCADOR */
 Route::get('buscar/b={texto}', ['as' => 'home.buscar', 'uses' => 'FrontendController@buscar']);
@@ -20,4 +18,8 @@ Route::get('buscar/b={texto}', ['as' => 'home.buscar', 'uses' => 'FrontendContro
 Route::get('columnistas', ['as' => 'home.columnistas.list', 'uses' => 'FrontendController@columnistasList']);
 Route::get('columnistas/{id}-{url}', ['as' => 'home.columnistas.person', 'uses' => 'FrontendController@columnistasPerson']);
 Route::get('columnistas/{id}-{url}/{idColumn}-{urlColumn}', ['as' => 'home.columnistas.column', 'uses' => 'FrontendController@columnistasColumn']);
-Route::get('lima-foto', ['as' => 'home.fotos.lima', 'uses' => 'FrontendController@fotosLima']);
+
+/* NOTICIAS */
+Route::get('nota/{id}-{url}', ['as' => 'home.noticia', 'uses' => 'FrontendController@noticia']);
+Route::get('tag/{id}-{url}', ['as' => 'home.noticia.tags', 'uses' => 'FrontendController@noticiaTags']);
+Route::get('{url}', ['as' => 'home.noticia.categoria', 'uses' => 'FrontendController@noticiaCategoria']);
