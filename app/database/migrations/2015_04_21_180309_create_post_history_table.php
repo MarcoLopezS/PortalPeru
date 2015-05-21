@@ -16,7 +16,7 @@ class CreatePostHistoryTable extends Migration {
 		{
 			$table->increments('id');
 
-			$table->enum('type', ['update', 'restore', 'delete']):
+			$table->enum('type', ['update', 'restore', 'delete']);
 
 			$table->integer('post_id')->unsigned()->nullable();
             $table->foreign('post_id')->references('id')->on('posts');
