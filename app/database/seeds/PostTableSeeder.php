@@ -24,7 +24,7 @@ class PostTableSeeder extends Seeder {
                 'contenido' => $faker->text($maxNbChars = 1000),
                 'imagen' => $faker->randomElement($array = ['imagen-1.jpg','imagen-2.jpg','imagen-3.jpg','imagen-4.jpg','imagen-5.jpg']),
                 'imagen_carpeta' => 'abril2015/',
-                'publicar' => $faker->randomElement($array = ['0','1']),
+                'publicar' => $faker->randomElement($array = ['1']),
                 'redaccion' => $faker->name,
                 'category_id' => $faker->randomElement($array = [1,3,5,6,7,8]),
                 'post_order_id' => $faker->randomElement($array = [1,2,3,4,5,6,7,8]),
