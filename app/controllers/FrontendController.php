@@ -213,7 +213,7 @@ class FrontendController extends BaseController{
         elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
         $categoria = Category::whereSlugUrl($url)->first();
-        $noticias = Post::where('category_id', $categoria->id)->where('publicar', 1)->orderBy('published_at','desc')->paginate(7);
+        $noticias = Post::where('category_id', $categoria->id)->where('publicar', 1)->orderBy('published_at','desc')->paginate(9);
 
         //NOTICIAS ENTRE FECHAS
         $now = Carbon::now()->format('Y-m-d 23:59:59');
@@ -225,7 +225,12 @@ class FrontendController extends BaseController{
                                 ->havingRaw('COUNT(*)')
                                 ->take(4)->get();
 
-        return View::make('frontend.categoria', compact('categoria', 'noticias', 'columnistasDia', 'masVisto'));
+        if($categoria->design == 1){
+            return View::make('frontend.categoria-portada', compact('categoria', 'noticias', 'columnistasDia'));
+        }else{
+            return View::make('frontend.categoria-normal', compact('categoria', 'noticias', 'columnistasDia'));
+        }        
+
     }
 
     public function noticiaTags($id, $url)

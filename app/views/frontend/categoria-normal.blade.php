@@ -1,5 +1,10 @@
 @extends('layouts.frontend')
 
+@section('html_title')
+{{ $categoria->titulo }} |
+@parent
+@stop
+
 @section('contenido_frontend')
 
 <!--MAIN SECTION-->

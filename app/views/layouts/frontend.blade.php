@@ -5,8 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>
 	    @section('html_title')
-	    {{ configWeb()->titulo }}
-	    @show
+        {{ configWeb()->titulo }}
+        @show
 	</title>
 
     <meta name="keywords" content="{{ configWeb()->keywords }}"/>
@@ -26,8 +26,8 @@
 
             <!--MENU-->
             <nav class="clearfix">
-                <a href="" id="header-menu-button"><i class="fa fa-bars"></i></a>
-                <ul class="list-inline">
+                <a href="#" id="header-menu-button"><i class="fa fa-bars"></i></a>
+                <ul class="header-menu list-inline">
                     <li><a href="/">Inicio</a></li>
                     <li><a href="/publicidad">Publicidad</a></li>
                     <li><a href="/contacto">Contacto</a></li>
@@ -66,15 +66,17 @@
 
             <ul class="menu col-md-10 list-inline">
                 <li><a href="/"><i class="fa fa-home"></i></a></li>
-                <li><a href="/seccion/hechos">Hechos</a></li>
-                <li><a href="/seccion/entrevista">Entrevista</a></li>
-                <li><a href="/seccion/tecnologia">Tecnología</a></li>
-                <li><a href="https://www.flickr.com/photos/portalperu/" target="_blank">Mira el Perú</a></li>
-                <li><a href="/seccion/bicentenario">Bicentenario</a></li>
+                <li><a href="/hechos">Hechos</a></li>
+                <li><a href="/entrevista">Entrevista</a></li>
+                <li><a href="/tecnologia">Tecnología</a></li>
+                <li class="menu-mira-peru"><a href="/mira-peru">
+                    <img src="/imagenes/logo-mira-peru-rojo.png" width="103" height="20" alt="">
+                </a></li>
+                <li><a href="/bicentenario">Bicentenario</a></li>
                 <li class="menu-rcid dropdown-submenu">
                     <a href="javascript:;">Reportero Ciudadano</a>
                     <ul class="dropdown-menu">
-                        <li><a href="/seccion/reportero-ciudadano">Noticias</a></li>
+                        <li><a href="/reportero-ciudadano">Noticias</a></li>
                         @if(Auth::check())
                         <li><a target="_blank" href="/reportero-ciudadano/admin">Subir noticias</a></li>
                         @else
@@ -133,11 +135,11 @@
                 <div class="categories col-md-3 col-sm-6">
                     <h5>Categorias</h5>
                     <ul>
-                        <li><a href="/seccion/hechos">Hechos</a></li>
-                        <li><a href="/seccion/entrevista">Entrevista</a></li>
-                        <li><a href="https://www.flickr.com/photos/portalperu/" target="_blank">Mira el Perú</a></li>
-                        <li><a href="/seccion/bicentenario">Bicentenario</a></li>
-                        <li><a href="/seccion/reportero-ciudadano">Reportero Ciudadano</a></li>
+                        <li><a href="/hechos">Hechos</a></li>
+                        <li><a href="/entrevista">Entrevista</a></li>
+                        <li><a href="/mira-peru">Mira el Perú</a></li>
+                        <li><a href="/bicentenario">Bicentenario</a></li>
+                        <li><a href="/reportero-ciudadano">Reportero Ciudadano</a></li>
                         <li><a href="/columnistas">Columnistas</a></li>
                     </ul>
                 </div>

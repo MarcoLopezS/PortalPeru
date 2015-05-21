@@ -52,14 +52,42 @@ class AdminCategoriesController extends \BaseController {
 
         if($validator->passes())
         {
+            //CREAR CARPETA CON FECHA Y MOVER IMAGEN
+            if(Input::hasFile('logo')){
+                CrearCarpeta();
+                $ruta = "upload/";
+                $archivo = Input::file('logo');
+                $logo = FileMove($archivo,$ruta);
+            }else{
+                $logo = "";
+            }
+
+            if(Input::hasFile('imagen')){
+                CrearCarpeta();
+                $ruta = "upload/".FechaCarpeta();
+                $ruta_fecha = FechaCarpeta();
+                $archivo = Input::file('imagen');
+                $imagen = FileMove($archivo,$ruta);
+            }else{
+                $imagen = "";
+                $ruta_fecha = "";
+            }            
+
             //VARIABLES
             $titulo = Input::get('titulo');
+            $design = Input::get('design');
+            $imagen_descripcion = Input::get('imagen_descripcion');
 
             //CONVERTIR TITULO A URL
             $slug_url = SlugUrl($titulo);
 
             $category = new Category($data);
             $category->slug_url = $slug_url;
+            $category->design = $design;
+            $category->logo = $logo;
+            $category->imagen = $imagen;
+            $category->imagen_carpeta = $ruta_fecha;
+            $category->imagen_descripcion = $imagen_descripcion;
             $category->user_id = Auth::user()->id;
             $this->categoryRepo->create($category, $data);
 
@@ -115,14 +143,42 @@ class AdminCategoriesController extends \BaseController {
 
         if($validator->passes())
         {
+            //CREAR CARPETA CON FECHA Y MOVER IMAGEN
+            if(Input::hasFile('logo')){
+                CrearCarpeta();
+                $ruta = "upload/";
+                $archivo = Input::file('logo');
+                $logo = FileMove($archivo,$ruta);
+            }else{
+                $logo = Input::get('logo_actual');
+            }
+
+            if(Input::hasFile('imagen')){
+                CrearCarpeta();
+                $ruta = "upload/".FechaCarpeta();
+                $ruta_fecha = FechaCarpeta();
+                $archivo = Input::file('imagen');
+                $imagen = FileMove($archivo,$ruta);
+            }else{
+                $imagen = Input::get('imagen_actual');
+                $ruta_fecha = Input::get('imagen_actual_carpeta');;
+            }       
+
             //VARIABLES
             $titulo = Input::get('titulo');
+            $design = Input::get('design');
+            $imagen_descripcion = Input::get('imagen_descripcion');
 
             //CONVERTIR TITULO A URL
             $slug_url = SlugUrl($titulo);
 
             //GUARDAR DATOS
             $category->slug_url = $slug_url;
+            $category->design = $design;
+            $category->logo = $logo;
+            $category->imagen = $imagen;
+            $category->imagen_carpeta = $ruta_fecha;
+            $category->imagen_descripcion = $imagen_descripcion;
             $category->user_id = Auth::user()->id;
             $this->categoryRepo->update($category, $data);
 

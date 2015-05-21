@@ -1,7 +1,7 @@
 @import 'nib/vendor'
 @import 'nib/gradients'
 
-vendor-prefixes = o ms moz webkit nuevo official
+vendor-prefixes = o ms moz webkit official
 
 /**********************
 ******=responsive*****
@@ -97,6 +97,14 @@ vendor-prefixes = o ms moz webkit nuevo official
     #menu-button:hover i{
         color:#BE1622;
     }
+    
+    #mira-peru #header-menu-button{
+        margin-top: -10px !important;
+    }
+    
+    #mira-peru .header-menu{
+        margin-right: 0px !important;
+    }
 
     #header-menu-button{
         display: inline-block !important;
@@ -114,7 +122,7 @@ vendor-prefixes = o ms moz webkit nuevo official
         color:#222;
     }
 
-    header nav>ul{
+    header nav ul.header-menu{
         display: none;
         position: absolute;
         top:30px;
@@ -128,25 +136,25 @@ vendor-prefixes = o ms moz webkit nuevo official
         -moz-box-shadow:0 0 8px 0 rgba(0,0,0,0.2);
     }
 
-    header ul>li:hover>a,
-    header ul>li:focus>a{
+    header ul.header-menu li:hover>a,
+    header ul.header-menu li:focus>a{
         color: #222 !important;
     }
 
-    header ul>li:hover,
-    header ul>li:focus{
+    header ul.header-menu li:hover,
+    header ul.header-menu li:focus{
         background:rgba(0,0,0,0.1) !important;
     }
 
-    header nav>ul li{
+    header nav ul.header-menu li{
         display: block !important;
     }
 
-    header nav>ul ul{
+    header nav ul.header-menu ul{
         width:200px;
     }
 
-    header nav>ul>li{
+    header nav ul.header-menu>li{
         color:#aaa !important;
         padding: 10px 20px !important;
         margin-left: 0 !important;
@@ -156,11 +164,11 @@ vendor-prefixes = o ms moz webkit nuevo official
         content:' ' !important;
     }
 
-    header nav>ul .dropdown-submenu {
+    header nav ul.header-menu .dropdown-submenu {
         position: relative;
     }
 
-    header nav>ul .dropdown-submenu:after {
+    header nav ul.header-menu .dropdown-submenu:after {
         position: absolute;
         top:30%;
         right:10px;
@@ -170,11 +178,11 @@ vendor-prefixes = o ms moz webkit nuevo official
         content: '\f0d7' !important;
     }
 
-    header nav>ul .dropdown-submenu > .dropdown-menu:before {
+    header nav ul.header-menu .dropdown-submenu > .dropdown-menu:before {
         content: none !important;
     }
 
-    header nav>ul .dropdown-submenu > .dropdown-menu {
+    header nav ul.header-menu .dropdown-submenu > .dropdown-menu {
         position: absolute;
         top: 0px !important;
         left: -95% !important;
@@ -408,6 +416,14 @@ vendor-prefixes = o ms moz webkit nuevo official
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px), (max-device-width: 767px){
+    
+    #mira-peru header{
+        height: 330px;
+    }
+    
+    #mira-peru header .datos-foto{
+        margin-top: 190px;
+    }
 
     #menu-button{
         display: inline-block !important;
@@ -431,6 +447,15 @@ vendor-prefixes = o ms moz webkit nuevo official
     #menu-button:hover i{
         color:#BE1622;
     }
+    
+    #mira-peru #header-menu-button{
+        padding: 13px 20px;
+        float: right !important;
+    }
+    
+    #mira-peru .header-menu{
+        margin-right: 0px !important;
+    }
 
     #header-menu-button{
         display: inline-block !important;
@@ -448,7 +473,7 @@ vendor-prefixes = o ms moz webkit nuevo official
         color:#222;
     }
 
-    header nav>ul{
+    header nav ul.header-menu{
         display: none;
         position: absolute;
         top:30px;
@@ -462,23 +487,23 @@ vendor-prefixes = o ms moz webkit nuevo official
         -moz-box-shadow:0 0 8px 0 rgba(0,0,0,0.2);
     }
 
-    header ul>li:hover>a{
+    header ul.header-menu li:hover>a{
         color: #222 !important;
     }
 
-    header ul>li:hover{
+    header ul.header-menu li:hover{
         background:rgba(0,0,0,0.1) !important;
     }
 
-    header nav>ul li{
+    header nav ul.header-menu li{
         display: block !important;
     }
 
-    header nav>ul ul{
+    header nav ul.header-menu ul{
         width:200px;
     }
 
-    header nav>ul>li{
+    header nav ul.header-menu>li{
         color:#aaa !important;
         padding: 10px 20px !important;
         margin-left: 0 !important;
@@ -488,11 +513,11 @@ vendor-prefixes = o ms moz webkit nuevo official
         content: none !important;
     }
 
-    header nav>ul .dropdown-submenu {
+    header nav ul.header-menu .dropdown-submenu {
         position: relative;
     }
 
-    header nav>ul .dropdown-submenu > a:after {
+    header nav ul.header-menu .dropdown-submenu > a:after {
         position: absolute;
         top:30%;
         right:10px;
@@ -502,11 +527,11 @@ vendor-prefixes = o ms moz webkit nuevo official
         content: '\f0d7';
     }
 
-    header nav>ul .dropdown-submenu > .dropdown-menu:before {
+    header nav ul.header-menu .dropdown-submenu > .dropdown-menu:before {
         content: none !important;
     }
 
-    header nav>ul .dropdown-submenu > .dropdown-menu {
+    header nav ul.header-menu .dropdown-submenu > .dropdown-menu {
         position: absolute;
         top: 0px !important;
         left: -95% !important;
@@ -681,6 +706,22 @@ vendor-prefixes = o ms moz webkit nuevo official
 
 /* Landscape phones and down */
 @media (max-width: 639px),(max-device-width: 639px) {
+    
+    #mira-peru header{
+        height: 330px;
+    }
+    
+    #mira-peru header .datos-foto {
+      margin-top: 197px;
+    }
+    
+    #mira-peru header .datos-foto .container .logo-mira-peru{
+        margin-top: 10px;
+    }
+    
+    #mira-peru header .datos-foto .container .logo-mira-peru img{
+        height: 40px;
+    }
 
     #header-menu-button{
         display: inline-block !important;
@@ -697,8 +738,17 @@ vendor-prefixes = o ms moz webkit nuevo official
     #header-menu-button:hover i{
         color:#222;
     }
+    
+    #mira-peru #header-menu-button{
+        padding: 13px 20px;
+        float: right !important;
+    }
+    
+    #mira-peru .header-menu{
+        margin-right: 0px !important;
+    }
 
-    header nav>ul{
+    header nav ul.header-menu{
         display: none;
         position: absolute;
         top:30px;
@@ -712,21 +762,21 @@ vendor-prefixes = o ms moz webkit nuevo official
         -moz-box-shadow:0 0 8px 0 rgba(0,0,0,0.2);
     }
 
-    header ul>li:hover>a,
-    header ul>li.hover_effect>a{
+    header ul.header-menu li:hover>a,
+    header ul.header-menu li.hover_effect>a{
         color: #222 !important;
     }
 
-    header ul>li:hover,
-    header ul>li.hover_effect{
+    header ul.header-menu li:hover,
+    header ul.header-menu li.hover_effect{
         background:rgba(0,0,0,0.1) !important;
     }
 
-    header nav>ul li{
+    header nav ul.header-menu li{
         display: block !important;
     }
 
-    header nav>ul ul{
+    header nav ul.header-menu ul{
         width:190px;
         padding-top: 0 !important;
         padding-bottom: 0 !important;
@@ -737,7 +787,7 @@ vendor-prefixes = o ms moz webkit nuevo official
         box-sizing: content-box;
     }
 
-    header nav>ul>li{
+    header nav ul.header-menu>li{
         color:#222 !important;
         padding: 10px 20px !important;
         margin-left: 0 !important;
@@ -747,11 +797,11 @@ vendor-prefixes = o ms moz webkit nuevo official
         content: none !important;
     }
 
-    header nav>ul .dropdown-submenu {
+    header nav ul.header-menu .dropdown-submenu {
         position: relative;
     }
 
-    header nav>ul .dropdown-submenu > a:after {
+    header nav ul.header-menu .dropdown-submenu > a:after {
         position: absolute;
         top:30%;
         right:10px;
@@ -761,11 +811,11 @@ vendor-prefixes = o ms moz webkit nuevo official
         content: '\f0d7';
     }
 
-    header nav>ul .dropdown-submenu > .dropdown-menu:before {
+    header nav ul.header-menu .dropdown-submenu > .dropdown-menu:before {
         content: none !important;
     }
 
-    header nav>ul .dropdown-submenu > .dropdown-menu{
+    header nav ul.header-menu .dropdown-submenu > .dropdown-menu{
         position: relative !important;
         top: 0 !important;
         left: -20px !important;
@@ -804,7 +854,7 @@ vendor-prefixes = o ms moz webkit nuevo official
         box-sizing: content-box;
     }
 
-    header nav>ul .dropdown-submenu > .dropdown-menu li {
+    header nav ul.header-menu .dropdown-submenu > .dropdown-menu li {
         padding-left: 20px;
         padding-right: 10px;
     }
@@ -888,6 +938,27 @@ vendor-prefixes = o ms moz webkit nuevo official
 }
 
 @media (max-width: 479px),(max-device-width: 479px) {
+    
+    #mira-peru header{
+        height: 330px;
+    }
+    
+    #mira-peru header .datos-foto {
+      margin-top: 200px;
+    }
+    
+    #mira-peru header .datos-foto .container .datos {
+        display: none;
+    }
+    
+    #mira-peru header .datos-foto .container .logo-mira-peru{
+        text-align: center;
+        width: 100%;
+    }
+    
+    #mira-peru header .datos-foto .container .logo-mira-peru img{
+        height: 40px;
+    }
 
     .logo{
         width: 270px;
@@ -909,7 +980,7 @@ vendor-prefixes = o ms moz webkit nuevo official
         color:#222;
     }
 
-    header nav>ul{
+    header nav ul.header-menu{
         display: none;
         position: absolute;
         top:30px;
@@ -923,21 +994,21 @@ vendor-prefixes = o ms moz webkit nuevo official
         -moz-box-shadow:0 0 8px 0 rgba(0,0,0,0.2);
     }
 
-    header ul>li:hover>a,
-    header ul>li.hover_effect>a{
+    header ul.header-menu li:hover>a,
+    header ul.header-menu li.hover_effect>a{
         color: #222 !important;
     }
 
-    header ul>li:hover,
-    header ul>li.hover_effect{
+    header ul.header-menu li:hover,
+    header ul.header-menu li.hover_effect{
         background:rgba(0,0,0,0.1) !important;
     }
 
-    header nav>ul li{
+    header nav ul.header-menu li{
         display: block !important;
     }
 
-    header nav>ul ul{
+    header nav ul.header-menu ul{
         width:190px;
         padding-top: 0 !important;
         padding-bottom: 0 !important;
@@ -945,7 +1016,7 @@ vendor-prefixes = o ms moz webkit nuevo official
         margin-bottom: 10px;
     }
 
-    header nav>ul>li{
+    header nav ul.header-menu>li{
         color:#222 !important;
         padding: 10px 20px !important;
         margin-left: 0 !important;
@@ -955,11 +1026,11 @@ vendor-prefixes = o ms moz webkit nuevo official
         content: none !important;
     }
 
-    header nav>ul .dropdown-submenu {
+    header nav ul.header-menu .dropdown-submenu {
         position: relative;
     }
 
-    header nav>ul .dropdown-submenu > a:after {
+    header nav ul.header-menu .dropdown-submenu > a:after {
         position: absolute;
         top:30%;
         right:10px;
@@ -969,11 +1040,11 @@ vendor-prefixes = o ms moz webkit nuevo official
         content: '\f0d7';
     }
 
-    header nav>ul .dropdown-submenu > .dropdown-menu:before {
+    header nav ul.header-menu .dropdown-submenu > .dropdown-menu:before {
         content: none !important;
     }
 
-    header nav>ul .dropdown-submenu > .dropdown-menu {
+    header nav ul.header-menu .dropdown-submenu > .dropdown-menu {
         position: relative !important;
         top: 0 !important;
         left: -20px !important;
@@ -983,7 +1054,7 @@ vendor-prefixes = o ms moz webkit nuevo official
         -moz-box-shadow:none;
     }
 
-    header nav>ul .dropdown-submenu > .dropdown-menu li {
+    header nav ul.header-menu .dropdown-submenu > .dropdown-menu li {
         padding-left: 20px;
         padding-right: 10px;
     }

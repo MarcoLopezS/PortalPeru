@@ -1724,12 +1724,16 @@ NOTICIA
 ==========================*/
 .info.tags
     margin-left 0
-
-.info.tags ul
-    padding 0
-
-.info.tags ul li
-    display inline-block
+    
+    ul
+        padding 0
+    
+        li
+            display inline-block
+            
+            a:hover
+                background #be1622
+                color #fff
 
 .info.tags ul li a:hover
     background #be1622
@@ -1764,3 +1768,80 @@ FOTOS LIMA
     
     p
         margin-top 15px
+
+/*==========================
+MIRA EL PERU
+==========================*/
+#mira-peru
+    background-color #F39200
+    
+    .container
+        box-shadow none
+    
+    header
+        background-position center center
+        background-repeat no-repeat
+        background-size cover
+        height 565px
+        
+        .container
+            background none
+
+        nav
+            background-color transparent
+            background-image url('/imagenes/fondo_trans.png')
+            border none
+            
+            .container
+                height 60px
+            
+                .logo
+                    position absolute
+                    background-color transparent
+                    left 0
+                    top 5px
+                    width initial
+                    
+                    img
+                        height 50px
+                        top 5px
+                        
+                ul
+                    padding-top 20px
+                    color #fff
+                    margin-right -30px
+                    
+                    li
+                        a:hover
+                            font-weight bold
+                            
+        .datos-foto
+            margin-top 425px
+            
+            .container
+                background-image url('/imagenes/fondo_trans.png')
+                height initial
+                padding-top 10px
+                padding-bottom 10px
+                
+                .datos
+                    text-align left
+                    
+                    p, h2
+                        color #fff
+                        margin 0
+                        
+                .logo-mira-peru
+                    
+                    img
+                        height 60px
+                        
+.mp-home-titulo
+    color #890F18
+
+.mp-home-logo
+    height 20px
+
+.menu-mira-peru:hover
+    background-color #fff !important
+    
