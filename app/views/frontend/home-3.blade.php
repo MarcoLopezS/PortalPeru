@@ -14,7 +14,7 @@
             <div class="row">
 
                 <!-- POST SLIDER -->
-                <div class="post-slider slider-home col-lg-8 col-md-8 col-sm-12">
+                <div class="post-slider slider-home col-lg-8 col-md-8 col-sm-8">
 
                     <div class="controls">
                         <p class="prev"><i class="fa fa-angle-left"></i></p>
@@ -47,7 +47,7 @@
                 $categoria = "/".$item->category->slug_url;
                 $noticia = "nota/".$item->id."-".$item->slug_url;
                 /*--}}
-                <article class="col-lg-4 col-md-4 col-sm-12 mid marginTop20">
+                <article class="col-lg-4 col-md-4 col-sm-4 mid">
                     <div class="img">
                         <img class="width100" src="{{ $imagen }}" alt="{{ $item->titulo }}">
                     </div>
@@ -80,7 +80,7 @@
             <div class="row">
 
                 <!-- PUBLICIDAD -->
-                <article class="col-md-4 col-sm-4 mid">
+                <article class="col-lg-4 col-md-4 col-sm-12 mid">
                     <style type="text/css">
                         .adslot_home { width: 320px; height: 300px; }
                         @media (min-width:500px) { .adslot_home { width: 468px; height: 300px; } }
@@ -106,7 +106,7 @@
                 $categoria = "/".$item->category->slug_url;
                 $noticia = "nota/".$item->id."-".$item->slug_url;
                 /*--}}
-                <article class="col-lg-4 col-md-4 col-sm-12 mid">
+                <article class="col-lg-4 col-md-4 col-sm-6 mid">
                     <div class="img">
                         <img class="width100" src="{{ $imagen }}" alt="{{ $item->titulo }}">
                     </div>
@@ -140,7 +140,7 @@
                 $categoria = "/".$item->category->slug_url;
                 $noticia = "nota/".$item->id."-".$item->slug_url;
                 /*--}}
-                <article class="col-lg-4 col-md-4 col-sm-12 mid">
+                <article class="col-lg-4 col-md-4 col-sm-6 mid">
                     <div class="img">
                         <img class="width100" src="{{ $imagen }}" alt="{{ $item->titulo }}">
                     </div>
@@ -179,7 +179,7 @@
                 $categoria = "/".$item->category->slug_url;
                 $noticia = "nota/".$item->id."-".$item->slug_url;
                 /*--}}
-                <article class="col-lg-4 col-md-4 col-sm-12 mid">
+                <article class="col-lg-4 col-md-4 col-sm-4 mid">
                     <div class="img">
                         <img class="width100" src="{{ $imagen }}" alt="{{ $item->titulo }}">
                     </div>
@@ -205,7 +205,7 @@
                 @endforeach
 
                 @foreach($post_6 as $item)
-                <article class="col-md-8 col-sm-8 big">
+                <article class="col-lg-8 col-md-8 col-sm-8  big">
                     <div class="img">
                         <a href="/nota/{{ $item->id."-".$item->slug_url }}">
                             <img class="width100" src="upload/{{ $item->imagen_carpeta."540x360/".$item->imagen }}" alt="{{ $item->titulo }}">
@@ -233,7 +233,7 @@
                 $categoria = "/".$item->category->slug_url;
                 $noticia = "nota/".$item->id."-".$item->slug_url;
                 /*--}}
-                <article class="col-lg-4 col-md-4 col-sm-12 mid">
+                <article class="col-lg-4 col-md-4 col-sm-4 mid">
                     <div class="img">
                         <img class="width100" src="{{ $imagen }}" alt="{{ $item->titulo }}">
                     </div>
@@ -265,7 +265,7 @@
                 $categoria = "/".$item->category->slug_url;
                 $noticia = "nota/".$item->id."-".$item->slug_url;
                 /*--}}
-                <article class="col-lg-4 col-md-4 col-sm-12 mid">
+                <article class="col-lg-4 col-md-4 col-sm-4 mid">
                     <div class="img">
                         <img class="width100" src="{{ $imagen }}" alt="{{ $item->titulo }}">
                     </div>
@@ -297,7 +297,7 @@
                 $categoria = "/".$item->category->slug_url;
                 $noticia = "nota/".$item->id."-".$item->slug_url;
                 /*--}}
-                <article class="col-lg-4 col-md-4 col-sm-12 mid">
+                <article class="col-lg-4 col-md-4 col-sm-4 mid">
                     <div class="img">
                         <img class="width100" src="{{ $imagen }}" alt="{{ $item->titulo }}">
                     </div>
