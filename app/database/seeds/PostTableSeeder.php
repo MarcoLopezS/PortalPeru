@@ -26,7 +26,7 @@ class PostTableSeeder extends Seeder {
                 'imagen_carpeta' => 'abril2015/',
                 'publicar' => $faker->randomElement($array = ['0','1']),
                 'redaccion' => $faker->name,
-                'category_id' => $faker->randomElement($array = [1,2,3,4,5]),
+                'category_id' => $faker->randomElement($array = [1,3,5,6,7,8]),
                 'post_order_id' => $faker->randomElement($array = [1,2,3,4,5,6,7,8]),
                 'published_at' => $fecha." ".$hora
             ]);
