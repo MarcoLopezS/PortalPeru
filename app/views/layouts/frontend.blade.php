@@ -69,7 +69,9 @@
                 <li><a href="/hechos">Hechos</a></li>
                 <li><a href="/entrevista">Entrevista</a></li>
                 <li><a href="/tecnologia">Tecnología</a></li>
-                <li><a href="/mira-peru">Mira el Perú</a></li>
+                <li class="menu-mira-peru"><a href="/mira-peru">
+                    <img src="/imagenes/logo-mira-peru-rojo.png" width="103" height="20" alt="">
+                </a></li>
                 <li><a href="/bicentenario">Bicentenario</a></li>
                 <li class="menu-rcid dropdown-submenu">
                     <a href="javascript:;">Reportero Ciudadano</a>
