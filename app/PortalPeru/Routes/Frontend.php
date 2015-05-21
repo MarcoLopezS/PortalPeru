@@ -10,9 +10,8 @@ Route::get('publicidad', ['as' => 'home.publicidad', 'uses' => 'FrontendControll
 
 /* NOTICIAS */
 Route::get('nota/{id}-{url}', ['as' => 'home.noticia', 'uses' => 'FrontendController@noticia']);
-Route::get('seccion/{url}', ['as' => 'home.noticia.categoria', 'uses' => 'FrontendController@noticiaCategoria']);
+Route::get('{url}', ['as' => 'home.noticia.categoria', 'uses' => 'FrontendController@noticiaCategoria']);
 Route::get('tag/{id}-{url}', ['as' => 'home.noticia.tags', 'uses' => 'FrontendController@noticiaTags']);
-Route::get('mira-peru', ['as' => 'home.noticia.miraperu', 'uses' => 'FrontendController@noticiaMiraPeru']);
 
 /* BUSCADOR */
 Route::get('buscar/b={texto}', ['as' => 'home.buscar', 'uses' => 'FrontendController@buscar']);
