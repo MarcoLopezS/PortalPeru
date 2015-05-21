@@ -27,7 +27,7 @@
                             <img class="width100" src="upload/{{ $item->imagen_carpeta."540x425/".$item->imagen }}" alt="{{ $item->titulo }}">
                             <div class="info">
                                 <p class="tags">
-                                    <a href="seccion/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
+                                    <a href="/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
                                 </p>
                                 <h1><a href="nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
                             </div>
@@ -43,8 +43,8 @@
                 @foreach($post_2 as $item)
                 {{--*/
                 $imagen = "/upload/".$item->imagen_carpeta."280x190/".$item->imagen;
-                $logoMP = "/imagenes/logo-mira-peru.png";
-                $categoria = "seccion/".$item->category->slug_url;
+                $logoMP = "/imagenes/logo-mira-peru-rojo.png";
+                $categoria = "/".$item->category->slug_url;
                 $noticia = "nota/".$item->id."-".$item->slug_url;
                 /*--}}
                 <article class="col-lg-4 col-md-4 col-sm-12 mid marginTop20">
@@ -102,8 +102,8 @@
                 @foreach($post_3 as $item)
                 {{--*/
                 $imagen = "/upload/".$item->imagen_carpeta."280x190/".$item->imagen;
-                $logoMP = "/imagenes/logo-mira-peru.png";
-                $categoria = "seccion/".$item->category->slug_url;
+                $logoMP = "/imagenes/logo-mira-peru-rojo.png";
+                $categoria = "/".$item->category->slug_url;
                 $noticia = "nota/".$item->id."-".$item->slug_url;
                 /*--}}
                 <article class="col-lg-4 col-md-4 col-sm-12 mid">
@@ -136,8 +136,8 @@
                 @foreach($post_4 as $item)
                 {{--*/
                 $imagen = "/upload/".$item->imagen_carpeta."280x190/".$item->imagen;
-                $logoMP = "/imagenes/logo-mira-peru.png";
-                $categoria = "seccion/".$item->category->slug_url;
+                $logoMP = "/imagenes/logo-mira-peru-rojo.png";
+                $categoria = "/".$item->category->slug_url;
                 $noticia = "nota/".$item->id."-".$item->slug_url;
                 /*--}}
                 <article class="col-lg-4 col-md-4 col-sm-12 mid">
@@ -175,8 +175,8 @@
                 @foreach($post_5 as $item)
                 {{--*/
                 $imagen = "/upload/".$item->imagen_carpeta."280x190/".$item->imagen;
-                $logoMP = "/imagenes/logo-mira-peru.png";
-                $categoria = "seccion/".$item->category->slug_url;
+                $logoMP = "/imagenes/logo-mira-peru-rojo.png";
+                $categoria = "/".$item->category->slug_url;
                 $noticia = "nota/".$item->id."-".$item->slug_url;
                 /*--}}
                 <article class="col-lg-4 col-md-4 col-sm-12 mid">
@@ -213,7 +213,7 @@
                     </div>
                     <div class="info2">
                         <p class="tags">
-                            <a href="/seccion/{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
+                            <a href="//{{ $item->category->slug_url }}">{{ $item->category->titulo }}</a>
                         </p>
                         <h1><a href="/nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
                     </div>
@@ -229,8 +229,8 @@
                 @foreach($post_7 as $item)
                 {{--*/
                 $imagen = "/upload/".$item->imagen_carpeta."280x190/".$item->imagen;
-                $logoMP = "/imagenes/logo-mira-peru.png";
-                $categoria = "seccion/".$item->category->slug_url;
+                $logoMP = "/imagenes/logo-mira-peru-rojo.png";
+                $categoria = "/".$item->category->slug_url;
                 $noticia = "nota/".$item->id."-".$item->slug_url;
                 /*--}}
                 <article class="col-lg-4 col-md-4 col-sm-12 mid">
@@ -261,8 +261,8 @@
                 @foreach($post_8 as $item)
                 {{--*/
                 $imagen = "/upload/".$item->imagen_carpeta."280x190/".$item->imagen;
-                $logoMP = "/imagenes/logo-mira-peru.png";
-                $categoria = "seccion/".$item->category->slug_url;
+                $logoMP = "/imagenes/logo-mira-peru-rojo.png";
+                $categoria = "/".$item->category->slug_url;
                 $noticia = "nota/".$item->id."-".$item->slug_url;
                 /*--}}
                 <article class="col-lg-4 col-md-4 col-sm-12 mid">
@@ -293,8 +293,8 @@
                 @foreach($post_9 as $item)
                 {{--*/
                 $imagen = "/upload/".$item->imagen_carpeta."280x190/".$item->imagen;
-                $logoMP = "/imagenes/logo-mira-peru.png";
-                $categoria = "seccion/".$item->category->slug_url;
+                $logoMP = "/imagenes/logo-mira-peru-rojo.png";
+                $categoria = "/".$item->category->slug_url;
                 $noticia = "nota/".$item->id."-".$item->slug_url;
                 /*--}}
                 <article class="col-lg-4 col-md-4 col-sm-12 mid">
