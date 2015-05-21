@@ -142,9 +142,13 @@ class FrontendController extends BaseController{
         elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
         $categoria = Category::whereSlugUrl($url)->first();
-        $noticias = Post::where('category_id', $categoria->id)->where('publicar', 1)->orderBy('published_at','desc')->paginate(7);
+        $noticias = Post::where('category_id', $categoria->id)->where('publicar', 1)->orderBy('published_at','desc')->paginate(9);
 
-        return View::make('frontend.categoria', compact('categoria', 'noticias', 'columnistasDia'));
+        if($categoria->design == 1){
+            return View::make('frontend.categoria-portada', compact('categoria', 'noticias', 'columnistasDia'));
+        }else{
+            return View::make('frontend.categoria-normal', compact('categoria', 'noticias', 'columnistasDia'));
+        }        
     }
 
     public function noticiaTags($id, $url)
@@ -228,23 +232,6 @@ class FrontendController extends BaseController{
         $columna = Column::whereColumnistId($id)->whereId($idColumn)->whereSlugUrl($urlColumn)->first();
 
         return View::make('frontend.columnista-noticia', compact('columnista','columna', 'columnistasDia'));
-    }
-
-    public function noticiaMiraPeru()
-    {
-        //NOTICIAS
-        $mira_peru = Post::where('category_id', 5)->where('publicar', 1)->orderBy('published_at','desc')->paginate(9);
-
-        //COLUNISTAS DEL DIA
-        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
-        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
-        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
-        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
-        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
-        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
-        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
-
-        return View::make('frontend.miraperu', compact('mira_peru', 'columnistasDia'));
     }
 
 }
