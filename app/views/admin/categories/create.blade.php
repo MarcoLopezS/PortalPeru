@@ -29,7 +29,7 @@ Nueva categoría
             <!--basic form starts-->
             <div class="panel panel-danger">
                 <div class="panel-body border">
-                    {{ Form::open(['route' => 'administrador.categories.store', 'method' => 'POST', 'class' => 'form-horizontal form-bordered']) }}
+                    {{ Form::open(['route' => 'administrador.categories.store', 'method' => 'POST', 'class' => 'form-horizontal form-bordered', 'files' => 'true']) }}
 
                             <div class="form-group @if($errors->has('titulo')) has-error @endif">
                                 {{ Form::label('titulo', 'Titulo', ['class' => 'col-md-3 control-label']) }}
@@ -38,6 +38,47 @@ Nueva categoría
                                     {{ $errors->first('titulo', '<span class="help-block">:message</span>') }}
                                 </div>
                             </div>
+
+                            <div class="form-group @if($errors->has('design')) has-error @endif">
+                                {{ Form::label('design', 'Diseño', ['class' => 'col-md-3 control-label']) }}
+                                <div class="col-md-9">
+                                    <label class="checkbox-inline">
+                                        {{ Form::radio('design', '0', 'checked',  ['id' => 'design-normal', 'class' => 'design']) }}
+                                        Normal
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        {{ Form::radio('design', '1', null,  ['id' => 'design-portada', 'class' => 'design']) }}
+                                        Portada
+                                    </label>
+                                    {{ $errors->first('design', '<span class="help-block">:message</span>') }}
+                                </div>
+                            </div>
+
+                            <div id="portada">
+
+                                <div class="form-group">
+                                    {{ Form::label('logo', 'Logo', ['class' => 'col-md-3 control-label']) }}
+                                    <div class="col-md-9">
+                                        {{ Form::file('logo') }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    {{ Form::label('imagen', 'Imagen', ['class' => 'col-md-3 control-label']) }}
+                                    <div class="col-md-9">
+                                        {{ Form::file('imagen') }}
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    {{ Form::label('imagen_descripcion', 'Titulo de imagen', ['class' => 'col-md-3 control-label']) }}
+                                    <div class="col-md-9">
+                                        {{ Form::text('imagen_descripcion', null, ['class' => 'form-control']) }}
+                                        {{ $errors->first('imagen_descripcion', '<span class="help-block">:message</span>') }}
+                                    </div>
+                                </div>
+
+                             </div>
 
                             <div class="form-group @if($errors->has('publicar')) has-error @endif">
                                 {{ Form::label('publicar', 'Publicar', ['class' => 'col-md-3 control-label']) }}
@@ -77,4 +118,21 @@ Nueva categoría
 {{-- page level scripts --}}
 @section('footer_scripts')
 {{ HTML::script('admin/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}
+
+<script>
+$(document).on("ready", function(){
+
+    $("#portada").hide();
+
+    $(".design").on("click", function(){
+        var valor = $(this).val();
+        if(valor == 1){
+            $("#portada").show();
+        }else{
+            $("#portada").hide();
+        }
+    });
+
+});
+</script>
 @stop
