@@ -39,10 +39,11 @@ $imagenH2 = $descripcion[1];
                 <a href="/nota/{{ $item->id."-".$item->slug_url }}">
                     <img class="width100" data-carpeta="/upload/{{ $item->imagen_carpeta }}" data-imagen="{{ $item->imagen }}" src="" alt="{{ $item->titulo }}">
                 </a>
-            </div>
-            <div class="info2">
-                <h1><a href="/nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
-                <p class="text">{{ $item->descripcion }}</p>
+                
+                <div class="info2">
+                    <h1><a href="/nota/{{ $item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
+                    <p class="text">{{ $item->descripcion }}</p>
+                </div>
             </div>
         </article>
 
