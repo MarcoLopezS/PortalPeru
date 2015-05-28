@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder {
 
         $this->call('ConfigTableSeeder');
 		$this->call('UserTableSeeder');
+        $this->call('UserReporteroTableSeeder');
         $this->call('ColumnistTableSeeder');
         $this->call('ColumnsTableSeeder');
         $this->call('PostOrderTableSeeder');
