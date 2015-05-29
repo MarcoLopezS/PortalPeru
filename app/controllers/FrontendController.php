@@ -47,7 +47,6 @@ class FrontendController extends BaseController{
         $now = Carbon::now()->format('Y-m-d 23:59:59');
         $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
-                                ->whereBetween('created_at', [$subWeek, $now])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
                                 ->havingRaw('COUNT(*)')
@@ -71,7 +70,6 @@ class FrontendController extends BaseController{
         $now = Carbon::now()->format('Y-m-d 23:59:59');
         $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
-                                ->whereBetween('created_at', [$subWeek, $now])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
                                 ->havingRaw('COUNT(*)')
@@ -95,7 +93,6 @@ class FrontendController extends BaseController{
         $now = Carbon::now()->format('Y-m-d 23:59:59');
         $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
-                                ->whereBetween('created_at', [$subWeek, $now])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
                                 ->havingRaw('COUNT(*)')
@@ -119,7 +116,6 @@ class FrontendController extends BaseController{
         $now = Carbon::now()->format('Y-m-d 23:59:59');
         $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
-                                ->whereBetween('created_at', [$subWeek, $now])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
                                 ->havingRaw('COUNT(*)')
@@ -158,7 +154,6 @@ class FrontendController extends BaseController{
         $now = Carbon::now()->format('Y-m-d 23:59:59');
         $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
-                                ->whereBetween('created_at', [$subWeek, $now])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
                                 ->havingRaw('COUNT(*)')
@@ -192,7 +187,6 @@ class FrontendController extends BaseController{
         $now = Carbon::now()->format('Y-m-d 23:59:59');
         $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
-                                ->whereBetween('created_at', [$subWeek, $now])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
                                 ->havingRaw('COUNT(*)')
@@ -219,7 +213,6 @@ class FrontendController extends BaseController{
         $now = Carbon::now()->format('Y-m-d 23:59:59');
         $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
-                                ->whereBetween('created_at', [$subWeek, $now])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
                                 ->havingRaw('COUNT(*)')
@@ -251,7 +244,6 @@ class FrontendController extends BaseController{
         $now = Carbon::now()->format('Y-m-d 23:59:59');
         $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
-                                ->whereBetween('created_at', [$subWeek, $now])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
                                 ->havingRaw('COUNT(*)')
@@ -277,7 +269,6 @@ class FrontendController extends BaseController{
         $now = Carbon::now()->format('Y-m-d 23:59:59');
         $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
-                                ->whereBetween('created_at', [$subWeek, $now])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
                                 ->havingRaw('COUNT(*)')
@@ -303,7 +294,6 @@ class FrontendController extends BaseController{
         $now = Carbon::now()->format('Y-m-d 23:59:59');
         $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
-                                ->whereBetween('created_at', [$subWeek, $now])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
                                 ->havingRaw('COUNT(*)')
@@ -330,7 +320,6 @@ class FrontendController extends BaseController{
         $now = Carbon::now()->format('Y-m-d 23:59:59');
         $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
-                                ->whereBetween('created_at', [$subWeek, $now])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
                                 ->havingRaw('COUNT(*)')
@@ -357,7 +346,6 @@ class FrontendController extends BaseController{
         $now = Carbon::now()->format('Y-m-d 23:59:59');
         $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
-                                ->whereBetween('created_at', [$subWeek, $now])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
                                 ->havingRaw('COUNT(*)')
@@ -385,7 +373,6 @@ class FrontendController extends BaseController{
         $now = Carbon::now()->format('Y-m-d 23:59:59');
         $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
-                                ->whereBetween('created_at', [$subWeek, $now])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
                                 ->havingRaw('COUNT(*)')
