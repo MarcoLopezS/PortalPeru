@@ -82,21 +82,9 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                     <div class="info col-md-12 col-sm-12">
                         <div class="info">
                             <div class="text texto-nota">
+                                
                                 {{ $noticia->contenido }}
-                                <style type="text/css">
-                                    .adslot_nota_horizontal { width: 320px; height: 100px; } 
-                                    @media (min-width:500px) { .adslot_nota_horizontal { width: 468px; height: 60px; } } 
-                                    @media (min-width:800px) { .adslot_nota_horizontal { width: 728px; height: 90px; } }
-                                </style>
-                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                                <ins class="adsbygoogle adslot_nota_horizontal"
-                                     style="display:block"
-                                     data-ad-client="ca-pub-3674889010429322"
-                                     data-ad-slot="1879845946"
-                                     data-ad-format="auto"></ins>
-                                <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                                </script>
+
                             </div>
                         </div>
 
@@ -110,6 +98,25 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                             </ul>
                         </div>
                         @endif
+
+                        <div class="info col-sm-12">
+
+                            <style type="text/css">
+                                .adslot_nota_horizontal { width: 320px; height: 100px; } 
+                                @media (min-width:500px) { .adslot_nota_horizontal { width: 468px; height: 60px; } } 
+                                @media (min-width:800px) { .adslot_nota_horizontal { width: 728px; height: 90px; } }
+                            </style>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <ins class="adsbygoogle adslot_nota_horizontal"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-3674889010429322"
+                                 data-ad-slot="1879845946"
+                                 data-ad-format="auto"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+
+                        </div>
                     </div>
                 </div>
 
