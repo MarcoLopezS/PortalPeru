@@ -43,9 +43,7 @@ class FrontendController extends BaseController{
         elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
         elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
-        //NOTICIAS ENTRE FECHAS
-        $now = Carbon::now()->format('Y-m-d 23:59:59');
-        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        //NOTICIAS MAS VISTAS
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
@@ -66,9 +64,7 @@ class FrontendController extends BaseController{
         elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
         elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
-        //NOTICIAS ENTRE FECHAS
-        $now = Carbon::now()->format('Y-m-d 23:59:59');
-        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        //NOTICIAS MAS VISTAS
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
@@ -89,9 +85,7 @@ class FrontendController extends BaseController{
         elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
         elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
-        //NOTICIAS ENTRE FECHAS
-        $now = Carbon::now()->format('Y-m-d 23:59:59');
-        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        //NOTICIAS MAS VISTAS
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
@@ -112,9 +106,7 @@ class FrontendController extends BaseController{
         elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
         elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
-        //NOTICIAS ENTRE FECHAS
-        $now = Carbon::now()->format('Y-m-d 23:59:59');
-        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        //NOTICIAS MAS VISTAS
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
@@ -150,16 +142,17 @@ class FrontendController extends BaseController{
         $view->post_id = $id;
         $view->save();
 
-        //NOTICIAS ENTRE FECHAS
-        $now = Carbon::now()->format('Y-m-d 23:59:59');
-        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        //NOTICIAS MAS VISTAS
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
                                 ->havingRaw('COUNT(*)')
                                 ->take(4)->get();
 
-        return View::make('frontend.noticia', compact('noticia', 'noticiaFotos', 'noticiaTags', 'columnistasDia', 'masVisto'));
+        //NOTICIAS RELACIONADAS
+        $notRel = Post::where('category_id', $noticia->category_id)->where('publicar', 1)->where('id', '<>', $noticia->id)->orderBy('published_at', 'desc')->paginate(4);
+
+        return View::make('frontend.noticia', compact('noticia', 'noticiaFotos', 'noticiaTags', 'columnistasDia', 'masVisto', 'notRel'));
     }
 
     public function noticiaPreview($id)
@@ -183,9 +176,7 @@ class FrontendController extends BaseController{
             $noticiaTags = "";
         }
 
-        //NOTICIAS ENTRE FECHAS
-        $now = Carbon::now()->format('Y-m-d 23:59:59');
-        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        //NOTICIAS MAS VISTAS
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
@@ -209,9 +200,7 @@ class FrontendController extends BaseController{
         $categoria = Category::whereSlugUrl($url)->first();
         $noticias = Post::where('category_id', $categoria->id)->where('publicar', 1)->orderBy('published_at','desc')->paginate(9);
 
-        //NOTICIAS ENTRE FECHAS
-        $now = Carbon::now()->format('Y-m-d 23:59:59');
-        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        //NOTICIAS MAS VISTAS
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
@@ -240,9 +229,7 @@ class FrontendController extends BaseController{
         $categoria = Tag::whereId($id)->whereSlugUrl($url)->first();
         $noticias = Post::where('tags', 'LIKE', '%,'.$id.',%')->where('publicar', 1)->orderBy('published_at','desc')->paginate(7);
 
-        //NOTICIAS ENTRE FECHAS
-        $now = Carbon::now()->format('Y-m-d 23:59:59');
-        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        //NOTICIAS MAS VISTAS
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
@@ -265,9 +252,7 @@ class FrontendController extends BaseController{
 
         $buscar = $texto;
 
-        //NOTICIAS ENTRE FECHAS
-        $now = Carbon::now()->format('Y-m-d 23:59:59');
-        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        //NOTICIAS MAS VISTAS
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
@@ -290,9 +275,7 @@ class FrontendController extends BaseController{
 
         $columnistas = Columnist::where('publicar', 1)->paginate(10);
 
-        //NOTICIAS ENTRE FECHAS
-        $now = Carbon::now()->format('Y-m-d 23:59:59');
-        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        //NOTICIAS MAS VISTAS
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
@@ -316,9 +299,7 @@ class FrontendController extends BaseController{
         $columnista = Columnist::whereId($id)->whereSlugUrl($url)->first();
         $columnas = Column::whereColumnistId($id)->orderBy('published_at', 'desc')->paginate(7);
 
-        //NOTICIAS ENTRE FECHAS
-        $now = Carbon::now()->format('Y-m-d 23:59:59');
-        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        //NOTICIAS MAS VISTAS
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
@@ -342,9 +323,7 @@ class FrontendController extends BaseController{
         $columnista = Columnist::whereId($id)->whereSlugUrl($url)->first();
         $columna = Column::whereColumnistId($id)->whereId($idColumn)->whereSlugUrl($urlColumn)->first();
 
-        //NOTICIAS ENTRE FECHAS
-        $now = Carbon::now()->format('Y-m-d 23:59:59');
-        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        //NOTICIAS MAS VISTAS
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')
@@ -369,9 +348,7 @@ class FrontendController extends BaseController{
         elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
         elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
 
-        //NOTICIAS ENTRE FECHAS
-        $now = Carbon::now()->format('Y-m-d 23:59:59');
-        $subWeek = Carbon::now()->subWeek()->format('Y-m-d 00:00:00');
+        //NOTICIAS MAS VISTAS
         $masVisto = PostView::select(['post_id', DB::raw('COUNT(*) visitas')])
                                 ->orderBy('visitas', 'desc')
                                 ->groupBy('post_id')

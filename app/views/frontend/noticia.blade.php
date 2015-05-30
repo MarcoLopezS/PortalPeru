@@ -196,6 +196,36 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
             </div>
             <!-- FIN COMENTARIOS -->
 
+            <!-- NOTICIAS RELACIONADAS -->
+            <div class="best-week">
+
+                <h3>Noticias relacionadas</h3>
+                <div class="row noticias-relacionadas">
+
+                    @foreach ($notRel as $item)
+                        {{--*/
+                        $imagen = "/upload/".$item->imagen_carpeta."250x200/".$item->imagen;
+                        $url = "/nota/".$item->id."-".$item->slug_url;
+                        $fecha = date_format(new DateTime($item->published_at), 'd/m/Y H:m');
+                        /*--}}                        
+                        <article class="col-md-3 col-sm-3 mid">
+                            <div class="img">
+                                <a href="{{ $url }}">
+                                    <img src="{{ $imagen }}" alt="{{ $item->titulo }}">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <h4><a href="{{ $url }}">{{ $item->titulo }}</a></h4>
+                                <p class="details">{{ $fecha }}</p>
+                            </div>
+                        </article>
+
+                    @endforeach
+
+                </div>
+            </div>
+            <!--END BEST SECTION-->
+
         </div>
         <!--END CONTENT-->
 
