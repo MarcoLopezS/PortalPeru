@@ -14,7 +14,7 @@
             <div class="row">
 
                 <!-- POST SLIDER -->
-                <div class="post-slider slider-home col-lg-8 col-md-8 col-sm-8">
+                <div class="post-slider slider-home col-lg-8 col-md-8 col-sm-8 hidden-xs">
 
                     <div class="controls">
                         <p class="prev"><i class="fa fa-angle-left"></i></p>
