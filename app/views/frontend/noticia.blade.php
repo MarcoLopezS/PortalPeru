@@ -179,23 +179,6 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
             </article>
             @endif
 
-            <!-- COMENTARIOS -->
-            <div class="row visible-lg">
-                <h3>Comentarios</h3>
-
-                <div id="fb-root"></div>
-                <script>(function(d, s, id) {
-                  var js, fjs = d.getElementsByTagName(s)[0];
-                  if (d.getElementById(id)) return;
-                  js = d.createElement(s); js.id = id;
-                  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.3";
-                  fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));</script>
-
-                <div class="fb-comments" data-href="{{ $noticiaUrl }}" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
-            </div>
-            <!-- FIN COMENTARIOS -->
-
             <!-- NOTICIAS RELACIONADAS -->
             <div class="best-week">
 
@@ -224,7 +207,24 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
 
                 </div>
             </div>
-            <!--END BEST SECTION-->
+            <!-- FIN NOTICIAS RELACIONADAS -->
+
+            <!-- COMENTARIOS -->
+            <div class="row visible-lg">
+                <h3>Comentarios</h3>
+
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.3";
+                  fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+
+                <div class="fb-comments" data-href="{{ $noticiaUrl }}" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+            </div>
+            <!-- FIN COMENTARIOS -->
 
         </div>
         <!--END CONTENT-->
