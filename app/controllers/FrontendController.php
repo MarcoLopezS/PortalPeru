@@ -30,6 +30,8 @@ class FrontendController extends BaseController{
         $post_7 = Post::where('post_order_id', 7)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
         $post_8 = Post::where('post_order_id', 8)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
         $post_9 = Post::where('post_order_id', 9)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
+        $post_10 = Post::where('post_order_id', 10)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
+        $post_11 = Post::where('post_order_id', 11)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
 
         //GALERIA DE FOTOS
         $galeria = Gallery::where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
@@ -50,7 +52,7 @@ class FrontendController extends BaseController{
                                 ->havingRaw('COUNT(*)')
                                 ->take(4)->get();
 
-        return View::make('frontend.home-3', compact('post_1', 'post_2', 'post_3', 'post_4', 'post_5', 'post_6', 'post_7', 'post_8', 'post_9', 'galeria', 'columnistasDia', 'masVisto'));
+        return View::make('frontend.home-3', compact('post_1', 'post_2', 'post_3', 'post_4', 'post_5', 'post_6', 'post_7', 'post_8', 'post_9', 'post_10', 'post_11', 'galeria', 'columnistasDia', 'masVisto'));
     }
 
     public function nosotros()

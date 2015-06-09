@@ -45,6 +45,21 @@ class PostOrderTableSeeder extends Seeder {
             'titulo'    => 'Octavo',
             'orden'     => '8'
         ]);
+
+        PostOrder::create([
+            'titulo'    => 'Noveno',
+            'orden'     => '9'
+        ]);
+
+        PostOrder::create([
+            'titulo'    => 'Decimo',
+            'orden'     => '10'
+        ]);
+
+        PostOrder::create([
+            'titulo'    => 'Onceavo',
+            'orden'     => '11'
+        ]);
     }
 
 } 

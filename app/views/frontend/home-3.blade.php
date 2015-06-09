@@ -234,7 +234,6 @@
             <!-- NOTICIA INFERIOR HORIZONTAL -->
             <div class="row">
 
-
                 @foreach($post_6 as $item)
                 {{--*/
                 $imagen = "/upload/".$item->imagen_carpeta."280x190/".$item->imagen;
@@ -301,6 +300,109 @@
                 @endforeach
 
                 @foreach($post_8 as $item)
+                {{--*/
+                $imagen = "/upload/".$item->imagen_carpeta."280x190/".$item->imagen;
+                $logoMP = "/imagenes/logo-mira-peru-rojo.png";
+                $categoria = "/".$item->category->slug_url;
+                $noticia = "nota/".$item->id."-".$item->slug_url;
+                /*--}}
+                <article class="col-lg-4 col-md-4 col-sm-4 mid">
+                    <div class="img">
+                        <img class="width100" src="{{ $imagen }}" alt="{{ $item->titulo }}">
+                    </div>
+                    <div class="info">
+                        <p class="tags">
+                            <a href="{{ $categoria }}">
+                                @if($item->category->id == 5)
+                                    <img class="mp-home-logo" src="{{ $logoMP }}" alt="">
+                                @else
+                                    {{ $item->category->titulo }}
+                                @endif
+                            </a>
+                        </p>
+                        <h1>
+                            <a href="{{ $noticia }}" @if($item->category->id == 5) class="mp-home-titulo" @endif>
+                                {{ $item->titulo }}
+                            </a>
+                        </h1>
+                        <p class="details hidden-sm hidden-xs">{{{ $item->updated_at->diffForHumans() }}}</p>
+                        <p class="text">{{ $item->descripcion }}</p>
+                    </div>
+                </article>
+                @endforeach
+
+            </div>
+            <!-- FIN NOTICIA INFERIOR HORIZONTAL -->
+
+            <!-- NOTICIA INFERIOR HORIZONTAL -->
+            <div class="row">
+
+                @foreach($post_9 as $item)
+                {{--*/
+                $imagen = "/upload/".$item->imagen_carpeta."280x190/".$item->imagen;
+                $logoMP = "/imagenes/logo-mira-peru-rojo.png";
+                $categoria = "/".$item->category->slug_url;
+                $noticia = "nota/".$item->id."-".$item->slug_url;
+                /*--}}
+                <article class="col-lg-4 col-md-4 col-sm-4 mid">
+                    <div class="img">
+                        <img class="width100" src="{{ $imagen }}" alt="{{ $item->titulo }}">
+                    </div>
+                    <div class="info">
+                        <p class="tags">
+                            <a href="{{ $categoria }}">
+                                @if($item->category->id == 5)
+                                    <img class="mp-home-logo" src="{{ $logoMP }}" alt="">
+                                @else
+                                    {{ $item->category->titulo }}
+                                @endif
+                            </a>
+                        </p>
+                        <h1>
+                            <a href="{{ $noticia }}" @if($item->category->id == 5) class="mp-home-titulo" @endif>
+                                {{ $item->titulo }}
+                            </a>
+                        </h1>
+                        <p class="details hidden-sm hidden-xs">{{{ $item->updated_at->diffForHumans() }}}</p>
+                        <p class="text">{{ $item->descripcion }}</p>
+                    </div>
+                </article>
+                @endforeach
+
+
+                @foreach($post_10 as $item)
+                {{--*/
+                $imagen = "/upload/".$item->imagen_carpeta."280x190/".$item->imagen;
+                $logoMP = "/imagenes/logo-mira-peru-rojo.png";
+                $categoria = "/".$item->category->slug_url;
+                $noticia = "nota/".$item->id."-".$item->slug_url;
+                /*--}}
+                <article class="col-lg-4 col-md-4 col-sm-4 mid">
+                    <div class="img">
+                        <img class="width100" src="{{ $imagen }}" alt="{{ $item->titulo }}">
+                    </div>
+                    <div class="info">
+                        <p class="tags">
+                            <a href="{{ $categoria }}">
+                                @if($item->category->id == 5)
+                                    <img class="mp-home-logo" src="{{ $logoMP }}" alt="">
+                                @else
+                                    {{ $item->category->titulo }}
+                                @endif
+                            </a>
+                        </p>
+                        <h1>
+                            <a href="{{ $noticia }}" @if($item->category->id == 5) class="mp-home-titulo" @endif>
+                                {{ $item->titulo }}
+                            </a>
+                        </h1>
+                        <p class="details hidden-sm hidden-xs">{{{ $item->updated_at->diffForHumans() }}}</p>
+                        <p class="text">{{ $item->descripcion }}</p>
+                    </div>
+                </article>
+                @endforeach
+
+                @foreach($post_11 as $item)
                 {{--*/
                 $imagen = "/upload/".$item->imagen_carpeta."280x190/".$item->imagen;
                 $logoMP = "/imagenes/logo-mira-peru-rojo.png";
