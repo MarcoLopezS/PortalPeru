@@ -141,10 +141,12 @@
                 </div>
 
                 <div class="boton-compra">
-                    <div class="circ-rojo"></div>
-                    <div class="circ-blanco"></div>
-                    <span>COMPRA</span>
-                    <span>ON LINE</span>
+                    <a href="http://g7consultores.com/andahuaylazo/" title="Andahuaylazo" target="_blank">
+                        <div class="circ-rojo"></div>
+                        <div class="circ-blanco"></div>
+                        <span>COMPRA</span>
+                        <span>ON LINE</span>
+                    </a>
                 </div>
 
                 <div class="anda-logo">
@@ -159,7 +161,9 @@
 
             <span class="cerrar"><a href="#">Cerrar</a></span>
 
-            <img src="/imagenes/anda-pub-big.png" alt="">
+            <a href="http://g7consultores.com/andahuaylazo/" title="Andahuaylazo" target="_blank">
+                <img src="/imagenes/anda-pub-big.png" alt="">
+            </a>
             
         </div>
 		
@@ -231,7 +235,7 @@
 <script>
 function refreshDiv()
 {
-    valor = '<div class="liston-back"></div><div class="liston-front"><p>PREMIO INTERNACIONAL DE</p><p>PERIODISMO REY DE ESPAÑA 2006</p></div><div class="anda-libro"><img src="/imagenes/anda-libro.png" alt="Andahuaylazo - Libro"></div><div class="boton-compra"><div class="circ-rojo"></div><div class="circ-blanco"></div><span>COMPRA</span><span>ON LINE</span></div><div class="anda-logo"><img src="/imagenes/anda-logo.png" alt="Andahuaylazo - Logo"></div>'
+    valor = '<div class="liston-back"></div><div class="liston-front"><p>PREMIO INTERNACIONAL DE</p><p>PERIODISMO REY DE ESPAÑA 2006</p></div><div class="anda-libro"><img src="/imagenes/anda-libro.png" alt="Andahuaylazo - Libro"></div><div class="boton-compra"><a href="http://g7consultores.com/andahuaylazo/" title="Andahuaylazo" target="_blank"><div class="circ-rojo"></div><div class="circ-blanco"></div><span>COMPRA</span><span>ON LINE</span></a></div><div class="anda-logo"><img src="/imagenes/anda-logo.png" alt="Andahuaylazo - Logo"></div>'
     document.getElementById("publicidad-anda-contenedor").innerHTML = valor;
 }
 window.setInterval("refreshDiv()", 15000);
