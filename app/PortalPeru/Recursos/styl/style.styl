@@ -1857,8 +1857,33 @@ PUBLICIDAD - ANDAHUAYLASO
 #publicidad-anda
     background-color #F0EFF2
     padding 5px 0
+    position relative
+    z-index 10
     
-    .contenedor
+    .lateral
+        position absolute
+        transform rotate(-90deg)
+        top 42px
+        left -42px
+        font-size 12px
+        
+    .info
+        position absolute
+        margin 0 auto
+        width 60px
+        top 55px
+        right 380px
+        color #FFF
+        padding 5px
+        background-color #fff
+        border-radius 15px
+        z-index 10
+        
+        a
+            color #f00
+            font-weight bold
+    
+    #publicidad-anda-contenedor
         width 98%
         height 90px
         background url('/imagenes/anda-fondo.png')
@@ -1905,7 +1930,7 @@ PUBLICIDAD - ANDAHUAYLASO
             padding 23px 0
             font-size 12px
             z-index 0
-            animation boton 2s
+            animation boton 10s
             
             .circ
                 
@@ -1953,6 +1978,21 @@ PUBLICIDAD - ANDAHUAYLASO
                 height 160px
                 animation escala-rotacion 2.5s
 
+
+#publicidad-anda-big
+    background-color #F0EFF2
+    padding 5px 0
+    position relative
+    height 498px
+    display none
+    z-index 0
+    
+    span
+        position absolute
+        top 20px
+        left 12px
+        font-weight bold
+
 /*==========================
 KEYFRAMES
 ==========================*/
@@ -1971,8 +2011,23 @@ KEYFRAMES
 @keyframes boton
     0%
         transform scale(.1)
+    10%
+        transform scale(1.5)
+    20%
+        transform scale(1)
+    30%
+        transform scale(1.5)
+    40%
+        transform scale(1)
     50%
+        transform scale(1.5)
+    60%
+        transform scale(1)
+    70%
+        transform scale(1.5)
+    80%
+        transform scale(1)
+    90%
         transform scale(1.5)
     100%
         transform scale(1)
-        

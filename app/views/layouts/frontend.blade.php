@@ -121,9 +121,14 @@
         </nav>
 		<!--END MENU-->
 
-        <div id="publicidad-anda">
+        <div id="publicidad-anda" class="hidden-xs">
+            <span class="lateral">PUBLICIDAD</span>
+
+            <div class="info">
+                <span><a href="#">+ INFO</a></span>
+            </div>
             
-            <div class="contenedor">
+            <div id="publicidad-anda-contenedor">
                 
                 <div class="liston-back"></div>
                 <div class="liston-front">
@@ -148,6 +153,14 @@
                 
             </div>
 
+        </div>
+
+        <div id="publicidad-anda-big">
+
+            <span class="cerrar"><a href="#">Cerrar</a></span>
+
+            <img src="/imagenes/anda-pub-big.png" alt="">
+            
         </div>
 		
 
@@ -213,6 +226,26 @@
 
 {{-- JS --}}
 {{ HTML::script('js/main.js') }}
+
+{{-- SCRIPT PARA RECARGAR PUBLICIDAD --}}
+<script>
+function refreshDiv()
+{
+    valor = '<div class="liston-back"></div><div class="liston-front"><p>PREMIO INTERNACIONAL DE</p><p>PERIODISMO REY DE ESPAÑA 2006</p></div><div class="anda-libro"><img src="/imagenes/anda-libro.png" alt="Andahuaylazo - Libro"></div><div class="boton-compra"><div class="circ-rojo"></div><div class="circ-blanco"></div><span>COMPRA</span><span>ON LINE</span></div><div class="anda-logo"><img src="/imagenes/anda-logo.png" alt="Andahuaylazo - Logo"></div>'
+    document.getElementById("publicidad-anda-contenedor").innerHTML = valor;
+}
+window.setInterval("refreshDiv()", 15000);
+
+$("#publicidad-anda .info a").on("click", function(e){
+    e.preventDefault();
+    $("#publicidad-anda-big").slideDown("slow");
+});
+
+$("#publicidad-anda-big .cerrar a").on("click", function(e){
+    e.preventDefault();
+    $("#publicidad-anda-big").slideUp("slow");
+});
+</script>
 
 {{-- GOOGLE ANALYTICS --}}
 <script>
