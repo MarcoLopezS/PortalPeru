@@ -14,6 +14,18 @@
 	<meta name="robots" content="index,follow">
     <meta name="googlebot" content="index, follow">
 
+    {{-- GOOGLE FONTS --}}
+    {{ HTML::style('//fonts.googleapis.com/css?family=Open+Sans:400,600,700') }}
+    {{ HTML::style('//fonts.googleapis.com/css?family=Montserrat:400,700') }}
+
+    {{-- FONT AWESOME - BOOTSTRAP --}}
+    {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css') }}
+    {{ HTML::style('//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css') }}
+
+    {{-- ESTILOS --}}
+    {{ HTML::style('css/style.css') }}
+    {{ HTML::style('css/responsive.css') }}
+
     @yield('script_header')
 	
 </head>
@@ -52,6 +64,7 @@
                 (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
             </div>
+            
         </div>
     </header>
 	<!--END HEADER-->
@@ -107,6 +120,35 @@
 
         </nav>
 		<!--END MENU-->
+
+        <div id="publicidad-anda">
+            
+            <div class="contenedor">
+                
+                <div class="liston-back"></div>
+                <div class="liston-front">
+                    <p>PREMIO INTERNACIONAL DE</p>
+                    <p>PERIODISMO REY DE ESPAÑA 2006</p>
+                </div>
+
+                <div class="anda-libro">
+                    <img src="/imagenes/anda-libro.png" alt="Andahuaylazo - Libro">
+                </div>
+
+                <div class="boton-compra">
+                    <div class="circ-rojo"></div>
+                    <div class="circ-blanco"></div>
+                    <span>COMPRA</span>
+                    <span>ON LINE</span>
+                </div>
+
+                <div class="anda-logo">
+                    <img src="/imagenes/anda-logo.png" alt="Andahuaylazo - Logo">
+                </div>
+                
+            </div>
+
+        </div>
 		
 
 		@yield('contenido_frontend')
@@ -155,18 +197,6 @@
 
 	</div>
 	<!--END CONTAINER-->
-
-{{-- GOOGLE FONTS --}}
-{{ HTML::style('//fonts.googleapis.com/css?family=Open+Sans:400,600,700') }}
-{{ HTML::style('//fonts.googleapis.com/css?family=Montserrat:400,700') }}
-
-{{-- FONT AWESOME - BOOTSTRAP --}}
-{{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css') }}
-{{ HTML::style('//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css') }}
-
-{{-- ESTILOS --}}
-{{ HTML::style('css/style.css') }}
-{{ HTML::style('css/responsive.css') }}
 
 {{-- JQUERY - BOOTSTRAP --}}
 {{ HTML::script('//code.jquery.com/jquery-1.10.2.min.js') }}

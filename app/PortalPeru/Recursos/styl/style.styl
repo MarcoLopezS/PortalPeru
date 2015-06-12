@@ -112,10 +112,11 @@ header>.container>nav>ul>li:last-child:after
 
 nav
     border-bottom 1px solid #ddd
+    margin-bottom 10px
 
 .menu
     font-size 0
-    margin 25px 0 25px
+    margin 10px 0 10px
     padding-right 15px
     padding-left 0px
     z-index 999
@@ -1848,3 +1849,130 @@ NOTICIAS RELACIONDAS
         font-size 16px
         line-height 150%
         font-weight 700
+
+
+/*==========================
+PUBLICIDAD - ANDAHUAYLASO
+==========================*/
+#publicidad-anda
+    background-color #F0EFF2
+    padding 5px 0
+    
+    .contenedor
+        width 98%
+        height 90px
+        background url('/imagenes/anda-fondo.png')
+        margin 0 auto
+        position relative
+        
+        .liston
+            
+            &-front
+                position absolute
+                left -5px
+                background-color #2d2d2b
+                color #fff
+                top 17px
+                padding 3px 60px 3px 10px
+                animation opacidad 2.5s
+                
+                p
+                    padding 0
+                    margin 0
+                    font-size 18px
+                
+            &-back
+                  position absolute
+                  width 0
+                  height 0
+                  border-style solid
+                  border-width 0 0 5px 5px
+                  border-color transparent transparent #636362 transparent
+                  left -5px
+                  top 12px
+                  animation opacidad 2.5s
+        
+        .boton-compra
+            border-radius 50%
+            background-color #fff
+            color #f00
+            width 80px
+            height 80px
+            margin 0 auto
+            top 5px
+            position relative
+            text-align center
+            padding 23px 0
+            font-size 12px
+            z-index 0
+            animation boton 2s
+            
+            .circ
+                
+                &-rojo
+                    position absolute
+                    width 70px
+                    height 70px
+                    background-color #f00
+                    border-radius 50%
+                    top 5px
+                    left 5px
+                    z-index 1
+
+                &-blanco
+                    position absolute
+                    width 66px
+                    height 66px
+                    background-color #fff
+                    border-radius 50%
+                    top 7px
+                    left 7px
+                    z-index 2
+            
+            span
+                width 100%
+                float left
+                position relative
+                z-index 3
+                
+        .anda-logo
+            position absolute
+            right 10px
+            top 25px
+            
+            img
+                height 50px
+                animation opacidad 2.5s
+        
+        .anda-libro
+            position absolute
+            top -30px
+            left 270px
+            
+            img
+                height 160px
+                animation escala-rotacion 2.5s
+
+/*==========================
+KEYFRAMES
+==========================*/
+@keyframes opacidad
+    from
+        opacity 0
+    to
+        opacity 1
+        
+@keyframes escala-rotacion
+    0%
+        transform scale(.1) rotate(0deg)
+    100%
+        transform scale(1) rotate(-1080deg)
+
+@keyframes boton
+    0%
+        transform scale(.1)
+    50%
+        transform scale(1.5)
+    100%
+        transform scale(1)
+        
