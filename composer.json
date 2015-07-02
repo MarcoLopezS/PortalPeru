@@ -8,7 +8,8 @@
 		"nesbot/carbon": "~1.14"
 	},
     "require-dev": {
-        "fzaninotto/faker": "1.5.*@dev"
+        "fzaninotto/faker": "1.5.*@dev",
+        "barryvdh/laravel-debugbar": "~1.8"
     },
 	"autoload": {
         "psr-4": {
