@@ -199,7 +199,17 @@ class AdminColumnsController extends \BaseController {
      */
     public function destroy($id)
     {
-        //
+        $post = Column::find($id);
+        $post->delete();
+
+        $message = 'El registro se eliminó satisfactoriamente.';
+
+        if(Request::ajax())
+        {
+            return Response::json([
+                'message' => $message
+            ]);
+        }
     }
 
     public function photosList($post)

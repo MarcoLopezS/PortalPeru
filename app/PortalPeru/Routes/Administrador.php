@@ -56,7 +56,7 @@ Route::group(['before' => ['auth']], function () {
         Route::get('administrador/columns/{id}/show/{idColumn}', ['as' => 'administrador.columns.show', 'uses' => 'AdminColumnsController@show']);
         Route::get('administrador/columns/{id}/edit/{idColumn}', ['as' => 'administrador.columns.edit', 'uses' => 'AdminColumnsController@edit']);
         Route::put('administrador/columns/{id}/edit/{idColumn}', ['as' => 'administrador.columns.update', 'uses' => 'AdminColumnsController@update']);
-        Route::get('administrador/columns/{id}/destroy/{idColumn}', ['as' => 'administrador.columns.destroy', 'uses' => 'AdminColumnsController@destroy']);
+        Route::delete('administrador/columns/{id}/destroy/{idColumn}', ['as' => 'administrador.columns.destroy', 'uses' => 'AdminColumnsController@destroy']);
         Route::get('administrador/columns/{id}/photos/{idColumn}', ['as' => 'administrador.columns.photoslist', 'uses' => 'AdminColumnsController@photosList' ]);
 
         //POST
