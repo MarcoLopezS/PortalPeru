@@ -45,18 +45,59 @@ iframe
 ********=header********
 ****************************/
 
-header .container
-    position relative
-    height 285px
-    text-align center
-
-.logo
-    position relative
-    margin 0 auto
-    display inline-block
-    top 50px
-    width 360px
-    background-color #fff
+header
+    
+    .container
+        position relative
+        height 295px
+        text-align center
+        
+        h1
+            margin 0
+            
+            .logo
+                position relative
+                margin 0 auto
+                display inline-block
+                top 55px
+                height 87px
+                width 360px
+                background-image url('/imagenes/logo.png')
+                background-repeat no-repeat
+                text-indent -10000em
+            
+        .sepheader
+            width 100%
+            height 143px
+            background url("../imagenes/header-barra.png")
+            padding-bottom 0.5em
+            padding-top 40px
+            border-bottom 1px solid #BD1622
+            top 150px
+            right 0
+            position absolute
+            background-repeat no-repeat
+            background-position-x center
+                                
+                
+header.doodle
+    
+    .container
+        height 507px
+        
+        h1
+            
+            .logo
+                background-image url("/imagenes/doodle/fiestas-patrias.jpg")
+                width 1170px
+                margin-left -30px
+                background-size 100% 100%
+                height 330px
+                top 44px
+            
+        .sepheader
+            top 365px
+                
 
 header>.container>nav
     border none
@@ -91,19 +132,6 @@ header>.container>nav>ul>li:last-child:after
 #header-menu-button
     display none
     float none
-
-.sepheader
-    width 100%
-    height 143px
-    background url("../imagenes/header-barra.png")
-    padding-bottom 0.5em
-    padding-top 40px
-    border-bottom 1px solid #BD1622
-    top 140px
-    right 0
-    position absolute
-    background-repeat no-repeat
-    background-position-x center
 
 
 /****************************
@@ -1368,8 +1396,7 @@ form [class*="col-md-"]
     padding 12px 20px
     width 50%
     box-sizing border-box
-    -webkit-box-sizing border-box
-    -moz-box-sizing border-box
+    
 
 .post-page article.post .post-nav a:last-child
     margin-left -1px

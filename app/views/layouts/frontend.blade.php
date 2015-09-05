@@ -34,7 +34,7 @@
 	<!--HEADER-->
     <header>
         <div class="container">
-            <a href="/" class="logo"><img class="width100" src="/imagenes/logo.png" alt="Portal Perú"></a>
+            <h1><a href="/" class="logo" title="Portal Perú">Portal Perú</a></h1>
 
             <!--MENU-->
             <nav class="clearfix">
