@@ -60,7 +60,16 @@ $noticiaImg = configWeb()->dominio."/upload/columnista/200x200/".$columnista->fo
                     <div class="info col-md-12 col-sm-12">
                         <div class="info">
                             <div class="text texto-nota">
-                                {{ $columna->contenido }}
+
+                                <div class="contenido-texto trdr">
+
+                                    {{ $columna->contenido }}
+
+                                </div>
+
+                                <p class="nota-completa">
+                                    <a id="nota-completa" href="#">Ver nota completa</a>
+                                </p>
 
                                 <style type="text/css">
                                     .adslot_nota_horizontal { width: 320px; height: 100px; } 
@@ -110,5 +119,17 @@ $noticiaImg = configWeb()->dominio."/upload/columnista/200x200/".$columnista->fo
 
 </div>
 <!--END MAIN SECTION-->
+
+@stop
+
+@section('script_footer')
+
+<script>
+$("#nota-completa").on("click", function(e){
+    e.preventDefault();    
+    $(".contenido-texto").removeClass("trdr");
+    $(".nota-completa").hide();
+});
+</script>
 
 @stop

@@ -2020,6 +2020,37 @@ PUBLICIDAD - ANDAHUAYLASO
         left 12px
         font-weight bold
 
+
+.texto-nota .contenido-texto.trdr
+    height 200px
+    overflow hidden
+    position relative
+
+.texto-nota .contenido-texto.trdr:after
+    content ""
+    display block
+    position absolute
+    bottom 0
+    left 0
+    width 100%
+    height 30%
+    background-size 100%
+    background linear-gradient(to bottom,rgba(255,255,255,0) 0,rgba(255,255,255,1) 100%)
+
+.nota-completa
+    text-align center
+    
+    a#nota-completa
+        margin 15px 0
+        display block
+        border 1px solid
+        padding 15px 0
+        font-size 20px
+        
+        &:hover
+            background-color #be1622
+            color #fff
+
 /*==========================
 KEYFRAMES
 ==========================*/

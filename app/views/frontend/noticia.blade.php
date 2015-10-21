@@ -82,8 +82,16 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
                     <div class="info col-md-12 col-sm-12">
                         <div class="info">
                             <div class="text texto-nota">
+
+                                <div class="contenido-texto trdr">
                                 
-                                {{ $noticia->contenido }}
+                                    {{ $noticia->contenido }}
+
+                                </div>
+
+                                <p class="nota-completa">
+                                    <a id="nota-completa" href="#">Ver nota completa</a>
+                                </p>
 
                             </div>
                         </div>
@@ -235,5 +243,17 @@ $noticiaImg = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/
 
 </div>
 <!--END MAIN SECTION-->
+
+@stop
+
+@section('script_footer')
+
+<script>
+$("#nota-completa").on("click", function(e){
+    e.preventDefault();    
+    $(".contenido-texto").removeClass("trdr");
+    $(".nota-completa").hide();
+});
+</script>
 
 @stop
