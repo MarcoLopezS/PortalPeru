@@ -195,7 +195,39 @@
    };
 
     var gnSlider = function() {
-        $('.gnSlider .flexslider').flexslider({
+        $('.noticias .flexslider').flexslider({
+            animation: 'fade',
+            animationLoop: true,
+            slideshow: true,
+            slideshowSpeed: 4000,
+            animationSpeed: 800,
+            pauseOnHover: true,
+            pauseOnAction:true,
+            controlNav: true,
+            directionNav: true,
+            prevText: '<i class="fa fa-angle-left"></i>',
+            nextText: '<i class="fa fa-angle-right"></i>',
+            controlsContainer: '.flex-container-noticias',
+            start: function(slider) {
+                var bottomtext = $('.noticias .flex-active-slide .item').data('bottomtext');
+
+                $('.noticias .flex-active-slide').find('.item').css({ bottom: bottomtext });
+                $('.noticias .flex-active-slide').find('.item').transition({ left: '0', opacity: '1'}, 1000);
+                // remove class loading after start
+                slider.removeClass('loading');
+            },
+            before: function(slider) {
+                $('.noticias .flex-active-slide').find('.item').transition({ left: '-100%', opacity: '0'}, 1000);
+            },
+            after: function(slider) {
+                var bottomtext = $('.noticias .flex-active-slide .item').data('bottomtext');
+
+                $('.noticias .flex-active-slide').find('.item').css({ bottom: bottomtext});
+                $('.noticias .flex-active-slide').find('.item').transition({ left: '0', opacity: '1'}, 1000);
+            }
+        });
+
+        $('.miraperu .flexslider').flexslider({
             animation: 'fade',
             animationLoop: true,
             slideshow: true,
@@ -207,23 +239,23 @@
             directionNav: true,
             prevText: '<i class="fa fa-angle-left"></i>',
             nextText: '<i class="fa fa-angle-right"></i>',
-            controlsContainer: '.flex-container',
+            controlsContainer: '.flex-container-miraperu',
             start: function(slider) {
-                var bottomtext = $('.gnSlider .flex-active-slide .item').data('bottomtext');
+                var bottomtext = $('.miraperu .flex-active-slide .item').data('bottomtext');
 
-                $('.gnSlider .flex-active-slide').find('.item').css({ bottom: bottomtext });
-                $('.gnSlider .flex-active-slide').find('.item').transition({ left: '0', opacity: '1'}, 1000);
+                $('.miraperu .flex-active-slide').find('.item').css({ bottom: bottomtext });
+                $('.miraperu .flex-active-slide').find('.item').transition({ left: '0', opacity: '1'}, 1000);
                 // remove class loading after start
                 slider.removeClass('loading');
             },
             before: function(slider) {
-                $('.gnSlider .flex-active-slide').find('.item').transition({ left: '-100%', opacity: '0'}, 1000);
+                $('.miraperu .flex-active-slide').find('.item').transition({ left: '-100%', opacity: '0'}, 1000);
             },
             after: function(slider) {
-                var bottomtext = $('.gnSlider .flex-active-slide .item').data('bottomtext');
+                var bottomtext = $('.miraperu .flex-active-slide .item').data('bottomtext');
 
-                $('.gnSlider .flex-active-slide').find('.item').css({ bottom: bottomtext});
-                $('.gnSlider .flex-active-slide').find('.item').transition({ left: '0', opacity: '1'}, 1000);
+                $('.miraperu .flex-active-slide').find('.item').css({ bottom: bottomtext});
+                $('.miraperu .flex-active-slide').find('.item').transition({ left: '0', opacity: '1'}, 1000);
             }
         });
     };
