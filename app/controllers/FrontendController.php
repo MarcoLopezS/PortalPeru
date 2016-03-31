@@ -152,11 +152,7 @@ class FrontendController extends BaseController{
                                 ->take(4)->get();
 
         //NOTICIAS RELACIONADAS
-        $notRel = Post::where('id', '<>', $noticia->id)->where(function($query) use ($noticiaTags){
-                                foreach ($noticiaTags as $key) {
-                                    $query->orWhere('tags', 'LIKE', '%,'.$key.',%');
-                                };
-                            })->where('category_id', $noticia->category_id)->where('publicar', 1)->orderBy('published_at', 'desc')->paginate(4);
+        $notRel = Post::where('id', '<>', $noticia->id)->paginate(4);
 
         return View::make('frontend.noticia', compact('noticia', 'noticiaFotos', 'noticiaTags', 'columnistasDia', 'masVisto', 'notRel'));
     }
