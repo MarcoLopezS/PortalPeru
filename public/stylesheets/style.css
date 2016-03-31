@@ -4329,3 +4329,32 @@
 			background-size: 84px 73px;
 		}
 	}
+
+
+/*==========================
+PAGINACION
+==========================*/
+
+#paginacion{
+    padding: 40px 0 0 0;
+    text-align: center;
+    width: 100%;
+    float: left;
+}
+
+.pagination>.active>a, .pagination>.active>span,
+.pagination>.active>a:hover, .pagination>.active>span:hover,
+.pagination>.active>a:focus, .pagination>.active>span:focus{
+    background-color: #BE1622;
+    border-color: #BE1622;
+}
+
+.categoria-nota{
+    border-bottom: 1px solid #CCC;
+    padding: 15px 0;
+    margin-bottom: 0px;
+}
+
+.categoria-nota:last-child{
+    border-bottom: none;
+}

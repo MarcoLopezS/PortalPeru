@@ -80,12 +80,12 @@
                     <div class="col-md-12">
                         <nav id="mainnav" class="mainnav">
                             <ul class="menu">
-                                <li><a class="active" href="index.html">Inicio</a></li>
-                                <li><a href="#">Hechos</a></li>
-                                <li><a href="#">Entrevista</a></li>
-                                <li><a href="#">Tecnología</a></li>
-                                <li><a href="#">Mira el Perú</a></li>
-                                <li><a href="#">Bicentenario</a></li>
+                                <li><a href="/"><i class="fa fa-home"></i></a></li>
+                                <li><a href="/hechos">Hechos</a></li>
+                                <li><a href="/entrevista">Entrevista</a></li>
+                                <li><a href="/tecnologia">Tecnología</a></li>
+                                <li class="menu-mira-peru"><a href="/mira-peru"><img src="/imagenes/logo-mira-peru-rojo.png" width="103" height="20" alt=""></a></li>
+                                <li><a href="/bicentenario">Bicentenario</a></li>
                                 <li><a href="#">Reportero Ciudadano</a></li>
                                 <li class="gn-mega-menu"><a href="category.html">Columnistas</a>
                                     <div class="sub-menu">
