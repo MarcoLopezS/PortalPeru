@@ -2,9 +2,9 @@
 
 @section('html_title')
     {{ $categoria->titulo }} | @parent
-    @stop
+@stop
 
-    @section('contenido_body')
+@section('contenido_body')
 
             <!-- Main -->
     <section id="main" class="category-page">

@@ -2288,6 +2288,7 @@
 		padding-top: 30px;
 		margin-top: 25px;
 		border-top: 1px solid #eaeaea;
+        float: left;
 	}
 
 	.editors-posts .post-wrap .post:first-child,
@@ -2324,9 +2325,9 @@
 
 	.editors-posts .excerpt-entry,
 	.relate-posts .excerpt-entry {
-		font-size: 18px;
+		font-size: 14px;
 		color: #2d3340;
-		line-height: 27px;
+		line-height: 150%;
 		margin-bottom: 3px;
 		font-weight: normal;
 	}
@@ -3038,10 +3039,10 @@
 	}
 
 	.posts h2 {
-		font-size: 48px;
-		line-height: 55px;
+		font-size: 40px;
+		line-height: 120%;
 		font-weight: 700;
-		margin: 0 0 28px;
+		margin: 0;
 	}
 
 	.posts h2:hover a {
@@ -3049,19 +3050,19 @@
 	}
 
 	.posts .head-post {
-		padding-bottom: 39px;
 		border-bottom: 1px solid #e1e1e1;
 	}
 
 	.posts .head-post p {
-		font-size: 24px;
+		font-size: 18px;
 		line-height: 36px;
 		font-weight: 300;
-		margin-bottom: 26px;
+		margin-bottom: 5px;
 	}
 
 	.posts .meta {
 		color: #b7b7b7;
+        margin-bottom: 10px;
 	}
 
 	.posts .body-post {
@@ -3075,7 +3076,7 @@
 	.posts .entry-post p,
 	.entry-page p {
 		margin-bottom: 27px;
-		font-size: 18px;
+		font-size: 16px;
 		line-height: 27px;
 	}
 

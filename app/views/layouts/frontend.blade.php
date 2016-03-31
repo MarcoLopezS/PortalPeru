@@ -52,8 +52,8 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div id="logo" class="logo">
-                            <a href="./" rel="home" title="home">
-                                <img src="imagenes/logo.png" alt="Good News" />
+                            <a href="/" rel="home" title="home">
+                                <img src="/imagenes/logo.png" alt="Good News" />
                             </a>
                         </div>
                         <div class="follow-us">
@@ -86,7 +86,7 @@
                                 <li><a href="/tecnologia">Tecnología</a></li>
                                 <li class="menu-mira-peru"><a href="/mira-peru"><img src="/imagenes/logo-mira-peru-rojo.png" width="103" height="20" alt=""></a></li>
                                 <li><a href="/bicentenario">Bicentenario</a></li>
-                                <li><a href="#">Reportero Ciudadano</a></li>
+                                <li><a href="/reportero-ciudadano">Reportero Ciudadano</a></li>
                                 <li class="gn-mega-menu"><a href="category.html">Columnistas</a>
                                     <div class="sub-menu">
                                         <div class="container">
@@ -151,7 +151,7 @@
                     <div class="col-md-10 gn-animation" data-animation="fadeInUp" data-animation-delay="0" data-animation-offset="75%">
                         <div class="widget widget-brand">
                             <div class="logo logo-footer">
-                                <a href="#"><img src="imagenes/logo-footer.png" alt="Good News"></a>
+                                <a href="#"><img src="/imagenes/logo-footer.png" alt="Good News"></a>
                             </div>
                             <p>Portal Perú no se solidariza ni comparte necesariamente con las informaciones, opiniones y denuncias vertidas en las notas publicadas en este site. El autor es el único responsable del contenido de la información, opinión o denuncia.<p>
                             <p>Portal Perú tiene Registro de la Propiedad Industrial. Resolución N° 021065-2014/DSD-INDECOPI. Certificado N° 0008491</p>
