@@ -152,7 +152,7 @@ class FrontendController extends BaseController{
                                 ->take(4)->get();
 
         //NOTICIAS RELACIONADAS
-        $notRel = Post::where('id', '<>', $noticia->id)->paginate(4);
+        $notRel = Post::where('category_id', $noticia->category_id)->where('publicar', 1)->where('id', '<>', $noticia->id)->orderBy('published_at', 'desc')->paginate(4);
 
         return View::make('frontend.noticia', compact('noticia', 'noticiaFotos', 'noticiaTags', 'columnistasDia', 'masVisto', 'notRel'));
     }
@@ -213,7 +213,7 @@ class FrontendController extends BaseController{
             return View::make('frontend.categoria-portada', compact('categoria', 'noticias', 'columnistasDia', 'masVisto'));
         }else{
             return View::make('frontend.categoria-normal', compact('categoria', 'noticias', 'columnistasDia', 'masVisto'));
-        }        
+        }
 
     }
 
@@ -238,7 +238,7 @@ class FrontendController extends BaseController{
                                 ->havingRaw('COUNT(*)')
                                 ->take(4)->get();
 
-        return View::make('frontend.tags', compact('categoria', 'noticias', 'columnistasDia', 'masVisto'));
+        return View::make('frontend.categoria', compact('categoria', 'noticias', 'columnistasDia', 'masVisto'));
     }
 
     public function buscar($url, $texto)
@@ -307,10 +307,10 @@ class FrontendController extends BaseController{
                                 ->groupBy('post_id')
                                 ->havingRaw('COUNT(*)')
                                 ->take(4)->get();
-        
+
         return View::make('frontend.columnista', compact('columnista','columnas', 'columnistasDia', 'masVisto'));
     }
-    
+
     public function columnistasColumn($id, $url, $idColumn, $urlColumn)
     {
         //COLUNISTAS DEL DIA
@@ -338,7 +338,7 @@ class FrontendController extends BaseController{
     public function fotosLima()
     {
         $galeria = Gallery::where('publicar', 1)->orderBy('published_at','desc')->first();
-        
+
         $galerias = Gallery::where('publicar', 1)->orderBy('published_at','desc')->paginate();
 
         //COLUNISTAS DEL DIA
