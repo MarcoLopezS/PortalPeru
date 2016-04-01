@@ -50,15 +50,6 @@
         <div class="top-wrap">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="btn-menu"></div><!-- //mobile menu button -->
-                        <div class="member-area">
-                            <span class="login-popup"><a href="#">Inicio</a></span>
-                            <span class="login-popup"><a href="#">Publicidad</a></span>
-                            <span class="login-popup"><a href="#">Contacto</a></span>
-                            <span class="login-popup"><a href="#">Nosotros</a></span>
-                        </div>
-                    </div><!-- /.col-md-6 -->
                     <div class="col-md-6">
                         <div id="logo" class="logo">
                             <a href="/" rel="home" title="home">
@@ -67,10 +58,11 @@
                         </div>
                     </div><!-- /.col-md-6 -->
                     <div class="col-md-6">
-                        <div class="btn-menu"></div><!-- //mobile menu button -->
                         <div class="member-area">
-                            <span class="login-popup"><a href="#login-modal">Login</a></span>
-                            <span class="signup-popup"><a href="#signup-modal">Become a member</a></span>
+                            <span class="login-popup"><a href="#">Inicio</a></span>
+                            <span class="login-popup"><a href="#">Publicidad</a></span>
+                            <span class="login-popup"><a href="#">Contacto</a></span>
+                            <span class="login-popup"><a href="#">Nosotros</a></span>
                         </div>
                     </div><!-- /.col-md-6 -->
                 </div><!-- /.row -->
@@ -88,7 +80,17 @@
                                 <li><a href="/tecnologia">Tecnología</a></li>
                                 <li class="menu-mira-peru"><a href="/mira-peru"><img src="/imagenes/logo-mira-peru-rojo.png" width="103" height="20" alt=""></a></li>
                                 <li><a href="/bicentenario">Bicentenario</a></li>
-                                <li><a href="/reportero-ciudadano">Reportero Ciudadano</a></li>
+                                <li class="has-children"><a href="/reportero-ciudadano">Reportero Ciudadano</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/reportero-ciudadano">Noticias</a></li>
+                                        @if(Auth::check())
+                                            <li><a target="_blank" href="/reportero-ciudadano/admin">Subir noticias</a></li>
+                                        @else
+                                            <li><a target="_blank" href="/reportero-ciudadano/registro">Registrarse</a></li>
+                                            <li><a target="_blank" href="/reportero-ciudadano/login">Iniciar sesión</a></li>
+                                        @endif
+                                    </ul>
+                                </li>
                                 <li class="gn-mega-menu"><a href="javascript:;">Columnistas</a>
                                     <div class="sub-menu">
                                         <div class="container">
@@ -174,85 +176,6 @@
             </div><!-- /.container -->
         </div>
     </footer>
-
-    <!-- Login and Signup Form -->
-    <div id="login-modal" class="login popup" style="display: none;">
-        <a class="close-modal" href="#"></a>
-        <div class="form-title">
-            <h4>Login</h4>
-            <div class="signup">
-                No account yet? <a href="#">Sign Up</a>
-            </div>
-        </div>
-        <div class="login-by">
-            <div class="log-face-w">
-                <a class="log-facebook" href="#">Login with Facebook</a>
-            </div>
-            <div class="log-twit-w">
-                <a class="log-twitter" href="#">Login with Twitter</a>
-            </div>
-        </div>
-        <form id="loginform" name="loginform" method="post">
-            <div class="email-wrap">
-                <input type="text" size="30" value="" class="input" id="user-email" name="log" placeholder="Email">
-            </div>
-            <div class="pass-wrap">
-                <input type="password" size="30" value="" class="input" id="user-pass" name="password" placeholder="Password">
-            </div>
-            <div class="option-login">
-                <div class="remember">
-                    <input type="checkbox" name="check3" id="check3" class="css-checkbox" checked="checked"/><label for="check3" class="css-label">Remember me</label>
-                </div>
-                <div class="forgot">
-                    <a href="#">I forgot my password</a>
-                </div>
-            </div>
-            <div class="submit-login">
-                <input type="submit" value="Log In" class="submit" id="submit" name="submit">
-            </div>
-        </form>
-    </div>
-    <div id="signup-modal" class="popup" style="display: none;">
-        <a class="close-modal" href="#"></a>
-        <div class="form-title">
-            <h4>Sign Up</h4>
-            <div class="signup">
-                Already a member? <a href="#">Login</a>
-            </div>
-        </div>
-        <div class="login-by">
-            <div class="log-face-w">
-                <a class="log-facebook" href="#">Login with Facebook</a>
-            </div>
-            <div class="log-twit-w">
-                <a class="log-twitter" href="#">Login with Twitter</a>
-            </div>
-        </div>
-        <form id="signupform" name="signupform" method="post">
-            <div class="name-wrap">
-                <input type="text" size="30" value="" class="input" id="user-name" name="name" placeholder="Name">
-            </div>
-            <div class="email-wrap">
-                <input type="text" size="30" value="" class="input" id="user-email2" name="log" placeholder="Email">
-            </div>
-            <div class="pass-wrap">
-                <input type="password" size="30" value="" class="input" id="user-pass2" name="password" placeholder="Password">
-            </div>
-
-            <div class="option-login">
-                <div class="remember">
-                    <input type="checkbox" name="check4" id="check4" class="css-checkbox" checked="checked"/><label for="check4" class="css-label">Remember me</label>
-                </div>
-                <div class="forgot">
-                    <a href="#">I forgot my password</a>
-                </div>
-            </div>
-
-            <div class="submit-login">
-                <input type="submit" value="Sign Up" class="submit" id="submit2" name="submit">
-            </div>
-        </form>
-    </div>
 
     <!-- Go Top -->
     <a class="go-top">
