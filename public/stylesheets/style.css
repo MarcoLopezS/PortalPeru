@@ -841,11 +841,11 @@
 	#mainnav li.gn-mega-menu .mega-item-wrap .mega-item {
 		float: left;
 		width: 15.19%;
-		margin: 0 0 1.76% 1.76%;
+		margin: 0 1.76% 1.76% 1.76%;
 	}
 
 	#mainnav li.gn-mega-menu .mega-item-wrap .mega-item:first-child {
-		margin-left: 0;
+
 	}
 
 	#mainnav li.gn-mega-menu .mega-item-wrap .mega-item h5 {
@@ -2531,6 +2531,7 @@
 		   -moz-border-radius: 3px;
 			 -o-border-radius: 3px;
 				border-radius: 3px;
+        float: left;
 	}
 
 	.sidebar-widget-1 .widget-tabs,
@@ -2908,7 +2909,7 @@
 	/* Widget follow us */
 	.widget-follow-us a {
 		display: inline-block;
-		width: 45px;
+		width: 97px;
 		height: 45px;
 		line-height: 45px;
 		text-align: center;
@@ -4358,4 +4359,15 @@ PAGINACION
 
 .categoria-nota:last-child{
     border-bottom: none;
+}
+
+/*==========================
+CLASES
+==========================*/
+
+.title-category{
+    font-size: 40px;
+    line-height: 120%;
+    font-weight: 700;
+    margin: 0 0 20px 0;
 }
