@@ -56,13 +56,6 @@
                                 <img src="/imagenes/logo.png" alt="Good News" />
                             </a>
                         </div>
-                        <div class="follow-us">
-                            <div class="follow-title">Siguenos</div>
-                            <ul class="social-links">
-                                <li class="facebook"><a href="#">Siguenos en Facebook</a></li>
-                                <li class="google"><a href="#">Follow us on Google</a></li>
-                            </ul>
-                        </div>
                     </div><!-- /.col-md-6 -->
                     <div class="col-md-6">
                         <div class="btn-menu"></div><!-- //mobile menu button -->
@@ -93,40 +86,20 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="mega-item-wrap">
-                                                        <div class="mega-item">
-                                                            <img src="images/thumbs/11.jpg" alt="image">
-                                                            <h5><a href="#">Usability Testing for Mobile Is Easy</a></h5>
-                                                        </div>
-                                                        <div class="mega-item">
-                                                            <img src="images/thumbs/11.jpg" alt="image">
-                                                            <h5><a href="#">Infinite Scrolling Is Not for Every Website</a></h5>
-                                                        </div>
-                                                        <div class="mega-item">
-                                                            <img src="images/thumbs/11.jpg" alt="image">
-                                                            <h5><a href="#">Infinite Scrolling Is Not for Every Website</a></h5>
-                                                        </div>
-                                                        <div class="mega-item">
-                                                            <img src="images/thumbs/11.jpg" alt="image">
-                                                            <h5><a href="#">Ecommerce UX: 3 Design Trends to Follow and 3 to Avoid</a></h5>
-                                                        </div>
-                                                        <div class="mega-item">
-                                                            <img src="images/thumbs/11.jpg" alt="image">
-                                                            <h5><a href="#">University Websites: Top 10 Design Guidelines</a></h5>
-                                                        </div>
-                                                        <div class="mega-item">
-                                                            <img src="images/thumbs/11.jpg" alt="image">
-                                                            <h5><a href="#">University Websites: Top 10 Design Guidelines</a></h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="nav-mega-item">
-                                                        In this category:
-                                                        <a href="#">All</a>
-                                                        <a href="#">Tech</a>
-                                                        <a href="#">Apps</a>
-                                                        <a href="#">Dev&amp;Design</a>
-                                                        <a href="#">Dev&amp;Design</a>
-                                                        <a href="#">Gadget</a>
-                                                        <a href="#">Mobile</a>
+
+                                                        @foreach($columnistasDia as $item)
+                                                            {{--*/
+                                                            $columDia_foto = "/upload/columnista/173x116/".$item->foto;
+                                                            $columDia_titulo = $item->nombre." ".$item->apellidos;
+                                                            $columDia_url = route('home.columnistas.person', [$item->id, $item->slug_url]);
+                                                            /*--}}
+
+                                                            <div class="mega-item">
+                                                                <img src="{{ $columDia_foto }}" alt="image">
+                                                                <h5><a href="{{ $columDia_url }}">{{ $columDia_titulo }}</a></h5>
+                                                            </div>
+                                                        @endforeach
+
                                                     </div>
                                                 </div>
                                             </div>
