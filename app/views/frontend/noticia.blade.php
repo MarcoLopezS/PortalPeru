@@ -58,14 +58,11 @@ $noticia_categoria_url = route('home.noticia.categoria', [$noticia->category->sl
                                                     @foreach($noticiaFotos as $item)
                                                         {{--*/
                                                         $nota_titulo = $item->titulo;
-                                                        $nota_url = route('home.noticia', [$item->id, $item->slug_url]);
                                                         $nota_imagen = "/upload/".$item->imagen_carpeta."870x600/".$item->imagen;
                                                         /*--}}
                                                         <li>
                                                             <div class="item-wrap">
-                                                                <a href="{{ $nota_url }}">
-                                                                    <img src="{{ $nota_imagen }}" alt="image">
-                                                                </a>
+                                                                <img src="{{ $nota_imagen }}" alt="image">
                                                             </div>
                                                         </li>
                                                     @endforeach
