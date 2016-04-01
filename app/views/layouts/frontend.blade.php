@@ -50,6 +50,15 @@
         <div class="top-wrap">
             <div class="container">
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-menu"></div><!-- //mobile menu button -->
+                        <div class="member-area">
+                            <span class="login-popup"><a href="#">Inicio</a></span>
+                            <span class="login-popup"><a href="#">Publicidad</a></span>
+                            <span class="login-popup"><a href="#">Contacto</a></span>
+                            <span class="login-popup"><a href="#">Nosotros</a></span>
+                        </div>
+                    </div><!-- /.col-md-6 -->
                     <div class="col-md-6">
                         <div id="logo" class="logo">
                             <a href="/" rel="home" title="home">
@@ -80,7 +89,7 @@
                                 <li class="menu-mira-peru"><a href="/mira-peru"><img src="/imagenes/logo-mira-peru-rojo.png" width="103" height="20" alt=""></a></li>
                                 <li><a href="/bicentenario">Bicentenario</a></li>
                                 <li><a href="/reportero-ciudadano">Reportero Ciudadano</a></li>
-                                <li class="gn-mega-menu"><a href="category.html">Columnistas</a>
+                                <li class="gn-mega-menu"><a href="javascript:;">Columnistas</a>
                                     <div class="sub-menu">
                                         <div class="container">
                                             <div class="row">
