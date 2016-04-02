@@ -59,10 +59,10 @@
                     </div><!-- /.col-md-6 -->
                     <div class="col-md-6">
                         <div class="member-area">
-                            <span class="login-popup"><a href="#">Inicio</a></span>
-                            <span class="login-popup"><a href="#">Publicidad</a></span>
-                            <span class="login-popup"><a href="#">Contacto</a></span>
-                            <span class="login-popup"><a href="#">Nosotros</a></span>
+                            <span><a href="/">Inicio</a></span>
+                            <span><a href="/publicidad">Publicidad</a></span>
+                            <span><a href="/contacto">Contacto</a></span>
+                            <span><a href="/nosotros">Nosotros</a></span>
                         </div>
                     </div><!-- /.col-md-6 -->
                 </div><!-- /.row -->

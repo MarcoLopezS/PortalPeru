@@ -566,11 +566,16 @@
 		font-size: 14px;
 	}
 
-	.top-wrap .login-popup a {
+    .top-wrap .login-popup a, .top-wrap a {
 		line-height: 40px;
 		margin-right: 24px;
 		color: #fff;
 	}
+
+    .top-wrap a:hover {
+        text-decoration: underline;
+        color: #fff;
+    }
 
 	.top-wrap .signup-popup a {
 		line-height: 25px;
