@@ -46,6 +46,9 @@ $noticia_categoria_url = route('home.noticia.categoria', [$noticia->category->sl
                                     <span class="time">| Publicado el: {{ date_format(new DateTime($noticia->published_at), 'd/m/Y H:m')  }}</span>
                                 </div>
 
+                                {{-- AddThis --}}
+                                <div class="addthis_native_toolbox"></div>
+
                                 @if($noticia->video <> "")
                                     <div class="video">
                                         <iframe width="100%" height="500px" src="//www.youtube.com/embed/{{ $noticia->video }}?rel=0" frameborder="0" allowfullscreen></iframe>
@@ -81,16 +84,6 @@ $noticia_categoria_url = route('home.noticia.categoria', [$noticia->category->sl
 							</div><!-- /.head-post -->
 
 							<div class="body-post">
-
-                                <div class="share-post">
-									<ul>
-										<li class="count-share"><span class="numb">23</span><span>shares</span></li>
-										<li class="email"><a href="">Email</a></li>
-										<li class="facebook"><a href="">Facebook</a></li>
-										<li class="twitter"><a href="">Twitter</a></li>
-										<li class="more"><a href="">More</a></li>
-									</ul>
-								</div><!-- /.share-post -->
 
 								<div class="main-post">
 

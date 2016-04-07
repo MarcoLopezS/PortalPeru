@@ -42,6 +42,9 @@ $noticia_fecha = date_format(new DateTime($galeria->published_at), 'd/m/Y H:m');
                                     <span class="time">Publicado el: {{ $noticia_fecha }}</span>
                                 </div>
 
+                                {{-- AddThis --}}
+                                <div class="addthis_native_toolbox"></div>
+
                                 <div class="info imagen">
                                     <img src="{{ $noticia_img }}" alt="{{ $noticia_titulo }}">
                                 </div>
@@ -51,9 +54,6 @@ $noticia_fecha = date_format(new DateTime($galeria->published_at), 'd/m/Y H:m');
 							<div class="body-post">
 
 								<div class="main-post">
-
-                                    {{-- AddThis --}}
-                                    <div class="addthis_native_toolbox"></div>
 
 									<div class="comment-post">
                                         <div id="fb-root"></div>
