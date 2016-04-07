@@ -11,7 +11,16 @@ use PortalPeru\Entities\PostView;
 use PortalPeru\Entities\Tag;
 use Carbon\Carbon;
 
+use PortalPeru\Repositories\PostRepo;
+
 class FrontendController extends BaseController{
+
+    protected $postRepo;
+
+    public function __construct(PostRepo $postRepo)
+    {
+        $this->postRepo = $postRepo;
+    }
 
     public function construccion()
     {
@@ -20,23 +29,23 @@ class FrontendController extends BaseController{
 
     public function home()
     {
-        //NOTICIAS
-        $post_1 = Post::where('post_order_id', 1)->where('publicar', 1)->orderBy('published_at','desc')->paginate(4);
-        $post_2 = Post::where('post_order_id', 2)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
-        $post_3 = Post::where('post_order_id', 3)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
-        $post_4 = Post::where('post_order_id', 4)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
-        $post_5 = Post::where('post_order_id', 5)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
-        $post_6 = Post::where('post_order_id', 6)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
-        $post_7 = Post::where('post_order_id', 7)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
-        $post_8 = Post::where('post_order_id', 8)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
-        $post_9 = Post::where('post_order_id', 9)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
-        $post_10 = Post::where('post_order_id', 10)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
-        $post_11 = Post::where('post_order_id', 11)->where('publicar', 1)->orderBy('published_at','desc')->paginate(1);
+        //BICENTENARIO
+        $bicentenarioSup = $this->postRepo->showPostCatPag(7, 2);
+        $bicentenarioInf = $this->postRepo->showPostCatPagID(7, 3, $bicentenarioSup);
+
+        //HECHOS
+        $hechos = $this->postRepo->showPostCatPag(1, 6);
+
+        //TECNOLOGIA
+        $tecnologia = $this->postRepo->showPostCatPag(8, 3);
+
+        //ENTREVISTA
+        $entrevista = $this->postRepo->showPostCatPag(3, 6);
 
         //GALERIA DE FOTOS
         $galeria = Gallery::where('publicar', 1)->orderBy('published_at','desc')->paginate(4);
 
-        return View::make('frontend.index', compact('post_1', 'post_2', 'post_3', 'post_4', 'post_5', 'post_6', 'post_7', 'post_8', 'post_9', 'post_10', 'post_11', 'galeria'));
+        return View::make('frontend.index', compact('bicentenarioSup','hechos','bicentenarioInf','tecnologia','entrevista','galeria'));
     }
 
     public function nosotros()
