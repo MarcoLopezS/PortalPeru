@@ -100,7 +100,7 @@
                                                             /*--}}
 
                                                             <div class="mega-item">
-                                                                <img src="{{ $columDia_foto }}" alt="image">
+                                                                <a href="{{ $columDia_url }}"><img src="{{ $columDia_foto }}" alt="image"></a>
                                                                 <h5><a href="{{ $columDia_url }}">{{ $columDia_titulo }}</a></h5>
                                                             </div>
                                                         @endforeach
