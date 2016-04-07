@@ -84,6 +84,7 @@
                                 <li><a href="/tecnologia">Tecnología</a></li>
                                 <li class="menu-mira-peru"><a href="/mira-peru"><img src="/imagenes/logo-mira-peru-rojo.png" width="103" height="20" alt=""></a></li>
                                 <li><a href="/bicentenario">Bicentenario</a></li>
+                                <li><a href="/lima-foto">Lima en una Foto</a></li>
                                 <li class="gn-mega-menu"><a href="javascript:;">Columnistas</a>
                                     <div class="sub-menu">
                                         <div class="container">

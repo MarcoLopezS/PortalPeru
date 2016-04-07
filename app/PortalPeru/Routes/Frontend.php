@@ -10,6 +10,7 @@ Route::get('publicidad', ['as' => 'home.publicidad', 'uses' => 'FrontendControll
 
 //LIMA EN UNA FOTO
 Route::get('lima-foto/{url}', ['as' => 'home.fotos.lima', 'uses' => 'FrontendController@fotosLima']);
+Route::get('lima-foto', ['as' => 'home.fotos.lima.all', 'uses' => 'FrontendController@fotosLimaAll']);
 
 /* BUSCADOR */
 Route::get('buscar/b={texto}', ['as' => 'home.buscar', 'uses' => 'FrontendController@buscar']);

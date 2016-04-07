@@ -156,7 +156,14 @@ class FrontendController extends BaseController{
     {
         $galeria = Gallery::where('slug_url', $url)->first();
 
-        return View::make('frontend.lima-foto', compact('galeria'));
+        return View::make('frontend.galeria-nota', compact('galeria'));
+    }
+
+    public function fotosLimaAll()
+    {
+        $galerias = Gallery::where('publicar', 1)->orderBy('published_at', 'desc')->paginate(12);
+
+        return View::make('frontend.galerias', compact('galerias'));
     }
 
 }
