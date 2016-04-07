@@ -1,19 +1,20 @@
 @extends('layouts.frontend')
 
-@section('html_title')
-    {{ $noticia->titulo }} | @parent
-@stop
-
 {{--*/
 $noticia_titulo = $noticia->titulo;
 $noticia_url = route('home.noticia', [$noticia->id, $noticia->slug_url]);
 $noticia_descripcion = $noticia->descripcion;
 $noticia_img = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/".$noticia->imagen;
 $noticia_contenido = $noticia->contenido;
+$noticia_fecha = date_format(new DateTime($noticia->published_at), 'd/m/Y H:m');
 
 $noticia_categoria = $noticia->category->titulo;
 $noticia_categoria_url = route('home.noticia.categoria', [$noticia->category->slug_url]);
 /*--}}
+
+@section('html_title')
+    {{ $noticia_titulo }} | @parent
+@stop
 
 @section('contenido_header')
 <!-- Open Graph -->
@@ -23,7 +24,7 @@ $noticia_categoria_url = route('home.noticia.categoria', [$noticia->category->sl
 <meta property="og:image" content='{{ $noticia_img }}' >
 <meta property="og:site_name" content='{{ configWeb()->titulo }}' >
 <meta property="fb:admins" content='1434798696787255'>
-<meta property="og:description" content='{{ $noticia->descripcion }}'>
+<meta property="og:description" content='{{ $noticia_descripcion }}'>
 <!-- fin Open Graph -->
 @stop
 
@@ -43,7 +44,7 @@ $noticia_categoria_url = route('home.noticia.categoria', [$noticia->category->sl
 
                                 <div class="meta">
                                     <span class="author"><a href="{{ $noticia_categoria_url }}">{{ $noticia_categoria }}</a></span>
-                                    <span class="time">| Publicado el: {{ date_format(new DateTime($noticia->published_at), 'd/m/Y H:m')  }}</span>
+                                    <span class="time">| Publicado el: {{ $noticia_fecha }}</span>
                                 </div>
 
                                 {{-- AddThis --}}
