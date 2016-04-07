@@ -152,13 +152,11 @@ class FrontendController extends BaseController{
         return View::make('frontend.columnista-noticia', compact('columnista','columna'));
     }
 
-    public function fotosLima()
+    public function fotosLima($url)
     {
-        $galeria = Gallery::where('publicar', 1)->orderBy('published_at','desc')->first();
+        $galeria = Gallery::where('slug_url', $url)->first();
 
-        $galerias = Gallery::where('publicar', 1)->orderBy('published_at','desc')->paginate();
-
-        return View::make('frontend.galeria', compact('galeria', 'galerias'));
+        return View::make('frontend.lima-foto', compact('galeria'));
     }
 
 }

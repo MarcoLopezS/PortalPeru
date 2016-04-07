@@ -39,6 +39,10 @@
     <script src="javascript/respond.min.js"></script>
     <![endif]-->
 
+    {{-- AddThis --}}
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-552dd2a835af55f3"></script>
+
+
     @yield('contenido_header')
 
 </head>

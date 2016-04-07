@@ -9,7 +9,7 @@ Route::get('contacto', ['as' => 'home.contacto', 'uses' => 'FrontendController@c
 Route::get('publicidad', ['as' => 'home.publicidad', 'uses' => 'FrontendController@publicidad']);
 
 //LIMA EN UNA FOTO
-Route::get('lima-foto', ['as' => 'home.fotos.lima', 'uses' => 'FrontendController@fotosLima']);
+Route::get('lima-foto/{url}', ['as' => 'home.fotos.lima', 'uses' => 'FrontendController@fotosLima']);
 
 /* BUSCADOR */
 Route::get('buscar/b={texto}', ['as' => 'home.buscar', 'uses' => 'FrontendController@buscar']);

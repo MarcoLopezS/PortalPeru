@@ -158,13 +158,15 @@
                                     {{--*/
                                     $nota_titulo = $item->titulo;
                                     $nota_foto = $item->descripcion;
-                                    $nota_url = route('home.noticia', [$item->id, $item->slug_url]);
+                                    $nota_url = route('home.fotos.lima', $item->slug_url);
                                     $nota_imagen = "upload/".$item->imagen_carpeta."1132x670/".$item->imagen;
                                     /*--}}
                                     <li>
                                         <div class="item-wrap">
-                                            <img src="{{ $nota_imagen }}" alt="image">
-                                            <p class="item" data-bottomtext="0">{{ $nota_titulo }} <br> Foto: {{ $nota_foto }}</p>
+                                            <a href="{{ $nota_url }}">
+                                                <img src="{{ $nota_imagen }}" alt="image">
+                                                <p class="item" data-bottomtext="0">{{ $nota_titulo }} <br> Foto: {{ $nota_foto }}</p>
+                                            </a>
                                         </div>
                                     </li>
                                     @endforeach
