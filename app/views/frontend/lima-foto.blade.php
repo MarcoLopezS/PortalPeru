@@ -6,7 +6,7 @@
 
 {{--*/
 $noticia_titulo = $galeria->titulo;
-$noticia_url = route('home.noticia', [$galeria->id, $galeria->slug_url]);
+$noticia_url = route('home.fotos.lima', $galeria->slug_url);
 $noticia_descripcion = $galeria->descripcion;
 $noticia_img = configWeb()->dominio."upload/".$galeria->imagen_carpeta.$galeria->imagen;
 $noticia_fecha = date_format(new DateTime($galeria->published_at), 'd/m/Y H:m');
