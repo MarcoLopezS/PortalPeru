@@ -7,6 +7,9 @@ class FrontendComposer
 {
     public function compose($view)
     {
+        //TODOS LOS COLUMNISTAS
+        $columnistasAll = Columnist::orderBy('orden', 'asc')->wherePublicar(1)->get();
+
         //COLUNISTAS DEL DIA
         if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
         elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->get(); }
@@ -23,6 +26,6 @@ class FrontendComposer
                             ->havingRaw('COUNT(*)')
                             ->take(5)->get();
 
-        $view->with(['columnistasDia' => $columnistasDia, 'masVisto' => $masVisto]);
+        $view->with(['columnistasAll' => $columnistasAll, 'columnistasDia' => $columnistasDia, 'masVisto' => $masVisto]);
     }
 }

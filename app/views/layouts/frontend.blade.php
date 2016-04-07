@@ -80,17 +80,6 @@
                                 <li><a href="/tecnologia">Tecnología</a></li>
                                 <li class="menu-mira-peru"><a href="/mira-peru"><img src="/imagenes/logo-mira-peru-rojo.png" width="103" height="20" alt=""></a></li>
                                 <li><a href="/bicentenario">Bicentenario</a></li>
-                                <li class="has-children"><a href="/reportero-ciudadano">Reportero Ciudadano</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="/reportero-ciudadano">Noticias</a></li>
-                                        @if(Auth::check())
-                                            <li><a target="_blank" href="/reportero-ciudadano/admin">Subir noticias</a></li>
-                                        @else
-                                            <li><a target="_blank" href="/reportero-ciudadano/registro">Registrarse</a></li>
-                                            <li><a target="_blank" href="/reportero-ciudadano/login">Iniciar sesión</a></li>
-                                        @endif
-                                    </ul>
-                                </li>
                                 <li class="gn-mega-menu"><a href="javascript:;">Columnistas</a>
                                     <div class="sub-menu">
                                         <div class="container">
@@ -98,7 +87,7 @@
                                                 <div class="col-md-12">
                                                     <div class="mega-item-wrap">
 
-                                                        @foreach($columnistasDia as $item)
+                                                        @foreach($columnistasAll as $item)
                                                             {{--*/
                                                             $columDia_foto = "/upload/columnista/173x116/".$item->foto;
                                                             $columDia_titulo = $item->nombre." ".$item->apellidos;
