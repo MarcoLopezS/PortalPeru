@@ -27,6 +27,37 @@
             </script>
         </div><!-- /.widget-ads -->
 
+        <div class="widget widget-recent gn-animation" data-animation="fadeInUp" data-animation-delay="0" data-animation-offset="75%">
+            <h5 class="widget-title">Columnistas del Día</h5>
+            <ul>
+            @foreach($columnistasDia as $item)
+            {{--*/
+            $col_nombre = $item->nombre." ".$item->apellidos;
+            $col_url = route('home.columnistas.person', [$item->id, $item->slug_url]);
+            $col_imagen = '/upload/columnista/110x70/'.$item->foto;
+            /*--}}
+
+                <li>
+                    <div class="thumb">
+                        <a href=""><img src="{{ $col_imagen }}" alt="img"></a>
+                    </div>
+                    <div class="content">
+                        @foreach($item->columnHome() as $columna)
+                        {{--*/
+                        $columna_titulo = $columna->titulo;
+                        $columna_url = route('home.columnistas.column', [$item->id, $item->slug_url, $columna->id, $columna->slug_url]);
+                        /*--}}
+                        <h3><a href="{{ $columna_url }}">{{ $columna_titulo }}</a></h3>
+                        @endforeach
+                        <div class="date"><a href="{{ $col_url }}">{{ $col_nombre }}</a></div>
+                    </div>
+                </li>
+
+            @endforeach
+
+            </ul>
+        </div><!-- /.widget-recent -->
+
         <div class="widget widget-most-popular gn-animation" data-animation="fadeInUp" data-animation-delay="0" data-animation-offset="75%">
             <h5 class="widget-title">Lo más visto</h5>
             <ul>
