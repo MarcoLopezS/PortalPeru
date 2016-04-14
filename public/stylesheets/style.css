@@ -4380,3 +4380,7 @@ CLASES
 .border-radius{
     border-radius: 10px;
 }
+
+.top-wrap{
+    background-image: url('/imagenes/fondo-cabecera.jpg');
+}

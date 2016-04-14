@@ -57,7 +57,7 @@
                     <div class="col-md-6">
                         <div id="logo" class="logo">
                             <a href="/" rel="home" title="home">
-                                <img src="/imagenes/logo.png" alt="Good News" />
+                                <img src="/imagenes/logo-blanco.png" alt="Good News" width="300" />
                             </a>
                         </div>
                     </div><!-- /.col-md-6 -->
