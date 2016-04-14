@@ -63,6 +63,9 @@ Route::group(['before' => ['auth']], function () {
         Route::resource('administrador/posts', 'AdminPostsController');
         Route::get('view/{id}-{url}', ['as' => 'home.noticia.preview', 'uses' => 'FrontendController@noticiaPreview']);
 
+        //POST - VIDEOS
+        Route::resource('administrador/post.videos', 'AdminPostsVideosController');
+
         //HISTORY
         Route::get('administrador/posts/history/{id}', ['as' => 'administrador.post.history', 'uses' => 'AdminPostsController@history']);
         Route::get('administrador/posts-deletes', ['as' => 'administrador.posts.deletes', 'uses' => 'AdminPostsController@listsDeletes']);
