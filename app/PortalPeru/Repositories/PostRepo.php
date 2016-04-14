@@ -39,4 +39,28 @@ class PostRepo extends BaseRepo{
             $q->paginate()->appends($data)
             : $q->get();
     }
+
+    //NOTICIAS
+    public function showPostCatPag($category, $paginate)
+    {
+        return $this->getModel()->where('category_id', $category)
+                                ->where('publicar', 1)
+                                ->orderBy('published_at','desc')
+                                ->paginate($paginate);
+    }
+
+    //NOTICIAS DIFERENTES
+    public function showPostCatPagID($category, $paginate, $ids)
+    {
+        return $this->getModel()->where('category_id', $category)
+                                ->where('publicar', 1)
+                                ->where(function($query) use ($ids)
+                                {
+                                    for ($i=0; $i < $ids->count(); $i++) {
+                                        $query->where('id', '<>', $ids[$i]->id);
+                                    }
+                                })
+                                ->orderBy('published_at','desc')
+                                ->paginate($paginate);
+    }
 }

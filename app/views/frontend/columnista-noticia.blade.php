@@ -1,135 +1,93 @@
 @extends('layouts.frontend')
 
-@section('html_title')
-{{ $columna->titulo }} | @parent
-@stop
-
 {{--*/
-$noticiaUrl = configWeb()->dominio."/columnistas/".$columnista->id."-".$columnista->slug_url."/".$columna->id."-".$columna->slug_url;
-$noticiaImg = configWeb()->dominio."/upload/columnista/200x200/".$columnista->foto;
+$columnista_nombre = $columnista->nombre." ".$columnista->apellidos;
+$columnista_url = route('home.columnistas.person', [$columnista->id, $columnista->slug_url]);
+
+$noticia_titulo = $columna->titulo;
+$noticia_url = route('home.columnistas.column', [$columnista->id, $columnista->slug_url, $columna->id, $columna->slug_url]);
+$noticia_descripcion = $columna->descripcion;
+$noticia_img = configWeb()->dominio."/upload/".$columna->imagen_carpeta."870x500/".$columna->imagen;
+$noticia_contenido = $columna->contenido;
+$noticia_fecha = date_format(new DateTime($columna->created_at), 'd/m/Y H:m');
 /*--}}
 
-@section('script_header')
+@section('html_title')
+    {{ $noticia_titulo }} | @parent
+@stop
+
+@section('contenido_header')
 <!-- Open Graph -->
-<meta property="og:title" content='{{ $columna->titulo  }}'>
+<meta property="og:title" content='{{ $noticia_titulo  }}'>
 <meta property="og:type" content='article' >
-<meta property="og:url" content='{{ $noticiaUrl }}' >
-<meta property="og:image" content='{{ $noticiaImg }}' >
+<meta property="og:url" content='{{ $noticia_url }}' >
+<meta property="og:image" content='{{ $noticia_img }}' >
 <meta property="og:site_name" content='{{ configWeb()->titulo }}' >
 <meta property="fb:admins" content='1434798696787255'>
-<meta property="og:description" content='{{ $columna->descripcion }}'>
+<meta property="og:description" content='{{ $noticia_descripcion }}'>
 <!-- fin Open Graph -->
 @stop
 
-@section('contenido_frontend')
+@section('contenido_body')
 
-<!--MAIN SECTION-->
-<div class="main post-page">
+	<!-- Main -->
+	<section id="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="post-wrap posts post-single">
+						<article class="post">
 
-    <div class="row">
+							<div class="head-post">
+								<h2>{{ $noticia_titulo }}</h2>
+                                <p>{{ $noticia_descripcion }}</p>
 
-        <!--CONTENT-->
-        <div class="col-md-9 col-sm-12 clearfix author">
-
-            <h2>
-                Columnista: <a href="/columnistas/{{ $columnista->id."-".$columnista->slug_url }}">
-                <span>{{ $columnista->nombre." ".$columnista->apellidos }}</span></a>
-            </h2>
-
-            <!--POST-->
-            <article class="post mid fullwidth">
-
-                <div class="info">
-                    <h1>{{ $columna->titulo }}</h1>
-                    <div class="data">
-                        <p class="details">{{ date_format(new DateTime($columna->published_at), 'd/m/Y')  }}</p>
-                    </div>
-                    <div class="data">
-                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-552dd2a835af55f3" async="async"></script>
-                        <div class="addthis_native_toolbox"></div>
-                    </div>
-                </div>
-
-                @if($columna->imagen <> "")
-                <div class="info imagen">
-                    <img src="/upload/{{ $columna->imagen_carpeta."840x500/".$columna->imagen }}" alt="{{ $columna->titulo }}">
-                </div>
-                @endif
-
-                <div class="row">
-                    <div class="info col-md-12 col-sm-12">
-                        <div class="info">
-                            <div class="text texto-nota">
-
-                                <div class="contenido-texto trdr">
-
-                                    {{ $columna->contenido }}
-
+                                <div class="meta">
+                                    <span class="author"><a href="{{ $columnista_url }}">{{ $columnista_nombre }}</a></span>
+                                    <span class="time">| Publicado el: {{ $noticia_fecha }}</span>
                                 </div>
 
-                                <p class="nota-completa">
-                                    <a id="nota-completa" href="#">Ver nota completa</a>
-                                </p>
+                                {{-- AddThis --}}
+                                <div class="addthis_native_toolbox"></div>
 
-                                <style type="text/css">
-                                    .adslot_nota_horizontal { width: 320px; height: 100px; } 
-                                    @media (min-width:500px) { .adslot_nota_horizontal { width: 468px; height: 60px; } } 
-                                    @media (min-width:800px) { .adslot_nota_horizontal { width: 728px; height: 90px; } }
-                                </style>
-                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                                <ins class="adsbygoogle adslot_nota_horizontal" 
-                                     style="display:block" 
-                                     data-ad-client="ca-pub-3674889010429322"
-                                     data-ad-slot="1879845946"
-                                     data-ad-format="auto"></ins>
-                                <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                @if($columna->imagen <> "")
+                                    <div class="info imagen">
+                                        <img src="{{ $noticia_img }}" alt="{{ $noticia_titulo }}">
+                                    </div>
+                                @endif
 
-            </article>
-            <!--END POST-->
+							</div><!-- /.head-post -->
 
-            <!-- COMENTARIOS -->
-            <div class="row visible-lg">
-                <h3>Comentarios</h3>
+							<div class="body-post">
 
-                <div id="fb-root"></div>
-                <script>(function(d, s, id) {
-                  var js, fjs = d.getElementsByTagName(s)[0];
-                  if (d.getElementById(id)) return;
-                  js = d.createElement(s); js.id = id;
-                  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.3";
-                  fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));</script>
+								<div class="main-post">
 
-                <div class="fb-comments" data-href="{{ $noticiaUrl }}" data-width="840" data-numposts="5" data-colorscheme="light"></div>
-            </div>
-            <!-- FIN COMENTARIOS -->
+                                    <div class="entry-post">
+                                        {{ $noticia_contenido }}
+									</div><!-- /.entry-post -->
 
-        </div>
-        <!--END CONTENT-->
+					               	<div class="comment-post">
+                                        <div id="fb-root"></div>
+                                        <script>(function(d, s, id) {
+                                                var js, fjs = d.getElementsByTagName(s)[0];
+                                                if (d.getElementById(id)) return;
+                                                js = d.createElement(s); js.id = id;
+                                                js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.3";
+                                                fjs.parentNode.insertBefore(js, fjs);
+                                            }(document, 'script', 'facebook-jssdk'));</script>
 
-        @include('frontend.sidebar')
+                                        <div class="fb-comments" data-href="{{ $noticia_url }}" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+					            	</div><!-- /.comment-post -->
 
-    </div>
 
-</div>
-<!--END MAIN SECTION-->
 
-@stop
-
-@section('script_footer')
-
-<script>
-$("#nota-completa").on("click", function(e){
-    e.preventDefault();    
-    $(".contenido-texto").removeClass("trdr");
-    $(".nota-completa").hide();
-});
-</script>
+								</div><!-- /.main-post -->
+							</div><!-- /.body-post -->
+						</article><!-- /.post -->
+					</div><!-- /.post-wrap -->
+				</div><!-- /.col-md-12 -->
+			</div><!-- /.row -->
+		</div><!-- /.container -->
+	</section>
 
 @stop

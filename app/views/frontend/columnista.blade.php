@@ -1,70 +1,67 @@
 @extends('layouts.frontend')
 
-@section('contenido_frontend')
-<!--MAIN SECTION-->
-<div class="main">
+{{--*/
+$columnista_nombre = $columnista->nombre." ".$columnista->apellidos;
+$columnista_url = route('home.columnistas.person', [$columnista->id, $columnista->slug_url]);
+$columnista_foto = '/upload/columnista/'.$columnista->imagen_portada;
+$columnista_descripcion = $columnista->descripcion;
+/*--}}
 
-    <div class="row">
+@section('html_title')
+    {{ $columnista_nombre }} | @parent
+@stop
 
-        <!--CONTENT-->
-        <div class="col-md-9 col-sm-12 author">
-            <h2>Columnista: <span>{{ $columnista->nombre." ".$columnista->apellidos }}</span></h2>
-            <div class="row">
-                <article class="col-md-4 col-sm-4 mid member">
-                    <div class="img">
-                        <img src="/upload/columnista/{{ $columnista->imagen_portada }}" alt="{{ $columnista->nombre." ".$columnista->apellidos }}">
-                    </div>
-                    <div class="info">
-                        <h1>{{ $columnista->nombre." ".$columnista->apellidos }}</h1>
-                        <p class="text">
-                            {{ $columnista->descripcion }}
-                        </p>
-                    </div>
-                    {{--
-                    <ul class="social list-inline">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa  fa-tumblr"></i></a></li>
-                    </ul>
-                    --}}
-                </article>
-                <!--POSTS-->
-                <div class="posts col-md-8 col-sm-8">
-                    <h3>Columnas</h3>
+@section('contenido_body')
 
-                    @foreach($columnas as $item)
-                    <article class="row mid">
+	<!-- Main -->
+	<section id="main" class="about-page">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="about-page-wrap">
 
-                        <div class="info">
-                            <h1><a href="/columnistas/{{ $columnista->id."-".$columnista->slug_url."/".$item->id."-".$item->slug_url }}">{{ $item->titulo }}</a></h1>
+                        <div class="content-right entry-page category-page">
 
-                            <p class="details width100">{{ date_format(new DateTime($item->published_at), 'd/m/Y')  }}</p>
+                            <div class="post-wrap">
 
-                            <p class="text width100">
-                                {{ $item->descripcion }}
-                            </p>
-                            <a href="{{ configWeb()->dominio }}/columnistas/{{ $columnista->id."-".$columnista->slug_url."/".$item->id."-".$item->slug_url }}" class="btn btn-default">Leer más...</a>
+                                @foreach($columnas as $item)
+                                    {{--*/
+                                    $nota_titulo = $item->titulo;
+                                    $nota_url = route('home.columnistas.column', [$columnista->id, $columnista->slug_url, $item->id, $item->slug_url]);
+                                    $nota_descripcion = $item->descripcion;
+                                    $nota_imagen = "/upload/".$item->imagen_carpeta."364x220/".$item->imagen;
+                                    $nota_fecha = date_format(new DateTime($item->created_at), 'd/m/Y');
+                                    /*--}}
+                                    <article class="post">
+                                        <div class="thumb">
+                                            <a href="{{ $nota_url }}"><img src="{{ $nota_imagen }}" alt="img"></a>
+                                        </div>
+                                        <div class="content">
+                                            <div class="cat"><a href="javascript;;">{{ $nota_fecha }}</a></div>
+                                            <h3><a href="{{ $nota_url }}">{{ $nota_titulo }}</a></h3>
+                                            <p class="excerpt-entry">{{ $nota_descripcion }}</p>
+                                        </div>
+                                    </article><!--  /.post -->
+                                @endforeach
 
-                        </div>
-                    </article>
-                    @endforeach
+                            </div>
 
-                    <ul id="pagination">
-                        {{ $columnas->links() }}
-                    </ul>
+                            <div id="paginacion">
+                                {{ $columnas->links() }}
+                            </div>
 
-                </div>
-                <!--END POSTS-->
-            </div>
-        </div>
-        <!--END CONTENT-->
+						</div><!-- /.content-right -->
 
-        @include('frontend.sidebar')
+                        <div class="content-left">
+                            <img src="{{ $columnista_foto }}" alt="{{ $columnista_nombre }}" class="border-radius">
+                            <h5 class="title">{{ $columnista_nombre }}</h5>
+                            <p>{{ $columnista_descripcion }}</p>
+						</div><!-- /.content-left -->
 
-    </div>
-
-</div>
-<!--END MAIN SECTION-->
+					</div><!-- /.about-page-wrap -->
+				</div><!-- /.col-md-12 -->
+			</div><!-- /.row -->
+		</div><!-- /.container -->
+	</section>
 
 @stop

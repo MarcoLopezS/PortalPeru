@@ -1,269 +1,196 @@
 <!DOCTYPE html>
-<html lang="es">
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="es-ES" lang="es-ES"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es-ES" lang="es-ES"><!--<![endif]-->
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>
-	    @section('html_title')
-        {{ configWeb()->titulo }}
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>
+        @section('html_title')
+            {{ configWeb()->titulo }}
         @show
-	</title>
+    </title>
 
     <meta name="keywords" content="{{ configWeb()->keywords }}"/>
-	<meta name="description" content="{{ configWeb()->descripcion }}"/>
-	<meta name="robots" content="index,follow">
+    <meta name="description" content="{{ configWeb()->descripcion }}"/>
+    <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index, follow">
 
-    {{-- GOOGLE FONTS --}}
-    {{ HTML::style('//fonts.googleapis.com/css?family=Open+Sans:400,600,700') }}
-    {{ HTML::style('//fonts.googleapis.com/css?family=Montserrat:400,700') }}
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    {{-- FONT AWESOME - BOOTSTRAP --}}
-    {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css') }}
-    {{ HTML::style('//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css') }}
+    <!-- Bootstrap  -->
+    {{ HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css') }}
 
-    {{-- ESTILOS --}}
-    {{ HTML::style('css/style.css') }}
-    {{ HTML::style('css/responsive.css') }}
+    {{-- Bootstrap --}}
+    {{ HTML::style('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css') }}
 
-    @yield('script_header')
-	
+    <!-- Theme Style -->
+    {{ HTML::style('stylesheets/style.css') }}
+    {{ HTML::style('stylesheets/red.css') }}
+    {{ HTML::style('stylesheets/animate.css') }}
+
+    <!-- Google Fonts -->
+    {{ HTML::style('http://fonts.googleapis.com/css?family=Roboto:300,400,500,700') }}
+    {{ HTML::style('http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700') }}
+
+    <!--[if lt IE 9]>
+    <script src="javascript/html5shiv.js"></script>
+    <script src="javascript/respond.min.js"></script>
+    <![endif]-->
+
+    {{-- AddThis --}}
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-552dd2a835af55f3"></script>
+
+
+    @yield('contenido_header')
+
 </head>
+
 <body>
 
-	<!--HEADER-->
-    <header>
-        <div class="container">
-            <h1><a href="/" class="logo" title="Portal Perú">Portal Perú</a></h1>
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="top-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="logo" class="logo">
+                            <a href="/" rel="home" title="home">
+                                <img src="/imagenes/logo-blanco.png" alt="Good News" width="300" />
+                            </a>
+                        </div>
+                    </div><!-- /.col-md-6 -->
+                    <div class="col-md-6">
+                        <div class="member-area">
+                            <span><a href="/">Inicio</a></span>
+                            <span><a href="/publicidad">Publicidad</a></span>
+                            <span><a href="/contacto">Contacto</a></span>
+                            <span><a href="/nosotros">Nosotros</a></span>
+                        </div>
+                    </div><!-- /.col-md-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.top-wrap -->
+        <div class="header-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav id="mainnav" class="mainnav">
+                            <ul class="menu">
+                                <li><a href="/"><i class="fa fa-home"></i></a></li>
+                                <li><a href="/hechos">Hechos</a></li>
+                                <li><a href="/entrevista">Entrevista</a></li>
+                                <li><a href="/tecnologia">Tecnología</a></li>
+                                <li class="menu-mira-peru"><a href="/mira-peru"><img src="/imagenes/logo-mira-peru-rojo.png" width="103" height="20" alt=""></a></li>
+                                <li><a href="/bicentenario">Bicentenario</a></li>
+                                <li><a href="/lima-foto">Lima en una Foto</a></li>
+                                <li class="gn-mega-menu"><a href="javascript:;">Columnistas</a>
+                                    <div class="sub-menu">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="mega-item-wrap">
 
-            <!--MENU-->
-            <nav class="clearfix">
-                <a href="#" id="header-menu-button"><i class="fa fa-bars"></i></a>
-                <ul class="header-menu list-inline">
-                    <li><a href="/">Inicio</a></li>
-                    <li><a href="/publicidad">Publicidad</a></li>
-                    <li><a href="/contacto">Contacto</a></li>
-                    <li><a href="/nosotros">Nosotros</a></li>
-                </ul>
-            </nav>
-            <!--END MENU-->
+                                                        @foreach($columnistasAll as $item)
+                                                            {{--*/
+                                                            $columDia_foto = "/upload/columnista/173x116/".$item->foto;
+                                                            $columDia_titulo = $item->nombre." ".$item->apellidos;
+                                                            $columDia_url = route('home.columnistas.person', [$item->id, $item->slug_url]);
+                                                            /*--}}
 
-            <div class="sepheader">
-                <style type="text/css">
-                    .adslot_header_horizontal { width: 320px; height: 100px; margin: 0 auto; }
-                    @media (min-width:500px) { .adslot_header_horizontal { width: 468px; height: 60px;  margin: 0 auto; } }
-                    @media (min-width:800px) { .adslot_header_horizontal { width: 728px; height: 90px; margin: 0 auto; } }
-                </style>
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <ins class="adsbygoogle adslot_header_horizontal"
-                     style="display:block"
-                     data-ad-client="ca-pub-3674889010429322"
-                     data-ad-slot="1879845946"
-                     data-ad-format="auto"></ins>
-                <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-            
-        </div>
+                                                            <div class="mega-item">
+                                                                <a href="{{ $columDia_url }}"><img src="{{ $columDia_foto }}" alt="image"></a>
+                                                                <h5><a href="{{ $columDia_url }}">{{ $columDia_titulo }}</a></h5>
+                                                            </div>
+                                                        @endforeach
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.submenu -->
+                                </li>
+                            </ul><!-- /.menu -->
+                        </nav><!-- /nav -->
+                    </div><!-- /.col-md-9 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.header-wrap -->
     </header>
-	<!--END HEADER-->
 
-	<!--CONTAINER-->
-	<div class="container">
+    @yield('contenido_body')
 
-		<!--MENU-->
-        <nav class="clearfix">
-
-            <a href="" id="menu-button"><i class="fa fa-bars"></i></a>
-
-            <ul class="menu col-md-10 list-inline">
-                <li><a href="/"><i class="fa fa-home"></i></a></li>
-                <li><a href="/hechos">Hechos</a></li>
-                <li><a href="/entrevista">Entrevista</a></li>
-                <li><a href="/tecnologia">Tecnología</a></li>
-                <li class="menu-mira-peru"><a href="/mira-peru">
-                    <img src="/imagenes/logo-mira-peru-rojo.png" width="103" height="20" alt="">
-                </a></li>
-                <li><a href="/bicentenario">Bicentenario</a></li>
-                <li class="menu-rcid dropdown-submenu">
-                    <a href="javascript:;">Reportero Ciudadano</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/reportero-ciudadano">Noticias</a></li>
-                        @if(Auth::check())
-                        <li><a target="_blank" href="/reportero-ciudadano/admin">Subir noticias</a></li>
-                        @else
-                        <li><a target="_blank" href="/reportero-ciudadano/registro">Registrarse</a></li>
-                        <li><a target="_blank" href="/reportero-ciudadano/login">Iniciar sesión</a></li>
-                        @endif
-                    </ul>
-                </li>
-            </ul>
-
-            {{--
-            <div class="buscador form-search col-md-2">
-                <script>
-                    (function() {
-                        var cx = '018282985496243368695:hzzjbqgus9q';
-                        var gcse = document.createElement('script');
-                        gcse.type = 'text/javascript';
-                        gcse.async = true;
-                        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-                        '//www.google.com/cse/cse.js?cx=' + cx;
-                        var s = document.getElementsByTagName('script')[0];
-                        s.parentNode.insertBefore(gcse, s);
-                    })();
-                </script>
-                <gcse:searchbox-only></gcse:searchbox-only>
-            </div>
-            --}}
-
-        </nav>
-		<!--END MENU-->
-
-        <div id="publicidad-anda" class="hidden-xs">
-            <span class="lateral">PUBLICIDAD</span>
-
-            <div class="info">
-                <span><a href="#">+ INFO</a></span>
-            </div>
-            
-            <div id="publicidad-anda-contenedor">
-                
-                <div class="liston-back"></div>
-                <div class="liston-front">
-                    <p>PREMIO INTERNACIONAL DE</p>
-                    <p>PERIODISMO REY DE ESPAÑA 2006</p>
-                </div>
-
-                <div class="anda-libro">
-                    <img src="/imagenes/anda-libro.png" alt="Andahuaylazo - Libro">
-                </div>
-
-                <div class="boton-compra">
-                    <a href="http://g7consultores.com/andahuaylazo/" title="Andahuaylazo" target="_blank">
-                        <div class="circ-rojo"></div>
-                        <div class="circ-blanco"></div>
-                        <span>COMPRA</span>
-                        <span>ON LINE</span>
-                    </a>
-                </div>
-
-                <div class="anda-logo">
-                    <img src="/imagenes/anda-logo.png" alt="Andahuaylazo - Logo">
-                </div>
-                
-            </div>
-
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-widgets">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 gn-animation" data-animation="fadeInUp" data-animation-delay="0" data-animation-offset="75%">
+                        <div class="widget widget-brand">
+                            <div class="logo logo-footer">
+                                <a href="#"><img src="/imagenes/logo-footer.png" alt="Good News"></a>
+                            </div>
+                            <p>Portal Perú no se solidariza ni comparte necesariamente con las informaciones, opiniones y denuncias vertidas en las notas publicadas en este site. El autor es el único responsable del contenido de la información, opinión o denuncia.<p>
+                            <p>Portal Perú tiene Registro de la Propiedad Industrial. Resolución N° 021065-2014/DSD-INDECOPI. Certificado N° 0008491</p>
+                        </div><!-- /.widget-brand -->
+                        <div class="widget widget-social">
+                            <div class="social-list">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                            </div>
+                        </div><!-- /.widget-social -->
+                    </div><!-- /.col-md-4 -->
+                    <div class="col-md-2 gn-animation" data-animation="fadeInUp" data-animation-delay="0.6s" data-animation-offset="75%">
+                        <div class="widget widget-list">
+                            <h5 class="widget-title">Categorías</h5>
+                            <ul class="links-list">
+                                <li><a href="#">Hechos</a></li>
+                                <li><a href="#">Entrevista</a></li>
+                                <li><a href="#">Mira el Perú</a></li>
+                                <li><a href="#">Bicentenario</a></li>
+                                <li><a href="#">Reportero Ciudadano</a></li>
+                                <li><a href="#">Columnistas</a></li>
+                            </ul>
+                        </div><!-- /.widget-list -->
+                    </div><!-- /.col-md-2 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.footer-widgets -->
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        &copy; 2016 Todos los derechos reservados.
+                    </div><!-- /.col-md-6 -->
+                    <div class="col-md-6 text-right">
+                        Designed by G7 Consultores.
+                    </div><!-- /.col-md-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
         </div>
+    </footer>
 
-        <div id="publicidad-anda-big">
+    <!-- Go Top -->
+    <a class="go-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
 
-            <span class="cerrar"><a href="#">Cerrar</a></span>
+    <!-- Javascript -->
+    {{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js') }}
+    {{ HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js') }}
+    {{ HTML::script('javascript/jquery.easing.js') }}
+    {{ HTML::script('javascript/matchMedia.js') }}
+    {{ HTML::script('javascript/jquery-waypoints.js') }}
+    {{ HTML::script('javascript/jquery.flexslider.js') }}
+    {{ HTML::script('javascript/jquery.transit.js') }}
+    {{ HTML::script('javascript/jquery.leanModal.min.js') }}
+    {{ HTML::script('javascript/jquery.doubletaptogo.js') }}
+    {{ HTML::script('javascript/smoothscroll.js') }}
+    {{ HTML::script('javascript/main.js') }}
 
-            <a href="http://g7consultores.com/andahuaylazo/" title="Andahuaylazo" target="_blank">
-                <img src="/imagenes/anda-pub-big.png" alt="">
-            </a>
-            
-        </div>
-		
-
-		@yield('contenido_frontend')
-
-
-		<!--FOOTER-->
-        <footer>
-            <div class="row">
-                <div class="about col-md-9 col-sm-6">
-                    <img src="/imagenes/logo-footer.png" alt="logo" width="180">
-                    <h5>Sobre Portal Perú</h5>
-                    <p>
-                        Portal Perú no se solidariza ni comparte necesariamente con las informaciones, opiniones y denuncias vertidas en las notas publicadas en este site. El autor es el único responsable del contenido de la información, opinión o denuncia.
-                    </p>
-
-                    <p>
-                        Portal Perú tiene Registro de la Propiedad Industrial. Resolución N° 021065-2014/DSD-INDECOPI. Certificado N° 0008491
-                    </p>
-
-                    <ul class="social list-inline">
-                        <li><a target="_blank" href="https://www.facebook.com/portalperu.pe"><i class="fa fa-facebook"></i></a></li>
-                        <li><a target="_blank" href="https://plus.google.com/100548756504983774264"><i class="fa fa-google-plus"></i></a></li>
-                    </ul>
-                </div>
-
-                <div class="categories col-md-3 col-sm-6">
-                    <h5>Categorias</h5>
-                    <ul>
-                        <li><a href="/hechos">Hechos</a></li>
-                        <li><a href="/entrevista">Entrevista</a></li>
-                        <li><a href="/mira-peru">Mira el Perú</a></li>
-                        <li><a href="/bicentenario">Bicentenario</a></li>
-                        <li><a href="/reportero-ciudadano">Reportero Ciudadano</a></li>
-                        <li><a href="/columnistas">Columnistas</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <div class="rights clearfix">
-                <p>© 2015 Todos los derechos reservados.</p>
-                <p>Designed by <a href="http://www.g7consultores.com" target="_blank">G7 Consultores</a>.</p>
-            </div>
-        </footer>
-		<!--END FOOTER-->
-
-	</div>
-	<!--END CONTAINER-->
-
-{{-- JQUERY - BOOTSTRAP --}}
-{{ HTML::script('//code.jquery.com/jquery-1.10.2.min.js') }}
-{{ HTML::script('//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js') }}
-
-{{-- FLICKR --}}
-{{ HTML::script('js/flickrush.min.js') }}
-
-{{-- SLIDER --}}
-{{ HTML::script('js/jquery.bxslider.js') }}
-
-{{-- RESIZETOP --}}
-{{ HTML::script('js/jquery.resizestop.min.js') }}
-
-{{-- JS --}}
-{{ HTML::script('js/main.js') }}
-
-{{-- SCRIPT PARA RECARGAR PUBLICIDAD --}}
-<script>
-function refreshDiv()
-{
-    valor = '<div class="liston-back"></div><div class="liston-front"><p>PREMIO INTERNACIONAL DE</p><p>PERIODISMO REY DE ESPAÑA 2006</p></div><div class="anda-libro"><img src="/imagenes/anda-libro.png" alt="Andahuaylazo - Libro"></div><div class="boton-compra"><a href="http://g7consultores.com/andahuaylazo/" title="Andahuaylazo" target="_blank"><div class="circ-rojo"></div><div class="circ-blanco"></div><span>COMPRA</span><span>ON LINE</span></a></div><div class="anda-logo"><img src="/imagenes/anda-logo.png" alt="Andahuaylazo - Logo"></div>'
-    document.getElementById("publicidad-anda-contenedor").innerHTML = valor;
-}
-window.setInterval("refreshDiv()", 15000);
-
-$("#publicidad-anda .info a").on("click", function(e){
-    e.preventDefault();
-    $("#publicidad-anda-big").slideDown("slow");
-});
-
-$("#publicidad-anda-big .cerrar a").on("click", function(e){
-    e.preventDefault();
-    $("#publicidad-anda-big").slideUp("slow");
-});
-</script>
-
-{{-- GOOGLE ANALYTICS --}}
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-20229980-30', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-@yield('script_footer')
+    @yield('contenido_footer')
 
 </body>
+
 </html>
