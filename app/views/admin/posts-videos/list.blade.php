@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Noticias
+Videos de Noticia
 @parent
 @stop
 
@@ -23,18 +23,11 @@ Noticias
 @section('content_admin')
 <section class="content-header">
     <!--section starts-->
-    <h1>Entradas</h1>
-    <a href="{{ route('administrador.posts.create') }}" class="btn btn-md btn-default mgBt10">
+    <h1>Videos de: {{ $posts->titulo }}</h1>
+    <a href="{{ route('administrador.post.videos.create', $posts->id) }}" class="btn btn-md btn-default mgBt10">
         <span class="glyphicon glyphicon-plus"></span>
         Agregar nuevo registro
     </a>
-
-    @if(is_admin())
-    <a href="{{ route('administrador.posts.deletes') }}" class="btn btn-md btn-default mgBt10">
-        <span class="glyphicon glyphicon-list"></span>
-        Ver noticias eliminadas
-    </a>
-    @endif
     
     <div class="alert alert-dismissable"></div>
 </section>
@@ -46,48 +39,19 @@ Noticias
             <div class="panel panel-primary filterable">
                 <div class="panel-body">
 
-                    {{ Form::model(Input::all(), ['route' => 'administrador.posts.index', 'method' => 'GET', 'class' => 'form-horizontal']) }}
-
-                        <div class="form-group">
-                            <div class="col-md-2">
-                                {{ Form::text('search', null, ['class' => 'form-control']) }}
-                            </div>
-                            <div class="col-md-2">
-                                {{ Form::select('category', ['' => 'Seleccionar categoria'] + $category, null, ['class' => 'form-control']) }}
-                            </div>
-                            <div class="col-md-2">
-                                {{ Form::select('publicar', ['' => 'Seleccionar estado', '0' => 'No publicado', '1' => 'Publicado'], null, ['class' => 'form-control']) }}
-                            </div>
-                            <div class="col-md-1">
-                                {{ Form::button('Buscar', ['type' => 'submit', 'class' => 'btn btn-primary']) }}
-                            </div>
-                            <div class="col-md-2">
-                                <a href="{{ route('administrador.posts.index') }}" class="btn btn-danger">Borrar busqueda</a>
-                            </div>
-                        </div>
-
-                    {{ Form::close() }}
-
                     <table class="table table-striped table-responsive">
                         <thead>
                             <tr>
-
                                 <th>Titulo</th>
-                                <th>Categoría</th>
-                                <th>Posición</th>
-                                <th>Publicar</th>
-                                <th>Fecha publicación</th>
+                                <th>Video</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($posts as $item)
+                            @foreach($videos as $item)
                             <tr data-id="{{ $item->id }}" data-title="{{ $item->titulo }}">
                                 <td>{{ $item->titulo }}</td>
-                                <td>{{ $item->category->titulo }}</td>
-                                <td>{{ $item->postOrder->titulo }}</td>
-                                <td>{{ $item->publicar ? 'Publicado' : 'No publicado' }}</td>
-                                <td>{{ date_format(new DateTime($item->published_at), 'd/m/Y H:i')  }}</td>
+                                <td><a href="https://www.youtube.com/watch?v={{ $item->video }}" target="_blank">Ver</a></td>
                                 <td>
                                     <div class="button-dropdown" data-buttons="dropdown">
                                         <a href="#" class="button button-rounded">
@@ -95,12 +59,8 @@ Noticias
                                             <i class="fa fa-caret-down"></i>
                                         </a>
                                         <ul>
-                                            <li><a href="{{ route('home.noticia.preview', [$item->id, $item->slug_url]) }}" target="_blank">Ver</a></li>
-                                            <li><a href="{{ route('administrador.posts.edit', $item->id) }}">Editar</a></li>
+                                            <li><a href="{{ route('administrador.post.videos.edit', [$posts->id, $item->id]) }}">Editar</a></li>
                                             <li><a href="#" class="btn-delete">Eliminar</a></li>
-                                            <li><a href="{{ route('administrador.post.photoslist', $item->id) }}">Galería de Fotos</a></li>
-                                            <li><a href="{{ route('administrador.post.videos.index', $item->id) }}">Videos</a></li>
-                                            <li><a href="{{ route('administrador.post.history', $item->id) }}">Historial</a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -112,12 +72,12 @@ Noticias
                     <div class="row">
 
                         <div class="col-md-5 col-sm-12">
-                            <div class="dataTables_info" id="table1_info" role="status" aria-live="polite">Total de registros: {{ $posts->getTotal() }}</div>
+                            <div class="dataTables_info" id="table1_info" role="status" aria-live="polite">Total de registros: {{ $videos->getTotal() }}</div>
                         </div>
 
                         <div class="col-md-7 col-sm-12">
                             <div class="dataTables_paginate paging_simple_numbers" id="table1_paginate">
-                                {{ $posts->links() }}
+                                {{ $videos->links() }}
                             </div>
 
                         </div>
@@ -135,7 +95,7 @@ Noticias
   <div class="title"></div>
 </div>
 
-{{ Form::open(['route' => ['administrador.posts.destroy', ':REGISTER'], 'method' => 'DELETE', 'id' => 'FormDeleteRow']) }}
+{{ Form::open(['route' => ['administrador.post.videos.destroy', $posts->id, ':REGISTER'], 'method' => 'DELETE', 'id' => 'FormDeleteRow']) }}
 {{ Form::close() }}
 @stop
 

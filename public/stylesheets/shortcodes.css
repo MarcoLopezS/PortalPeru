@@ -720,6 +720,11 @@ label.css-label2 {
     margin-bottom: 47px;
 }
 
+.videos.gnSlider {
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
 .gnSlider .slides li .item-wrap,
 .gnSlider .loading {
     position: relative;
@@ -738,6 +743,17 @@ label.css-label2 {
     font-weight: 300 !important;
     padding: 30px;
     max-width: 750px;
+}
+
+.videos.gnSlider .slides li .item {
+    background: none;
+    line-height: 30px;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold !important;
+    position: relative;
+    padding: 0;
+    margin: 0;
 }
 
 .gnSlider:hover .flex-direction-nav li a.flex-next {

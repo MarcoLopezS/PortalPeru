@@ -20,6 +20,11 @@ class Post extends BaseEntity{
         return $this->belongsTo('PortalPeru\Entities\Category', 'category_id');
     }
 
+    public function video()
+    {
+        return $this->hasMany('PortalPeru\Entities\PostVideo');
+    }
+
     public function postOrder()
     {
         return $this->belongsTo('PortalPeru\Entities\PostOrder', 'post_order_id');
