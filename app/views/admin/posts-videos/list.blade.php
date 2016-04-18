@@ -23,8 +23,8 @@ Videos de Noticia
 @section('content_admin')
 <section class="content-header">
     <!--section starts-->
-    <h1>Entradas</h1>
-    <a href="{{ route('administrador.posts.create') }}" class="btn btn-md btn-default mgBt10">
+    <h1>Videos de: {{ $posts->titulo }}</h1>
+    <a href="{{ route('administrador.post.videos.create', $posts->id) }}" class="btn btn-md btn-default mgBt10">
         <span class="glyphicon glyphicon-plus"></span>
         Agregar nuevo registro
     </a>
@@ -51,7 +51,7 @@ Videos de Noticia
                             @foreach($videos as $item)
                             <tr data-id="{{ $item->id }}" data-title="{{ $item->titulo }}">
                                 <td>{{ $item->titulo }}</td>
-                                <td><a href="{{ $item->video }}" target="_blank">Ver</a></td>
+                                <td><a href="https://www.youtube.com/watch?v={{ $item->video }}" target="_blank">Ver</a></td>
                                 <td>
                                     <div class="button-dropdown" data-buttons="dropdown">
                                         <a href="#" class="button button-rounded">
@@ -59,7 +59,7 @@ Videos de Noticia
                                             <i class="fa fa-caret-down"></i>
                                         </a>
                                         <ul>
-                                            <li><a href="{{ route('administrador.posts.edit', $item->id) }}">Editar</a></li>
+                                            <li><a href="{{ route('administrador.post.videos.edit', [$posts->id, $item->id]) }}">Editar</a></li>
                                             <li><a href="#" class="btn-delete">Eliminar</a></li>
                                         </ul>
                                     </div>
@@ -95,7 +95,7 @@ Videos de Noticia
   <div class="title"></div>
 </div>
 
-{{ Form::open(['route' => ['administrador.posts.destroy', ':REGISTER'], 'method' => 'DELETE', 'id' => 'FormDeleteRow']) }}
+{{ Form::open(['route' => ['administrador.post.videos.destroy', $posts->id, ':REGISTER'], 'method' => 'DELETE', 'id' => 'FormDeleteRow']) }}
 {{ Form::close() }}
 @stop
 

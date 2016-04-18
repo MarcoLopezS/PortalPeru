@@ -2,8 +2,9 @@
 
 use PortalPeru\Repositories\BaseRepo;
 
-use PortalPeru\Entities\Post;
 use PortalPeru\Repositories\PostRepo;
+
+use PortalPeru\Entities\PostVideo;
 use PortalPeru\Repositories\PostVideoRepo;
 
 class AdminPostsVideosController extends \BaseController {
@@ -57,7 +58,25 @@ class AdminPostsVideosController extends \BaseController {
      */
     public function store($post)
     {
+        $data = Input::all();
 
+        $validator = Validator::make($data, $this->rules);
+
+        if($validator->passes())
+        {
+            //GUARDAR DATOS
+            $video = new PostVideo($data);
+            $video->user_id = Auth::user()->id;
+            $video->post_id = $post;
+            $this->postVideoRepo->create($video, $data);
+
+            //REDIRECCIONAR A PAGINA PARA VER DATOS
+            return Redirect::route('administrador.post.videos.index', $post);
+        }
+        else
+        {
+            return Redirect::back()->withInput()->withErrors($validator->messages());
+        }
     }
 
 
@@ -81,7 +100,10 @@ class AdminPostsVideosController extends \BaseController {
      */
     public function edit($post, $id)
     {
+        $posts = $this->postRepo->findOrFail($post);
+        $post = $this->postVideoRepo->findOrFail($id);
 
+        return View::make('admin.posts-videos.edit', compact('posts','post'));
     }
 
 
@@ -93,7 +115,28 @@ class AdminPostsVideosController extends \BaseController {
      */
     public function update($post, $id)
     {
+        $postVideo = $this->postVideoRepo->findOrFail($id);
 
+        $data = Input::only(['titulo','video']);
+
+        $validator = Validator::make($data, $this->rules);
+
+        if($validator->passes())
+        {
+            //VARIABLES
+            $video = Input::get('video');
+
+            //GUARDAR DATOS
+            $postVideo->video = $video;
+            $this->postVideoRepo->update($postVideo, $data);
+
+            //REDIRECCIONAR A PAGINA PARA VER DATOS
+            return Redirect::route('administrador.post.videos.index', $post);
+        }
+        else
+        {
+            return Redirect::back()->withInput()->withErrors($validator->messages());
+        }
     }
 
 
@@ -105,7 +148,19 @@ class AdminPostsVideosController extends \BaseController {
      */
     public function destroy($post, $id)
     {
+        $postVideo = PostVideo::find($id);
+        $postVideo->delete();
 
+        $message = 'El registro se eliminó satisfactoriamente.';
+
+        if(Request::ajax())
+        {
+            return Response::json([
+                'message' => $message
+            ]);
+        }
+
+        return Redirect::route('administrador.post.videos.index', $post);
     }
 
 }

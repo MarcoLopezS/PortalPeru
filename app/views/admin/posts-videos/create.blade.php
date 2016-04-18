@@ -10,9 +10,6 @@ Agregar nuevo registro
 @section('header_styles')
 {{ HTML::style('admin/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}
 {{ HTML::style('admin/css/pages/form_layouts.css') }}
-
-{{-- DATETIME PICKER --}}
-{{ HTML::style('admin/libs/datetimepicker/jquery.datetimepicker.css') }}
 @stop
 
 
@@ -34,44 +31,13 @@ Agregar nuevo registro
             <!--basic form starts-->
             <div class="panel panel-danger">
                 <div class="panel-body border">
-                    {{ Form::open(['route' => 'administrador.posts.store', 'method' => 'POST', 'class' => 'form-horizontal form-bordered', 'files' => 'true']) }}
+                    {{ Form::open(['route' => ['administrador.post.videos.store', $posts->id], 'method' => 'POST', 'class' => 'form-horizontal form-bordered', 'files' => 'true']) }}
 
                         <div class="form-group @if($errors->has('titulo')) has-error @endif">
                             {{ Form::label('titulo', 'Titulo', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">
                                 {{ Form::text('titulo', null, ['class' => 'form-control']) }}
                                 {{ $errors->first('titulo', '<span class="help-block">:message</span>') }}
-                            </div>
-                        </div>
-
-                        <div class="form-group @if($errors->has('descripcion')) has-error @endif">
-                            {{ Form::label('descripcion', 'Descripción', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                {{ Form::textarea('descripcion', null, ['class' => 'form-control', 'rows' => '3',
-                                'onkeydown' => 'limitText(this.form.descripcion,this.form.countdown,220);',
-                                'onkeyup' => 'limitText(this.form.descripcion,this.form.countdown,220);']) }}
-                                <span class="help-block">Caracteres permitidos:
-                                    <strong>
-                                        <input name="countdown" type="text" style="border:none; background:none;" value="220" size="3" readonly id="countdown">
-                                    </strong>
-                                </span>
-                                {{ $errors->first('descripcion', '<span class="help-block">:message</span>') }}
-                            </div>
-                        </div>
-
-                        <div class="form-group @if($errors->has('contenido')) has-error @endif">
-                            {{ Form::label('contenido', 'Contenido', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                {{ Form::textarea('contenido', null, ['id' => 'ckeditor_full', 'class' => 'form-control']) }}
-                                {{ $errors->first('contenido', '<span class="help-block">:message</span>') }}
-                            </div>
-                        </div>
-
-                        <div class="form-group @if($errors->has('imagen')) has-error @endif">
-                            {{ Form::label('imagen', 'Imagen', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                {{ Form::file('imagen') }}
-                                {{ $errors->first('imagen', '<span class="help-block">:message</span>') }}
                             </div>
                         </div>
 
@@ -86,66 +52,11 @@ Agregar nuevo registro
                             </div>
                         </div>
 
-                        <div class="form-group @if($errors->has('categoria')) has-error @endif">
-                            {{ Form::label('categoria', 'Categoría', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                {{ Form::select('categoria', ['' => 'Seleccionar'] + $category, $selected, ['class' => 'form-control']) }}
-                                {{ $errors->first('categoria', '<span class="help-block">:message</span>') }}
-                            </div>
-                        </div>
-
-                        <div class="form-group @if($errors->has('orden')) has-error @endif">
-                            {{ Form::label('orden', 'Orden', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                {{ Form::select('orden', ['' => 'Seleccionar'] + $order, $selected, ['class' => 'form-control']) }}
-                                {{ $errors->first('orden', '<span class="help-block">:message</span>') }}
-                            </div>
-                        </div>
-
-                        <div class="form-group @if($errors->has('tags')) has-error @endif">
-                            {{ Form::label('tags', 'Etiquetas', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                {{ Form::select('tags[]', $tags, $selected,['class' => 'form-control selectMultiple', 'multiple']) }}
-                                {{ $errors->first('tags', '<span class="help-block">:message</span>') }}
-                            </div>
-                        </div>
-
-                        <div class="form-group @if($errors->has('redaccion')) has-error @endif">
-                            {{ Form::label('redaccion', 'Redacción', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                {{ Form::text('redaccion', null, ['class' => 'form-control']) }}
-                                {{ $errors->first('redaccion', '<span class="help-block">:message</span>') }}
-                            </div>
-                        </div>
-
-                        <div class="form-group @if($errors->has('published_at')) has-error @endif">
-                            {{ Form::label('published_at', 'Fecha de publicación', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-4">
-                                {{ Form::text('published_at', null, ['class' => 'form-control col-md-6', 'id' => 'datetimepicker']) }}
-                                {{ $errors->first('published_at', '<span class="help-block">:message</span>') }}
-                            </div>
-                        </div>
-
-                        <div class="form-group @if($errors->has('publicar')) has-error @endif">
-                            {{ Form::label('publicar', 'Publicar', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                <label class="checkbox-inline">
-                                    {{ Form::radio('publicar', '1', null,  ['id' => 'publicar']) }}
-                                    Si
-                                </label>
-                                <label class="checkbox-inline">
-                                    {{ Form::radio('publicar', '0', null,  ['id' => 'publicar']) }}
-                                    No
-                                </label>
-                                {{ $errors->first('publicar', '<span class="help-block">:message</span>') }}
-                            </div>
-                        </div>
-
                         <!-- Form actions -->
                         <div class="form-group">
                             <div class="col-md-12 text-right">
                                 {{ Form::submit('Guardar', ['class' => 'btn btn-responsive btn-primary btn-md']) }}
-                                <a href="{{ route('administrador.posts.index') }}" class="btn btn-responsive btn-default btn-md">Cancelar</a>
+                                <a href="{{ route('administrador.post.videos.index', $posts->id) }}" class="btn btn-responsive btn-default btn-md">Cancelar</a>
                             </div>
                         </div>
 
@@ -166,32 +77,4 @@ Agregar nuevo registro
 {{ HTML::script('admin/vendors/ckeditor/ckeditor.js') }}
 {{ HTML::script('admin/vendors/ckeditor/adapters/jquery.js') }}
 {{ HTML::script('admin/js/pages/editor.js') }}
-
-{{-- DATETIME PICKER --}}
-{{ HTML::script('admin/libs/datetimepicker/jquery.datetimepicker.js') }}
-<script>
-$(document).ready(function() {
-    $('#datetimepicker').datetimepicker({
-        lang: 'es',
-        i18n:{
-            de:{
-                months:[
-                    'Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'
-                ],
-                dayOfWeek:[
-                    "Do", "Lu", "Ma", "Mi","Ju", "Vi", "Sa"
-                ]
-            }
-        },
-        format:'Y-m-d H:i:s'
-    });
-});
-</script>
-
-{{-- TAGS --}}
-{{ HTML::script('admin/js/forms/jquery.tagsinput.min.js') }}
-{{ HTML::script('admin/js/forms/jquery.select2.min.js') }}
-<script>
-$(".selectMultiple").select2();
-</script>
 @stop

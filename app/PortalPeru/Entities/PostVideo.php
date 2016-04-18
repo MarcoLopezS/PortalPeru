@@ -2,7 +2,7 @@
 
 class PostVideo extends BaseEntity{
 
-    protected $fillable = ['titulo','slug_url','descripcion','contenido','imagen','imagen_carpeta','redaccion','publicar','category_id','post_order_id','published_at','user_id'];
+    protected $fillable = ['titulo','descripcion','video'];
 
     public function user()
     {

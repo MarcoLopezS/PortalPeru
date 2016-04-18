@@ -109,7 +109,7 @@ $usuarioNombre = Auth::user()->profile->nombre." ".Auth::user()->profile->apelli
                             </ul>
                         </li>
 
-                        <li {{ (Request::is('administrador/posts') || Request::is('administrador/posts/*') || Request::is('administrador/categories') || Request::is('administrador/categories/*') || Request::is('administrador/tags') || Request::is('administrador/tags/*') || Request::is('administrador/reportero') ? 'class="active"' : '') }}>
+                        <li {{ (Request::is('administrador/post*') || Request::is('administrador/categories*') || Request::is('administrador/tags*') || Request::is('administrador/reportero*') ? 'class="active"' : '') }}>
                             <a href="#">
                                 <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
                                 <span class="title">Noticias</span>
