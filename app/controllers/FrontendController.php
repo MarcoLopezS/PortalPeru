@@ -7,6 +7,7 @@ use PortalPeru\Entities\Configuration;
 use PortalPeru\Entities\Gallery;
 use PortalPeru\Entities\Post;
 use PortalPeru\Entities\PostPhoto;
+use PortalPeru\Entities\PostVideo;
 use PortalPeru\Entities\PostView;
 use PortalPeru\Entities\Tag;
 use Carbon\Carbon;
@@ -67,6 +68,8 @@ class FrontendController extends BaseController{
     {
         $noticia = Post::findOrFail($id);
         $noticiaFotos = PostPhoto::where('post_id', $id)->orderBy('orden', 'asc')->get();
+        $noticiaVideo = PostVideo::where('post_id', $id)->orderBy('titulo', 'asc')->get();
+
         if($noticia->tags <> "-0,0,0-"){
             $noticiaTags = explode("-0,", $noticia->tags);
             $noticiaTags = explode(",0-", $noticiaTags[1]);
@@ -93,7 +96,7 @@ class FrontendController extends BaseController{
         }
 
 
-        return View::make('frontend.noticia', compact('noticia', 'noticiaFotos', 'noticiaTags', 'notRel'));
+        return View::make('frontend.noticia', compact('noticia','noticiaFotos','noticiaVideo','noticiaTags','notRel'));
     }
 
     public function noticiaPreview($id)

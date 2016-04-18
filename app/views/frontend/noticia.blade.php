@@ -50,10 +50,27 @@ $noticia_categoria_url = route('home.noticia.categoria', [$noticia->category->sl
                                 {{-- AddThis --}}
                                 <div class="addthis_native_toolbox"></div>
 
-                                @if($noticia->video <> "")
-                                    <div class="video">
-                                        <iframe width="100%" height="500px" src="//www.youtube.com/embed/{{ $noticia->video }}?rel=0" frameborder="0" allowfullscreen></iframe>
-                                    </div>
+                                @if(count($noticiaVideo) <> 0)
+                                    <div class="videos gnSlider gn-animation" data-animation="fadeInUp" data-animation-delay="0" data-animation-offset="75%">
+                                        <div class="flex-container-videos">
+                                            <div class="flexslider loading">
+                                                <ul class="slides">
+                                                    @foreach($noticiaVideo as $item)
+                                                        {{--*/
+                                                        $nota_titulo = $item->titulo;
+                                                        $nota_video = $item->video;
+                                                        /*--}}
+                                                        <li>
+                                                            <div class="item-wrap">
+                                                                <iframe width="100%" height="500px" src="//www.youtube.com/embed/{{ $nota_video }}?rel=0" frameborder="0" allowfullscreen></iframe>
+                                                            </div>
+                                                            <p class="item" data-bottomtext="0">{{ $nota_titulo }}</p>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.gnSlider -->
                                 @elseif(count($noticiaFotos) > 0)
                                     <div class="noticias gnSlider gn-animation" data-animation="fadeInUp" data-animation-delay="0" data-animation-offset="75%">
                                         <div class="flex-container-noticias">
