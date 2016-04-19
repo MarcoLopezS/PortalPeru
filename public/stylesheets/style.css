@@ -3071,6 +3071,11 @@
         margin-bottom: 10px;
 	}
 
+    .posts .meta .author span{
+        color: #000;
+        font-weight: bold;
+    }
+
 	.posts .body-post {
 		margin-top: 40px;
 	}

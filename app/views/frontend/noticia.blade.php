@@ -7,6 +7,7 @@ $noticia_descripcion = $noticia->descripcion;
 $noticia_img = configWeb()->dominio."/upload/".$noticia->imagen_carpeta."870x500/".$noticia->imagen;
 $noticia_contenido = $noticia->contenido;
 $noticia_fecha = date_format(new DateTime($noticia->published_at), 'd/m/Y H:m');
+$noticia_redaccion = $noticia->redaccion;
 
 $noticia_categoria = $noticia->category->titulo;
 $noticia_categoria_url = route('home.noticia.categoria', [$noticia->category->slug_url]);
@@ -43,7 +44,8 @@ $noticia_categoria_url = route('home.noticia.categoria', [$noticia->category->sl
                                 <p>{{ $noticia_descripcion }}</p>
 
                                 <div class="meta">
-                                    <span class="author"><a href="{{ $noticia_categoria_url }}">{{ $noticia_categoria }}</a></span>
+                                    <span class="author"><span>Redacción: {{ $noticia_redaccion }}</span></span>
+                                    <span class="author">| <a href="{{ $noticia_categoria_url }}">{{ $noticia_categoria }}</a></span>
                                     <span class="time">| Publicado el: {{ $noticia_fecha }}</span>
                                 </div>
 
