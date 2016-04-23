@@ -47,7 +47,7 @@
 
 </head>
 
-<body>
+<body ondragstart="return false" onselectstart="return false" oncontextmenu="return false">
 
     <!-- Header -->
     <header id="header" class="header">
@@ -199,8 +199,15 @@
 
         ga('create', 'UA-20229980-30', 'auto');
         ga('send', 'pageview');
+    </script>
+
+    <script>
+
+        document.oncontextmenu = function(){return false}
 
     </script>
+
+
 
 </body>
 
