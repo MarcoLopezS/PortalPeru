@@ -2010,6 +2010,7 @@
 
 	.highlights-posts {
 		padding-bottom: 7px;
+        float: left;
 	}
 
 	.featured-posts:after,
@@ -2519,7 +2520,12 @@
 
 /* Sidebar Widgets
 -------------------------------------------------------------- */
-	.sidebar-widget-1 .widget {
+
+    .sidebar-widget-1 {
+        float: left;
+    }
+
+    .sidebar-widget-1 .widget {
 		margin-bottom: 30px;
 	}
 
@@ -4063,7 +4069,11 @@
 			display: none;
 		}
 
-		.social-media-posts .content, .category-page .post-wrap .content {
+        .social-media-posts {
+            float: left;
+        }
+
+        .social-media-posts .content, .category-page .post-wrap .content {
 			min-height: auto;
 		}
 
