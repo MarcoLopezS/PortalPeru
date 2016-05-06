@@ -62,6 +62,7 @@
                         </div>
                     </div><!-- /.col-md-6 -->
                     <div class="col-md-6">
+                        <div class="btn-menu"></div>
                         <div class="member-area">
                             <span><a href="/">Inicio</a></span>
                             <span><a href="/publicidad">Publicidad</a></span>
@@ -201,13 +202,7 @@
         ga('send', 'pageview');
     </script>
 
-    <script>
-
-        document.oncontextmenu = function(){return false}
-
-    </script>
-
-
+    <script> document.oncontextmenu = function(){return false} </script>
 
 </body>
 
