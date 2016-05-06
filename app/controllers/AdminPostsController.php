@@ -17,7 +17,7 @@ class AdminPostsController extends \BaseController {
         'descripcion' => 'required|min:10|max:255',
         'contenido' => 'required',
         'imagen' => 'mimes:jpeg,jpg,png',
-        'categoria' => '',
+        'categoria' => 'required',
         'published_at' => 'required',
         'publicar' => 'required|in:1,0'
     ];
