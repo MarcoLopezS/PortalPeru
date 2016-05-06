@@ -94,14 +94,6 @@ Agregar nuevo registro
                             </div>
                         </div>
 
-                        <div class="form-group @if($errors->has('orden')) has-error @endif">
-                            {{ Form::label('orden', 'Orden', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                {{ Form::select('orden', ['' => 'Seleccionar'] + $order, $selected, ['class' => 'form-control']) }}
-                                {{ $errors->first('orden', '<span class="help-block">:message</span>') }}
-                            </div>
-                        </div>
-
                         <div class="form-group @if($errors->has('tags')) has-error @endif">
                             {{ Form::label('tags', 'Etiquetas', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">

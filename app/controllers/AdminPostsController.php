@@ -18,7 +18,6 @@ class AdminPostsController extends \BaseController {
         'contenido' => 'required',
         'imagen' => 'mimes:jpeg,jpg,png',
         'categoria' => '',
-        'orden' => '',
         'published_at' => 'required',
         'publicar' => 'required|in:1,0'
     ];
@@ -94,7 +93,6 @@ class AdminPostsController extends \BaseController {
             $titulo = Input::get('titulo');
             $video = Input::get('video');
             $categoria = Input::get('categoria');
-            $orden = Input::get('orden');
             $autor = Input::get('redaccion');
 
             //TAGS
@@ -110,7 +108,6 @@ class AdminPostsController extends \BaseController {
             $post->slug_url = $slug_url;
             $post->video = $video;
             $post->category_id = $categoria;
-            $post->post_order_id = $orden;
             $post->tags = '-0,'.$union_tags.',0-';
             $post->redaccion = $autor;
             $post->imagen = $file;
@@ -186,7 +183,6 @@ class AdminPostsController extends \BaseController {
             $titulo = Input::get('titulo');
             $video = Input::get('video');
             $categoria = Input::get('categoria');
-            $orden = Input::get('orden');
             $autor = Input::get('redaccion');
 
             //CONVERTIR TITULO A URL
@@ -215,7 +211,6 @@ class AdminPostsController extends \BaseController {
             $post->imagen_carpeta = $imagen_carpeta;
             $post->video = $video;
             $post->category_id = $categoria;
-            $post->post_order_id = $orden;
             $post->tags = '-0,'.$union_tags.',0-';
             $post->redaccion = $autor;
             $post->slug_url = $slug_url;
