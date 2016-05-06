@@ -87,6 +87,7 @@ $noticia_categoria_url = route('home.noticia.categoria', [$noticia->category->sl
                                                             <div class="item-wrap">
                                                                 <img src="{{ $nota_imagen }}" alt="image">
                                                             </div>
+                                                            <p class="item" data-bottomtext="0">{{ $nota_titulo }}</p>
                                                         </li>
                                                     @endforeach
                                                 </ul>
