@@ -74,7 +74,6 @@ Noticias
 
                                 <th>Titulo</th>
                                 <th>Categoría</th>
-                                <th>Posición</th>
                                 <th>Publicar</th>
                                 <th>Fecha publicación</th>
                                 <th>Acciones</th>
@@ -85,7 +84,6 @@ Noticias
                             <tr data-id="{{ $item->id }}" data-title="{{ $item->titulo }}">
                                 <td>{{ $item->titulo }}</td>
                                 <td>{{ $item->category->titulo }}</td>
-                                <td>{{ $item->postOrder->titulo }}</td>
                                 <td>{{ $item->publicar ? 'Publicado' : 'No publicado' }}</td>
                                 <td>{{ date_format(new DateTime($item->published_at), 'd/m/Y H:i')  }}</td>
                                 <td>
