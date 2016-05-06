@@ -538,8 +538,6 @@
                     hasChildMenuMega.children('.sub-menu').hide();
                     hasChildMenu.children('a').after('<span class="btn-submenu"></span>');
                     hasChildMenuMega.children('a').after('<span class="btn-submenu"></span>');
-                    $('#mainnav-mobi').children('.menu').prepend('<li class="added menu-addon"><span class="signup-link"><a href="login.html">Become a member</a></span><span class="login-link"><a href="login.html">Login</a></span></li>');
-                    $('#mainnav-mobi').children('.menu').append('<li class="added"><div id="search-form-menu"><form action="#" method="get"><input type="text" class="search-text-menu" id="search-text-menu"></form></div><div class="social-mobi"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-google-plus"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div></li>');
                     $('.btn-menu').removeClass('active');
                  } else {
                     var $desktopMenu = $('#mainnav-mobi').attr('id', 'mainnav').removeAttr('style');
