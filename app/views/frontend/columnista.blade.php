@@ -11,6 +11,18 @@ $columnista_descripcion = $columnista->descripcion;
     {{ $columnista_nombre }} | @parent
 @stop
 
+@section('contenido_header')
+<!-- Open Graph -->
+<meta property="og:title" content='{{ $columnista_nombre  }}'>
+<meta property="og:type" content='article' >
+<meta property="og:url" content='{{ $columnista_url }}' >
+<meta property="og:image" content='{{ $columnista_foto }}' >
+<meta property="og:site_name" content='{{ configWeb()->titulo }}' >
+<meta property="fb:admins" content='1434798696787255'>
+<meta property="og:description" content='{{ $columnista_descripcion }}'>
+<!-- fin Open Graph -->
+@stop
+
 @section('contenido_body')
 
 	<!-- Main -->
