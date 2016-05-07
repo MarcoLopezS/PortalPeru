@@ -4,6 +4,7 @@
 $columnista_nombre = $columnista->nombre." ".$columnista->apellidos;
 $columnista_url = route('home.columnistas.person', [$columnista->id, $columnista->slug_url]);
 $columnista_foto = '/upload/columnista/'.$columnista->imagen_portada;
+$columnista_imagen = '/upload/columnista/400x400/'.$columnista->foto;
 $columnista_descripcion = $columnista->descripcion;
 /*--}}
 
@@ -16,7 +17,7 @@ $columnista_descripcion = $columnista->descripcion;
 <meta property="og:title" content='{{ $columnista_nombre  }}'>
 <meta property="og:type" content='article' >
 <meta property="og:url" content='{{ $columnista_url }}' >
-<meta property="og:image" content='{{ $columnista_foto }}' >
+<meta property="og:image" content='{{ $columnista_imagen }}' >
 <meta property="og:site_name" content='{{ configWeb()->titulo }}' >
 <meta property="fb:admins" content='1434798696787255'>
 <meta property="og:description" content='{{ $columnista_descripcion }}'>
