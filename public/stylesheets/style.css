@@ -4399,3 +4399,18 @@ CLASES
 .top-wrap{
     background-image: url('/imagenes/fondo-cabecera.jpg');
 }
+
+.about-page-wrap.nota{
+    padding: 0;
+}
+
+.about-page-wrap.nota .author{
+    font-size: 22px;
+    margin: 25px 0 10px 0;
+    display: block;
+    text-align: center;
+}
+
+.about-page-wrap.nota .content-left p{
+    margin-top: 10px;
+}
