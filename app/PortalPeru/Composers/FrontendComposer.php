@@ -1,5 +1,6 @@
 <?php namespace PortalPeru\Composers;
 
+use PortalPeru\Entities\Column;
 use PortalPeru\Entities\Columnist;
 use PortalPeru\Entities\PostView;
 
@@ -10,14 +11,8 @@ class FrontendComposer
         //TODOS LOS COLUMNISTAS
         $columnistasAll = Columnist::orderBy('orden', 'asc')->wherePublicar(1)->get();
 
-        //COLUNISTAS DEL DIA
-        if(date('N')==1){ $columnistasDia = Columnist::whereDiaLunes(1)->orderBy('orden', 'asc')->wherePublicar(1)->paginate(5); }
-        elseif(date('N')==2){ $columnistasDia = Columnist::whereDiaMartes(1)->orderBy('orden', 'asc')->wherePublicar(1)->paginate(5); }
-        elseif(date('N')==3){ $columnistasDia = Columnist::whereDiaMiercoles(1)->orderBy('orden', 'asc')->wherePublicar(1)->paginate(5); }
-        elseif(date('N')==4){ $columnistasDia = Columnist::whereDiaJueves(1)->orderBy('orden', 'asc')->wherePublicar(1)->paginate(5); }
-        elseif(date('N')==5){ $columnistasDia = Columnist::whereDiaViernes(1)->orderBy('orden', 'asc')->wherePublicar(1)->paginate(5); }
-        elseif(date('N')==6){ $columnistasDia = Columnist::whereDiaSabado(1)->orderBy('orden', 'asc')->wherePublicar(1)->paginate(5); }
-        elseif(date('N')==7){ $columnistasDia = Columnist::whereDiaDomingo(1)->orderBy('orden', 'asc')->wherePublicar(1)->paginate(5); }
+        //ULTIMAS COLUMNAS
+        $columnasDia = Column::where('publicar', 1)->orderBy('published_at', 'desc')->paginate(5);
 
         //NOTICIAS MAS VISTAS
         $masVisto = PostView::select(['post_id', \DB::raw('COUNT(*) visitas')])
@@ -26,6 +21,6 @@ class FrontendComposer
                             ->havingRaw('COUNT(*)')
                             ->take(5)->get();
 
-        $view->with(['columnistasAll' => $columnistasAll, 'columnistasDia' => $columnistasDia, 'masVisto' => $masVisto]);
+        $view->with(['columnistasAll' => $columnistasAll, 'columnasDia' => $columnasDia, 'masVisto' => $masVisto]);
     }
 }

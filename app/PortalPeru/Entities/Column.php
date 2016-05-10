@@ -8,4 +8,9 @@ class Column extends BaseEntity {
     {
         return $this->belongsTo('PortalPeru\Entities\Columnist', 'columnist_id');
     }
+
+    public function getColumnistaAttribute()
+    {
+        return $this->columnist->nombre." ".$this->columnist->apellidos;
+    }
 } 

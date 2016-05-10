@@ -7,4 +7,4 @@ include_once('PortalPeru/Routes/Administrador.php');
 
 include_once('PortalPeru/Routes/Frontend.php');
 
-View::composer(['layouts.frontend', 'frontend.partials.sidebar'], 'PortalPeru\Composers\FrontendComposer');
+View::composer(['layouts.frontend', 'frontend.partials.side-bar'], 'PortalPeru\Composers\FrontendComposer');
