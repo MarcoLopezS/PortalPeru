@@ -146,7 +146,7 @@
 
                 </div><!-- /.col-md-8 -->
 
-                @include('frontend.partials.sidebar')
+                @include('frontend.partials.side-bar')
 
                 <div class="col-md-12">
                     <div class="miraperu gnSlider gn-animation" data-animation="fadeInUp" data-animation-delay="0" data-animation-offset="75%">

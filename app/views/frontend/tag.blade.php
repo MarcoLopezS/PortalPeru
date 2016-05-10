@@ -42,7 +42,7 @@
                     </div>
                 </div><!-- /.col-md-8 -->
 
-                @include('frontend.partials.sidebar')
+                @include('frontend.partials.side-bar')
 
             </div><!-- /.row -->
         </div><!-- /.container -->
