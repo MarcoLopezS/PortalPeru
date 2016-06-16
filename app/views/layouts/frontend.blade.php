@@ -65,7 +65,6 @@
                         <div class="btn-menu"></div>
                         <div class="member-area">
                             <span><a href="/">Inicio</a></span>
-                            <span><a href="/publicidad">Publicidad</a></span>
                             <span><a href="/contacto">Contacto</a></span>
                             <span><a href="/nosotros">Nosotros</a></span>
                         </div>
@@ -80,11 +79,11 @@
                         <nav id="mainnav" class="mainnav">
                             <ul class="menu">
                                 <li><a href="/"><i class="fa fa-home"></i></a></li>
-                                <li><a href="/hechos">Hechos</a></li>
+                                <li><a href="/bicentenario">Bicentenario</a></li>
                                 <li><a href="/entrevista">Entrevista</a></li>
                                 <li><a href="/tecnologia">Tecnología</a></li>
                                 <li class="menu-mira-peru"><a href="/mira-peru"><img src="/imagenes/logo-mira-peru-rojo.png" width="103" height="20" alt=""></a></li>
-                                <li><a href="/bicentenario">Bicentenario</a></li>
+                                <li><a href="/hechos">Hechos</a></li>
                                 <li><a href="/lima-foto">Lima en una Foto</a></li>
                                 <li class="gn-mega-menu"><a href="javascript:;">Columnistas</a>
                                     <div class="sub-menu">
