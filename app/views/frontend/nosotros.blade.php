@@ -14,29 +14,15 @@
 				<div class="col-md-8">
                     <div class="entry-page">
                         <h2 class="title">Nosotros</h2>
-                        <p>Somos un grupo de profesionales de la comunicaci&oacute;n que busca democratizar la informaci&oacute;n bajo el principio universal que toda persona tiene derecho, no s&oacute;lo a recibir informaci&oacute;n y opini&oacute;n, sino tambi&eacute;n a difundirla&nbsp;por cualquier medio de expresi&oacute;n.</p>
+                        <p>Somos un grupo de profesionales que busca rescatar y difundir contenido hist&oacute;rico para un conocimiento cabal de la historia del Per&uacute;, no solo en el aspecto pol&iacute;tico, sino social, econ&oacute;mico y cultural, y, adem&aacute;s, establecer un espacio de debate para el fortalecimiento de los valores ciudadanos.</p>
 
-                        <p>La piedra angular sobre la que se edifica el PORTAL PER&Uacute; es el <strong><u>Periodismo Ciudadano</u></strong>, un concepto moderno que est&aacute; revolucionando las comunicaciones en el mundo.</p>
+                        <p>El objetivo es contribuir al fortalecimiento de la democracia, la construcci&oacute;n de una identidad nacional y a la formaci&oacute;n de una cultura c&iacute;vica en el pa&iacute;s, rescatando contenido hist&oacute;rico excluido del conocimiento ciudadano y ausente en la pol&iacute;tica educativa del Estado.</p>
 
-                        <p>La aplicaci&oacute;n de este concepto permite que todas las personas que tengan algo que decir o informar, participen en el portal, sin restricciones ni censuras de ning&uacute;n tipo. La idea es incluir a las&nbsp; audiencias activas dentro del entorno del medio de comunicaci&oacute;n y canalizar sus aportes. PORTAL PERU es una alternativa ante los formatos period&iacute;sticos cl&aacute;sicos.</p>
+                        <p>El Per&uacute; es un pa&iacute;s con una riqueza hist&oacute;rica importante. Ha sido cuna del Imperio Inca, uno de los m&aacute;s importantes de la Am&eacute;rica precolombina, y centro del virreinato espa&ntilde;ol durante tres centurias. Sin embargo, este rico historial, que deber&iacute;a servir de experiencia y factor de consolidaci&oacute;n de la ciudadan&iacute;a y de los valores c&iacute;vicos, no es aprovechado adecuadamente a causa del desconocimiento o el desinter&eacute;s ciudadano. &nbsp;&nbsp;</p>
 
-                        <p>Las puertas est&aacute;n abiertas para todos, sin distinci&oacute;n de razas, credos, ni condici&oacute;n social, siempre que se mantenga el respeto mutuo, las normas de cortes&iacute;as y las reglas idiom&aacute;ticas.</p>
+                        <p>Es un dicho popular que &ldquo;el Per&uacute; es un pa&iacute;s sin memoria&rdquo; y que no &ldquo;aprende de las lecciones del pasado&rdquo;. Y de alguna manera tales asertos tienen asidero porque muchos errores hist&oacute;ricos han sido repetidos no s&oacute;lo por los gobiernos, sino por enormes sectores de la sociedad y los propios l&iacute;deres pol&iacute;ticos y sociales que no han aprendido de las vivencias del pasado.</p>
 
-                        <h5>Pueden participar:</h5>
-
-                        <ul class="list">
-                            <li>Periodistas profesionales.</li>
-                            <li>Estudiantes de periodismo</li>
-                            <li>P&uacute;blico en general.</li>
-                        </ul>
-
-                        <p>PORTAL PER&Uacute; proporciona el espacio y el apoyo t&eacute;cnico para la publicaci&oacute;n de las notas y art&iacute;culos de opini&oacute;n.</p>
-
-                        <p>PORTAL PERU tendr&aacute; una plataforma de soporte profesional period&iacute;stico que se encargar&aacute; de guiar el proceso adecuado para la publicaci&oacute;n de los art&iacute;culos de los reporteros ciudadanos.</p>
-
-                        <p>PORTAL PER&Uacute; tendr&aacute;, adem&aacute;s, un selecto equipo de periodistas que publicar&aacute;n sus columnas de opini&oacute;n con la m&aacute;s amplia libertad.</p>
-
-                        <p>Una red de corresponsales a nivel nacional y en las principales ciudades del mundo, complementan el staff de PORTAL PERU.</p>
+                        <p>El Portal, que est&aacute; en funcionamiento desde el 2015, es de acceso completamente gratuito y contiene documentos, art&iacute;culos, fotos, entrevistas a grandes personajes y libros de gran valor acad&eacute;mico e hist&oacute;rico, rescatados de las principales bibliotecas de Lima y otros archivos a los que actualmente la gran mayor&iacute;a ciudadana no tiene acceso por diversas barreras, ya sean econ&oacute;micas, burocr&aacute;ticas, geogr&aacute;ficas o log&iacute;sticas.</p>
 
                     </div><!-- /.content-right -->
 				</div><!-- /.col-md-8 -->
