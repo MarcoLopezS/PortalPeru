@@ -147,7 +147,7 @@ class FrontendController extends BaseController{
     public function columnistasPerson($id, $url)
     {
         $columnista = Columnist::whereId($id)->whereSlugUrl($url)->first();
-        $columnas = Column::whereColumnistId($id)->orderBy('published_at', 'desc')->paginate(6);
+        $columnas = Column::whereColumnistId($id)->where('publicar', 1)->orderBy('published_at', 'desc')->paginate(6);
 
         return View::make('frontend.columnista', compact('columnista','columnas'));
     }
