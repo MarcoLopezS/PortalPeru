@@ -197,9 +197,9 @@ class AdminColumnsController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($id, $idColumn)
     {
-        $post = Column::find($id);
+        $post = Column::find($idColumn);
         $post->delete();
 
         $message = 'El registro se eliminó satisfactoriamente.';
