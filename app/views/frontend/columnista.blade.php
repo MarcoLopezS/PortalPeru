@@ -46,9 +46,11 @@ $columnista_descripcion = $columnista->descripcion;
                                     $nota_fecha = date_format(new DateTime($item->created_at), 'd/m/Y');
                                     /*--}}
                                     <article class="post">
+                                        @if($item->imagen <> "")
                                         <div class="thumb">
                                             <a href="{{ $nota_url }}"><img src="{{ $nota_imagen }}" alt="img"></a>
                                         </div>
+                                        @endif
                                         <div class="content">
                                             <div class="cat"><a href="javascript;;">{{ $nota_fecha }}</a></div>
                                             <h3><a href="{{ $nota_url }}">{{ $nota_titulo }}</a></h3>
