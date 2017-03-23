@@ -157,10 +157,12 @@ class AdminUsersController extends \BaseController {
 
     /**
      * Funcion para cambiar contraseña de Perfil de usuario logeado
+     * @param $id
+     * @return
      */
-    public function updateChangePassword()
+    public function updateChangePassword($id)
     {
-        $user = Auth::user();
+        $user = $this->userRepo->findOrFail($id);
 
         $data = Input::all();
 
