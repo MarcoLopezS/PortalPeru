@@ -62,12 +62,6 @@
                         </div>
                     </div><!-- /.col-md-6 -->
                     <div class="col-md-6">
-                        <div class="btn-menu"></div>
-                        <div class="member-area">
-                            <span><a href="/">Inicio</a></span>
-                            <span><a href="/contacto">Contacto</a></span>
-                            <span><a href="/nosotros">Nosotros</a></span>
-                        </div>
                     </div><!-- /.col-md-6 -->
                 </div><!-- /.row -->
             </div><!-- /.container -->
@@ -81,36 +75,8 @@
                                 <li><a href="/"><i class="fa fa-home"></i></a></li>
                                 <li><a href="/bicentenario">Bicentenario</a></li>
                                 <li><a href="/entrevista">Entrevista</a></li>
-                                <li><a href="/tecnologia">Tecnología</a></li>
-                                <li class="menu-mira-peru"><a href="/mira-peru"><img src="/imagenes/logo-mira-peru-rojo.png" width="103" height="20" alt=""></a></li>
-                                <li><a href="/hechos">Hechos</a></li>
-                                <li><a href="/lima-foto">Lima en una Foto</a></li>
-                                <li class="gn-mega-menu"><a href="javascript:;">Columnistas</a>
-                                    <div class="sub-menu">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="mega-item-wrap">
-
-                                                        @foreach($columnistasAll as $item)
-                                                            {{--*/
-                                                            $columDia_foto = "/upload/columnista/173x116/".$item->foto;
-                                                            $columDia_titulo = $item->nombre." ".$item->apellidos;
-                                                            $columDia_url = route('home.columnistas.person', [$item->id, $item->slug_url]);
-                                                            /*--}}
-
-                                                            <div class="mega-item">
-                                                                <a href="{{ $columDia_url }}"><img src="{{ $columDia_foto }}" alt="image"></a>
-                                                                <h5><a href="{{ $columDia_url }}">{{ $columDia_titulo }}</a></h5>
-                                                            </div>
-                                                        @endforeach
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- /.submenu -->
-                                </li>
+                                <li><a href="/nosotros">Nosotros</a></li>
+                                <li><a href="/contacto">Contacto</a></li>
                             </ul><!-- /.menu -->
                         </nav><!-- /nav -->
                     </div><!-- /.col-md-9 -->
@@ -145,12 +111,11 @@
                         <div class="widget widget-list">
                             <h5 class="widget-title">Categorías</h5>
                             <ul class="links-list">
-                                <li><a href="#">Hechos</a></li>
-                                <li><a href="#">Entrevista</a></li>
-                                <li><a href="#">Mira el Perú</a></li>
-                                <li><a href="#">Bicentenario</a></li>
-                                <li><a href="#">Reportero Ciudadano</a></li>
-                                <li><a href="#">Columnistas</a></li>
+                                <li><a href="/">Inicio</a></li>
+                                <li><a href="/bicentenario">Bicentenario</a></li>
+                                <li><a href="/entrevista">Entrevista</a></li>
+                                <li><a href="/nosotros">Nosotros</a></li>
+                                <li><a href="/contacto">Contacto</a></li>
                             </ul>
                         </div><!-- /.widget-list -->
                     </div><!-- /.col-md-2 -->
