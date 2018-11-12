@@ -62,6 +62,7 @@
                         </div>
                     </div><!-- /.col-md-6 -->
                     <div class="col-md-6">
+                        <div class="btn-menu"></div>
                     </div><!-- /.col-md-6 -->
                 </div><!-- /.row -->
             </div><!-- /.container -->
